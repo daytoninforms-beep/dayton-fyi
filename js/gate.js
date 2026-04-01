@@ -44,8 +44,8 @@
       '<h1 style="font-size:1.5rem;margin-bottom:0.25rem;color:#1a1a1a;">Dayton FYI</h1>' +
       '<p style="color:#555;font-size:0.9rem;margin-bottom:1.5rem;">This site is in private preview.<br>Enter the password to continue.</p>' +
       '<input type="password" id="gate-pw" placeholder="Password" style="width:100%;font-size:1rem;padding:0.75rem;border:2px solid #ccc;border-radius:4px;margin-bottom:0.75rem;box-sizing:border-box;">' +
-      '<button id="gate-btn" style="width:100%;font-size:1rem;font-weight:600;padding:0.75rem;border:none;border-radius:4px;background:#8b0000;color:#fff;cursor:pointer;">Enter</button>' +
-      '<p id="gate-err" style="color:#8b0000;font-size:0.85rem;margin-top:0.75rem;display:none;">Incorrect password.</p>';
+      '<button id="gate-btn" style="width:100%;font-size:1rem;font-weight:600;padding:0.75rem;border:none;border-radius:4px;background:#E65025;color:#fff;cursor:pointer;">Enter</button>' +
+      '<p id="gate-err" style="color:#E65025;font-size:0.85rem;margin-top:0.75rem;display:none;">Incorrect password.</p>';
     document.body.appendChild(box);
 
     var pwInput = document.getElementById('gate-pw');

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Meetings — Dayton.FYI</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Override site styles to match report brand */
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      color: #383838;
+      background: #faf9f7;
+      font-size: 15px;
+    }
+
+    .site-container {
+      max-width: 100%;
+      padding: 1rem 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #383838;
+      margin-bottom: 0.25rem;
+    }
+
+    .page-content > p:first-of-type {
+      font-size: 0.8rem;
+      color: #58595B;
+      margin-bottom: 1rem;
+    }
+
+    /* Tab nav — report brand */
+    .tab-nav {
+      border-bottom-color: #e0e0e0;
+    }
+
+    .tab-nav button {
+      font-size: 0.8rem;
+      color: #58595B;
+    }
+
+    .tab-nav button.active {
+      color: #E65025;
+      border-bottom-color: #E65025;
+    }
+
+    /* Search & filters */
+    .search-bar input {
+      font-size: 0.85rem;
+      border-color: #d0d0d0;
+      border-radius: 4px;
+      padding: 0.6rem 0.75rem;
+      min-height: 38px;
+    }
+
+    .search-bar input:focus {
+      border-color: #E65025;
+      box-shadow: 0 0 0 3px rgba(230, 80, 37, 0.12);
+    }
+
+    .filters select,
+    .filters input[type="date"] {
+      font-size: 0.75rem;
+      border-color: #d0d0d0;
+      min-height: 36px;
+    }
+
+    .filters select:focus,
+    .filters input[type="date"]:focus {
+      border-color: #E65025;
+      box-shadow: 0 0 0 3px rgba(230, 80, 37, 0.12);
+    }
+
+    /* This Week section */
+    .this-week-section {
+      background: #fff;
+      border-color: #e0e0e0;
+    }
+
+    .this-week-section h2 {
+      color: #E65025;
+      font-size: 0.85rem;
+    }
+
+    /* Meeting items */
+    .meeting-category {
+      font-size: 0.55rem;
+      background: #eee;
+    }
+
+    .meeting-body-name {
+      font-size: 0.85rem;
+      color: #383838;
+    }
+
+    .meeting-type {
+      font-size: 0.65rem;
+      color: #999;
+    }
+
+    .meeting-datetime {
+      font-size: 0.8rem;
+      color: #E65025;
+    }
+
+    .meeting-location {
+      font-size: 0.75rem;
+    }
+
+    .meeting-address {
+      font-size: 0.7rem;
+    }
+
+    .meeting-address a {
+      color: #999;
+    }
+
+    .meeting-address a:hover {
+      color: #E65025;
+    }
+
+    /* Buttons */
+    .btn-small {
+      font-size: 0.65rem;
+      border-color: #E65025;
+      color: #E65025;
+      min-height: 32px;
+    }
+
+    .btn-small:hover,
+    .btn-small:focus {
+      background: #E65025;
+      color: #fff;
+    }
+
+    /* Resources */
+    .meeting-resources a {
+      color: #E65025;
+      font-size: 0.75rem;
+    }
+
+    /* Results count */
+    .results-count {
+      font-size: 0.7rem;
+      color: #999;
+    }
+
+    /* Show more */
+    .show-more-btn {
+      border-color: #E65025;
+      color: #E65025;
+      background: #fff;
+      font-size: 0.75rem;
+    }
+
+    .show-more-btn:hover {
+      background: #E65025;
+      color: #fff;
+    }
+
+    /* Notice */
+    .notice {
+      font-size: 0.7rem;
+      background: #fff;
+      border-color: #e0e0e0;
+    }
+
+    /* Empty state */
+    .empty-state p {
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-container">
+
+    <main class="page-content">
+      <h1>Public Meetings</h1>
+      <p>Every upcoming public meeting of Dayton-area government bodies — in one place.</p>
+
+      <!-- Tabs -->
+      <div class="tab-nav" role="tablist" aria-label="Meeting views">
+        <button role="tab" aria-selected="true" aria-controls="tab-upcoming" id="btn-upcoming" class="active">Upcoming</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-past" id="btn-past">Past Meetings</button>
+      </div>
+
+      <!-- Upcoming Tab -->
+      <section id="tab-upcoming" role="tabpanel" aria-labelledby="btn-upcoming">
+
+        <div class="search-bar">
+          <label for="meetings-search" class="sr-only">Search upcoming meetings</label>
+          <input type="search" id="meetings-search" placeholder="Search by name, body, or keyword..." autocomplete="off">
+        </div>
+
+        <div class="filters">
+          <div>
+            <label for="filter-category" class="sr-only">Filter by category</label>
+            <select id="filter-category">
+              <option value="">All categories</option>
+              <option value="City of Dayton">City of Dayton</option>
+              <option value="Montgomery County">Montgomery County</option>
+              <option value="Schools">Schools</option>
+              <option value="Regional">Regional</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-body" class="sr-only">Filter by government body</label>
+            <select id="filter-body">
+              <option value="">All government bodies</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="results-count" id="upcoming-count" aria-live="polite"></p>
+
+        <div id="this-week"></div>
+
+        <div id="meetings-upcoming" aria-live="polite">
+          <div class="empty-state">
+            <p>Loading meetings...</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Past Meetings Tab -->
+      <section id="tab-past" role="tabpanel" aria-labelledby="btn-past" style="display: none;">
+
+        <div class="search-bar">
+          <label for="archive-search" class="sr-only">Search past meetings</label>
+          <input type="search" id="archive-search" placeholder="Search past meetings..." autocomplete="off">
+        </div>
+
+        <div class="filters">
+          <div>
+            <label for="archive-category" class="sr-only">Filter by category</label>
+            <select id="archive-category">
+              <option value="">All categories</option>
+              <option value="City of Dayton">City of Dayton</option>
+              <option value="Montgomery County">Montgomery County</option>
+              <option value="Schools">Schools</option>
+              <option value="Regional">Regional</option>
+            </select>
+          </div>
+          <div>
+            <label for="archive-body" class="sr-only">Filter by government body</label>
+            <select id="archive-body">
+              <option value="">All government bodies</option>
+            </select>
+          </div>
+          <div>
+            <label for="archive-date-from" class="sr-only">From date</label>
+            <input type="date" id="archive-date-from" title="From date">
+          </div>
+          <div>
+            <label for="archive-date-to" class="sr-only">To date</label>
+            <input type="date" id="archive-date-to" title="To date">
+          </div>
+        </div>
+
+        <p class="results-count" id="archive-count" aria-live="polite"></p>
+
+        <div id="meetings-past" aria-live="polite">
+          <div class="empty-state">
+            <p>Loading past meetings...</p>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="notice notice-info mt-3">
+        <p style="margin-bottom: 0;">Meeting information is gathered from public sources. Schedules may change — always confirm details with the hosting body.</p>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

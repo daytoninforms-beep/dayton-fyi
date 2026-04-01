@@ -6,6 +6,7 @@
   <title>Dayton.FYI — A Proposal for Community-Owned Civic Information Infrastructure</title>
   <meta name="description" content="A proposal for a publicly funded, editorially independent civic information utility for Dayton, Ohio.">
   <link rel="stylesheet" href="css/report.css">
+  <link rel="icon" type="image/png" href="images/jlab-logo.png">
   <script src="js/gate.js"></script>
 </head>
 <body>
@@ -13,6 +14,10 @@
 
 <!-- ==================== SIDE NAVIGATION ==================== -->
 <nav class="side-nav">
+  <div class="side-nav-brand">
+    <img src="images/jlab-logo.png" alt="The Journalism Lab">
+    <div class="side-nav-brand-text">This report was prepared by Nick Hrkman of The Journalism Lab on behalf of The Kettering Foundation.</div>
+  </div>
   <ul>
     <li><a href="#preface">A Forward Foreword</a></li>
 
@@ -75,9 +80,12 @@
 
 <!-- ==================== HERO ==================== -->
 <section class="hero" id="top">
-  <h1 class="hero-title">Dayton.FYI</h1>
-  <p class="hero-subtitle">A Proposal for Community-Owned Civic Information Infrastructure Through The Creation Of Information Districts</p>
-  <p class="hero-meta">Draft Report &mdash; April 1, 2026</p>
+  <div class="hero-inner">
+    <h1 class="hero-title">Dayton<span class="hero-dot">.</span>FYI</h1>
+    <hr class="hero-rule">
+    <p class="hero-subtitle">A Proposal for Community-Owned Civic Information Infrastructure Through the Creation of Information Districts</p>
+    <p class="hero-meta">Draft Report &mdash; April 1, 2026</p>
+  </div>
   <div class="scroll-indicator">Scroll to begin</div>
 </section>
 
@@ -94,9 +102,9 @@
 
   <p class="reveal">What follows is my best synthesis of what I&rsquo;ve learned &mdash; as a Dayton native and DPS graduate, as a journalist at the Dayton Daily News, as a co-founder of The Journalism Lab, as a Kettering Foundation Democracy Fellow, and as someone who has watched the information ecosystem that serves this community deteriorate for years. I&rsquo;m putting it into the world not as an answer, but as a starting point.</p>
 
-  <p class="reveal">Because we need to start now. Really, we needed to start yesterday, 10 years ago, 50 years ago &mdash; you name it. I&rsquo;ve gone my entire adult life as a witness to the gradual downfall of an industry I passionately believe in and value. I&rsquo;ve sat at many tables where people &mdash; myself included &mdash; believe something should be done, but rarely if ever believe they are the ones responsible for doing it.</p>
+  <p class="reveal">Because we need to start now. Really, we needed to start yesterday, 10 years ago, 50 years ago &mdash; you name it. I&rsquo;ve gone my entire adult life as a witness to the gradual downfall of an industry I passionately believe in and value. I&rsquo;ve sat at many tables where people &mdash; myself included &mdash; believe something should be done, but rarely if ever believe they are the ones responsible for doing it. I realize now that if I don&rsquo;t do it, if I don&rsquo;t act, there&rsquo;s a strong chance no one will.</p>
 
-  <p class="reveal">I credit the <a href="https://www.kettering.org/" target="_blank" rel="noopener">Kettering Foundation</a> for giving me the time and space to think more deeply about this topic than I ever had the opportunity to do before. And I initially set out to a very different proposal than what you&rsquo;re reading now. It wasn&rsquo;t until I was halfway through it, when I was tackling the thorny and immediate concerns about the rise of AI, that I realized I might need to stop writing about an issue I actually knew very little about beyond the extremely polarized discourse that surrounds it today, and try it myself. I wanted to know what we are up against.</p>
+  <p class="reveal">I credit the <a href="https://www.kettering.org/" target="_blank" rel="noopener">Kettering Foundation</a> for giving me the time and space to think more deeply about this topic than I ever had the opportunity to do before. And I initially set out to write a very different proposal than what you&rsquo;re reading now. It wasn&rsquo;t until I was halfway through an early draft, when I was tackling the thorny and immediate concerns about the rise of AI, that I realized I might need to stop writing about an issue I actually knew very little about from first-hand experience. I&rsquo;d heard from both sides of the extremely polarized discourse that surrounds any discourse of AI today, but I needed to try it for myself. I wanted to know what we are up against.</p>
 
   <p class="reveal">What followed was eye-opening, alarming and a little exciting.</p>
 
@@ -104,7 +112,7 @@
 
   <p class="reveal">This document was developed over the course of several months, through many conversations with friends, colleagues, industry professionals and others. In full disclosure, it was also drafted in collaboration and iterative dialogue with an AI assistant, Claude. The website you&rsquo;re reading this on was designed and built through a related tool, Claude Code.</p>
 
-  <p class="reveal">I have no real previous web development or coding experience. I would not have been able to afford to pay or take the time to myself learn the incredibly complicated development languages necessary to prototype the tools and resources I did in the span of a few short weeks. Below, I make the case for and attempt to demonstrate the value of what AI assistance can offer us. Not unsupervised, not as replacement for thinking, with clear rules and guidelines and policies.</p>
+  <p class="reveal">I have no real previous web development or coding experience. I would not have been able to afford to pay a developer or take the time to myself learn the incredibly complicated development languages necessary to prototype the tools and resources below. Through an AI assistant, I created everything you see below in the span of a few short weeks using plain language prompts.</p>
 
   <p class="reveal">Full transparency about AI&rsquo;s role in this work is consistent with the Info District&rsquo;s own AI policy: a machine does not know Dayton; I do.</p>
 </div>
@@ -249,6 +257,34 @@
 
 <p class="reveal"><strong><a href="https://journalismdesign.com/" target="_blank" rel="noopener">Journalism + Design Lab (The New School)</a>.</strong> The J+D Lab identifies eight acts of journalism that any community member can perform: facilitating, documenting, commenting, inquiring, sensemaking, amplifying, navigating, and enabling. This proposal adopts that framework and extends it with two additional acts that reflect the specific needs of Dayton&rsquo;s information ecosystem and rapid technological advancements: witnessing and preserving.</p>
 
+<div class="acts-wheel reveal" id="acts-wheel">
+  <div class="acts-wheel-title">10 Acts of Community Journalism</div>
+  <div class="acts-ring">
+    <div class="act-node act-node--original" data-act="facilitating"><span class="act-node-label">Facilitating</span></div>
+    <div class="act-node act-node--original" data-act="documenting"><span class="act-node-label">Documenting</span></div>
+    <div class="act-node act-node--original" data-act="commenting"><span class="act-node-label">Commenting</span></div>
+    <div class="act-node act-node--original" data-act="inquiring"><span class="act-node-label">Inquiring</span></div>
+    <div class="act-node act-node--original" data-act="sensemaking"><span class="act-node-label">Sense&shy;making</span></div>
+    <div class="act-node act-node--original" data-act="amplifying"><span class="act-node-label">Amplifying</span></div>
+    <div class="act-node act-node--original" data-act="navigating"><span class="act-node-label">Navigating</span></div>
+    <div class="act-node act-node--original" data-act="enabling"><span class="act-node-label">Enabling</span></div>
+    <div class="act-node act-node--dayton" data-act="witnessing"><span class="act-node-label">Witnessing</span></div>
+    <div class="act-node act-node--dayton" data-act="preserving"><span class="act-node-label">Preserving</span></div>
+    <div class="acts-ring-center">
+      <div class="acts-ring-center-label">Community<br>Information<br>Ecosystem</div>
+    </div>
+  </div>
+  <div class="acts-description" id="acts-description">
+    <div class="acts-description-title" id="acts-desc-title">Click a role to learn more</div>
+    <div class="acts-description-text" id="acts-desc-text">Each role represents a critical function in a healthy information ecosystem. The 8 original acts were identified by the Journalism + Design Lab at The New School. Dayton&rsquo;s framework adds two more.</div>
+    <div class="acts-description-source" id="acts-desc-source"></div>
+  </div>
+  <div class="acts-legend">
+    <div class="acts-legend-item"><div class="acts-legend-dot acts-legend-dot--original"></div> J+D Lab Framework</div>
+    <div class="acts-legend-item"><div class="acts-legend-dot acts-legend-dot--dayton"></div> Dayton Additions</div>
+  </div>
+</div>
+
 <p class="reveal">Witnessing names something the original framework implied but didn&rsquo;t make explicit: the act of recording and asserting lived experience, particularly from communities whose stories have been systematically excluded from official records. It is the assertion that the experience itself belongs in the public record, told in the voice of the person who lived it. The genealogical archive, the community milestones registry, the Community Voice Network &mdash; these serve the witnessing function directly.</p>
 
 <p class="reveal">Preserving names the archival commitment: the principle that what a community knows about itself should be durable, searchable, and publicly owned, not locked behind a paywall or lost when a newspaper folds or a platform changes its terms of service.</p>
@@ -259,13 +295,23 @@
 
 <p class="reveal"><strong><a href="https://www.americanpressinstitute.org/" target="_blank" rel="noopener">American Press Institute</a>.</strong> The API&rsquo;s Local News Summit on Inclusion, Belonging, and Local Leadership, which Nick Hrkman attended in October of 2025, was fundamental to this work. API framed the central question as shifting from journalism &ldquo;for&rdquo; the community to journalism &ldquo;with&rdquo; the community, organizing the convening around the concept of the &ldquo;information commons.&rdquo;</p>
 
+<div class="demo-embed reveal">
+  <div class="demo-embed-header">API Local News Summit &mdash; Slide Deck</div>
+  <iframe src="https://docs.google.com/presentation/d/1In62plnTl9TRS__H5CvHSOeoEFgm9ItUJo0yXc2Lczg/embed?start=false&loop=false&delayms=3000" title="API Local News Summit slide deck" allowfullscreen="true" style="height:480px;"></iframe>
+</div>
+
 <p class="reveal"><strong><a href="https://www.citybureau.org/" target="_blank" rel="noopener">City Bureau</a> / <a href="https://www.documenters.org/" target="_blank" rel="noopener">Documenters Network</a>.</strong> The most proven model for community documentation: 4,500+ trained Documenters across 24 communities in 16 states. The Journalism Lab co-founders met with Documenters founder Darryl Holliday circa 2022 to discuss bringing the network to Dayton; initial funding requirements proved prohibitive. The Info District would support and integrate with a Documenters-style network &mdash; through formal affiliation, partnership with Signal Ohio, or independent development.</p>
 
 <p class="reveal"><strong>Issue 9.</strong> The <a href="https://www.daytondailynews.com/local/dayton-public-hospital-levy-issue-9-passing-in-early-election-results/Y2VTBTVUY5H5HKPJVUAHQUMZOM/" target="_blank" rel="noopener">successful passage of Issue 9</a> &mdash; a property tax levy creating a public hospital for West Dayton, approved at 58% &mdash; provides both legal and political precedent for using the levy mechanism for novel public purposes. One of the leading architects and proponents of Issue 9, Eric Moyer, has offered his support for the Info District effort.</p>
 
-<p class="reveal"><strong>The Charlotte Ledger, The Bulwark and the Iowa Writers Collective.</strong> The hub-and-spoke publishing model adopted in this proposal is modeled after several successful digital reporting and commentary efforts built on and organized around individual Substacks. It also draws on a deep tradition of community-driven opinion and commentary &mdash; from the Black press&rsquo;s historic integration of news, advocacy, and community voice, to the zine culture that gave marginalized communities their own platforms when shut out by traditional media. The Info District&rsquo;s Community Voice Network aims to continue this tradition to civic information infrastructure that treats lived experiences and testimony as critical elements of shared community truth.</p>
+<p class="reveal"><strong><a href="https://www.cltledger.com/" target="_blank" rel="noopener">The Charlotte Ledger</a>, <a href="https://www.thebulwark.com/" target="_blank" rel="noopener">The Bulwark</a> and the <a href="https://iowawriters.substack.com/" target="_blank" rel="noopener">Iowa Writers Collaborative Roundup</a>.</strong> The hub-and-spoke publishing model adopted in this proposal is modeled after several successful digital reporting and commentary efforts built on and organized around individual Substacks. It also draws on a deep tradition of community-driven opinion and commentary &mdash; from the Black press&rsquo;s historic integration of news, advocacy, and community voice, to the zine culture that gave marginalized communities their own platforms when shut out by traditional media. The Info District&rsquo;s Community Voice Network aims to continue this tradition to civic information infrastructure that treats lived experiences and testimony as critical elements of shared community truth.</p>
 
 <p class="reveal"><strong><a href="https://www.kettering.org/" target="_blank" rel="noopener">Kettering Foundation</a>.</strong> The Foundation&rsquo;s research on democratic practice provides a deliberative framework underlying the Info District&rsquo;s approach. The Foundation conducts independent research on models like the Info District. The relationship is intellectual, not operational. Kettering&rsquo;s name should not and would not appear in ballot campaign materials or in any other context that would jeopardize its 501(c)(4) status.</p>
+
+<div class="demo-embed reveal">
+  <div class="demo-embed-header">Dayton Democracy Summit &mdash; October 25, 2025</div>
+  <iframe src="https://www.youtube.com/embed/ckNV6tI1KqI" title="Dayton Democracy Summit | October 25, 2025 — Kettering Foundation" allowfullscreen style="height:380px;"></iframe>
+</div>
 
 <hr class="section-divider">
 
@@ -278,11 +324,11 @@
 <p class="reveal">This section is organized in layers &mdash; from the editorial functions that require human judgment, to the infrastructure that makes the work possible, to the archives that accumulate value over time, to the channels that deliver it all to residents. Residents won&rsquo;t see layers, they&rsquo;ll see one coherent civic dashboard organized around their place and their expressed interests or needs.</p>
 
 <!-- Foundation Layer -->
-<h3 class="subsection-heading reveal">The Foundation Layer: What the Institution Produces</h3>
+<h3 class="layer-heading reveal">The Foundation Layer: What the Institution Produces</h3>
 
 <p class="reveal">These are the functions that require human judgment, editorial skill, and institutional commitment. Everything else either feeds into these or distributes what they produce.</p>
 
-<h3 class="subsection-heading reveal">Accountability Journalism</h3>
+<h4 class="layer-item-heading reveal">Accountability Journalism</h4>
 
 <p class="reveal">This is the core that gives the rest of the system teeth. When the vote tracker reveals a commissioner voting against their stated positions, when the community pipeline surfaces a systemic problem &mdash; someone has to pick up the phone, knock on doors, file records requests, and write the story. That&rsquo;s journalists.</p>
 
@@ -292,7 +338,7 @@
 
 <p class="reveal">In Tier 2, accountability coverage is lighter &mdash; driven by the Journalism Lab&rsquo;s existing capacity, community contributors, and the documentation network. In Tier 1, it becomes a dedicated professional function.</p>
 
-<h3 class="subsection-heading reveal">Independent Policy Analysis</h3>
+<h4 class="layer-item-heading reveal">Independent Policy Analysis</h4>
 
 <p class="reveal">When a significant policy proposal comes before the City Commission, the Dayton Public Schools board, or another tracked government body, the Info District publishes an independent, nonpartisan analysis: what the proposal does, what it costs, who benefits, who bears the cost, what assumptions it relies on, and what comparable cities have experienced. This analysis is published before the vote, ensuring that residents and officials have access to an evaluation that was not produced by the proposal&rsquo;s chief advocates or by staff who report to the body voting on it.</p>
 
@@ -300,7 +346,7 @@
 
 <p class="reveal">In Tier 2, this is lighter &mdash; plain-language explainers sourced from public documents. In Tier 1, a dedicated policy analyst produces full independent fiscal and policy analyses.</p>
 
-<h3 class="subsection-heading reveal">Community Documentation Network</h3>
+<h4 class="layer-item-heading reveal">Community Documentation Network</h4>
 
 <p class="reveal">A Documenters-style program that trains and pays community members to attend and document public meetings. This is the highest-volume civic data collection function and the raw material for much of what the rest of the system produces.</p>
 
@@ -308,11 +354,41 @@
 
 <p class="reveal">Documenters record not just narrative notes but structured data: who was present, what motions were made, how each official voted, what the outcome was. This structured data feeds directly into the Accountability Tracker.</p>
 
-<h3 class="subsection-heading reveal">Community Voice Network</h3>
+<h4 class="layer-item-heading reveal">Community Voice Network</h4>
 
 <p class="reveal">The Information District produces data, analysis, and accountability reporting. But democratic life does not run on data alone. Between the public record and public judgment sits a crucial interpretive step some might mistake for noise or uncomfortable arguing &mdash; the space where residents debate what the facts mean, what the community should value, and what kind of city Dayton ought to become. That step is not a supplement to civic infrastructure, it is the reason civic infrastructure matters, and how we handle that step can lead to improved democratic outcomes.</p>
 
 <p class="reveal">The Community Voice Network is a hub-and-spoke publishing model that cultivates, connects, and amplifies independent community contributors across the Dayton region. The hub &mdash; dayton.fyi &mdash; curates and presents the strongest community writing, audio, and visual work from a growing network of independent contributors, each publishing on their own platforms and building their own audiences. The hub selects, contextualizes, and spotlights what the spokes create. These independent contributors &mdash; residents, neighborhood leaders, subject-matter practitioners, retired professionals, students, organizers, artists &mdash; publish on topics they know and care about. Contributors maintain editorial independence over their own work. They are not Info District staff, they are community voices that the Info District&rsquo;s editorial team identifies, develops, and connects to a broader audience.</p>
+
+<div class="hub-spoke reveal">
+  <div class="hub-spoke-diagram">
+    <div class="hub-center">dayton.fyi<br>hub</div>
+    <div class="spoke">Retired city engineer</div>
+    <div class="spoke">DPS parent</div>
+    <div class="spoke">Home health aide</div>
+    <div class="spoke">Neighborhood organizer</div>
+    <div class="spoke">Mosque leader</div>
+    <div class="spoke">Student journalist</div>
+  </div>
+  <div class="hub-spoke-label">Independent contributors publish on their own platforms. The hub curates, contextualizes, and spotlights.</div>
+  <div class="voice-tracks">
+    <div class="voice-track">
+      <div class="voice-track-number">1</div>
+      <div class="voice-track-title">Discovery &amp; Development</div>
+      <div class="voice-track-text">Find voices not already in the conversation &mdash; not because they lack perspective, but because they lack platforms. Offer publishing support and training through the Journalism Lab.</div>
+    </div>
+    <div class="voice-track">
+      <div class="voice-track-number">2</div>
+      <div class="voice-track-title">Curation &amp; Presentation</div>
+      <div class="voice-track-text">Select from across the network, prioritizing rigor, lived expertise, and good faith over ideology. The standard is need and proximity to root causes.</div>
+    </div>
+    <div class="voice-track">
+      <div class="voice-track-number">3</div>
+      <div class="voice-track-title">Connection &amp; Context</div>
+      <div class="voice-track-text">When the Info District publishes an investigation or analysis, invite network contributors to respond &mdash; community interpretation alongside institutional evidence.</div>
+    </div>
+  </div>
+</div>
 
 <p class="reveal">The hub editorial function operates on three tracks. First, <em>discovery and development</em> &mdash; actively seeking voices that aren&rsquo;t already in the conversation, not because they lack perspective but because they lack platforms: A retired city engineer who understands stormwater infrastructure; a home-health aide who sees the gaps in the elder care system; a DPS parent navigating special education bureaucracy; a mosque leader bridging immigrant communities and city services. The Info District finds these voices, offers basic publishing support and training through the Journalism Lab, and helps them reach an audience.</p>
 
@@ -328,18 +404,18 @@
 
 <p class="reveal">In Tier 1, the network grows alongside the professional newsroom. The hub editorial curation function becomes a defined staff role. Stipends or per-piece payments become possible for contributors whose work meets publication standards, following the Documenters logic &mdash; community members doing civic work deserve to be paid for it.</p>
 
-<h3 class="subsection-heading reveal">Citizen Journalism Training and Publication</h3>
+<h4 class="layer-item-heading reveal">Citizen Journalism Training and Publication</h4>
 
 <p class="reveal">The Journalism Lab&rsquo;s existing core function, expanded: training community members in journalism skills across written, audio, video, and photographic disciplines. A publication platform at dayton.fyi connecting community contributors. Youth journalism programs through DPS and higher education partnerships. Media literacy education for immigrants, refugees, and underserved communities.</p>
 
 <p class="reveal">The training function feeds directly into both the Documentation Network and the Community Voice Network &mdash; building the community&rsquo;s capacity to document, interpret, and argue on its own terms.</p>
 
 <!-- Infrastructure Layer -->
-<h3 class="subsection-heading reveal">The Infrastructure Layer: What Makes the Work Possible</h3>
+<h3 class="layer-heading reveal">The Infrastructure Layer: What Makes the Work Possible</h3>
 
 <p class="reveal">These are the systems that collect, organize, and make accessible the raw material that journalists, analysts, Documenters, and residents use.</p>
 
-<h3 class="subsection-heading reveal">Public Records Archive and Proactive Disclosure</h3>
+<h4 class="layer-item-heading reveal">Public Records Archive and Proactive Disclosure</h4>
 
 <p class="reveal">In Tier 2: voluntary aggregation of public records that are already publicly available but not consolidated or navigable &mdash; city contracts, property transfers, building permits, zoning decisions. Obtained through standard records requests, organized geographically, made searchable. A demonstration of what becomes possible when public records are treated as a navigable resource.</p>
 
@@ -347,47 +423,418 @@
 
 <p class="reveal">All proactive disclosure is subject to the data governance principles described in Section V &mdash; institutional transparency and personal privacy are serious commitments.</p>
 
-<h3 class="subsection-heading reveal">Open API</h3>
+<h4 class="layer-item-heading reveal">Open API</h4>
 
 <p class="reveal">All collected data available through a public API, free of charge. Other news organizations, researchers, app developers, and community organizations can build on the Info District&rsquo;s data without permission or payment. Bulk access to datasets containing personal identifying information is subject to the responsible access provisions described in Section V.</p>
 
-<h3 class="subsection-heading reveal">Civic AI Tools</h3>
+<h4 class="layer-item-heading reveal">Civic AI Tools</h4>
 
-<p class="reveal">Conversational document assistant: a working interface where any resident can ask questions of dense public documents &mdash; the city budget, the zoning code, a TIF district agreement &mdash; in plain language and receive sourced, cited answers. &ldquo;How much did the city spend on sidewalk repair in my neighborhood?&rdquo; answered with the exact line item and page number. Individual query data is not retained in a manner that links questions to individuals &mdash; the tool serves the resident, it does not surveil them.</p>
+<p class="reveal"><em>Conversational Document Assistant.</em> A working interface where any resident can ask questions of dense public documents &mdash; the city budget, the zoning code, a TIF district agreement &mdash; in plain language and receive sourced, cited answers. &ldquo;How much did the city spend on sidewalk repair in my neighborhood?&rdquo; answered with the exact line item and page number. Individual query data is not retained in a manner that links questions to individuals &mdash; the tool serves the resident, it does not surveil them.</p>
 
-<p class="reveal">Pattern detection: AI systems continuously scanning the public records database for patterns that humans would miss due to volume &mdash; contracts sharing a registered agent, permit spikes correlated with TIF approvals, statistical anomalies in use-of-force data. The AI surfaces potential red flags. Humans investigate.</p>
+<div class="chat-demo reveal" id="chat-demo">
+  <div class="chat-demo-header">
+    <div>
+      <div class="chat-demo-title">Conversational Budget Assistant</div>
+      <div class="chat-demo-subtitle">City of Dayton &mdash; 2026 Recommended Budget</div>
+    </div>
+    <span class="chat-demo-badge">Prototype Demo</span>
+  </div>
+  <div class="chat-messages">
+    <div class="chat-message chat-message--ai">
+      <div class="chat-avatar chat-avatar--ai">AI</div>
+      <div class="chat-bubble">I have the City of Dayton&rsquo;s 2026 recommended budget loaded. Ask me anything &mdash; spending by department, revenue sources, capital projects, tax rates, or how specific programs are funded. I&rsquo;ll cite the page and section.</div>
+    </div>
+  </div>
+  <div class="chat-suggestions">
+    <button class="chat-suggestion">How much does Dayton spend on police?</button>
+    <button class="chat-suggestion">What is the total city budget?</button>
+    <button class="chat-suggestion">How much goes to sidewalk repair?</button>
+    <button class="chat-suggestion">Why does the building on Third Street get a tax break?</button>
+    <button class="chat-suggestion">What are the main revenue sources?</button>
+    <button class="chat-suggestion">How much does a homeowner pay in property taxes?</button>
+    <button class="chat-suggestion">How much are water and sewer bills?</button>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" placeholder="Ask a question about the city budget...">
+    <button class="chat-send" aria-label="Send">&uarr;</button>
+  </div>
+  <div class="chat-demo-caption">Interactive prototype with pre-loaded budget data. A full implementation would use AI to search the complete 300+ page budget document in real time.</div>
+</div>
 
-<p class="reveal">Automated translation of public documents for non-English speakers. While some agencies and organizations already offer some translation services and individuals can use their own translation tools and resources, there are significant gaps in our public document accessibility that exclude sections of our community.</p>
+<p class="reveal"><em>Pattern Detection.</em> AI systems continuously scanning the public records database for patterns that humans would miss due to volume &mdash; contracts sharing a registered agent, permit spikes correlated with TIF approvals, statistical anomalies in use-of-force data. The AI surfaces potential red flags. Humans investigate.</p>
 
-<h3 class="subsection-heading reveal">Five Civic Participation Tools</h3>
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Demo</span>
+  <div class="tool-demo-body">
+    <div class="pattern-demo">
+
+      <div class="pattern-summary">
+        <div class="pattern-summary-stat">
+          <div class="pattern-summary-value">30%</div>
+          <div class="pattern-summary-label">Investor purchases in hotspot tracts</div>
+        </div>
+        <div class="pattern-summary-stat">
+          <div class="pattern-summary-value">10+</div>
+          <div class="pattern-summary-label">Airbnb listings in South Park</div>
+        </div>
+        <div class="pattern-summary-stat">
+          <div class="pattern-summary-value">0</div>
+          <div class="pattern-summary-label">City STR registrations required</div>
+        </div>
+      </div>
+
+      <div class="pattern-alert">
+        <div class="pattern-alert-icon">&#9888;</div>
+        <div class="pattern-alert-body">
+          <div class="pattern-alert-title">Cross-neighborhood purchasing pattern detected</div>
+          <a href="https://www.daytondailynews.com/local/fire-blocks-developer-buys-up-residential-real-estate/3OIQAD3WCVBYLJ6ZZRIQWKEITQ/" target="_blank" rel="noopener">Windsor Companies</a> (Columbus-based) purchased residential properties across multiple Dayton neighborhoods including a single-family home on Bonner St. in South Park, an apartment building at 814 Easton St., and clusters on the 1700 block of Radio Rd. and 300 block of N. Smithville Rd. Pattern: purchase and rapid transfer or resale.
+          <div class="pattern-alert-meta"><span class="pattern-alert-tag pattern-alert-tag--high">High priority</span> <span class="pattern-alert-tag pattern-alert-tag--data">Property records</span> Montgomery County Auditor data</div>
+        </div>
+      </div>
+
+      <div class="pattern-alert">
+        <div class="pattern-alert-icon">&#9888;</div>
+        <div class="pattern-alert-body">
+          <div class="pattern-alert-title">Unregulated short-term rental concentration &mdash; South Park</div>
+          At least 10 Airbnb listings identified in South Park Historic District, including properties actively marketed as STR investments (&ldquo;fully furnished 3-bedroom Airbnb currently booked every weekend&rdquo;). The city has <a href="https://www.daytonohio.gov/1108/Short-Term-Rentals" target="_blank" rel="noopener">no STR registration system</a> and contracted with Avenu STR IP LLC in 2023 to begin identifying properties. A <a href="https://www.daytondailynews.com/news/shooting-latest-local-episode-in-continuing-debate-over-airbnb-short-term-rental-regulation/TGPVLFZEGZHXDLSC3DUQHB2HYM/" target="_blank" rel="noopener">shooting at a South Park Airbnb</a> on Garret St. intensified the regulation debate.
+          <div class="pattern-alert-meta"><span class="pattern-alert-tag pattern-alert-tag--high">High priority</span> <span class="pattern-alert-tag pattern-alert-tag--data">Airbnb scrape</span> <span class="pattern-alert-tag pattern-alert-tag--data">City records</span></div>
+        </div>
+      </div>
+
+      <div class="pattern-alert">
+        <div class="pattern-alert-icon">&#128202;</div>
+        <div class="pattern-alert-body">
+          <div class="pattern-alert-title">Investor ownership in Montgomery County exceeds state average</div>
+          A <a href="https://www.clevelandfed.org/publications/cd-reports/2025/20250904-investor-owned-home-trends-from-select-counties-in-oh-and-pa" target="_blank" rel="noopener">Cleveland Federal Reserve study</a> found investor share of single-family purchases in Montgomery County hotspots reached 30% in 2024, up from 13% in 2018. 60% were cash transactions. 14% were out-of-state buyers. Dayton was the only city where out-of-state investors pulled building permits at a higher rate than in-state investors. Over 75% of hotspot areas were low- or middle-income neighborhoods where the majority of residents were nonwhite.
+          <div class="pattern-alert-meta"><span class="pattern-alert-tag pattern-alert-tag--medium">Research flag</span> <span class="pattern-alert-tag pattern-alert-tag--data">Federal Reserve data</span> 3,192 transactions analyzed (2018&ndash;2024)</div>
+        </div>
+      </div>
+
+      <div class="pattern-source">Data sources: <a href="https://www.mcrealestate.org" target="_blank" rel="noopener">Montgomery County Auditor</a>, <a href="https://www.clevelandfed.org/publications/cd-reports/2025/20250904-investor-owned-home-trends-from-select-counties-in-oh-and-pa" target="_blank" rel="noopener">Cleveland Fed Hotspots Report (Sept. 2025)</a>, <a href="https://www.daytonohio.gov/1108/Short-Term-Rentals" target="_blank" rel="noopener">City of Dayton STR page</a>, Airbnb public listings. All data from public sources.</div>
+
+    </div>
+  </div>
+  <div class="tool-demo-caption">Prototype demonstrating AI-assisted pattern detection using real Dayton property and short-term rental data. A full implementation would continuously scan property transfers, permit filings, and code violations to surface emerging patterns for human investigation.</div>
+</div>
+
+<p class="reveal"><em>Automated Translation.</em> Translation of public documents for non-English speakers. While some agencies and organizations already offer some translation services and individuals can use their own translation tools and resources, there are significant gaps in our public document accessibility that exclude sections of our community.</p>
+
+<h4 class="layer-item-heading reveal">Five Civic Participation Tools</h4>
 
 <p class="reveal">These tools share a common data layer and continuously reference each other. Together they provide the permanent, nonpartisan, structured information layer that makes every resident&rsquo;s civic judgment better informed. The full set is the aspiration; Tier 2 begins with the Civic Calendar and elements of the Civic Map, expanding as resources allow.</p>
 
 <p class="reveal"><em>1. Civic Calendar.</em> Everything that&rsquo;s happening and every deadline that matters. Public meetings with agendas linked. Public comment periods with plain-language explanations of what&rsquo;s being decided. Election dates and registration deadlines. Petition filing deadlines. Board and commission application deadlines. Budget hearing schedules. Every entry tagged by geography, government body, and topic. Automated alerts could be tailored to look like: &ldquo;The zoning board hears a variance request for a property two blocks from you on Thursday. Here&rsquo;s what&rsquo;s being proposed.&rdquo;</p>
 
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Working Prototype</span>
+  <iframe src="./meetings/embed.html" title="Civic Calendar Prototype"></iframe>
+  <div class="tool-demo-caption">A working prototype of the Civic Calendar, populated with real Dayton-area public meeting schedules and linked to City Commission video recordings.</div>
+</div>
+
 <p class="reveal"><em>2. Civic Map.</em> Everything connected to a place. Property ownership and transfer records. Building permits and code violations. Elected and appointed officials by district and office contact. Polling locations. Government body jurisdictions. Community milestones. And &mdash; with potential integration of the Kettering Foundation&rsquo;s asset mapping initiative &mdash; community assets: organizations, institutions, gathering spaces, and service providers mapped alongside governance data. When a resident looks at their neighborhood, they see both the governance layer (who represents me, what&rsquo;s been decided, who owns what) and the community layer (what resources are here). The Civic Map publishes institutional information, not personal information. Property transfer data is presented to illuminate neighborhood-level patterns &mdash; buyer types, investment trends, ownership concentration &mdash; not to build a searchable directory of individual residents. The data governance principles in Section V govern what the map displays and how.</p>
+
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Concept</span>
+  <div class="tool-demo-body">
+    <div class="map-mockup">
+      <div class="map-grid">
+        <div class="map-cell"><span class="map-cell-label">Dayton View</span></div>
+        <div class="map-cell"><span class="map-cell-label">Grafton Hill</span></div>
+        <div class="map-cell"><span class="map-cell-label">McPherson</span><span class="map-dot map-dot--violation" style="top:30%;left:60%"></span></div>
+        <div class="map-cell"><span class="map-cell-label">Old North</span></div>
+        <div class="map-cell"><span class="map-cell-label">Wolf Creek</span><span class="map-dot map-dot--transfer" style="top:40%;left:40%"></span></div>
+        <div class="map-cell active"><span class="map-cell-label">Five Oaks</span><span class="map-dot map-dot--transfer" style="top:30%;left:55%"></span><span class="map-dot map-dot--permit" style="top:60%;left:35%"></span><span class="map-dot map-dot--violation" style="top:45%;left:70%"></span></div>
+        <div class="map-cell"><span class="map-cell-label">Hillcrest</span></div>
+        <div class="map-cell"><span class="map-cell-label">St. Anne&rsquo;s Hill</span><span class="map-dot map-dot--permit" style="top:55%;left:50%"></span></div>
+        <div class="map-cell"><span class="map-cell-label">Westwood</span></div>
+        <div class="map-cell"><span class="map-cell-label">Edgemont</span><span class="map-dot map-dot--transfer" style="top:35%;left:45%"></span></div>
+        <div class="map-cell"><span class="map-cell-label">Downtown</span><span class="map-dot map-dot--permit" style="top:40%;left:55%"></span><span class="map-dot map-dot--transfer" style="top:65%;left:30%"></span></div>
+        <div class="map-cell"><span class="map-cell-label">Webster Station</span></div>
+        <div class="map-cell"><span class="map-cell-label">Riverdale</span></div>
+        <div class="map-cell"><span class="map-cell-label">Twin Towers</span><span class="map-dot map-dot--violation" style="top:50%;left:50%"></span></div>
+        <div class="map-cell"><span class="map-cell-label">South Park</span></div>
+        <div class="map-cell"><span class="map-cell-label">Belmont</span></div>
+      </div>
+      <div class="map-sidebar">
+        <h5>Data Layers</h5>
+        <div class="map-legend">
+          <div class="map-legend-item"><span class="map-legend-dot map-dot--transfer"></span> Property Transfers</div>
+          <div class="map-legend-item"><span class="map-legend-dot map-dot--permit"></span> Building Permits</div>
+          <div class="map-legend-item"><span class="map-legend-dot map-dot--violation"></span> Code Violations</div>
+        </div>
+        <h5>Five Oaks</h5>
+        <div class="map-detail">
+          <div class="map-detail-title">1247 Grand Ave &mdash; Property Transfer</div>
+          LLC purchase, $62,000. Buyer: Gem City Holdings LLC. Third acquisition on this block in 14 months.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tool-demo-caption">Concept prototype of the Civic Map. A full implementation would use real geographic boundaries, interactive zoom, and live public records data.</div>
+</div>
 
 <p class="reveal"><em>3. Policy Evaluator.</em> The public-facing expression of the independent policy analysis function. Published analyses of significant proposals. Ballot language translations, fiscal impact summaries, comparable city research, etc. All published before votes happen, all permanently archived and accessible.</p>
 
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Concept</span>
+  <div class="tool-demo-body">
+    <div class="policy-mockup">
+      <div class="policy-header">
+        <div class="policy-title">Proposed Tax Increment Financing District &mdash; Downtown West Catalyst Area</div>
+        <div class="policy-status">Vote Pending</div>
+      </div>
+      <div class="policy-grid">
+        <div class="policy-field">
+          <div class="policy-field-label">What It Does</div>
+          <div class="policy-field-value">Diverts property tax revenue growth within a 38-block area to fund infrastructure improvements for 30 years. New tax revenue above the current base goes to the TIF fund rather than the general fund.</div>
+        </div>
+        <div class="policy-field">
+          <div class="policy-field-label">Who Benefits</div>
+          <div class="policy-field-value">Property owners and developers within the TIF boundary. Anticipated beneficiaries include two pending mixed-use projects and the proposed convention center expansion.</div>
+        </div>
+        <div class="policy-field">
+          <div class="policy-field-label">Who Bears the Cost</div>
+          <div class="policy-field-value">General fund services (police, fire, parks) forgo revenue growth from the district for 30 years. Estimated opportunity cost: $4.2M over the life of the TIF.</div>
+        </div>
+        <div class="policy-field">
+          <div class="policy-field-label">Comparable Cities</div>
+          <div class="policy-field-value">Columbus has 42 active TIF districts. Cincinnati&rsquo;s Banks TIF generated $1.8B in development but required $200M in public infrastructure. Toledo&rsquo;s downtown TIF underperformed projections by 35%.</div>
+        </div>
+      </div>
+      <div class="policy-fiscal">
+        <div class="policy-fiscal-item">
+          <div class="policy-fiscal-number">$12.4M</div>
+          <div class="policy-fiscal-label">Projected TIF Revenue (30 yr)</div>
+        </div>
+        <div class="policy-fiscal-item">
+          <div class="policy-fiscal-number">$4.2M</div>
+          <div class="policy-fiscal-label">General Fund Opportunity Cost</div>
+        </div>
+        <div class="policy-fiscal-item">
+          <div class="policy-fiscal-number">38</div>
+          <div class="policy-fiscal-label">Blocks in District</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tool-demo-caption">Concept prototype of the Policy Evaluator. A full implementation would include sourced fiscal data, linked ballot language, and archived analyses for all major proposals.</div>
+</div>
+
 <p class="reveal"><em>4. Accountability Tracker.</em> The permanent, structured, searchable archive of what officials do in office. Voting records for every tracked government body, categorized by topic. Attendance records. Campaign finance summaries from public filings. Public statements on major issues, sourced and cited. For incumbents approaching an election, auto-generated term summaries: the most consequential votes, attendance rate, major positions taken. For every candidate in every race, a structured profile built from public records. This is a living document updated continuously &mdash; the election version is just the current state of an ongoing record. Down-ballot visibility: enter your address, see every race you&rsquo;ll vote in, with candidate profiles and incumbent records linked.</p>
+
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Concept</span>
+  <div class="tool-demo-body">
+    <div class="tracker-mockup">
+      <div class="tracker-profile">
+        <div class="tracker-avatar">JD</div>
+        <div>
+          <div class="tracker-name">Commissioner Jane Doe</div>
+          <div class="tracker-role">Dayton City Commission &middot; Elected 2021 &middot; Term expires 2025</div>
+        </div>
+      </div>
+      <div class="tracker-stats">
+        <div class="tracker-stat">
+          <div class="tracker-stat-value">94%</div>
+          <div class="tracker-stat-label">Attendance</div>
+        </div>
+        <div class="tracker-stat">
+          <div class="tracker-stat-value">147</div>
+          <div class="tracker-stat-label">Votes Cast</div>
+        </div>
+        <div class="tracker-stat">
+          <div class="tracker-stat-value">12</div>
+          <div class="tracker-stat-label">Dissenting Votes</div>
+        </div>
+        <div class="tracker-stat">
+          <div class="tracker-stat-value">$48K</div>
+          <div class="tracker-stat-label">Campaign Raised</div>
+        </div>
+      </div>
+      <table class="tracker-votes">
+        <thead>
+          <tr><th>Date</th><th>Item</th><th>Topic</th><th>Vote</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mar 18</td><td>Downtown West TIF District</td><td><span class="tracker-topic">Development</span></td><td class="tracker-vote-yes">Yes</td></tr>
+          <tr><td>Mar 4</td><td>Police oversight board funding</td><td><span class="tracker-topic">Public Safety</span></td><td class="tracker-vote-yes">Yes</td></tr>
+          <tr><td>Feb 18</td><td>Sidewalk repair bond issuance</td><td><span class="tracker-topic">Infrastructure</span></td><td class="tracker-vote-yes">Yes</td></tr>
+          <tr><td>Feb 4</td><td>Third-party waste hauler contract</td><td><span class="tracker-topic">Services</span></td><td class="tracker-vote-no">No</td></tr>
+          <tr><td>Jan 21</td><td>Zoning variance &mdash; 500 block E. Fifth</td><td><span class="tracker-topic">Zoning</span></td><td class="tracker-vote-yes">Yes</td></tr>
+          <tr><td>Jan 7</td><td>Emergency shelter expansion</td><td><span class="tracker-topic">Human Services</span></td><td class="tracker-vote-yes">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="tool-demo-caption">Concept prototype of the Accountability Tracker. A full implementation would cover all elected officials with complete voting records, campaign finance data, and searchable archives across terms.</div>
+</div>
 
 <p class="reveal"><em>5. Community Pipeline.</em> The mechanism that turns community experience into structured input for the policy process. Documenters notes, neighborhood patterns, community forum outcomes, and public records synthesized into policy briefs when clear, systemic issues emerge. A drainage problem documented across multiple meetings, a cluster of code violations, a service gap identified through testimony &mdash; the Info District gives the problem the analytical backbone it needs to become actionable policy. The Info District does not lobby. It does not advocate. It does not tell the commission what to decide. It ensures that community knowledge enters the policy process with the rigor and structure it deserves &mdash; and that the public can see what happens after it does.</p>
 
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Concept</span>
+  <div class="tool-demo-body">
+    <div class="pipeline-mockup">
+      <div class="pipeline-flow">
+        <div class="pipeline-step">
+          <div class="pipeline-icon pipeline-icon--input">&#128221;</div>
+          <div class="pipeline-step-title">Community Input</div>
+          <div class="pipeline-step-desc">Documenter notes, public testimony, neighborhood reports, 311 data</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon pipeline-icon--process">&#128270;</div>
+          <div class="pipeline-step-title">Pattern Detection</div>
+          <div class="pipeline-step-desc">AI + human analysis identifies recurring issues, geographic clusters, systemic gaps</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon pipeline-icon--process">&#128202;</div>
+          <div class="pipeline-step-title">Research &amp; Context</div>
+          <div class="pipeline-step-desc">Public records, budget data, comparable city research, expert input</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon pipeline-icon--output">&#128196;</div>
+          <div class="pipeline-step-title">Policy Brief</div>
+          <div class="pipeline-step-desc">Structured, sourced brief delivered to officials and published for the community</div>
+        </div>
+      </div>
+      <div class="pipeline-example">
+        <div class="pipeline-example-label">Example</div>
+        Documenters note drainage complaints at 4 consecutive Five Oaks neighborhood meetings. AI flags 11 related 311 reports in the same area over 6 months. Research finds the storm sewer was last assessed in 2008. A policy brief is published connecting the pattern, quantifying the scope, and presenting options &mdash; before the next budget hearing.
+      </div>
+    </div>
+  </div>
+  <div class="tool-demo-caption">Concept prototype of the Community Pipeline. A full implementation would track issues from initial community input through policy action and post-decision follow-up.</div>
+</div>
+
 <!-- Commons Layer -->
-<h3 class="subsection-heading reveal">The Commons Layer: What Belongs to the Community</h3>
+<h3 class="layer-heading reveal">The Commons Layer: What Belongs to the Community</h3>
 
 <p class="reveal">These records accumulate over time and become more valuable with age. They are the permanent memory of Dayton&rsquo;s civic life.</p>
 
-<h3 class="subsection-heading reveal">Community Milestones Registry</h3>
+<h4 class="layer-item-heading reveal">Community Milestones Registry</h4>
 
 <p class="reveal">A free, permanent, publicly searchable record of community life across its full arc &mdash; births, graduations, marriages, military service, retirements, community achievements, business openings, and deaths. Newspapers once served as the chronicle of a community&rsquo;s key celebrations of births, recognition of graduations and other accomplishments, and acknowledgement of death in obituaries. These have over time been functions that newspapers have shed or that have splintered off into other, private enterprises. This represents a loss of our community&rsquo;s key stories that future historians and documentarians will miss. Returning these Daytonians&rsquo; important life milestones to the public record will re-center the idea that these stories should be owned by the community and are not reserved for only those who can afford hundreds of dollars for an obituary in a newspaper or funeral home, where data security and archival processes are questionable at best. Milestones are voluntary and submitter-controlled. Families and individuals choose what to share. Removal requests are honored.</p>
 
-<h3 class="subsection-heading reveal">Election Results Archive</h3>
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Demo</span>
+  <div class="tool-demo-body">
+    <div class="milestone-demo">
+      <div class="milestone-contrast">
+        <div class="milestone-before">
+          <div class="milestone-label">Current: Dayton Daily News</div>
+          <div class="milestone-before-body">
+            <img src="./images/ddn-obit-screenshot.png" alt="Screenshot of the Dayton Daily News obituary page for Lois Cromes, showing limited access behind a paywall">
+            <div class="milestone-before-note">Obituary hosted by Legacy.com through the DDN. Originally cost the family hundreds of dollars to publish. Record is dependent on a third-party commercial platform with no archival guarantee. The DDN page itself may be paywalled, broken, or removed at any time.</div>
+          </div>
+        </div>
+        <div class="milestone-after">
+          <div class="milestone-label">Community-Owned: Dayton.FYI</div>
+          <div class="milestone-card">
+            <img src="./images/lois-cromes-obit.jpg" alt="Lois Cromes" class="milestone-card-photo">
+            <div class="milestone-card-name">Lois Cromes</div>
+            <div class="milestone-card-dates">1935 &mdash; August 15, 2023</div>
+            <div class="milestone-card-location">Dayton, Ohio &middot; Southminster Presbyterian Church</div>
+            <div class="milestone-card-text">
+              <p>Below Lois&rsquo; high school yearbook photo it said, &ldquo;Her smile describes her.&rdquo; And that was true her entire life. She loved life, her family, her friends and co-workers. She made friends quickly and kept them forever.</p>
+              <p>Lois was the eldest of six children, born in West Virginia in 1935. She moved to Dayton after high school and got a job as a phone operator at Ohio Bell. She met Robert Cromes at a roller skating rink and they married in January 1957. She went on to work at Sears as a Telex operator and then as a cashier for more than 30 years.</p>
+              <p>Lois and Bob were married 50+ years until he passed in 2013. They lived in the same house which they bought new in 1957.</p>
+              <p>She was a people-magnet, meeting and making friends no matter where she went. She spent her senior years as a volunteer at Children&rsquo;s Medical Center at the information desk, greeting and guiding countless families.</p>
+            </div>
+            <div class="milestone-card-survivors">
+              <strong>Survived by:</strong> Sisters Virginia Lynn Lovell and Sherry Graley. Children Donna Hrkman, Peggy Ichinose, and Larry Cromes. Grandchildren Nicholas, Michael, and Brandon Hrkman, and Jessamy Ichinose.
+            </div>
+            <div class="milestone-card-meta">
+              <span class="milestone-card-badge">Permanent record</span> &middot; Free &middot; No paywall &middot; Community-owned under CC BY 4.0 &middot; Searchable &middot; Family-submitted
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tool-demo-caption">A real example demonstrating the Community Milestones Registry. Top: the current state of this obituary, dependent on a commercial platform. Bottom: how the same record would appear in a community-owned, permanent, free civic archive. Nick Hrkman, as staff of the Dayton Daily News, did not have to pay the estimated $1,200 placement of the obit that was placed when his grandmother died in 2023. He doesn&rsquo;t feel any family should be charged that exorbitant amount to be included in the permanent record of their community, especially if the record is subject to be removed or lost, as seen in the screenshot of the daytondailynews.com website above, taken on April 1, 2026.</div>
+</div>
+
+<h4 class="layer-item-heading reveal">Election Results Archive</h4>
 
 <p class="reveal">Precinct-level election results, permanently archived, mapped geographically, searchable across election cycles. How did your precinct vote on Issue 9? How has turnout in your neighborhood changed over the last four cycles?</p>
 
+<div class="tool-demo reveal">
+  <span class="tool-demo-badge">Prototype Demo</span>
+  <div class="tool-demo-body">
+    <div class="election-demo">
+      <div class="election-neighborhoods">
+
+        <div class="election-hood">
+          <div class="election-hood-header">Five Oaks <span>Precinct DAY 4-A &middot; November 2025</span></div>
+          <div class="election-item">
+            <div class="election-item-label">Issue 9 &mdash; Public Hospital Levy</div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">For</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--for" style="width:62.87%">127</div></div>
+              <div class="election-bar-pct">62.9%</div>
+            </div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">Against</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--against" style="width:37.13%">75</div></div>
+              <div class="election-bar-pct">37.1%</div>
+            </div>
+          </div>
+          <div class="election-item">
+            <div class="election-item-label">Mayor of Dayton</div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">Turner-Sloss</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--a" style="width:55.07%">114</div></div>
+              <div class="election-bar-pct">55.1%</div>
+            </div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">Mims Jr.</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--b" style="width:44.93%">93</div></div>
+              <div class="election-bar-pct">44.9%</div>
+            </div>
+          </div>
+          <div class="election-turnout">207 ballots cast &middot; ~24% turnout</div>
+        </div>
+
+        <div class="election-hood">
+          <div class="election-hood-header">Patterson Park <span>Precinct DAY 20-B &middot; November 2025</span></div>
+          <div class="election-item">
+            <div class="election-item-label">Issue 9 &mdash; Public Hospital Levy</div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">For</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--for" style="width:46.34%">114</div></div>
+              <div class="election-bar-pct">46.3%</div>
+            </div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">Against</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--against" style="width:53.66%">132</div></div>
+              <div class="election-bar-pct">53.7%</div>
+            </div>
+          </div>
+          <div class="election-item">
+            <div class="election-item-label">Mayor of Dayton</div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">Turner-Sloss</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--a" style="width:49.80%">122</div></div>
+              <div class="election-bar-pct">49.8%</div>
+            </div>
+            <div class="election-bar-row">
+              <div class="election-bar-name">Mims Jr.</div>
+              <div class="election-bar-track"><div class="election-bar-fill election-bar-fill--b" style="width:50.20%">123</div></div>
+              <div class="election-bar-pct">50.2%</div>
+            </div>
+          </div>
+          <div class="election-turnout">245 ballots cast &middot; ~24% turnout</div>
+        </div>
+
+      </div>
+      <div class="election-source">Source: <a href="https://app.enhancedvoting.com/results/public/Montgomery-County-OH/elections/Nov2025GeneralElection" target="_blank" rel="noopener">Montgomery County Board of Elections</a>, November 2025 General Election, unofficial results.</div>
+    </div>
+  </div>
+  <div class="tool-demo-caption">This data already exists &mdash; the Montgomery County Board of Elections publishes precinct-level results after every election. But it sits in PDFs and spreadsheets that almost no one reads. The value of the Election Results Archive isn&rsquo;t the data itself &mdash; it&rsquo;s making it legible. Interactive tools can surface geographic patterns (Five Oaks supported the hospital levy at 63%; Patterson Park rejected it at 54%), track trends across cycles, and let any resident see exactly how their neighborhood voted &mdash; searchable by address, comparable across elections, permanently archived.</div>
+</div>
+
 <!-- Distribution Layer -->
-<h3 class="subsection-heading reveal">The Distribution Layer: How It Reaches People</h3>
+<h3 class="layer-heading reveal">The Distribution Layer: How It Reaches People</h3>
 
 <p class="reveal"><strong>dayton.fyi</strong> &mdash; the primary web platform, organized geographically (neighborhood as primary navigation, not chronological feed). Every piece of content linked to pertinent, related items with source transparency throughout.</p>
 
@@ -398,7 +845,7 @@
 <p class="reveal"><strong>Print digest (Tier 1)</strong> &mdash; weekly via USPS Every Door Direct Mail, reaching residents without internet access and to meet the needs of those who might find themselves losing access to a regularly printed local news, should the DDN cease print operations. Costs for printing and distribution are discussed later, and are not insignificant, but a weekly (or bi-weekly) replacement of a Sunday paper that summarizes the most important news and updates of the week, in addition to giving a calendar of upcoming events and civic deadlines, remains one of the most durable and time-tested tools of modern journalism. Like the SMS messages, this is a commitment to equity: the information commons serves the whole community, not just the internet-connected or digitally savvy portion.</p>
 
 <!-- Capacity Layer -->
-<h3 class="subsection-heading reveal">The Capacity Layer: How the Community Gets Stronger</h3>
+<h3 class="layer-heading reveal">The Capacity Layer: How the Community Gets Stronger</h3>
 
 <p class="reveal"><strong>Citizen journalism training</strong> &mdash; the Journalism Lab&rsquo;s core function. Training community members to tell their own stories and hold their own institutions accountable.</p>
 
@@ -463,7 +910,7 @@
 
 <p class="reveal">The Info District does not need to invent a framework for navigating that tension. Decades of work by organizations that have confronted exactly these questions &mdash; the <a href="https://sunlightfoundation.com/opendataguidelines/" target="_blank" rel="noopener">Sunlight Foundation&rsquo;s Open Data Policy Guidelines</a>, the <a href="https://www.neighborhoodindicators.org/" target="_blank" rel="noopener">Urban Institute&rsquo;s National Neighborhood Indicators Partnership</a> data governance framework, the <a href="https://www.rcfp.org/" target="_blank" rel="noopener">Reporters Committee for Freedom of the Press</a>, and Ohio&rsquo;s own public records jurisprudence &mdash; provide robust, tested principles. The Info District adopts and adapts these principles rather than building from scratch.</p>
 
-<h2 class="section-heading reveal">The Core Distinction: Institutional Transparency vs. Personal Privacy</h2>
+<h2 class="section-heading reveal">Institutional Transparency vs. Personal Privacy</h2>
 
 <p class="reveal">The Info District&rsquo;s transparency mandate is directed at institutions, not individuals. The operative question for every piece of data the Info District collects, publishes, or makes searchable is: does this information illuminate how public power is being exercised, or does it expose private details about a person&rsquo;s life?</p>
 
@@ -712,7 +1159,7 @@
 
   <div class="demo-embed reveal">
     <div class="demo-embed-header">Live Prototype &mdash; Public Meetings Calendar</div>
-    <iframe src="./meetings/" title="Public Meetings Calendar Demo"></iframe>
+    <iframe src="./meetings/embed.html" title="Public Meetings Calendar Demo"></iframe>
   </div>
 
   <h3 class="subsection-heading reveal">Conversational Access to Public Documents</h3>
