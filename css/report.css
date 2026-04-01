@@ -350,6 +350,168 @@ li {
   margin: 4rem 0;
 }
 
+/* --- IUCN Comparison Treatment --- */
+.iucn-treatment {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: #faf9f7;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+}
+
+.iucn-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.iucn-stat {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.iucn-stat-number {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #8b0000;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.iucn-stat-label {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.iucn-stat-label a {
+  color: #555;
+}
+
+.iucn-scale {
+  padding: 0.5rem 0;
+}
+
+.iucn-scale-label {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #777;
+  margin-bottom: 0.75rem;
+}
+
+.iucn-bar {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 32px;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.iucn-bar-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.3rem;
+}
+
+.iucn-bar-segment--lc { background: #006400; flex: 1; }
+.iucn-bar-segment--nt { background: #3d8b37; flex: 1; }
+.iucn-bar-segment--vu { background: #c4a000; flex: 1; }
+.iucn-bar-segment--en { background: #cc6600; flex: 1; }
+.iucn-bar-segment--cr { background: #cc0000; flex: 1; }
+.iucn-bar-segment--ew { background: #54116b; flex: 0.5; }
+.iucn-bar-segment--ex { background: #1a1a1a; flex: 0.5; }
+
+.iucn-marker {
+  position: relative;
+  margin-top: 0.25rem;
+}
+
+.iucn-marker-line {
+  position: absolute;
+  left: 68%;
+  top: -42px;
+  width: 2px;
+  height: 42px;
+  background: #1a1a1a;
+}
+
+.iucn-marker-dot {
+  position: absolute;
+  left: 68%;
+  top: -46px;
+  width: 10px;
+  height: 10px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  transform: translateX(-4px);
+}
+
+.iucn-marker-label {
+  position: absolute;
+  left: 68%;
+  top: 4px;
+  transform: translateX(-50%);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #8b0000;
+  white-space: nowrap;
+}
+
+.iucn-thresholds {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.iucn-threshold {
+  text-align: center;
+}
+
+.iucn-threshold-value {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.iucn-threshold-name {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.55rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .iucn-columns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .iucn-stat-number {
+    font-size: 2.5rem;
+  }
+}
+
 /* --- Tier Comparison Cards --- */
 .tier-comparison {
   display: grid;
@@ -510,6 +672,35 @@ li {
   font-size: 0.9rem;
   color: #333;
   line-height: 1.6;
+}
+
+/* --- Report Figures --- */
+.report-figure {
+  margin: 2.5rem -1rem;
+  max-width: 720px;
+}
+
+.report-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+.report-figure figcaption {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  color: #777;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .report-figure {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 /* --- Demo Embed --- */
