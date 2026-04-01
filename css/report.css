@@ -1,0 +1,700 @@
+/* ============================================
+   Dayton Community Information District
+   Interactive Report — Stylesheet
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Reading Progress Bar --- */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: #8b0000;
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* --- Side Navigation --- */
+.side-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  padding: 2rem 1.25rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 100;
+}
+
+.side-nav-inner {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.side-nav a {
+  display: block;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  color: #999;
+  text-decoration: none;
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  line-height: 1.4;
+}
+
+.side-nav a:hover {
+  color: #555;
+}
+
+.side-nav a.active {
+  color: #8b0000;
+  border-left-color: #8b0000;
+  font-weight: 600;
+}
+
+.side-nav .nav-chapter {
+  font-weight: 700;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #777;
+  margin-top: 0.75rem;
+  padding-bottom: 0.15rem;
+}
+
+.side-nav .nav-chapter:first-child {
+  margin-top: 0;
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 4rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.6);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.nav-toggle:hover {
+  background: rgba(26, 26, 26, 0.9);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 1.5rem;
+  z-index: 150;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+.mobile-nav.open {
+  display: block;
+}
+
+.mobile-nav a {
+  display: block;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.8rem;
+  color: #555;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-nav a.active {
+  color: #8b0000;
+  font-weight: 600;
+}
+
+/* --- Main Content Area --- */
+.report-content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-left: calc(220px + ((100vw - 220px - 680px) / 2));
+}
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 0;
+}
+
+.hero-title {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.hero-meta {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1.5rem;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  animation: pulse-down 2s infinite;
+}
+
+@keyframes pulse-down {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(5px); }
+}
+
+/* --- Preface / Author Note --- */
+.preface {
+  background-color: #faf9f7;
+  border-left: 3px solid #ccc;
+  padding: 2rem 2rem;
+  margin: 3rem 0 4rem;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  color: #444;
+  line-height: 1.8;
+}
+
+.preface p {
+  margin-bottom: 1rem;
+}
+
+.preface p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+/* Chapter titles */
+.chapter-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 6rem;
+  margin-bottom: 0.5rem;
+  padding-top: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.chapter-rule {
+  width: 60px;
+  height: 3px;
+  background-color: #8b0000;
+  border: none;
+  margin-bottom: 3rem;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* Subsection headings */
+.subsection-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  color: #8b0000;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: #5c0000;
+}
+
+ul, ol {
+  margin: 0 0 1.25rem 1.5rem;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+/* --- Pull Quotes --- */
+.pull-quote {
+  font-size: 1.35rem;
+  font-style: italic;
+  color: #333;
+  border-left: 4px solid #8b0000;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2.5rem -1rem 2.5rem 0;
+  line-height: 1.5;
+  max-width: 720px;
+}
+
+/* --- Stat Callouts --- */
+.stat-callout {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 2.5rem 0;
+}
+
+.stat-number {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #8b0000;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* --- Section Divider --- */
+.section-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 4rem 0;
+}
+
+/* --- Tier Comparison Cards --- */
+.tier-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.tier-card {
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.tier-card--primary {
+  border-color: #8b0000;
+}
+
+.tier-card h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #777;
+  margin-bottom: 0.25rem;
+}
+
+.tier-card .tier-amount {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+
+.tier-card--primary .tier-amount {
+  color: #8b0000;
+}
+
+.tier-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.tier-card ul {
+  font-size: 0.85rem;
+  margin-left: 1.25rem;
+}
+
+/* --- Collapsible / Expandable Sections --- */
+.collapsible {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.collapsible summary {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  color: #1a1a1a;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.15s;
+}
+
+.collapsible summary:hover {
+  background-color: #faf9f7;
+}
+
+.collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: #8b0000;
+  font-weight: 300;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  transition: transform 0.2s;
+}
+
+.collapsible[open] summary::after {
+  content: '\2212';
+}
+
+.collapsible-body {
+  padding: 0 1.25rem 1.25rem;
+  color: #333;
+  line-height: 1.75;
+}
+
+.collapsible-body p {
+  margin-bottom: 1rem;
+}
+
+.collapsible-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Timeline --- */
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+  margin: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #e0e0e0;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 2rem 2rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 0.35rem;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #8b0000;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #8b0000;
+}
+
+.timeline-date {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #8b0000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-text {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* --- Demo Embed --- */
+.demo-embed {
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 2rem 0;
+  background: #faf9f7;
+}
+
+.demo-embed-header {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #777;
+  padding: 0.75rem 1rem;
+  background: #f0f0f0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.demo-embed iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* --- Back to Top Button --- */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: #8b0000;
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Footer --- */
+.report-footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 3rem 0 4rem;
+  margin-top: 6rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  color: #999;
+  line-height: 1.8;
+}
+
+.report-footer a {
+  color: #999;
+}
+
+.report-footer a:hover {
+  color: #8b0000;
+}
+
+/* --- Print --- */
+@media print {
+  .side-nav,
+  .progress-bar,
+  .back-to-top,
+  .nav-toggle,
+  .mobile-nav,
+  .scroll-indicator,
+  .demo-embed {
+    display: none !important;
+  }
+
+  .report-content {
+    margin-left: auto;
+    max-width: 100%;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+}
+
+/* --- Responsive: Tablet --- */
+@media (max-width: 1024px) {
+  .side-nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .report-content {
+    margin-left: auto;
+    max-width: 720px;
+  }
+}
+
+/* --- Responsive: Mobile --- */
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+
+  .report-content {
+    padding: 0 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .chapter-heading {
+    font-size: 1.6rem;
+    margin-top: 4rem;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+  }
+
+  .pull-quote {
+    font-size: 1.15rem;
+    margin-right: 0;
+  }
+
+  .stat-number {
+    font-size: 2.25rem;
+  }
+
+  .tier-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-embed iframe {
+    height: 450px;
+  }
+
+  .preface {
+    padding: 1.25rem 1.5rem;
+    margin-left: 0;
+  }
+}

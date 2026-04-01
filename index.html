@@ -3,62 +3,756 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dayton Informs — Free Civic Information for the Dayton Community</title>
-  <meta name="description" content="Dayton Informs is a free civic information platform for Dayton, Ohio — community milestones, public meetings, and public records, all in one place.">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Dayton.FYI — A Proposal for Community-Owned Civic Information Infrastructure</title>
+  <meta name="description" content="A proposal for a publicly funded, editorially independent civic information utility for Dayton, Ohio.">
+  <link rel="stylesheet" href="css/report.css">
   <script src="js/gate.js"></script>
 </head>
 <body>
+<div class="progress-bar"></div>
 
-  <div class="site-container">
+<!-- ==================== SIDE NAVIGATION ==================== -->
+<nav class="side-nav">
+  <ul>
+    <li><a href="#preface">A Forward Foreword</a></li>
 
-    <header class="page-header">
-      <a href="./" class="site-name">Dayton Informs</a>
-      <p class="site-tagline">Free civic information for the Dayton community</p>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="./meetings/">Public Meetings</a>
-        <a href="./about/">About</a>
-      </nav>
-    </header>
+    <li class="nav-group-label">The Case</li>
+    <li><a href="#the-case">I. An Ecological Framework</a></li>
 
-    <main class="page-content">
+    <li class="nav-group-label">The Foundation</li>
+    <li><a href="#influences">II. Intellectual Influences</a></li>
 
-      <h1>Your community. Your information. Free.</h1>
-      <p>Dayton Informs is a free civic information platform built for the people of the Dayton area. We publish community milestones, track public meetings, and make public records accessible — because this information belongs to you.</p>
+    <li class="nav-group-label">The Vision</li>
+    <li><a href="#what-it-does">III. What It Could Do</a></li>
+    <li><a href="#ai-policy">IV. AI Policy</a></li>
+    <li><a href="#data-governance">V. Data Governance</a></li>
 
-      <div class="mt-3" style="display: grid; gap: 1.25rem;">
+    <li class="nav-group-label">Implementation</li>
+    <li><a href="#partnerships">VI. Partnerships</a></li>
+    <li><a href="#budget">VII. Budget</a></li>
+    <li><a href="#governance">VIII. Governance</a></li>
+    <li><a href="#legal">IX. Legal</a></li>
 
-        <!-- Public Meetings -->
-        <div class="card">
-          <h2><a href="./meetings/">Public Meetings Calendar</a></h2>
-          <p>Every upcoming public meeting of Dayton-area government bodies — city commission, school board, county commission, and more — in one place.</p>
-          <a href="./meetings/" class="btn btn-primary">View Upcoming Meetings</a>
-        </div>
+    <li class="nav-group-label">Path Forward</li>
+    <li><a href="#metrics">X. Metrics</a></li>
+    <li><a href="#engagement">XI. Engagement</a></li>
+    <li><a href="#timeline">XII. Timeline</a></li>
+    <li><a href="#demonstrations">XIII. Demonstrations</a></li>
+    <li><a href="#objections">XIV. Objections</a></li>
+  </ul>
+</nav>
 
-        <!-- Coming Soon -->
-        <div class="card" style="border-style: dashed; border-color: #ccc;">
-          <h2 style="color: #555;">Coming Soon</h2>
-          <p style="color: #555;"><strong>Community Milestones</strong> — obituaries, births, weddings, graduations, retirements, and more. The life announcements that newspapers used to publish, available free to every family in Dayton.</p>
-          <p style="color: #555;"><strong>Public Records Explorer</strong> — city contracts, property transfers, and building permits in a searchable, neighborhood-organized format.</p>
-        </div>
+<button class="mobile-nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+<div class="mobile-nav">
+  <ul>
+    <li><a href="#preface">A Forward Foreword</a></li>
 
-      </div>
+    <li class="nav-group-label">The Case</li>
+    <li><a href="#the-case">I. An Ecological Framework</a></li>
 
-      <div class="mt-3" style="text-align: center; padding: 2rem 0;">
-        <p style="font-size: 1.1rem;"><strong>Dayton Informs is a prototype of the proposed <a href="./about/">Dayton Community Information District</a></strong> — a publicly-funded, editorially independent local information utility for the city of Dayton.</p>
-        <p><a href="./about/">Learn more about how this works and why it matters &rarr;</a></p>
-      </div>
+    <li class="nav-group-label">The Foundation</li>
+    <li><a href="#influences">II. Intellectual Influences</a></li>
 
-    </main>
+    <li class="nav-group-label">The Vision</li>
+    <li><a href="#what-it-does">III. What It Could Do</a></li>
+    <li><a href="#ai-policy">IV. AI Policy</a></li>
+    <li><a href="#data-governance">V. Data Governance</a></li>
 
-    <footer class="site-footer">
-      <p>A prototype of the proposed <a href="./about/">Dayton Community Information District</a></p>
-      <p>All community announcements published under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a></p>
-      <p><a href="./privacy.html">Privacy Policy</a></p>
-    </footer>
+    <li class="nav-group-label">Implementation</li>
+    <li><a href="#partnerships">VI. Partnerships</a></li>
+    <li><a href="#budget">VII. Budget</a></li>
+    <li><a href="#governance">VIII. Governance</a></li>
+    <li><a href="#legal">IX. Legal</a></li>
 
+    <li class="nav-group-label">Path Forward</li>
+    <li><a href="#metrics">X. Metrics</a></li>
+    <li><a href="#engagement">XI. Engagement</a></li>
+    <li><a href="#timeline">XII. Timeline</a></li>
+    <li><a href="#demonstrations">XIII. Demonstrations</a></li>
+    <li><a href="#objections">XIV. Objections</a></li>
+  </ul>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <h1 class="hero-title">Dayton.FYI</h1>
+  <p class="hero-subtitle">A Proposal for Community-Owned Civic Information Infrastructure Through The Creation Of Information Districts</p>
+  <p class="hero-meta">Draft Report &mdash; April 1, 2026</p>
+  <div class="scroll-indicator">Scroll to begin</div>
+</section>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="report-content">
+<article>
+
+<!-- ==================== A FORWARD FOREWORD ==================== -->
+<div class="preface" id="preface">
+  <h2 class="chapter-heading reveal">A Forward Foreword</h2>
+  <hr class="chapter-rule">
+
+  <p class="reveal">This is a proposal, not a plan. Plans for a community should come from the community itself. This comes from just one person who has spent his career listening to this community and believes it deserves better than what it&rsquo;s getting and needs to start planning sooner than later, because change is coming even faster than most realize.</p>
+
+  <p class="reveal">What follows is my best synthesis of what I&rsquo;ve learned &mdash; as a Dayton native and DPS graduate, as a journalist at the Dayton Daily News, as a co-founder of The Journalism Lab, as a Kettering Foundation Democracy Fellow, and as someone who has watched the information ecosystem that serves this community deteriorate for years. I&rsquo;m putting it into the world not as an answer, but as a starting point.</p>
+
+  <p class="reveal">Because we need to start now. Really, we needed to start yesterday, 10 years ago, 50 years ago &mdash; you name it. I&rsquo;ve gone my entire adult life as a witness to the gradual downfall of an industry I passionately believe in and value. I&rsquo;ve sat at many tables where people &mdash; myself included &mdash; believe something should be done, but rarely if ever believe they are the ones responsible for doing it.</p>
+
+  <p class="reveal">I credit the <a href="https://www.kettering.org/" target="_blank" rel="noopener">Kettering Foundation</a> for giving me the time and space to think more deeply about this topic than I ever had the opportunity to do before. And I initially set out to a very different proposal than what you&rsquo;re reading now. It wasn&rsquo;t until I was halfway through it, when I was tackling the thorny and immediate concerns about the rise of AI, that I realized I might need to stop writing about an issue I actually knew very little about beyond the extremely polarized discourse that surrounds it today, and try it myself. I wanted to know what we are up against.</p>
+
+  <p class="reveal">What followed was eye-opening, alarming and a little exciting.</p>
+
+  <p class="reveal">The short, familiar version of the story is that AI is here, it&rsquo;s not going to go away, and we can&rsquo;t ignore it. We can and should seriously contend with the many attendant issues surrounding its development, deployment, ecological and economic hazards and more. But to ignore or try to block it completely will leave us even further behind than we are now, and miss the opportunity for us to seize whatever democratizing potential it might offer us.</p>
+
+  <p class="reveal">This document was developed over the course of several months, through many conversations with friends, colleagues, industry professionals and others. In full disclosure, it was also drafted in collaboration and iterative dialogue with an AI assistant, Claude. The website you&rsquo;re reading this on was designed and built through a related tool, Claude Code.</p>
+
+  <p class="reveal">I have no real previous web development or coding experience. I would not have been able to afford to pay or take the time to myself learn the incredibly complicated development languages necessary to prototype the tools and resources I did in the span of a few short weeks. Below, I make the case for and attempt to demonstrate the value of what AI assistance can offer us. Not unsupervised, not as replacement for thinking, with clear rules and guidelines and policies.</p>
+
+  <p class="reveal">Full transparency about AI&rsquo;s role in this work is consistent with the Info District&rsquo;s own AI policy: a machine does not know Dayton; I do.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- ==================== SECTION I ==================== -->
+<h2 class="chapter-heading reveal" id="the-case">I. An Ecological Framework for Local Information</h2>
+<hr class="chapter-rule">
+
+<p class="reveal">In 1913, The Great Miami River overwhelmed its banks, killing more than 360 people in what remains the worst natural disaster in Ohio&rsquo;s history.</p>
+
+<p class="reveal">Within weeks, this community made a promise: Never again.</p>
+
+<p class="reveal">What followed was the largest civilian public works project in the world at that time &mdash; the Miami Conservancy District. Not a federal program. Not a state mandate. A local decision, funded locally, owned by the community. Dayton&rsquo;s forebears looked at a catastrophic failure and built infrastructure so durable that the city has not suffered from significant flood damage since 1922.</p>
+
+<p class="reveal">The Conservancy District didn&rsquo;t totally control the water &mdash; it built infrastructure so the community could live safely with it, draw from it, test it, monitor it, and fight when someone threatened to contaminate it.</p>
+
+<p class="reveal">Today, Dayton, along with the rest of the country, faces a different kind of flood &mdash; and a different kind of failure. The levees might not have burst, yet, but the cracks are showing and the rain won&rsquo;t stop.</p>
+
+<p class="reveal">The <a href="https://www.ajc.com/business/2025/08/ajc-to-move-to-fully-digital-publication-phase-out-print-dec-31/" target="_blank" rel="noopener">Atlanta Journal-Constitution</a> &mdash; owned by the same company as the Dayton Daily News &mdash; ended its print edition in 2025 after 157 years. The <a href="https://www.publicsource.org/newspaper-pittsburgh-post-gazette-cease-operations-may/" target="_blank" rel="noopener">Pittsburgh Post-Gazette</a>, founded in 1786, announced its closure in January 2026. The DDN dropped Saturday print in 2023. The editorial board that shaped civic debate and held elected officials and local institutions to account for generations no longer exists. A <a href="https://muckrack.com/resources/research/local-journalist-index" target="_blank" rel="noopener">Muck Rack and Rebuild Local News report</a> published last year found a more than 75% decline in the number of local journalists since 2002 on average nationally.</p>
+
+<p class="reveal">It isn&rsquo;t limited to newspapers, either. Local TV news, once the golden goose of local news markets, is facing a similar crisis. In Toledo, <a href="https://thedesk.net/2023/04/wnwo-newsroom-shutting-down-sinclair-national-desk/" target="_blank" rel="noopener">WNWO-TV, the Sinclair-owned NBC affiliate, made headlines when it abandoned locally-produced news in 2023</a>, and many other stations have since dropped or significantly reduced local newsroom budgets as advertising revenue continues to decline.</p>
+
+<p class="reveal">The commercial model for local journalism is not declining, it is collapsing.</p>
+
+<p class="reveal">Non-profit and national public media is in no better shape. WYSO, our local NPR affiliate public radio station, was dealt a huge blow when its federal funding was cut earlier this year, forcing it to rely even more heavily on a donor base that itself is facing a grim, broader economic outlook.</p>
+
+<p class="reveal">The IUCN Red List &mdash; the global standard for conservation status &mdash; if applied to local journalists as a species, would land squarely between the Endangered and Critically Endangered thresholds.</p>
+
+<p class="reveal">A failing media ecosystem that suffers such an enormous loss of human talent and knowledge has immediate, serious consequences for the larger &ldquo;information ecosystem&rdquo; of a community &mdash; the living, emergent system of how a community knows what it knows.</p>
+
+<p class="reveal">It is with the urgency of ecological conservation that I seek to apply this information ecosystem concept first introduced in Nardi &amp; O&rsquo;Day (1999), <em>Information Ecologies: Using Technology with Heart</em>, to the Dayton region. Specifically, I&rsquo;m applying their idea of a &ldquo;keystone species&rdquo; in information ecosystems &mdash; people who fill gaps, make tools work for the local setting, and create bridges between people and technologies &mdash; to journalists. I believe we need something ecologists call &ldquo;functional redundancy,&rdquo; the principle that ecosystems become more resilient when the critical ecological functions performed by one species are distributed across multiple species.</p>
+
+<p class="reveal">On top of all the other structural issues the media has been facing for decades, AI is poised to further accelerate the decline of local media and fragment our communities&rsquo; ability to identify agreed-upon truth. AI is our era&rsquo;s most defining technological advancement, potentially more disruptive than the development of the internet, and if we do not seize it for our own ends, someone else outside our community will.</p>
+
+<p class="reveal">This proposal is essentially two-pronged:</p>
+
+<ul class="reveal">
+  <li>To more broadly distribute the critical functions that journalists perform across the larger population, while also ensuring our remaining journalists have the tools and support necessary to operate effectively.</li>
+  <li>To treat the digital and physical environments that the practice of journalism feeds into as a protected, stewarded commons.</li>
+</ul>
+
+<p class="reveal">Our community should not and cannot wait for the total collapse of its information ecosystem &mdash; the coming flood &mdash; to prepare. We can proactively build resilience in our local information ecosystem by elevating it to the position of a civic information utility &mdash; publicly owned, editorially independent, built to last &mdash; that treats this community&rsquo;s information the way the Conservancy District treats its water: as infrastructure too important to leave to chance.</p>
+
+<!-- Challenges -->
+<h2 class="section-heading reveal">The Challenges This Proposal Seeks To Address</h2>
+
+<p class="reveal"><strong>1. The funding crisis.</strong> Arguably the most pressing and the root of our current crisis. Because we live in America, the collapse of the media ecosystem is largely a story of market collapse. American journalism has almost always been a private enterprise. From the explicitly partisan broadsheets of the early republic through the advertising-subsidized daily newspapers of the twentieth century, the production of local news has been a business &mdash; often a wildly profitable one. For most of its history, this arrangement worked well enough. Advertising revenue cross-subsidized the civic functions of journalism: the accountability reporting, the city hall beat, the public records work, the deep-dive investigations. The market didn&rsquo;t fund these things because they were profitable, it funded them because they came bundled with the profitable or fun parts &mdash; classifieds, car ads, comics, crosswords, and legal notices.</p>
+
+<p class="reveal">That bundle no longer exists. The internet unbundled it, and platforms captured the revenue. This is not a temporary downturn or a market correction, it is a permanent structural change.</p>
+
+<p class="reveal">The nonprofit model &mdash; the path that most of the innovation in local journalism has followed over the past fifteen years &mdash; is necessary but insufficient. <a href="https://signalohio.org/" target="_blank" rel="noopener">Signal Ohio</a>, with <a href="https://signalohio.org/about/" target="_blank" rel="noopener">30+ staff and $15 million raised</a>, relies on philanthropy for 80&ndash;85% of its revenue. <a href="https://www.houstonlanding.org/houston-landing-to-cease-operations-in-face-of-financial-challenges/" target="_blank" rel="noopener">Houston Landing closed after less than two years</a> despite more than $20 million in seed investment from the American Journalism Project and other major funders. The <a href="https://www.niemanlab.org/2024/10/midwestern-news-nonprofit-the-beacon-shuts-down-its-wichita-newsroom/" target="_blank" rel="noopener">Wichita Beacon closed in 2024</a>. The pattern is consistent: philanthropic funding is generous at launch, uncertain at renewal, and structurally incapable of providing the stable, recurring revenue that a permanent civic institution requires. Every nonprofit newsroom that has failed in this country has failed for the same reason &mdash; not because the journalism wasn&rsquo;t good, but because the funding wasn&rsquo;t durable.</p>
+
+<p class="reveal">This ubiquitous market failure justifies public investment. Not because government should be in the news business &mdash; it should not &mdash; but because the civic functions that journalism performs are public services that the market can no longer sustain. Public safety is a public good; we fund it publicly. Clean water is a public good; we fund it publicly. Parks, libraries, public health &mdash; all public goods, all publicly funded, all operated with varying degrees of independence from the political bodies that authorize their budgets.</p>
+
+<p class="reveal">And what constitutes a public good has changed over time. <a href="https://www.firerescue1.com/fire-products/administration-billing/articles/how-todays-public-fire-departments-were-born-from-private-fire-brigades-M240qcm83TewqNsx/" target="_blank" rel="noopener">Fire protection in American cities was private through most of the 18th and 19th centuries</a> &mdash; competing private brigades that would sometimes let a building burn if it wasn&rsquo;t insured by their company, or fight each other for the right to respond. <a href="https://en.wikipedia.org/wiki/Water_privatization_in_the_United_States" target="_blank" rel="noopener">Private water companies served American cities through much of the 1800s</a>, and the transition to public water was driven by cholera outbreaks and the recognition that private companies had no incentive to serve neighborhoods that couldn&rsquo;t pay. <a href="https://www.smithsonianmag.com/history/how-ben-franklin-invented-library-as-we-know-it-180983983/" target="_blank" rel="noopener">Libraries were subscription-based and membership-only</a> before Carnegie&rsquo;s philanthropy and then public levy funding made them universal. The Conservancy District itself was the product of exactly this pattern &mdash; flood control was left to private landowners and market incentives until 1913 proved that the market couldn&rsquo;t protect the community. The transition from private responsibility to public infrastructure wasn&rsquo;t ideological. It was pragmatic. The community decided that the function was too important to leave to the market.</p>
+
+<p class="reveal">The two-tier structure of this proposal, detailed later, reflects this conviction and offers multiple pathways, at different funding levels, to support a healthier information ecosystem.</p>
+
+<p class="reveal"><strong>2. The collapse of trusted, local information and the rise of misinformation.</strong> When credible local information disappears, the void doesn&rsquo;t stay empty. It very quickly fills with rumor, algorithmically amplified outrage, misinformation that confirms what people already fear, and with disinformation deliberately engineered to exploit communities that no longer have a shared factual foundation. Springfield is the case study that happened here, in Ohio, in 2024: debunked claims about Haitian immigrants amplified nationally, triggering bomb threats to schools and government offices, in a community that lacked the local journalism infrastructure to establish and hold a factual baseline before the narrative spiraled. But Springfield is the dramatic example. The quieter, more corrosive version happens daily &mdash; in neighborhoods where residents have no reliable way to distinguish a legitimate development proposal from a predatory one, where a social media post about a city commission decision circulates without anyone with institutional knowledge to confirm, correct, or contextualize it. The information ecosystem doesn&rsquo;t degrade into silence, it degrades into something more pernicious: noise. And the people most vulnerable to that noise are the people who were least served by the commercial model to begin with.</p>
+
+<p class="reveal"><strong>3. The access and equity gap.</strong> The information ecosystem&rsquo;s collapse does not affect all residents equally, and the systems that preceded it were never designed to serve the whole community in the first place. The commercial model served the portion of the community that advertisers wanted to reach. Coverage of everyone else was a byproduct, not a commitment, and when the model collapsed the byproduct disappeared first. What remains is stratified by access: seniors who rely on print lose their primary information source when papers cut days or cease publication. Residents without reliable internet are locked out of digital-only alternatives. Non-English speakers are excluded from public documents that are never translated. Low-income neighborhoods that were already underserved are the first to become true information deserts &mdash; places where the answer to &ldquo;what is my government doing?&rdquo; is functionally unknowable. The equity gap isn&rsquo;t a secondary concern. It&rsquo;s the reason a civic information utility must be designed for universal reach from the start, not as an afterthought once the digital platform is built.</p>
+
+<p class="reveal"><strong>4. The public records gap: transparency without accessibility.</strong> Ohio law establishes that government records are public. It does not ensure that they are accessible in any meaningful sense. The reactive model &mdash; you request, the agency responds &mdash; serves journalists, lawyers, and activists who know what to ask for. It fails the resident who cannot request records they don&rsquo;t know exist. And even when records are obtained, they arrive in formats designed for institutional use, not public comprehension: 500-page budgets, dense zoning codes, contracts buried in filing systems that predate the internet. The information is technically public. It is not, in practice, available. This gap means the raw material that informed civic judgment requires &mdash; the contracts, the votes, the spending decisions, the abatement agreements &mdash; sits behind a barrier of procedural knowledge and institutional literacy that most residents cannot cross. Proactive disclosure doesn&rsquo;t just change how records are delivered. It changes who can participate in the civic process.</p>
+
+<p class="reveal"><strong>5. The threat to democratic self-governance.</strong> This is the challenge that gives all the others their urgency. When residents cannot find out what their government decided last week, when voters enter a booth &mdash; assuming they decide to exercise their right to vote &mdash; with no idea who the candidates for city commission are, when a neighborhood doesn&rsquo;t know that an LLC has been buying every other house on the block, when a policy proposal is voted on before any independent analysis exists or its consequences are fully understood and debated &mdash; democracy doesn&rsquo;t function. It becomes performative. Elections still happen, the meetings are held, the comment periods open and close &mdash; but the substance drains away because the informed public judgment that democratic governance requires has no informational foundation to rest on. Every empirical study of the local news crisis confirms this: when local journalism disappears, <a href="https://www.journals.uchicago.edu/doi/abs/10.1086/679749" target="_blank" rel="noopener">fewer people vote and fewer people run for office</a>, <a href="https://www.brookings.edu/articles/financing-dies-in-darkness-the-impact-of-newspaper-closures-on-public-finance/" target="_blank" rel="noopener">municipal borrowing costs rise</a>, <a href="https://www.brookings.edu/articles/local-journalism-in-crisis-why-america-must-revive-its-local-newsrooms/" target="_blank" rel="noopener">government spending becomes less efficient, and corruption increases</a>. These aren&rsquo;t theoretical risks. They are documented consequences, exposed with increasing visibility by the very research that the Information District aims to bring to life in Dayton.</p>
+
+<!-- Tiered Funding -->
+<h2 class="section-heading reveal">A Tiered Funding Approach</h2>
+
+<p class="reveal">Given these challenges, what are our community&rsquo;s options for future sustainable models for news and information that both grows out of and supports inclusive democracy?</p>
+
+<p class="reveal">This proposal offers a two-tier structure, one contingent on a broad, enduring vision of what we should aspire to and one immediately actionable.</p>
+
+<p class="reveal"><strong>Tier 2</strong> is what we can build right now. A nonprofit civic information platform, operated by The Journalism Lab &mdash; an existing Dayton 501(c)(3) with nearly six years of demonstrated community journalism work. No legislation required. No levy. No government authorization. A community milestones registry. A public meetings calendar. A searchable archive of public records. Civic AI tools that let any resident interrogate a 500-page city budget in plain English. A community voice network that amplifies independent writers and thinkers across the region. A publication platform at dayton.fyi that connects community voices under a single umbrella.</p>
+
+<p class="reveal">Tier 2 is not a fallback, it&rsquo;s the foundation. It is the working institution that Dayton&rsquo;s residents can use, evaluate, and critique before anyone asks them to vote on anything.</p>
+
+<p class="reveal"><strong>Tier 1</strong> is the aspiration &mdash; and potentially a national model. A voter-approved ballot initiative for the November 2027 general election, creating a publicly funded Information District with dedicated levy revenue, proactive public records disclosure mandates, a governance structure written into law, and a small professional newsroom focused on accountability. Modeled on the successful passage of Issue 9, which proved that Dayton voters will support creative use of the ballot initiative for community infrastructure.</p>
+
+<p class="reveal">Tier 1 cannot succeed without Tier 2 existing first, but Tier 2 is valuable on its own. If the ballot initiative never happens &mdash; if the legal analysis comes back unfavorable, if the community says no, if the political window closes &mdash; the nonprofit platform still serves Dayton. The foundation is worth building regardless of what gets built on top of it.</p>
+
+<p class="reveal">Tier 1 also serves a structural purpose beyond funding: it creates the durable civic institution that lifts this work off the shoulders of any single organization or individual. The Journalism Lab is the scaffold. Tier 1 is the building. That transition &mdash; from founder-driven initiative to permanent civic infrastructure &mdash; is a core design objective, not an afterthought. The vision remains, however, to create a durable civic infrastructure that can outlive any one person, organization or even generation. That&rsquo;s incredibly difficult to do without a public funding mechanism.</p>
+
+<p class="reveal">For a more ambitious national goal, local residents could petition Congressional representatives to apply a cable franchise fee analog to AI and data centers. Inspired by a <a href="https://scholarlypublishingcollective.org/psup/information-policy/article/doi/10.5325/jinfopoli.13.2023.0014/384370/Using-a-Digital-Entertainment-Tax-to-Strengthen" target="_blank" rel="noopener">2023 paper in the Journal of Information Policy</a> that directly proposes a digital entertainment tax modeled on the cable franchise fee structure. Nationally, we could apply a franchise fee structure based on a similar model to AI companies. Lucia Walinchus &mdash; who runs <a href="https://eyeonohio.com/" target="_blank" rel="noopener">Eye on Ohio</a> &mdash; has proposed a national digital advertising tax where a portion of revenue would fund a nonprofit news utility. She draws the public access analogy explicitly: a portion of your cable bill goes to C-SPAN because C-SPAN helps track Congress, and in the UK your TV license funds the BBC. Political likelihood is slim, and beyond the scope of this work.</p>
+
+<hr class="section-divider">
+
+<!-- ==================== SECTION II ==================== -->
+<h2 class="chapter-heading reveal" id="influences">II. Intellectual Influences</h2>
+<hr class="chapter-rule">
+
+<p class="reveal">This proposal synthesizes frameworks from multiple sources. Little, if anything, proposed is genuinely novel, but its holistic approach and execution would be. It&rsquo;s important to identify, credit and explain the important work we are building upon:</p>
+
+<p class="reveal"><strong><a href="https://www.comminfo.org/info-districts" target="_blank" rel="noopener">Community Info Coop&rsquo;s Info Districts</a>.</strong> The vision of the Community Info Coop is of &ldquo;a world where communities are equipped with the systems, tools, and information they need to design and maintain media institutions that serve their civic information needs.&rdquo; This organization should be credited with the original formulation of the &ldquo;Info Districts&rdquo; public policy program in 2019, which has, so far, not been put into practice in the United States.</p>
+
+<p class="reveal"><strong><a href="https://journalismdesign.com/" target="_blank" rel="noopener">Journalism + Design Lab (The New School)</a>.</strong> The J+D Lab identifies eight acts of journalism that any community member can perform: facilitating, documenting, commenting, inquiring, sensemaking, amplifying, navigating, and enabling. This proposal adopts that framework and extends it with two additional acts that reflect the specific needs of Dayton&rsquo;s information ecosystem and rapid technological advancements: witnessing and preserving.</p>
+
+<p class="reveal">Witnessing names something the original framework implied but didn&rsquo;t make explicit: the act of recording and asserting lived experience, particularly from communities whose stories have been systematically excluded from official records. It is the assertion that the experience itself belongs in the public record, told in the voice of the person who lived it. The genealogical archive, the community milestones registry, the Community Voice Network &mdash; these serve the witnessing function directly.</p>
+
+<p class="reveal">Preserving names the archival commitment: the principle that what a community knows about itself should be durable, searchable, and publicly owned, not locked behind a paywall or lost when a newspaper folds or a platform changes its terms of service.</p>
+
+<p class="reveal">These 10 acts are the ecological niches of a healthy information ecosystem. In Dayton&rsquo;s ecosystem circa 2005, most of them were filled &mdash; imperfectly, unevenly, but filled &mdash; by professional, local journalists. Today, many of those niches are empty. The Info District&rsquo;s design is organized around ensuring that every one of these functions is served &mdash; not necessarily by a single institution or a single type of actor, but served.</p>
+
+<p class="reveal">The extended framework shapes what the Info District builds and who it serves. Commenting, sensemaking, and amplifying are served by the Voice Network&rsquo;s hub-and-spoke publishing model, which creates structured pathways for community interpretation alongside institutional analysis. The framework ensures that the Info District does not merely produce information, it supports the full range of how information flows through and undergirds the democratic process.</p>
+
+<p class="reveal"><strong><a href="https://www.americanpressinstitute.org/" target="_blank" rel="noopener">American Press Institute</a>.</strong> The API&rsquo;s Local News Summit on Inclusion, Belonging, and Local Leadership, which Nick Hrkman attended in October of 2025, was fundamental to this work. API framed the central question as shifting from journalism &ldquo;for&rdquo; the community to journalism &ldquo;with&rdquo; the community, organizing the convening around the concept of the &ldquo;information commons.&rdquo;</p>
+
+<p class="reveal"><strong><a href="https://www.citybureau.org/" target="_blank" rel="noopener">City Bureau</a> / <a href="https://www.documenters.org/" target="_blank" rel="noopener">Documenters Network</a>.</strong> The most proven model for community documentation: 4,500+ trained Documenters across 24 communities in 16 states. The Journalism Lab co-founders met with Documenters founder Darryl Holliday circa 2022 to discuss bringing the network to Dayton; initial funding requirements proved prohibitive. The Info District would support and integrate with a Documenters-style network &mdash; through formal affiliation, partnership with Signal Ohio, or independent development.</p>
+
+<p class="reveal"><strong>Issue 9.</strong> The <a href="https://www.daytondailynews.com/local/dayton-public-hospital-levy-issue-9-passing-in-early-election-results/Y2VTBTVUY5H5HKPJVUAHQUMZOM/" target="_blank" rel="noopener">successful passage of Issue 9</a> &mdash; a property tax levy creating a public hospital for West Dayton, approved at 58% &mdash; provides both legal and political precedent for using the levy mechanism for novel public purposes. One of the leading architects and proponents of Issue 9, Eric Moyer, has offered his support for the Info District effort.</p>
+
+<p class="reveal"><strong>The Charlotte Ledger, The Bulwark and the Iowa Writers Collective.</strong> The hub-and-spoke publishing model adopted in this proposal is modeled after several successful digital reporting and commentary efforts built on and organized around individual Substacks. It also draws on a deep tradition of community-driven opinion and commentary &mdash; from the Black press&rsquo;s historic integration of news, advocacy, and community voice, to the zine culture that gave marginalized communities their own platforms when shut out by traditional media. The Info District&rsquo;s Community Voice Network aims to continue this tradition to civic information infrastructure that treats lived experiences and testimony as critical elements of shared community truth.</p>
+
+<p class="reveal"><strong><a href="https://www.kettering.org/" target="_blank" rel="noopener">Kettering Foundation</a>.</strong> The Foundation&rsquo;s research on democratic practice provides a deliberative framework underlying the Info District&rsquo;s approach. The Foundation conducts independent research on models like the Info District. The relationship is intellectual, not operational. Kettering&rsquo;s name should not and would not appear in ballot campaign materials or in any other context that would jeopardize its 501(c)(4) status.</p>
+
+<hr class="section-divider">
+
+<!-- ==================== SECTION III ==================== -->
+<h2 class="chapter-heading reveal" id="what-it-does">III. What An Information District Could Do</h2>
+<hr class="chapter-rule">
+
+<p class="reveal">This section will try to explain the full vision of what the Information District can do as a civic information utility. Not every function launches on day one and not every function may prove necessary. The scope is deliberately broad because these capabilities are interconnected: they share data layers, feed into one another, and become more valuable in combination than in isolation.</p>
+
+<p class="reveal">This section is organized in layers &mdash; from the editorial functions that require human judgment, to the infrastructure that makes the work possible, to the archives that accumulate value over time, to the channels that deliver it all to residents. Residents won&rsquo;t see layers, they&rsquo;ll see one coherent civic dashboard organized around their place and their expressed interests or needs.</p>
+
+<!-- Foundation Layer -->
+<h3 class="subsection-heading reveal">The Foundation Layer: What the Institution Produces</h3>
+
+<p class="reveal">These are the functions that require human judgment, editorial skill, and institutional commitment. Everything else either feeds into these or distributes what they produce.</p>
+
+<h3 class="subsection-heading reveal">Accountability Journalism</h3>
+
+<p class="reveal">This is the core that gives the rest of the system teeth. When the vote tracker reveals a commissioner voting against their stated positions, when the community pipeline surfaces a systemic problem &mdash; someone has to pick up the phone, knock on doors, file records requests, and write the story. That&rsquo;s journalists.</p>
+
+<p class="reveal">Tier 1 funds a small professional newsroom (2&ndash;4 journalists) that is editorially independent from both city government and the Community Information Board (explained later). The newsroom focuses on accountability reporting that follows from the data the rest of the system surfaces.</p>
+
+<p class="reveal">Without the newsroom, the Info District is a well-organized library. With it, the Info District is an accountability institution.</p>
+
+<p class="reveal">In Tier 2, accountability coverage is lighter &mdash; driven by the Journalism Lab&rsquo;s existing capacity, community contributors, and the documentation network. In Tier 1, it becomes a dedicated professional function.</p>
+
+<h3 class="subsection-heading reveal">Independent Policy Analysis</h3>
+
+<p class="reveal">When a significant policy proposal comes before the City Commission, the Dayton Public Schools board, or another tracked government body, the Info District publishes an independent, nonpartisan analysis: what the proposal does, what it costs, who benefits, who bears the cost, what assumptions it relies on, and what comparable cities have experienced. This analysis is published before the vote, ensuring that residents and officials have access to an evaluation that was not produced by the proposal&rsquo;s chief advocates or by staff who report to the body voting on it.</p>
+
+<p class="reveal">No equivalent exists at the municipal level in most American cities. The Info District functions as a local Congressional Budget Office &mdash; providing the independent analytical capacity that informed democratic decision-making requires.</p>
+
+<p class="reveal">In Tier 2, this is lighter &mdash; plain-language explainers sourced from public documents. In Tier 1, a dedicated policy analyst produces full independent fiscal and policy analyses.</p>
+
+<h3 class="subsection-heading reveal">Community Documentation Network</h3>
+
+<p class="reveal">A Documenters-style program that trains and pays community members to attend and document public meetings. This is the highest-volume civic data collection function and the raw material for much of what the rest of the system produces.</p>
+
+<p class="reveal">The Info District will support and integrate with the national <a href="https://www.documenters.org/" target="_blank" rel="noopener">Documenters Network</a> if it extends to Dayton &mdash; potentially through board member Frazier Smith&rsquo;s connections to Signal Ohio&rsquo;s Cincinnati chapter. If the network does not arrive, the Info District develops an equivalent local program independently. Either path results in consistent, structured, paid community documentation of public governance.</p>
+
+<p class="reveal">Documenters record not just narrative notes but structured data: who was present, what motions were made, how each official voted, what the outcome was. This structured data feeds directly into the Accountability Tracker.</p>
+
+<h3 class="subsection-heading reveal">Community Voice Network</h3>
+
+<p class="reveal">The Information District produces data, analysis, and accountability reporting. But democratic life does not run on data alone. Between the public record and public judgment sits a crucial interpretive step some might mistake for noise or uncomfortable arguing &mdash; the space where residents debate what the facts mean, what the community should value, and what kind of city Dayton ought to become. That step is not a supplement to civic infrastructure, it is the reason civic infrastructure matters, and how we handle that step can lead to improved democratic outcomes.</p>
+
+<p class="reveal">The Community Voice Network is a hub-and-spoke publishing model that cultivates, connects, and amplifies independent community contributors across the Dayton region. The hub &mdash; dayton.fyi &mdash; curates and presents the strongest community writing, audio, and visual work from a growing network of independent contributors, each publishing on their own platforms and building their own audiences. The hub selects, contextualizes, and spotlights what the spokes create. These independent contributors &mdash; residents, neighborhood leaders, subject-matter practitioners, retired professionals, students, organizers, artists &mdash; publish on topics they know and care about. Contributors maintain editorial independence over their own work. They are not Info District staff, they are community voices that the Info District&rsquo;s editorial team identifies, develops, and connects to a broader audience.</p>
+
+<p class="reveal">The hub editorial function operates on three tracks. First, <em>discovery and development</em> &mdash; actively seeking voices that aren&rsquo;t already in the conversation, not because they lack perspective but because they lack platforms: A retired city engineer who understands stormwater infrastructure; a home-health aide who sees the gaps in the elder care system; a DPS parent navigating special education bureaucracy; a mosque leader bridging immigrant communities and city services. The Info District finds these voices, offers basic publishing support and training through the Journalism Lab, and helps them reach an audience.</p>
+
+<p class="reveal">Second, <em>curation and presentation</em>. The hub selects from across the network &mdash; prioritizing rigor, specificity, lived expertise, and good faith over ideology. The editorial standard for inclusion is not agreement, it is need and proximity to root causes. Contributors who engage substantively with evidence, who argue from experience, and who treat their neighbors as worthy of persuasion rather than contempt earn inclusion in the platform.</p>
+
+<p class="reveal">Third, <em>connection and context</em>. When the Info District publishes an accountability investigation or a policy analysis, the hub invites network contributors to respond &mdash; not as a checked-box requirement feigning as community engagement, but as important perspectives presented alongside the institutional work. The network&rsquo;s opinion and the institution&rsquo;s evidence reinforce each other. The argument becomes richer because the facts are accessible. The facts become relevant because people are arguing about them.</p>
+
+<p class="reveal">The Community Voice Network is not the Info District&rsquo;s opinion. The institution&rsquo;s editorial voice &mdash; expressed through its policy analyses, its ballot language translations, and its accountability reporting &mdash; remains nonpartisan, evidence-based, and neutral. The community voices it platforms are free to argue, advocate, and take sides. Contributors are clearly identified as independent community voices, not Info District staff or representatives.</p>
+
+<p class="reveal">&ldquo;Witnessing&rdquo; carries particular weight in this network. When a returning citizen writes about navigating reentry. When a family publishes the story of a grandparent whose life was never recorded in the paper of record. When a neighborhood elder documents what was lost to urban renewal. These should not be historical footnotes, but living testimony. These acts of witness are the assertion that a community&rsquo;s memory and experience belong in the public record, told in the voices of the people who lived them. This is how the Info District serves communities whose stories have been systematically excluded from Dayton&rsquo;s information ecosystem &mdash; not by telling those stories for them, but by building the infrastructure that lets them tell their own.</p>
+
+<p class="reveal">In Tier 2, the Community Voice Network is the Journalism Lab&rsquo;s most scalable editorial function. The infrastructure cost is near zero &mdash; contributors publish on Substack or equivalent platforms at no cost to the Info District. The editorial lift is curation, not production. For the period between Tier 2 launch and any potential ballot initiative, the network is likely the primary driver of community visibility, audience growth, and emotional investment in the project.</p>
+
+<p class="reveal">In Tier 1, the network grows alongside the professional newsroom. The hub editorial curation function becomes a defined staff role. Stipends or per-piece payments become possible for contributors whose work meets publication standards, following the Documenters logic &mdash; community members doing civic work deserve to be paid for it.</p>
+
+<h3 class="subsection-heading reveal">Citizen Journalism Training and Publication</h3>
+
+<p class="reveal">The Journalism Lab&rsquo;s existing core function, expanded: training community members in journalism skills across written, audio, video, and photographic disciplines. A publication platform at dayton.fyi connecting community contributors. Youth journalism programs through DPS and higher education partnerships. Media literacy education for immigrants, refugees, and underserved communities.</p>
+
+<p class="reveal">The training function feeds directly into both the Documentation Network and the Community Voice Network &mdash; building the community&rsquo;s capacity to document, interpret, and argue on its own terms.</p>
+
+<!-- Infrastructure Layer -->
+<h3 class="subsection-heading reveal">The Infrastructure Layer: What Makes the Work Possible</h3>
+
+<p class="reveal">These are the systems that collect, organize, and make accessible the raw material that journalists, analysts, Documenters, and residents use.</p>
+
+<h3 class="subsection-heading reveal">Public Records Archive and Proactive Disclosure</h3>
+
+<p class="reveal">In Tier 2: voluntary aggregation of public records that are already publicly available but not consolidated or navigable &mdash; city contracts, property transfers, building permits, zoning decisions. Obtained through standard records requests, organized geographically, made searchable. A demonstration of what becomes possible when public records are treated as a navigable resource.</p>
+
+<p class="reveal">In Tier 1: proactive disclosure mandates requiring city agencies automatically publish structured public records without individual records requests. This is the single most transformative element of Tier 1 &mdash; and the most operationally demanding. Records covered include: all city contracts over $10,000 (full text, vendor, amount); all use-of-force incident reports (non-restricted fields); all property tax abatement agreements; all TIF district financial reports; all commission voting records and meeting minutes; all budget amendments; all zoning variance decisions; all city employee salary and overtime records; all building permit issuances above a value threshold; all competitive bid results and sole-source justifications. Implementation would be phased, beginning with records that are easiest to publish in structured format and expanding over a defined timeline.</p>
+
+<p class="reveal">All proactive disclosure is subject to the data governance principles described in Section V &mdash; institutional transparency and personal privacy are serious commitments.</p>
+
+<h3 class="subsection-heading reveal">Open API</h3>
+
+<p class="reveal">All collected data available through a public API, free of charge. Other news organizations, researchers, app developers, and community organizations can build on the Info District&rsquo;s data without permission or payment. Bulk access to datasets containing personal identifying information is subject to the responsible access provisions described in Section V.</p>
+
+<h3 class="subsection-heading reveal">Civic AI Tools</h3>
+
+<p class="reveal">Conversational document assistant: a working interface where any resident can ask questions of dense public documents &mdash; the city budget, the zoning code, a TIF district agreement &mdash; in plain language and receive sourced, cited answers. &ldquo;How much did the city spend on sidewalk repair in my neighborhood?&rdquo; answered with the exact line item and page number. Individual query data is not retained in a manner that links questions to individuals &mdash; the tool serves the resident, it does not surveil them.</p>
+
+<p class="reveal">Pattern detection: AI systems continuously scanning the public records database for patterns that humans would miss due to volume &mdash; contracts sharing a registered agent, permit spikes correlated with TIF approvals, statistical anomalies in use-of-force data. The AI surfaces potential red flags. Humans investigate.</p>
+
+<p class="reveal">Automated translation of public documents for non-English speakers. While some agencies and organizations already offer some translation services and individuals can use their own translation tools and resources, there are significant gaps in our public document accessibility that exclude sections of our community.</p>
+
+<h3 class="subsection-heading reveal">Five Civic Participation Tools</h3>
+
+<p class="reveal">These tools share a common data layer and continuously reference each other. Together they provide the permanent, nonpartisan, structured information layer that makes every resident&rsquo;s civic judgment better informed. The full set is the aspiration; Tier 2 begins with the Civic Calendar and elements of the Civic Map, expanding as resources allow.</p>
+
+<p class="reveal"><em>1. Civic Calendar.</em> Everything that&rsquo;s happening and every deadline that matters. Public meetings with agendas linked. Public comment periods with plain-language explanations of what&rsquo;s being decided. Election dates and registration deadlines. Petition filing deadlines. Board and commission application deadlines. Budget hearing schedules. Every entry tagged by geography, government body, and topic. Automated alerts could be tailored to look like: &ldquo;The zoning board hears a variance request for a property two blocks from you on Thursday. Here&rsquo;s what&rsquo;s being proposed.&rdquo;</p>
+
+<p class="reveal"><em>2. Civic Map.</em> Everything connected to a place. Property ownership and transfer records. Building permits and code violations. Elected and appointed officials by district and office contact. Polling locations. Government body jurisdictions. Community milestones. And &mdash; with potential integration of the Kettering Foundation&rsquo;s asset mapping initiative &mdash; community assets: organizations, institutions, gathering spaces, and service providers mapped alongside governance data. When a resident looks at their neighborhood, they see both the governance layer (who represents me, what&rsquo;s been decided, who owns what) and the community layer (what resources are here). The Civic Map publishes institutional information, not personal information. Property transfer data is presented to illuminate neighborhood-level patterns &mdash; buyer types, investment trends, ownership concentration &mdash; not to build a searchable directory of individual residents. The data governance principles in Section V govern what the map displays and how.</p>
+
+<p class="reveal"><em>3. Policy Evaluator.</em> The public-facing expression of the independent policy analysis function. Published analyses of significant proposals. Ballot language translations, fiscal impact summaries, comparable city research, etc. All published before votes happen, all permanently archived and accessible.</p>
+
+<p class="reveal"><em>4. Accountability Tracker.</em> The permanent, structured, searchable archive of what officials do in office. Voting records for every tracked government body, categorized by topic. Attendance records. Campaign finance summaries from public filings. Public statements on major issues, sourced and cited. For incumbents approaching an election, auto-generated term summaries: the most consequential votes, attendance rate, major positions taken. For every candidate in every race, a structured profile built from public records. This is a living document updated continuously &mdash; the election version is just the current state of an ongoing record. Down-ballot visibility: enter your address, see every race you&rsquo;ll vote in, with candidate profiles and incumbent records linked.</p>
+
+<p class="reveal"><em>5. Community Pipeline.</em> The mechanism that turns community experience into structured input for the policy process. Documenters notes, neighborhood patterns, community forum outcomes, and public records synthesized into policy briefs when clear, systemic issues emerge. A drainage problem documented across multiple meetings, a cluster of code violations, a service gap identified through testimony &mdash; the Info District gives the problem the analytical backbone it needs to become actionable policy. The Info District does not lobby. It does not advocate. It does not tell the commission what to decide. It ensures that community knowledge enters the policy process with the rigor and structure it deserves &mdash; and that the public can see what happens after it does.</p>
+
+<!-- Commons Layer -->
+<h3 class="subsection-heading reveal">The Commons Layer: What Belongs to the Community</h3>
+
+<p class="reveal">These records accumulate over time and become more valuable with age. They are the permanent memory of Dayton&rsquo;s civic life.</p>
+
+<h3 class="subsection-heading reveal">Community Milestones Registry</h3>
+
+<p class="reveal">A free, permanent, publicly searchable record of community life across its full arc &mdash; births, graduations, marriages, military service, retirements, community achievements, business openings, and deaths. Newspapers once served as the chronicle of a community&rsquo;s key celebrations of births, recognition of graduations and other accomplishments, and acknowledgement of death in obituaries. These have over time been functions that newspapers have shed or that have splintered off into other, private enterprises. This represents a loss of our community&rsquo;s key stories that future historians and documentarians will miss. Returning these Daytonians&rsquo; important life milestones to the public record will re-center the idea that these stories should be owned by the community and are not reserved for only those who can afford hundreds of dollars for an obituary in a newspaper or funeral home, where data security and archival processes are questionable at best. Milestones are voluntary and submitter-controlled. Families and individuals choose what to share. Removal requests are honored.</p>
+
+<h3 class="subsection-heading reveal">Election Results Archive</h3>
+
+<p class="reveal">Precinct-level election results, permanently archived, mapped geographically, searchable across election cycles. How did your precinct vote on Issue 9? How has turnout in your neighborhood changed over the last four cycles?</p>
+
+<!-- Distribution Layer -->
+<h3 class="subsection-heading reveal">The Distribution Layer: How It Reaches People</h3>
+
+<p class="reveal"><strong>dayton.fyi</strong> &mdash; the primary web platform, organized geographically (neighborhood as primary navigation, not chronological feed). Every piece of content linked to pertinent, related items with source transparency throughout.</p>
+
+<p class="reveal"><strong>Neighborhood email digests</strong> &mdash; segmented by geography and topic. A weekly email for your specific area: milestones this week, the next neighborhood meeting with agenda, building permits issued on your block, a property that just sold, the nearest Documenters-covered meeting.</p>
+
+<p class="reveal"><strong>SMS civic alerts</strong> &mdash; high-priority items and opt-in only: public comment deadlines, emergency civic information, election reminders. A reliable way to reach low-income residents or those who otherwise lack reliable internet access.</p>
+
+<p class="reveal"><strong>Print digest (Tier 1)</strong> &mdash; weekly via USPS Every Door Direct Mail, reaching residents without internet access and to meet the needs of those who might find themselves losing access to a regularly printed local news, should the DDN cease print operations. Costs for printing and distribution are discussed later, and are not insignificant, but a weekly (or bi-weekly) replacement of a Sunday paper that summarizes the most important news and updates of the week, in addition to giving a calendar of upcoming events and civic deadlines, remains one of the most durable and time-tested tools of modern journalism. Like the SMS messages, this is a commitment to equity: the information commons serves the whole community, not just the internet-connected or digitally savvy portion.</p>
+
+<!-- Capacity Layer -->
+<h3 class="subsection-heading reveal">The Capacity Layer: How the Community Gets Stronger</h3>
+
+<p class="reveal"><strong>Citizen journalism training</strong> &mdash; the Journalism Lab&rsquo;s core function. Training community members to tell their own stories and hold their own institutions accountable.</p>
+
+<p class="reveal"><strong>Youth journalism programs</strong> &mdash; partnerships with DPS and area higher education institutions. The Teen Vogue investigation by a Journalism Lab high school student is the proof of concept.</p>
+
+<p class="reveal"><strong>Media and AI literacy education</strong> &mdash; helping residents understand how information ecosystems work, how AI tools function, and how to evaluate what they encounter. Targeted programming for immigrants, refugees, and underserved communities.</p>
+
+<p class="reveal"><strong>Community education about civic process</strong> &mdash; demystifying how government works, how to participate in public meetings, how to file public records requests, how to apply for appointed boards. The Documenters program is itself the most powerful version of this: a paid, structured, supported first experience with civic participation.</p>
+
+<hr class="section-divider">
+
+<!-- ==================== SECTION IV ==================== -->
+<h2 class="chapter-heading reveal" id="ai-policy">IV. AI Policy</h2>
+<hr class="chapter-rule">
+
+<p class="reveal">Why does the Info District use AI at all?</p>
+
+<p class="reveal">Because a nonprofit with extremely limited resources cannot offer conversational access to a 500-page city budget, translate public documents into six languages, or scan thousands of public records for patterns without it. AI is what makes a small institution capable of performing functions that would otherwise require a staff of fifty. It is, simply, a force multiplier. But AI is a tool that operates on information produced by humans in a community &mdash; it can process, organize, translate, and surface patterns in that information, but it cannot produce the judgment, the relationships, the local knowledge, or the editorial discretion that civic journalism requires. The line between what AI does and what humans do is not a technical distinction. It is an editorial and ethical commitment.</p>
+
+<p class="reveal">In a region where data centers have drawn opposition, where AI is associated with job displacement, and where trust in institutions is already fragile, the Info District&rsquo;s AI usage will be and should be scrutinized. This policy exists to make that scrutiny productive rather than paranoid &mdash; to give residents, board members, and critics a concrete standard against which to evaluate every AI-assisted function the Info District operates.</p>
+
+<p class="reveal">The policy entails a four-tier disclosure framework:</p>
+
+<p class="reveal"><strong>Narrow AI</strong> &mdash; transcription, OCR, automated formatting, basic translation assistance. These are tools that perform mechanical tasks a human could do but slower. Disclosure is a process note, the same way a newspaper might note that a transcript was produced by a transcription service. The output is verifiable against the source material. Example: audio from a city commission meeting is transcribed by AI and then reviewed by a Documenter before publication.</p>
+
+<p class="reveal"><strong>Analytical AI</strong> &mdash; pattern detection across public records, statistical anomaly identification, geographic clustering analysis. These tools surface potential findings that humans then investigate. The methodology must be disclosed: what data was analyzed, what model was used, what thresholds triggered a flag. No analytical AI output is published as a finding &mdash; it is published as a lead that human reporting either confirmed or did not. Example: AI flags that three contracts awarded in the same quarter share a registered agent. A journalist investigates and reports what they find. The story discloses that the pattern was initially identified through automated analysis.</p>
+
+<p class="reveal"><strong>Frontier LLMs</strong> &mdash; conversational document assistants, plain-language civic tools, research assistance. These are the most visible AI functions and the ones residents interact with directly. Every response from an LLM-powered tool carries prominent labeling identifying it as AI-assisted, cites its source documents, and includes a mechanism for the user to access the underlying source directly. Human editorial review applies to any LLM output that is published as Info District content (as opposed to a resident&rsquo;s individual query session, which is ephemeral). Example: the civic budget tool that lets a resident ask &ldquo;how much did the city spend on sidewalk repair?&rdquo; returns a sourced, cited answer with a link to the relevant budget page. The interface clearly identifies the response as AI-generated and encourages the user to verify against the source.</p>
+
+<p class="reveal"><strong>Local and open-source models</strong> &mdash; a future-phase commitment to running sensitive workloads on locally hosted models (potentially through UD, Sinclair or Wright State) that do not transmit data to external servers. This is particularly relevant for any function involving unpublished source material, confidential tips, or pre-publication editorial work. The standard is the same regardless of the model&rsquo;s origin: disclosure, human review, source citation. The hosting distinction is about data security, not editorial standards.</p>
+
+<!-- Absolute Prohibitions -->
+<h2 class="section-heading reveal">Absolute Prohibitions</h2>
+
+<p class="reveal"><strong>AI-generated news stories without human authorship</strong> &mdash; because journalism is an act of judgment, not information assembly. An AI can summarize a document. It cannot decide what matters, what to investigate further, what context a reader needs, or what questions to ask the person on the other end of the phone.</p>
+
+<p class="reveal"><strong>Confidential source information submitted to cloud-hosted AI systems</strong> &mdash; because source protection is an absolute obligation of journalism, and no efficiency gain justifies exposing source identity to a third-party system, regardless of that system&rsquo;s privacy commitments. If the Info District cannot process sensitive material locally, it processes it without AI.</p>
+
+<p class="reveal"><strong>AI-generated quotes attributed to real people</strong> &mdash; because fabricated speech attributed to a real person is definitionally disinformation, regardless of how plausible it sounds or how well-intentioned the purpose.</p>
+
+<p class="reveal"><strong>AI-generated images presented as documentary</strong> &mdash; because the evidentiary value of documentary photography and video depends on the viewer&rsquo;s confidence that it depicts something that actually happened. AI-generated imagery, however realistic, is illustration, not documentation. It may be used and clearly labeled as such, but never presented as a record of events.</p>
+
+<p class="reveal"><strong>AI as sole verification tool for novel factual claims</strong> &mdash; because LLMs can generate plausible-sounding confirmations of false claims. Verification requires human judgment applied to primary sources. AI can assist in locating and organizing source material, but the act of verification &mdash; determining whether something is true &mdash; remains a human editorial function.</p>
+
+<!-- Community Education About AI -->
+<h2 class="section-heading reveal">Community Education About AI</h2>
+
+<p class="reveal">Most civic institutions that use AI don&rsquo;t help their communities understand AI. The Info District should. This means: programming through the Journalism Lab that teaches residents how AI tools work, what their limitations are, and how to evaluate AI-generated information they encounter anywhere, not just on dayton.fyi. It means age-appropriate AI literacy integrated into youth journalism programs. It means targeted programming for communities most vulnerable to AI-generated misinformation &mdash; particularly immigrant communities that may encounter AI-generated content in languages where fact-checking resources are scarce. And it means the Info District modeling the transparency it advocates: publishing an annual AI transparency report that details what AI tools were used, for what purposes, what errors were identified, and what changes were made as a result.</p>
+
+<!-- Self-Governance Mechanism -->
+<h2 class="section-heading reveal">Self-Governance Mechanism</h2>
+
+<p class="reveal">AI is developing at a break-neck pace. Who decides when a new AI use case is appropriate? A policy should establish that the City Editor has authority over AI usage in editorial functions, subject to the disclosure framework. New categories of AI use that don&rsquo;t fit the existing four tiers require board review &mdash; not for editorial approval (which the firewall prohibits) but for policy compliance. And the annual AI transparency report, published by the City Editor, serves as the public accountability mechanism.</p>
+
+<hr class="section-divider">
+
+<!-- ==================== SECTION V ==================== -->
+<h2 class="chapter-heading reveal" id="data-governance">V. Data Governance: Privacy as a Civic Commitment</h2>
+<hr class="chapter-rule">
+
+<p class="reveal">The Information District is built on the premise that what Dayton knows about itself should belong to Dayton. But that principle has a necessary corollary: not everything known about individuals belongs to the public. Transparency and privacy are not opposites. They are complementary obligations that a civic information institution must hold in constant, deliberate tension.</p>
+
+<p class="reveal">The Info District does not need to invent a framework for navigating that tension. Decades of work by organizations that have confronted exactly these questions &mdash; the <a href="https://sunlightfoundation.com/opendataguidelines/" target="_blank" rel="noopener">Sunlight Foundation&rsquo;s Open Data Policy Guidelines</a>, the <a href="https://www.neighborhoodindicators.org/" target="_blank" rel="noopener">Urban Institute&rsquo;s National Neighborhood Indicators Partnership</a> data governance framework, the <a href="https://www.rcfp.org/" target="_blank" rel="noopener">Reporters Committee for Freedom of the Press</a>, and Ohio&rsquo;s own public records jurisprudence &mdash; provide robust, tested principles. The Info District adopts and adapts these principles rather than building from scratch.</p>
+
+<h2 class="section-heading reveal">The Core Distinction: Institutional Transparency vs. Personal Privacy</h2>
+
+<p class="reveal">The Info District&rsquo;s transparency mandate is directed at institutions, not individuals. The operative question for every piece of data the Info District collects, publishes, or makes searchable is: does this information illuminate how public power is being exercised, or does it expose private details about a person&rsquo;s life?</p>
+
+<p class="reveal">Institutional transparency means that public contracts, government spending, official votes, policy decisions, and the exercise of public authority should be proactively disclosed, permanently archived, and fully searchable. This is the core of the proactive disclosure mandate. The public has a right to know what its government does with its money and its power.</p>
+
+<p class="reveal">Personal privacy means that the Info District does not aggregate, republish, or make newly searchable personal information that could expose individuals to harassment, discrimination, or physical danger &mdash; even when that information is technically part of the public record. The fact that a piece of data is legally accessible does not mean that making it easily searchable at scale serves the public interest.</p>
+
+<h2 class="section-heading reveal">The Aggregation Problem</h2>
+
+<p class="reveal">The Sunlight Foundation&rsquo;s Open Data Guidelines identified what privacy researchers call the &ldquo;mosaic effect&rdquo;: datasets that are individually harmless can become identifying or dangerous when combined. A building permit, a property transfer, and a code violation are each innocuous public records. Mapped to a single address and linked to an owner&rsquo;s name, they become a surveillance tool.</p>
+
+<p class="reveal">The Info District will publish each of these record types. It must therefore make deliberate decisions about how they are presented &mdash; what is linked, what is searchable by name, and what is displayed only at the aggregate or geographic level. The default should be the minimum level of personal identification necessary to serve the public interest purpose of each dataset.</p>
+
+<h2 class="section-heading reveal">Specific Commitments</h2>
+
+<p class="reveal"><strong>The Civic Map will not display the residential addresses of elected officials, government employees, or any private individual in a manner that links address to name as a searchable feature.</strong> In a political environment where elected officials, election workers, and public servants face escalating threats, a publicly funded civic tool must not become a vector for targeting. Officials&rsquo; district boundaries and office contact information serve the accountability purpose. Their home addresses do not.</p>
+
+<p class="reveal"><strong>Community milestones are voluntary and submitter-controlled.</strong> Removal requests will be honored. The registry is an invitation, not a mandate.</p>
+
+<p class="reveal"><strong>The genealogical archive applies archival standards to historical materials.</strong> Sensitive personal information is handled according to professional archival practice, including time-delay access restrictions where appropriate.</p>
+
+<p class="reveal"><strong>Civic AI tools do not retain individual query data.</strong></p>
+
+<p class="reveal"><strong>The Open API includes responsible access provisions for bulk personal data.</strong> While all public records data is available through the API, bulk access to datasets containing personal identifying information requires registration and stated use-case justification &mdash; not to restrict access, but to ensure the Info District does not facilitate mass data harvesting for commercial or harassing purposes.</p>
+
+<h2 class="section-heading reveal">What This Section Does Not Do</h2>
+
+<p class="reveal">This section establishes principles and commitments. It is not an exhaustive data governance policy. A complete policy &mdash; including specific data classification standards, retention schedules, breach notification procedures, and a formal review process for new data types &mdash; will be developed during the community engagement process and refined before Tier 1 launch, drawing on the frameworks cited above and on legal counsel. The community engagement process should specifically surface community perspectives on privacy: residents will have views on what information about their neighborhoods, properties, and civic participation they want to be publicly accessible and what they do not.</p>
+
+<p class="reveal">The Conservancy District metaphor applies here, too. The levees do not exist to stop the water from flowing. They exist to ensure it flows where it should and doesn&rsquo;t flow where it would cause harm. Transparency without privacy is a weapon. Privacy without transparency is a shield for the powerful. The Info District refuses to choose between them.</p>
+
+<hr class="section-divider">
+
+<!-- ==================== SECTION VI ==================== -->
+<h2 class="chapter-heading reveal" id="partnerships">VI. Where This Belongs In the Community and Key Partnership Opportunities</h2>
+<hr class="chapter-rule">
+
+<p class="reveal">The Information District does not replace or compete with existing media outlets such as the Dayton Daily News, The Dayton Weekly News, or WYSO. It is not a government communications office. It is not adversarial to local government &mdash; accountability and opposition are not the same thing.</p>
+
+<p class="reveal">Everything the Info District publishes is free. Everything is licensed CC BY 4.0 &mdash; meaning DDN, WYSO, bloggers, neighborhood newsletters, and anyone else can republish it with attribution, at no cost. The Info District is connective tissue for Dayton&rsquo;s media ecosystem, not a competitor within it.</p>
+
+<p class="reveal">The Info District should also not duplicate efforts of existing agencies or organizations in Dayton. Wherever possible, it should extend this metaphor of &ldquo;connective tissue&rdquo; by bridging services and raising awareness of the excellent work already being done.</p>
+
+<p class="reveal"><strong>Ombudsman Office:</strong> The Dayton-Montgomery County Ombudsman has been <a href="https://www.daytondailynews.com/lifestyles/daytons-ombudsman-marks-55-years-of-standing-up-for-citizens-and-its-workload-is-growing/UTUNPMCF45EP7DVCVRFBWMCBEY/" target="_blank" rel="noopener">operating for 55 years</a> &mdash; it&rsquo;s one of the oldest in the country, predated only by Hawaii and Nebraska. It investigates complaints about government agencies and services for residents. It already does several things the Info District needs: It surfaces systemic patterns from individual complaints (the Community Pipeline function). It publishes a regular column in the DDN translating government process into accessible language (a sensemaking function). It partners with the Dayton Metro Library to host public sessions where residents can bring government-related problems. And when the DDN disappears or further diminishes, the Ombudsman loses a key channel for reaching the public. The Info District becomes a potential new distribution infrastructure in addition to an operational partner.</p>
+
+<p class="reveal"><strong>The Dayton Metro Library:</strong> Libraries are without question the closest existing analogy to what we&rsquo;re proposing &mdash; publicly funded, levy-supported, editorially independent information infrastructure serving the whole community. Since libraries are and have been so critical to information ecosystems &mdash; Nardi &amp; O&rsquo;Day&rsquo;s &ldquo;keystone species&rdquo; is a librarian &mdash; there&rsquo;s an underlying, open question of whether or not this proposal deserves to live within the existing library network. The library system already has the physical distribution network and levy funding, but is also plagued by its own existential crises, including a recent employee morale and potential management issue that has damaged its reputation and public trust. Asking the system to host and maintain something of this magnitude would be a huge, unrealistic ask at this point. A partnership, however, makes a world of sense, given the mission alignment and deep, physical connection to our communities.</p>
+
+<p class="reveal"><strong>Higher Education Institutions:</strong> Sinclair Community College, The University of Dayton, Wright State University (though beyond the geographic scope) are natural partners for several of this proposal&rsquo;s functions and missions. Info Districts could simultaneously tap into and revitalize local journalism and media programs, while AI research wings could help develop a more robust, locally hosted LLM solution that would be less dependent upon frontier models for sustained use.</p>
+
+<p class="reveal"><strong>The City of Dayton&rsquo;s Community Engagement Division:</strong> Democracy Fellow Mike Squire and his staff already do an admirable job stewarding and coordinating with the City&rsquo;s 65 different neighborhoods. An Info District would be an asset for them to stay better informed and civically empowered and educated.</p>
+
+<p class="reveal"><strong>DATV:</strong> An underappreciated community asset, the station was created by Roxie Cole, who was passionate about providing underserved communities a way to use their voices. This founding mission is essentially the Community Voice Network&rsquo;s mission stated forty years earlier.</p>
+
+<p class="reveal"><strong>Eichelberger Center For Community Voices:</strong> Created with a similar mission, the Center amplifies local voices and encourages community storytelling in a tradition this proposal embraces and should support.</p>
+
+<!-- SECOND HALF: Sections VII–XIV -->
+
+<hr class="section-divider">
+
+<section id="budget" class="reveal">
+  <h2 class="chapter-heading">VII. Budget</h2>
+  <hr class="chapter-rule">
+
+  <h3 class="subsection-heading reveal">A Note on Scope and Resources</h3>
+
+  <p>Section III describes the full range of what the Information District can build. This section describes what it can afford. The two are not the same thing, and this proposal is honest about the gap.</p>
+
+  <p>At $250,000 &mdash; a realistic Tier 2 budget &mdash; the Info District can build the civic calendar, the community milestones registry, the Community Voice Network, a public records aggregation pilot, community documentation, and the dayton.fyi platform. It cannot fund a professional newsroom, a dedicated policy analyst, five civic participation tools, multi-surface distribution, or the full genealogical archive. Those require Tier 1 resources.</p>
+
+  <p>At $2 million &mdash; a realistic Tier 1 budget &mdash; the full vision becomes achievable, phased over several years. Not all at once. Not everything on day one. But a mature civic information utility with professional staff, comprehensive infrastructure, and permanent archives.</p>
+
+  <p>The vision is deliberately broad because these capabilities are interconnected. But the honest answer to &ldquo;can you do all of this?&rdquo; is: it depends on what the community is willing to pay for and how clearly we can demonstrate the value of the offerings.</p>
+
+  <h3 class="subsection-heading reveal">Tier 2 (Nonprofit Operation)</h3>
+
+  <p>Realistic annual budget: <strong>$215,000&ndash;$290,000</strong>, with $250,000 as a reasonable middle target.</p>
+
+  <ul>
+    <li>Personnel: four co-founders at $42&ndash;48K ($168&ndash;192K); 4&ndash;6 student stipends ($12&ndash;30K); Documenters-style per-assignment payments ($5&ndash;7.5K)</li>
+    <li>Physical space: $10&ndash;18K</li>
+    <li>Technology: $3&ndash;5K</li>
+    <li>Insurance, accounting, legal compliance: $8&ndash;15K (D&amp;O insurance already budgeted)</li>
+    <li>Events and workshops: $5&ndash;15K</li>
+    <li>Development/fundraising capacity: $15&ndash;25K</li>
+  </ul>
+
+  <p>The co-founder salary range reflects the reality of a startup nonprofit, not the market rate for experienced journalists. This is a deliberate commitment by the founding team, but it is not sustainable indefinitely.</p>
+
+  <p>Funding sources: Press Forward, Knight Foundation, Google News Initiative, American Journalism Project, Lenfest Institute, Democracy Fund, Dayton Foundation, among others to be identified.</p>
+
+  <h3 class="subsection-heading reveal">Tier 1 (Publicly Funded)</h3>
+
+  <p><strong>Recommended: 1-mill property tax levy</strong> generating approximately $2M/year. Cost to homeowner with $100,000 home: approximately $35/year.</p>
+
+  <p>Alternative: income tax levy generating $4&ndash;5M, funding full ambition but carrying higher political bar and greater sensitivity in a low-income community. The income tax option should be developed as a genuine contingency rather than a theoretical alternative &mdash; particularly given the current property tax environment in Ohio (see Section XIV).</p>
+
+  <p>A line-item budget for both tiers and both levy scenarios, a comparative analysis of property tax vs. income tax mechanisms at specific millage rates, and a 5-year growth plan have been sketched out and are available upon request, but the figures are speculative and best-guesses.</p>
+
+  <h3 class="subsection-heading reveal">The Structural Advantage</h3>
+
+  <p>Virtually every nonprofit newsroom that has failed or struggled in the United States has failed because of funding instability &mdash; grant dependency, philanthropic fatigue, or the inability to diversify revenue. Houston Landing and the Wichita Beacon are recent cautionary examples. A voter-approved property tax levy provides stable, predictable, recurring revenue independent of grant cycles or political appointments. No comparable project in the country has this funding structure. It is genuinely novel, and it directly addresses the sustainability failure that plagues the entire nonprofit news sector.</p>
+
+  <p>The Corporation for Public Broadcasting demonstrated for over 50 years that publicly funded, editorially independent media works. Its defunding in 2025 due to federal budget cuts is precisely the argument for local funding structures insulated from national political cycles.</p>
+</section>
+
+<hr class="section-divider">
+
+<section id="governance" class="reveal">
+  <h2 class="section-heading">VIII. Governance: The Community Information Board</h2>
+
+  <h3 class="subsection-heading reveal">Structural Model</h3>
+
+  <p>As with all elements of this proposal, this is subject to community input and scrutiny. It felt apt, however, to ground the governance model in Dayton&rsquo;s own civic innovation: the council-manager form of government that Dayton pioneered in 1913 &mdash; the same year as the flood, the same period of civic reinvention. The model separates policy authority (the board) from operational management (the City Editor), adapted for editorial independence.</p>
+
+  <h3 class="subsection-heading reveal">Board Composition (9&ndash;11 members)</h3>
+
+  <ul>
+    <li>2 seats appointed by the Dayton City Commission (community members, not commissioners themselves)</li>
+    <li>3 community seats selected through open application with selection by the existing board &mdash; representing neighborhoods, faith communities, and community organizations</li>
+    <li>1 journalist seat for a working journalist not employed by the Info District</li>
+    <li>1 seat for the Dayton-Montgomery County Ombudsman or designee (reciprocal accountability)</li>
+    <li>1 educator seat from a partner institution (UD, Wright State, or Sinclair, rotating)</li>
+    <li>1&ndash;2 at-large seats selected by the board, with attention to demographic representation</li>
+  </ul>
+
+  <p>Potential innovation: one community seat selected through a sortition or citizen assembly process, building on the work led by Mike Squire, Director of Community Engagement for the City of Dayton and Kettering Foundation Democracy Fellow.</p>
+
+  <p>Terms: three years, staggered, maximum two consecutive.</p>
+
+  <h3 class="subsection-heading reveal">The City Editor</h3>
+
+  <p>Appointed by majority board vote. Full editorial authority over all published content, including Community Voice Network curation standards. Serves as non-voting ex officio board member. Publishes an annual editorial transparency report.</p>
+
+  <p><strong>Removable only for cause</strong> &mdash; financial misconduct, ethical violations, demonstrated incompetence, as defined in the charter. Not at the board&rsquo;s political pleasure. This is the single most important structural provision. An editor who can be fired without cause will self-censor on stories that might upset board members.</p>
+
+  <h3 class="subsection-heading reveal">Editorial Independence Firewall</h3>
+
+  <p>The board may not: direct, review, approve, or veto any editorial content before publication; direct coverage of or suppression of coverage of any person, organization, or topic; access unpublished materials, source identities, or editorial deliberations; make public statements purporting to represent the Info District&rsquo;s editorial positions.</p>
+
+  <p>Violation constitutes grounds for board member removal.</p>
+
+  <h3 class="subsection-heading reveal">Conflict of Interest</h3>
+
+  <p>No current city employee or elected official may serve. No employee of a private media organization may serve. Board members must recuse from votes involving affiliated organizations.</p>
+</section>
+
+<hr class="section-divider">
+
+<section id="legal" class="reveal">
+  <h2 class="section-heading">IX. Legal Architecture</h2>
+
+  <p><strong>Primary vehicle:</strong> A municipal property tax levy ballot initiative via citizens&rsquo; petition pathway. Constitutional authority: Ohio Constitution Art. 12, Sec. 2. Governance established through a connected Home Rule ordinance.</p>
+
+  <p><strong>The Issue 9 precedent:</strong> No Ohio court has ruled on whether community journalism constitutes a &ldquo;public purpose&rdquo; sufficient to support a property tax levy. However, Issue 9 established both legal and political precedent for applying the levy mechanism to a novel public purpose. Analogical arguments from library funding (ORC Chapter 3375), public broadcasting, and the broad construction Ohio courts have given to home rule authority suggest viability. The Journalism Lab&rsquo;s existing 501(c)(3) status &mdash; secured under the educational purpose category &mdash; provides an additional analogical argument.</p>
+
+  <p><strong>Required before filing:</strong> An Ohio-specific legal memo establishing public purpose. Must be commissioned by early 2027.</p>
+
+  <p><strong>Proactive disclosure boundary:</strong> A ballot initiative can mandate automatic proactive publication of non-restricted public records. It cannot expand body camera disclosure beyond ORC &sect;149.43 categories (state preemption). Body camera litigation proceeds through a separate mandamus program. Proactive disclosure mandates are subject to the same exemptions ORC &sect;149.43 already recognizes &mdash; the mandate expands the delivery mechanism, not the definition of a public record. The data governance framework (Section V) provides additional privacy principles governing how disclosed information is published and presented.</p>
+</section>
+
+<hr class="section-divider">
+
+<section id="metrics" class="reveal">
+  <h2 class="section-heading">X. Possible Metrics</h2>
+
+  <p>Rather than fixed metrics at this stage, the following represents options for tracking. Community input should determine priorities.</p>
+
+  <p><strong>Infrastructure usage:</strong> records database queries, meetings calendar engagement, civic AI sessions, API calls.</p>
+
+  <p><strong>Community participation:</strong> milestone submissions, Documenters assignments, Community Voice Network contributors and geographic reach, training enrollments, forum attendance.</p>
+
+  <p><strong>Ecosystem health:</strong> republication by other outlets, community organization references, geographic distribution of engagement.</p>
+
+  <p><strong>Institutional accountability:</strong> annual editorial transparency report, board meeting attendance, records compilation response time.</p>
+
+  <p><strong>Democratic outcomes (longer-term, community-designed):</strong> Civic Health Index, precinct-level civic participation correlation.</p>
+</section>
+
+<hr class="section-divider">
+
+<section id="engagement" class="reveal">
+  <h2 class="section-heading">XI. Community Engagement Plan</h2>
+
+  <h3 class="subsection-heading reveal">Foundational Principle</h3>
+
+  <p>This proposal is offered to the community for judgment. The engagement process will determine what the final proposal looks like &mdash; including the possibility that the community rejects it.</p>
+
+  <p>Specific elements that the engagement process should actively shape include: which functions to prioritize and in what order; how the Civic Map and public records archive handle personal information; what metrics should define success; what the Community Voice Network&rsquo;s editorial standards should look like in practice; and whether the community sees value in the proactive disclosure mandate or considers it overreach. These are genuine questions, not predetermined outcomes awaiting validation.</p>
+
+  <p class="reveal"><strong>Phase 1 &mdash; Inner Circle Validation (Months 1&ndash;3).</strong> Kettering Democracy Fellows network: 30+ individuals across Dayton&rsquo;s geographies and communities. Goal: stress-testing.</p>
+
+  <p class="reveal"><strong>Phase 2 &mdash; Institutional Engagement (Months 2&ndash;5).</strong> Journalism Lab network, targeted outreach to organizations the Info District would serve or affect. Goal is to understand whether institutions see this as useful, redundant, or threatening.</p>
+
+  <p class="reveal"><strong>Phase 3 &mdash; Public Listening Sessions (Months 4&ndash;8).</strong> Geographically distributed, designed to reach people who don&rsquo;t attend public meetings. Potential partnership with Dayton&rsquo;s emerging Citizen Assembly infrastructure. WYSO and other media org partnership for promotion.</p>
+
+  <p class="reveal"><strong>Phase 4 &mdash; Survey and Broad Input (Concurrent).</strong> Testing specific elements through every available channel.</p>
+
+  <p class="reveal"><strong>Phase 5 &mdash; Revised Proposal and Public Comment (Months 8&ndash;10).</strong> Publish revisions with changes visible. Open public comment.</p>
+</section>
+
+<hr class="section-divider">
+
+<section id="timeline" class="reveal">
+  <h2 class="section-heading">XII. Timeline</h2>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2026 Q2&ndash;Q3</div>
+      <div class="timeline-text">Journalism Lab expansion. Tier 2 prototype development. dayton.fyi launch. Community Voice Network seeding. Philanthropic fundraising.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2026 Q3&ndash;Q4</div>
+      <div class="timeline-text">Community engagement Phases 1&ndash;2. Working demos. Legal memo commissioned.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2027 Q1</div>
+      <div class="timeline-text">Community engagement Phases 3&ndash;4. Legal memo completed. Revised proposal published.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2027 Q2&ndash;Q3</div>
+      <div class="timeline-text">Ballot language drafted. Petition campaign. Campaign strategy with Issue 9 architect.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">November 2027</div>
+      <div class="timeline-text">General election ballot initiative.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2028</div>
+      <div class="timeline-text">If approved: Community Information Board established. City Editor hired. Institutional transition from Journalism Lab to Community Information District. Tier 1 phased launch.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="demonstrations" class="reveal">
+  <h2 class="chapter-heading">XIII. Demonstrating the Commons</h2>
+  <hr class="chapter-rule">
+
+  <p>The most effective argument for the Information District is not this document. It is a demonstration &mdash; tangible, visual, grounded in real Dayton data &mdash; of what becomes possible when a community owns its own information.</p>
+
+  <p>The following demos are intended to accompany this report as working prototypes. They illustrate the system&rsquo;s potential without promising features or delivery dates.</p>
+
+  <h3 class="subsection-heading reveal">Public Meetings Calendar</h3>
+  <p>A consolidated calendar of every upcoming public meeting of Dayton-area government bodies &mdash; city commission, county commission, school board, library, transit, and parks &mdash; in one searchable, filterable interface. Past meetings are archived with links to minutes and video recordings. Nothing like this exists for Dayton today.</p>
+
+  <div class="demo-embed reveal">
+    <div class="demo-embed-header">Live Prototype &mdash; Public Meetings Calendar</div>
+    <iframe src="./meetings/" title="Public Meetings Calendar Demo"></iframe>
   </div>
 
-  <script src="js/main.js"></script>
+  <h3 class="subsection-heading reveal">Conversational Access to Public Documents</h3>
+  <p>Load three or four real Dayton public documents &mdash; the city budget, a TIF agreement, a collective bargaining agreement &mdash; into a Claude-powered interface. Let a resident type questions in plain language and receive sourced, cited answers. The resident doesn&rsquo;t need to know what a TIF district is. They ask &ldquo;why does the building on Third Street get a tax break?&rdquo; and the system explains it.</p>
+
+  <h3 class="subsection-heading reveal">The Neighborhood Map</h3>
+  <p>An interactive map of a single Dayton neighborhood with two or three real data layers: property transfers by buyer type, building permits, code violations. When someone sees their own street with data they didn&rsquo;t know existed, the value proposition becomes self-evident.</p>
+
+  <h3 class="subsection-heading reveal">The Accountability Dashboard</h3>
+  <p>A prototype vote tracker showing a hypothetical city commission term: votes categorized by topic, attendance record, pattern highlights.</p>
+
+  <h3 class="subsection-heading reveal">The Community Memory and Milestone Tool</h3>
+  <p>A small collection of already-digitized historical materials made searchable: what the full genealogical archive would feel like at scale.</p>
+
+  <h3 class="subsection-heading reveal">The Community Voice Hub</h3>
+  <p>Three sample contributor pieces alongside a piece of institutional analysis. Showing how the interplay between institutional evidence and community interpretation creates something richer than either alone.</p>
+</section>
+
+<hr class="section-divider">
+
+<section id="objections" class="reveal">
+  <h2 class="chapter-heading">XIV. Anticipated Objections to a Ballot Initiative</h2>
+  <hr class="chapter-rule">
+
+  <p>A proposal that asks voters to approve a new property tax levy for a novel public purpose will face opposition. Some of that opposition will be principled. Some will be strategic. Some will be reflexive. All of it deserves honest engagement. A proposal that cannot survive scrutiny does not deserve to pass. A proposal that has not anticipated scrutiny is not ready for the ballot.</p>
+
+  <details class="collapsible reveal">
+    <summary>&ldquo;We can&rsquo;t afford another property tax.&rdquo;</summary>
+    <div class="collapsible-body">
+      <p>This is the most potent objection.</p>
+      <p>Ohio is in the middle of a property tax revolt. Aggressive revaluations tied to rising home values have produced punishing tax increases for homeowners across the state &mdash; particularly retirees on fixed incomes. In Montgomery County, <a href="https://www.daytondailynews.com/local/montgomery-county-property-taxes-up-58-on-average-16-in-some-areas/EVPEYQ4J7JECPANN7DRRUO3RKQ/" target="_blank" rel="noopener">average property tax bills rose nearly 6% in the most recent cycle, with some areas seeing increases exceeding 16%</a>. State legislators have introduced bills to eliminate permanent property tax levies entirely. The political and economic environment for any new levy is more hostile than it was when Issue 9 passed.</p>
+      <p>The honest response is not to minimize the concern. It is to make the case that the levy&rsquo;s cost is modest &mdash; approximately $35 per year for a homeowner with a $100,000 property &mdash; and that the value it provides is concrete, measurable, and will already be demonstrated through the Tier 2 prototype. The strongest argument is not &ldquo;this costs very little&rdquo; but &ldquo;this is worth what it costs, and you can see for yourself because it already exists.&rdquo;</p>
+      <p>The campaign must also reckon with levy fatigue. Dayton-area voters face levy requests on nearly every ballot &mdash; human services, parks, libraries. The Info District is asking to be added to an already-crowded list. It must make an affirmative case for why civic information infrastructure belongs alongside public safety and parks as a community investment.</p>
+      <p>If the property tax environment deteriorates further before November 2027, the campaign should be prepared to consider alternative funding mechanisms &mdash; including the income tax levy described in Section VII &mdash; or to delay the ballot initiative rather than run into a headwind that has nothing to do with the merits of the proposal.</p>
+    </div>
+  </details>
+
+  <details class="collapsible reveal">
+    <summary>&ldquo;Government shouldn&rsquo;t be in the news business.&rdquo;</summary>
+    <div class="collapsible-body">
+      <p>This objection conflates two things the proposal is careful to separate: public funding and government control. The Info District would be publicly funded. It would not be government-operated. The editorial independence firewall &mdash; the City Editor&rsquo;s for-cause-only removal, the board&rsquo;s prohibition on editorial interference, the conflict-of-interest provisions barring current officials from serving &mdash; exists to prevent the scenario this objection imagines.</p>
+      <p>The strongest version of this argument is worth engaging directly: even with structural firewalls, a publicly funded institution may self-censor to protect its funding base. An editor who depends on levy renewal may be reluctant to publish investigations that anger voters. This is a real tension, and no governance structure eliminates it entirely. But the same tension exists in every publicly funded institution that exercises editorial judgment &mdash; public broadcasting, public libraries, public universities. The Corporation for Public Broadcasting maintained editorial independence under public funding for over fifty years. The question is not whether the tension exists. It is whether the structural safeguards are strong enough to manage it.</p>
+      <p>A related concern: the Info District will be accused of pushing a political agenda, from both directions. The Community Voice Network is particularly vulnerable here &mdash; by design, it platforms community voices that are free to argue and advocate. Opponents will point to specific contributors and say the Info District is promoting their views. The accountability tracker will draw similar fire: presenting an elected official&rsquo;s voting record in a structured, searchable format is not bias, but officials whose records look unfavorable will call it one.</p>
+      <p>The response to both concerns is structural, not rhetorical. The Info District&rsquo;s institutional voice remains nonpartisan, evidence-based, and consistent. Community voices speak for themselves, under published editorial standards that prioritize rigor and good faith over viewpoint. The accountability tracker covers every official and sources every record. Consistency is the only credible answer to accusations of bias.</p>
+      <p>And the alternative deserves examination: the current system, in which civic information is produced by a commercial enterprise with no structural accountability to the community it serves &mdash; or not produced at all. The question is not whether publicly funded journalism is perfect. It is whether it is better than the absence of journalism, which is what Dayton is approaching.</p>
+    </div>
+  </details>
+
+  <details class="collapsible reveal">
+    <summary>&ldquo;You&rsquo;re spending taxpayer money on AI.&rdquo;</summary>
+    <div class="collapsible-body">
+      <p>In a region where data centers have drawn community opposition, the Info District&rsquo;s use of AI tools is a political sensitivity. The proposal frames AI as a civic infrastructure tool and force multiplier &mdash; not a replacement for human labor &mdash; and that framing is deliberate.</p>
+      <p>The Info District uses AI to make public documents accessible, to detect patterns in large datasets that humans would miss, and to reduce the cost of translation and transcription. These are functions that would otherwise require staff the budget cannot support or simply would not get done. AI does not write news stories. AI does not make editorial decisions. AI does not replace journalists, Documenters, or community contributors. The AI policy&rsquo;s absolute prohibitions &mdash; no AI-generated news stories without human authorship, no AI-generated quotes, no confidential source material in cloud systems &mdash; are designed to be cited directly in response to this objection.</p>
+      <p>Without AI-assisted tools, a $250,000 nonprofit cannot offer conversational access to a 500-page city budget. The question is not whether AI is involved. It is whether AI is being used to empower residents or to replace workers. The Info District&rsquo;s answer is unambiguous.</p>
+    </div>
+  </details>
+
+  <details class="collapsible reveal">
+    <summary>The Proactive Disclosure Mandate</summary>
+    <div class="collapsible-body">
+      <p>This provision deserves its own analysis because it is simultaneously the most transformative element of Tier 1 and the most vulnerable to opposition.</p>
+      <p><strong>What it requires:</strong> City agencies automatically publish structured public records &mdash; contracts, use-of-force reports, salary data, tax abatement agreements, zoning decisions, bid results &mdash; without individual records requests. This converts Dayton&rsquo;s public records posture from reactive (you ask, we respond) to proactive (we publish, you access).</p>
+      <p><strong>Why it matters:</strong> The reactive model works for journalists and activists who know what to ask for. It fails the general public, who cannot request records they don&rsquo;t know exist. Proactive disclosure is the single provision that transforms the Info District from a well-organized aggregator into genuine civic infrastructure.</p>
+      <p><strong>Who will oppose it and why:</strong> City administrators and department heads will oppose it because it eliminates their discretionary control over information flow. Under the current system, a records request goes through a process &mdash; review, redaction, legal consultation, response. That process gives agencies time and leverage. Proactive disclosure removes both. The opposition will be framed as concern about privacy, security, and resource burden. Some of those concerns will be legitimate.</p>
+      <p>The City Commission may oppose it &mdash; or quietly decline to support it &mdash; because elected officials generally prefer to control the timing and framing of information about their decisions. City IT staff will raise operational concerns that are almost certainly valid. Dayton&rsquo;s municipal IT systems were not designed for automated structured data publishing. Many records exist in formats that are not easily exportable.</p>
+      <p><strong>How to address it:</strong> The proactive disclosure mandate should be presented as what it is: the natural extension of Ohio&rsquo;s existing public records law. ORC &sect;149.43 already establishes that these records are public. The mandate does not create new categories of public information. It changes the delivery mechanism &mdash; from individual request to automatic publication.</p>
+      <p>The proposal should include a phased implementation timeline &mdash; beginning with the records that are easiest to publish in structured format (commission votes, contracts above a threshold, meeting minutes) and expanding to more complex datasets over a defined period. This demonstrates operational seriousness and gives agencies a realistic glide path.</p>
+      <p>Proactive disclosure requires investment in municipal data infrastructure &mdash; and that investment benefits the city independently of the Info District. A city whose records are structured, searchable, and automatically published responds to records requests faster, faces fewer mandamus actions, and operates more efficiently. The Info District&rsquo;s mandate accelerates a modernization the city should be pursuing regardless.</p>
+      <p>The mandate includes the same exemptions that ORC &sect;149.43 already recognizes. Information exempt from public records disclosure under state law remains exempt under proactive disclosure. The mandate does not expand the definition of a public record. It expands the delivery mechanism.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Report Footer -->
+<footer class="report-footer reveal">
+  <p><em>This document is in part the product of extended working sessions between the author and Claude (Anthropic). The governance structure, AI policy, editorial independence provisions, and data governance framework are all flagged to be reviewed by qualified legal counsel before any attempt at implementation.</em></p>
+  <p style="margin-top: 1rem;"><a href="./meetings/">Public Meetings Calendar</a> &middot; <a href="./about/">About</a> &middot; <a href="./privacy.html">Privacy Policy</a></p>
+</footer>
+
+  </article>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+<script src="js/report.js"></script>
 </body>
 </html>
