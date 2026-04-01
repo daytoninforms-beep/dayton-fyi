@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obituaries — Dayton Informs</title>
+  <meta name="description" content="Submit and search obituaries for Dayton-area residents — free, no word limit, published permanently.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="site-container">
+
+    <!-- Header -->
+    <header class="page-header">
+      <a href="../" class="site-name">Dayton Informs</a>
+      <p class="site-tagline">Free civic information for the Dayton community</p>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../obituaries/" class="active">Obituaries</a>
+        <a href="../meetings/">Public Meetings</a>
+        <a href="../about/">About</a>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+      <h1>Obituaries</h1>
+      <p>Honor the memory of a Dayton-area loved one — free, with no word limit. Every obituary is published permanently and searchable by the public.</p>
+
+      <!-- Tabs -->
+      <div class="tab-nav" role="tablist" aria-label="Obituary options">
+        <button role="tab" aria-selected="true" aria-controls="tab-submit" id="btn-submit" class="active">Submit an Obituary</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-search" id="btn-search">Search Obituaries</button>
+      </div>
+
+      <!-- Submit Tab -->
+      <section id="tab-submit" role="tabpanel" aria-labelledby="btn-submit">
+
+        <div class="notice notice-info">
+          <strong>Free to publish.</strong> All obituaries are reviewed within 24 hours and published with a permanent, shareable link. No fees, no word limits.
+        </div>
+
+        <form id="obituary-form" novalidate>
+
+          <h2>About the Deceased</h2>
+
+          <div class="form-group">
+            <label for="full-name">Full Name *</label>
+            <input type="text" id="full-name" name="fullName" class="form-input" required autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="date-of-birth">Date of Birth</label>
+            <span class="hint">Optional</span>
+            <input type="date" id="date-of-birth" name="dateOfBirth" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="date-of-death">Date of Death *</label>
+            <input type="date" id="date-of-death" name="dateOfDeath" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="city-neighborhood">City or Neighborhood *</label>
+            <span class="hint">e.g., Dayton — Five Oaks, Kettering, Trotwood</span>
+            <input type="text" id="city-neighborhood" name="cityNeighborhood" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="survivors">Survivors</label>
+            <span class="hint">List family members and their relationships (e.g., "Survived by wife Mary, sons James and Robert, and four grandchildren")</span>
+            <textarea id="survivors" name="survivors" class="form-textarea" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Military Service</label>
+            <div style="display: flex; gap: 1.5rem; margin-top: 0.25rem;">
+              <label style="display: flex; align-items: center; gap: 0.35rem; font-weight: 400; cursor: pointer;">
+                <input type="radio" name="militaryService" value="no" checked style="width: 18px; height: 18px; accent-color: #8b0000;"> No
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.35rem; font-weight: 400; cursor: pointer;">
+                <input type="radio" name="militaryService" value="yes" style="width: 18px; height: 18px; accent-color: #8b0000;"> Yes
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="military-branch-group" style="display: none;">
+            <label for="military-branch">Branch of Service</label>
+            <input type="text" id="military-branch" name="militaryBranch" class="form-input" placeholder="e.g., U.S. Army, U.S. Navy">
+          </div>
+
+          <div class="form-group">
+            <label for="photo">Photo</label>
+            <span class="hint">Optional. JPG or PNG, max 5 MB.</span>
+            <input type="file" id="photo" name="photo" accept="image/jpeg,image/png" class="form-input" style="padding: 0.5rem;">
+          </div>
+
+          <h2 class="mt-3">Remembrance</h2>
+
+          <div class="form-group">
+            <label for="remembrance">Write about your loved one</label>
+            <span class="hint">Share their story in your own words — no word limit. Include whatever feels right: their life, personality, passions, career, faith, humor, or anything the community should know about them.</span>
+            <textarea id="remembrance" name="remembrance" class="form-textarea" rows="10"></textarea>
+          </div>
+
+          <h2 class="mt-3">Your Information</h2>
+          <p style="font-size: 0.889rem; color: #555;">This information is not published. It is used only to contact you about the submission.</p>
+
+          <div class="form-group">
+            <label for="submitter-name">Your Name *</label>
+            <input type="text" id="submitter-name" name="submitterName" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="submitter-email">Your Email *</label>
+            <input type="email" id="submitter-email" name="submitterEmail" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <div class="form-checkbox">
+              <input type="checkbox" id="confirm-rights" name="confirmRights" required>
+              <label for="confirm-rights">I confirm I have the right to submit this obituary and that the information provided is accurate to the best of my knowledge. *</label>
+            </div>
+          </div>
+
+          <div id="form-error" class="notice" style="display: none; background-color: #fef0f0; border-color: #e5c8c8; color: #8b0000;"></div>
+          <div id="form-success" class="notice notice-success" style="display: none;"></div>
+
+          <button type="submit" class="btn btn-primary" id="submit-btn">Submit Obituary for Review</button>
+
+        </form>
+      </section>
+
+      <!-- Search Tab -->
+      <section id="tab-search" role="tabpanel" aria-labelledby="btn-search" style="display: none;">
+
+        <div class="search-bar">
+          <label for="search-input" class="sr-only">Search obituaries by name</label>
+          <input type="search" id="search-input" placeholder="Search by name..." autocomplete="off">
+        </div>
+
+        <div class="filters">
+          <div>
+            <label for="filter-neighborhood" class="sr-only">Filter by city or neighborhood</label>
+            <select id="filter-neighborhood">
+              <option value="">All locations</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-date" class="sr-only">Filter by date range</label>
+            <select id="filter-date">
+              <option value="">All dates</option>
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="365">Last year</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="search-results">
+          <div class="empty-state">
+            <p>Obituaries will appear here once the first submissions are published.</p>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>A prototype of the proposed <a href="../about/">Dayton Community Information District</a></p>
+      <p>All obituaries published under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a></p>
+      <p><a href="../privacy.html">Privacy Policy</a></p>
+    </footer>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

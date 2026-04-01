@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Meetings — Dayton Informs</title>
+  <meta name="description" content="A consolidated calendar of all upcoming public meetings of Dayton-area government bodies — city commission, county, schools, and regional boards — in one place.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="site-container">
+
+    <header class="page-header">
+      <a href="../" class="site-name">Dayton Informs</a>
+      <p class="site-tagline">Free civic information for the Dayton community</p>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../meetings/" class="active">Public Meetings</a>
+        <a href="../about/">About</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <h1>Public Meetings</h1>
+      <p>Every upcoming public meeting of Dayton-area government bodies — in one place. Know what's happening, show up, have your voice heard.</p>
+
+      <!-- Tabs -->
+      <div class="tab-nav" role="tablist" aria-label="Meeting views">
+        <button role="tab" aria-selected="true" aria-controls="tab-upcoming" id="btn-upcoming" class="active">Upcoming</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-past" id="btn-past">Past Meetings</button>
+      </div>
+
+      <!-- Upcoming Tab -->
+      <section id="tab-upcoming" role="tabpanel" aria-labelledby="btn-upcoming">
+
+        <div class="search-bar">
+          <label for="meetings-search" class="sr-only">Search upcoming meetings</label>
+          <input type="search" id="meetings-search" placeholder="Search by name, body, or keyword..." autocomplete="off">
+        </div>
+
+        <div class="filters">
+          <div>
+            <label for="filter-category" class="sr-only">Filter by category</label>
+            <select id="filter-category">
+              <option value="">All categories</option>
+              <option value="City of Dayton">City of Dayton</option>
+              <option value="Montgomery County">Montgomery County</option>
+              <option value="Schools">Schools</option>
+              <option value="Regional">Regional</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-body" class="sr-only">Filter by government body</label>
+            <select id="filter-body">
+              <option value="">All government bodies</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="results-count" id="upcoming-count" aria-live="polite"></p>
+
+        <div id="this-week"></div>
+
+        <div id="meetings-upcoming" aria-live="polite">
+          <div class="empty-state">
+            <p>Loading meetings...</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Past Meetings Tab -->
+      <section id="tab-past" role="tabpanel" aria-labelledby="btn-past" style="display: none;">
+
+        <div class="search-bar">
+          <label for="archive-search" class="sr-only">Search past meetings</label>
+          <input type="search" id="archive-search" placeholder="Search past meetings..." autocomplete="off">
+        </div>
+
+        <div class="filters">
+          <div>
+            <label for="archive-category" class="sr-only">Filter by category</label>
+            <select id="archive-category">
+              <option value="">All categories</option>
+              <option value="City of Dayton">City of Dayton</option>
+              <option value="Montgomery County">Montgomery County</option>
+              <option value="Schools">Schools</option>
+              <option value="Regional">Regional</option>
+            </select>
+          </div>
+          <div>
+            <label for="archive-body" class="sr-only">Filter by government body</label>
+            <select id="archive-body">
+              <option value="">All government bodies</option>
+            </select>
+          </div>
+          <div>
+            <label for="archive-date-from" class="sr-only">From date</label>
+            <input type="date" id="archive-date-from" title="From date">
+          </div>
+          <div>
+            <label for="archive-date-to" class="sr-only">To date</label>
+            <input type="date" id="archive-date-to" title="To date">
+          </div>
+        </div>
+
+        <p class="results-count" id="archive-count" aria-live="polite"></p>
+
+        <div id="meetings-past" aria-live="polite">
+          <div class="empty-state">
+            <p>Loading past meetings...</p>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="notice notice-info mt-3">
+        <p style="margin-bottom: 0;">Meeting information is gathered from public sources. Schedules may change — always confirm details with the hosting body before attending.</p>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>A prototype of the proposed <a href="../about/">Dayton Community Information District</a></p>
+      <p><a href="../privacy.html">Privacy Policy</a></p>
+    </footer>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
