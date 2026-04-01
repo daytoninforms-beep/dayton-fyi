@@ -375,6 +375,71 @@
     }
   }
 
+  /* --- Interactive Civic Map --- */
+  function initCivicMap() {
+    var cells = document.querySelectorAll('.map-cell');
+    var detail = document.querySelector('.map-detail');
+    if (!cells.length || !detail) return;
+
+    var data = {
+      'Five Oaks': { title: '1247 Grand Ave \u2014 Property Transfer', text: 'LLC purchase, $62,000. Buyer: Gem City Holdings LLC. Third acquisition on this block in 14 months.' },
+      'Downtown': { title: '34 N. Main St \u2014 Building Permit', text: 'Commercial renovation, $450,000. Applicant: Third Street Partners. Mixed-use conversion from office to residential.' },
+      'McPherson': { title: '819 McPherson Ave \u2014 Code Violation', text: 'Exterior maintenance violation issued 2/14/2026. Unresponsive owner. Property last transferred to KMG Realty LLC in 2023.' },
+      'Wolf Creek': { title: '2205 Wolf Creek Pike \u2014 Property Transfer', text: 'Cash sale, $38,500. Buyer: Midwest Rental Properties LLC. Second purchase on this street in 6 months.' },
+      'St. Anne\u2019s Hill': { title: '512 Linden Ave \u2014 Building Permit', text: 'Residential addition, $28,000. Owner-occupied. Historic district review required.' },
+      'Edgemont': { title: '1401 W. Third St \u2014 Property Transfer', text: 'Sale, $45,000. Buyer: individual. Previously bank-owned (REO) since 2021.' },
+      'Twin Towers': { title: '29 Bonner St \u2014 Code Violation', text: 'Vacant property registration lapsed. Owner: South Dayton Properties LLC. 3 violations in 18 months.' }
+    };
+
+    cells.forEach(function (cell) {
+      cell.addEventListener('click', function () {
+        cells.forEach(function (c) { c.classList.remove('active'); });
+        cell.classList.add('active');
+        var label = cell.querySelector('.map-cell-label');
+        var name = label ? label.textContent.trim() : '';
+        var info = data[name];
+        if (info) {
+          detail.innerHTML = '<div class="map-detail-title">' + info.title + '</div>' + info.text;
+        } else {
+          detail.innerHTML = '<div class="map-detail-title">' + name + '</div>No data points in current dataset. A full implementation would show all public records for this area.';
+        }
+      });
+    });
+  }
+
+  /* --- Tier Badge Auto-Replacement --- */
+  function initTierBadges() {
+    // Walk text nodes in the report content and wrap "Tier 1" / "Tier 2" in badge spans
+    var container = document.querySelector('.report-content');
+    if (!container) return;
+
+    var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        // Skip if parent is already a badge, a script, a style, an input, or inside the chat demo
+        var parent = node.parentElement;
+        if (!parent) return NodeFilter.FILTER_REJECT;
+        var tag = parent.tagName;
+        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'INPUT' || tag === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
+        if (parent.classList.contains('tier-badge') || parent.classList.contains('tier-intro-label')) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('.chat-demo') || parent.closest('.tier-intro')) return NodeFilter.FILTER_REJECT;
+        if (/Tier [12]/.test(node.textContent)) return NodeFilter.FILTER_ACCEPT;
+        return NodeFilter.FILTER_REJECT;
+      }
+    });
+
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(function (textNode) {
+      var html = textNode.textContent
+        .replace(/Tier 2/g, '<span class="tier-badge tier-badge--2">Tier 2</span>')
+        .replace(/Tier 1/g, '<span class="tier-badge tier-badge--1">Tier 1</span>');
+      var span = document.createElement('span');
+      span.innerHTML = html;
+      textNode.parentNode.replaceChild(span, textNode);
+    });
+  }
+
   /* --- Initialize --- */
   document.addEventListener('DOMContentLoaded', function () {
     initProgressBar();
@@ -385,5 +450,7 @@
     initSmoothScroll();
     initActsWheel();
     initChatDemo();
+    initCivicMap();
+    initTierBadges();
   });
 })();

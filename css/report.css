@@ -30,7 +30,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
+  height: 4px;
   background-color: #E65025;
   width: 0%;
   z-index: 1000;
@@ -276,7 +276,7 @@ body {
 .hero-meta {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.65rem;
-  color: #bbb;
+  color: #999;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 2rem;
@@ -289,7 +289,7 @@ body {
   transform: translateX(-50%);
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.6rem;
-  color: #bbb;
+  color: #999;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   animation: pulse-down 2s infinite;
@@ -456,7 +456,7 @@ li {
   border: none;
   border-top: 2px solid #00A1A5;
   margin: 4rem 0;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 /* --- IUCN Comparison Treatment --- */
@@ -1003,6 +1003,435 @@ li {
 
   .act-node-label {
     font-size: 0.45rem;
+  }
+}
+
+/* --- Tier Badges (inline) --- */
+.tier-badge {
+  display: inline-block;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.tier-badge--2 {
+  background: #e0f5f5;
+  color: #00A1A5;
+}
+
+.tier-badge--1 {
+  background: #fef0e8;
+  color: #E65025;
+}
+
+/* Tier intro cards (Tiered Funding section) */
+.tier-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.tier-intro-card {
+  border-radius: 6px;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.tier-intro-card--2 {
+  background: #e0f5f5;
+  border: 2px solid #00A1A5;
+}
+
+.tier-intro-card--1 {
+  background: #fef0e8;
+  border: 2px solid #E65025;
+}
+
+.tier-intro-label {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.15rem;
+}
+
+.tier-intro-card--2 .tier-intro-label { color: #00A1A5; }
+.tier-intro-card--1 .tier-intro-label { color: #E65025; }
+
+.tier-intro-name {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #383838;
+  margin-bottom: 0.35rem;
+}
+
+.tier-intro-desc {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  color: #58595B;
+  line-height: 1.5;
+}
+
+.tier-intro-funding {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #383838;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .tier-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Neighborhood Digest Mockup --- */
+.digest-mockup {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #fff;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.digest-header {
+  background: #383838;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.digest-header-name {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #bbb;
+  margin-bottom: 0.15rem;
+}
+
+.digest-header-hood {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.digest-header-date {
+  font-size: 0.55rem;
+  color: #999;
+  margin-top: 0.25rem;
+}
+
+.digest-section {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.digest-section:last-child {
+  border-bottom: none;
+}
+
+.digest-section-label {
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00A1A5;
+  margin-bottom: 0.35rem;
+}
+
+.digest-item {
+  font-size: 0.65rem;
+  color: #383838;
+  line-height: 1.5;
+  padding: 0.25rem 0;
+}
+
+.digest-item + .digest-item {
+  border-top: 1px solid #f5f5f5;
+}
+
+.digest-item-meta {
+  font-size: 0.5rem;
+  color: #999;
+}
+
+.digest-item-highlight {
+  color: #E65025;
+  font-weight: 600;
+}
+
+/* --- Governance Org Chart --- */
+.gov-chart {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #faf9f7;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  text-align: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.gov-chart-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.gov-chart-node {
+  padding: 0.6rem 0.85rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #383838;
+  line-height: 1.3;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  min-width: 100px;
+}
+
+.gov-chart-node--voters {
+  background: #e8eff5;
+  border-color: #b8d4ec;
+  color: #3a6b8c;
+}
+
+.gov-chart-node--board {
+  background: #e0f5f5;
+  border-color: #00A1A5;
+  color: #00837a;
+  font-size: 0.7rem;
+}
+
+.gov-chart-node--editor {
+  background: #fef0e8;
+  border-color: #E65025;
+  color: #c43d18;
+  font-size: 0.7rem;
+}
+
+.gov-chart-node--editorial {
+  background: #fff;
+  border: 2px dashed #E65025;
+  color: #E65025;
+  font-size: 0.55rem;
+}
+
+.gov-chart-node small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.5rem;
+  color: #999;
+  margin-top: 0.15rem;
+}
+
+.gov-chart-arrow {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.gov-chart-firewall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c62828;
+}
+
+.gov-chart-firewall-line {
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, #c62828, #c62828 4px, transparent 4px, transparent 8px);
+  max-width: 120px;
+}
+
+@media (max-width: 768px) {
+  .gov-chart-row {
+    flex-wrap: wrap;
+  }
+
+  .gov-chart-node {
+    min-width: 80px;
+    font-size: 0.55rem;
+  }
+}
+
+/* --- Engagement Phase Diagram --- */
+.engagement-phases {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #faf9f7;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+}
+
+.engagement-phase {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.engagement-phase:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.engagement-phase:first-child {
+  padding-top: 0;
+}
+
+.engagement-phase-marker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.engagement-phase:nth-child(1) .engagement-phase-marker { background: #00A1A5; }
+.engagement-phase:nth-child(2) .engagement-phase-marker { background: #0090a0; }
+.engagement-phase:nth-child(3) .engagement-phase-marker { background: #007f8a; }
+.engagement-phase:nth-child(4) .engagement-phase-marker { background: #006e75; }
+.engagement-phase:nth-child(5) .engagement-phase-marker { background: #E65025; }
+
+.engagement-phase-body {
+  flex: 1;
+}
+
+.engagement-phase-title {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #383838;
+}
+
+.engagement-phase-time {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.55rem;
+  color: #999;
+  margin-bottom: 0.2rem;
+}
+
+.engagement-phase-desc {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  color: #58595B;
+  line-height: 1.5;
+}
+
+/* --- AI Policy Tier Cards --- */
+.ai-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.ai-tier-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 1rem;
+  border-top: 3px solid #e0e0e0;
+  position: relative;
+}
+
+.ai-tier-card--1 { border-top-color: #d0e0f0; }
+.ai-tier-card--2 { border-top-color: #00A1A5; }
+.ai-tier-card--3 { border-top-color: #E65025; }
+.ai-tier-card--4 { border-top-color: #383838; }
+
+.ai-tier-level {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  margin-bottom: 0.15rem;
+}
+
+.ai-tier-name {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #383838;
+  margin-bottom: 0.35rem;
+}
+
+.ai-tier-examples {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+  color: #58595B;
+  line-height: 1.5;
+  margin-bottom: 0.35rem;
+}
+
+.ai-tier-disclosure {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.55rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* AI Prohibitions */
+.ai-prohibitions {
+  margin: 2rem 0;
+}
+
+.ai-prohibition {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 3px solid #c62828;
+  border-radius: 0 4px 4px 0;
+}
+
+.ai-prohibition-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.ai-prohibition-text {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  color: #383838;
+  line-height: 1.5;
+}
+
+.ai-prohibition-text strong {
+  color: #c62828;
+}
+
+@media (max-width: 768px) {
+  .ai-tiers {
+    grid-template-columns: 1fr;
   }
 }
 
