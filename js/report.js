@@ -172,14 +172,9 @@
         text: 'Building the capacity of others to perform these acts themselves. Training, mentoring, providing tools and platforms. The Journalism Lab\u2019s core function.',
         source: 'J+D Lab Framework'
       },
-      witnessing: {
-        title: 'Witnessing',
-        text: 'Recording and asserting lived experience \u2014 particularly from communities whose stories have been systematically excluded from official records. The assertion that a community\u2019s memory and experience belong in the public record, told in the voices of the people who lived them.',
-        source: 'Dayton Addition'
-      },
       preserving: {
         title: 'Preserving',
-        text: 'The archival commitment: ensuring that what a community knows about itself is durable, searchable, and publicly owned \u2014 not locked behind a paywall or lost when a newspaper folds or a platform changes its terms of service.',
+        text: 'Ensuring that what a community knows about itself is durable, searchable, and publicly owned \u2014 not locked behind a paywall or lost when a newspaper folds or a platform changes its terms of service. This includes capturing and elevating lived experience, particularly from community elders and others whose testimony might otherwise go unrecorded.',
         source: 'Dayton Addition'
       }
     };
