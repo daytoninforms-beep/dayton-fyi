@@ -453,16 +453,80 @@
 <p class="reveal">The Community Voice Network is a hub-and-spoke publishing model that cultivates, connects, and amplifies independent community contributors across the Dayton region. The hub &mdash; dayton.fyi &mdash; curates and presents the strongest community writing, audio, and visual work from a growing network of independent contributors, each publishing on their own platforms and building their own audiences. The hub selects, contextualizes, and spotlights what the spokes create. These independent contributors &mdash; residents, neighborhood leaders, subject-matter practitioners, retired professionals, students, organizers, artists &mdash; publish on topics they know and care about. Contributors maintain editorial independence over their own work. They are not Info District staff, they are community voices that the Info District&rsquo;s editorial team identifies, develops, and connects to a broader audience.</p>
 
 <div class="hub-spoke reveal">
-  <div class="hub-spoke-diagram">
-    <div class="hub-center">dayton.fyi<br>hub</div>
-    <div class="spoke">Retired city engineer</div>
-    <div class="spoke">DPS parent</div>
-    <div class="spoke">Home health aide</div>
-    <div class="spoke">Neighborhood organizer</div>
-    <div class="spoke">Mosque leader</div>
-    <div class="spoke">Student journalist</div>
-  </div>
-  <div class="hub-spoke-label">Independent contributors publish on their own platforms. The hub curates, contextualizes, and spotlights.</div>
+  <svg class="hub-spoke-svg" viewBox="0 0 740 480" xmlns="http://www.w3.org/2000/svg">
+    <!-- Lines: hub to contributors -->
+    <line x1="370" y1="240" x2="370" y2="100" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="370" y2="380" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="195" y2="145" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="545" y2="145" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="195" y2="335" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="545" y2="335" stroke="#d0d0d0" stroke-width="2"/>
+
+    <!-- Lines: contributors to audiences -->
+    <line x1="370" y1="100" x2="280" y2="35" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="100" x2="370" y2="25" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="100" x2="460" y2="35" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="145" x2="650" y2="85" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="145" x2="675" y2="145" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="335" x2="650" y2="390" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="335" x2="675" y2="335" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="380" x2="280" y2="445" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="380" x2="370" y2="460" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="380" x2="460" y2="445" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="335" x2="90" y2="390" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="335" x2="65" y2="335" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="335" x2="90" y2="285" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="145" x2="90" y2="85" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="145" x2="65" y2="145" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+    <!-- Audience labels -->
+    <text x="270" y="28" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Neighbors</text>
+    <text x="370" y="18" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">City council</text>
+    <text x="470" y="28" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Utilities dept.</text>
+    <text x="660" y="80" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Other parents</text>
+    <text x="685" y="143" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">School board</text>
+    <text x="660" y="397" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Patients</text>
+    <text x="685" y="340" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Families</text>
+    <text x="270" y="455" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Block clubs</text>
+    <text x="370" y="475" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">City agencies</text>
+    <text x="470" y="455" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Residents</text>
+    <text x="80" y="398" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Congregation</text>
+    <text x="55" y="340" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Immigrants</text>
+    <text x="80" y="280" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Neighborhood</text>
+    <text x="80" y="78" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Classmates</text>
+    <text x="55" y="143" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Campus</text>
+
+    <!-- Hub -->
+    <circle cx="370" cy="240" r="58" fill="#E65025"/>
+    <text x="370" y="234" font-size="17" fill="white" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">dayton.fyi</text>
+    <text x="370" y="254" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">hub</text>
+
+    <!-- Contributor nodes -->
+    <circle cx="370" cy="100" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="370" y="94" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Retired city</text>
+    <text x="370" y="110" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">engineer</text>
+
+    <circle cx="545" cy="145" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="545" y="140" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">DPS</text>
+    <text x="545" y="156" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">parent</text>
+
+    <circle cx="545" cy="335" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="545" y="328" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Home health</text>
+    <text x="545" y="344" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">aide</text>
+
+    <circle cx="370" cy="380" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="370" y="373" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Neighborhood</text>
+    <text x="370" y="389" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">organizer</text>
+
+    <circle cx="195" cy="335" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="195" y="330" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Mosque</text>
+    <text x="195" y="346" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">leader</text>
+
+    <circle cx="195" cy="145" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="195" y="140" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Student</text>
+    <text x="195" y="156" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">journalist</text>
+  </svg>
+  <div class="hub-spoke-label">Solid lines connect contributors to the hub. Dashed lines show each contributor&rsquo;s own audience. The hub amplifies; the spokes reach communities the institution alone cannot.</div>
   <div class="voice-tracks">
     <div class="voice-track">
       <div class="voice-track-number">1</div>

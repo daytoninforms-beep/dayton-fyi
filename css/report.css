@@ -1682,6 +1682,13 @@ li {
   border-radius: 6px;
 }
 
+.hub-spoke-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
 .hub-spoke-diagram {
   position: relative;
   width: 300px;
