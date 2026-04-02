@@ -1423,6 +1423,77 @@ li {
   line-height: 1.5;
 }
 
+/* --- Influence Cards --- */
+.influence-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 3px solid #00A1A5;
+  border-radius: 0 4px 4px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.influence-card-name {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #383838;
+  margin-bottom: 0.3rem;
+}
+
+.influence-card-name a {
+  color: #383838;
+  text-decoration: none;
+}
+
+.influence-card-name a:hover {
+  color: #E65025;
+}
+
+.influence-card-text {
+  font-size: 0.8rem;
+  color: #58595B;
+  line-height: 1.65;
+}
+
+.influence-card-text a {
+  color: #E65025;
+}
+
+.influence-card-text p {
+  margin-bottom: 0.6rem;
+}
+
+.influence-card-text p:last-child {
+  margin-bottom: 0;
+}
+
+.influence-card .demo-embed {
+  margin: 0.75rem 0 0;
+  border: none;
+  background: none;
+}
+
+.influence-card .demo-embed iframe {
+  border-radius: 4px;
+}
+
+.influence-card-logo {
+  width: 60px;
+  height: auto;
+  float: right;
+  margin: 0 0 0.5rem 0.75rem;
+}
+
+.influence-card-link {
+  display: inline-block;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #E65025;
+  margin-top: 0.5rem;
+}
+
 /* --- AI Policy Tier Cards --- */
 .ai-tiers {
   display: grid;
