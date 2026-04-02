@@ -10,11 +10,18 @@
     var bar = document.querySelector('.progress-bar');
     if (!bar) return;
 
+    var ticking = false;
     window.addEventListener('scroll', function () {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      bar.style.width = progress + '%';
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          bar.style.width = progress + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
   }
 
@@ -98,11 +105,18 @@
     var btn = document.querySelector('.back-to-top');
     if (!btn) return;
 
+    var btTicking = false;
     window.addEventListener('scroll', function () {
-      if (window.scrollY > window.innerHeight) {
-        btn.classList.add('visible');
-      } else {
-        btn.classList.remove('visible');
+      if (!btTicking) {
+        requestAnimationFrame(function () {
+          if (window.scrollY > window.innerHeight) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+          btTicking = false;
+        });
+        btTicking = true;
       }
     }, { passive: true });
 
@@ -408,22 +422,23 @@
     var container = document.querySelector('.report-content');
     if (!container) return;
 
-    var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
-      acceptNode: function (node) {
-        // Skip if parent is already a badge, a script, a style, an input, or inside the chat demo
-        var parent = node.parentElement;
-        if (!parent) return NodeFilter.FILTER_REJECT;
-        var tag = parent.tagName;
-        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'INPUT' || tag === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
-        if (parent.classList.contains('tier-badge') || parent.classList.contains('tier-intro-label')) return NodeFilter.FILTER_REJECT;
-        if (parent.closest('.chat-demo') || parent.closest('.tier-intro')) return NodeFilter.FILTER_REJECT;
-        if (/Tier [12]/.test(node.textContent)) return NodeFilter.FILTER_ACCEPT;
-        return NodeFilter.FILTER_REJECT;
-      }
-    });
-
+    // Only scan p, li, and td elements to reduce DOM traversal
+    var candidates = container.querySelectorAll('p, li, td, .influence-card-text, .collapsible-body p');
     var nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
+    candidates.forEach(function (el) {
+      if (el.closest('.chat-demo') || el.closest('.tier-intro') || el.closest('.tier-badge')) return;
+      if (!/Tier [12]/.test(el.textContent)) return;
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          var parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          if (parent.classList.contains('tier-badge') || parent.classList.contains('tier-intro-label')) return NodeFilter.FILTER_REJECT;
+          if (/Tier [12]/.test(node.textContent)) return NodeFilter.FILTER_ACCEPT;
+          return NodeFilter.FILTER_REJECT;
+        }
+      });
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+    });
 
     nodes.forEach(function (textNode) {
       var html = textNode.textContent
