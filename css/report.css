@@ -385,14 +385,29 @@ h1, h2, h3, h4 {
 
 /* Layer headings (used in Section III for the 5 layers) */
 .layer-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 0.8rem;
   font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 0.5rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid #00A1A5;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.layer-heading-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #fff;
+  flex-shrink: 0;
 }
 
 /* Items within a layer */
@@ -1417,6 +1432,79 @@ li {
   font-size: 0.65rem;
   color: #58595B;
   line-height: 1.5;
+}
+
+/* --- Layer Overview Map --- */
+.layer-map {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.layer-map-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  text-decoration: none;
+  color: #383838;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.layer-map-item:last-child {
+  border-bottom: none;
+}
+
+.layer-map-item:hover {
+  background: #faf9f7;
+}
+
+.layer-map-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.layer-map-icon--foundation { background: #E65025; }
+.layer-map-icon--infrastructure { background: #00A1A5; }
+.layer-map-icon--commons { background: #3a6b8c; }
+.layer-map-icon--distribution { background: #7a5c8c; }
+.layer-map-icon--capacity { background: #5c8c3a; }
+
+.layer-map-body {
+  flex: 1;
+}
+
+.layer-map-name {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #383838;
+}
+
+.layer-map-desc {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+  color: #999;
+}
+
+.layer-map-arrow {
+  font-size: 0.75rem;
+  color: #ccc;
+  flex-shrink: 0;
 }
 
 /* --- Influence Cards --- */
