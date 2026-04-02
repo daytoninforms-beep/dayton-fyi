@@ -100,29 +100,29 @@
     reveals.forEach(function (el) { observer.observe(el); });
   }
 
-  /* --- Back to Top Button --- */
+  /* --- Back to Top + Nav Toggle Visibility --- */
   function initBackToTop() {
     var btn = document.querySelector('.back-to-top');
-    if (!btn) return;
+    var navToggle = document.querySelector('.nav-toggle');
 
     var btTicking = false;
     window.addEventListener('scroll', function () {
       if (!btTicking) {
         requestAnimationFrame(function () {
-          if (window.scrollY > window.innerHeight) {
-            btn.classList.add('visible');
-          } else {
-            btn.classList.remove('visible');
-          }
+          var past = window.scrollY > window.innerHeight;
+          if (btn) btn.classList.toggle('visible', past);
+          if (navToggle) navToggle.classList.toggle('visible', past);
           btTicking = false;
         });
         btTicking = true;
       }
     }, { passive: true });
 
-    btn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    if (btn) {
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   }
 
   /* --- Smooth Scroll for Anchor Links --- */
