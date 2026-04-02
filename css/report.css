@@ -1988,7 +1988,7 @@ li {
 }
 
 .milestone-after .milestone-label {
-  background: #00A1A5;
+  background: #58595B;
   color: #fff;
 }
 
@@ -2032,7 +2032,7 @@ li {
 
 .milestone-card-dates {
   font-size: 0.7rem;
-  color: #E65025;
+  color: #58595B;
   font-weight: 600;
   margin-bottom: 0.6rem;
 }
