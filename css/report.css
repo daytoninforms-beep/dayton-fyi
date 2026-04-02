@@ -300,6 +300,25 @@ body {
   50% { opacity: 1; transform: translateX(-50%) translateY(5px); }
 }
 
+/* --- Dedication --- */
+.dedication {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 0 0 2rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #58595B;
+}
+
+.dedication a {
+  color: #58595B;
+}
+
+.dedication a:hover {
+  color: #E65025;
+}
+
 /* --- Preface / Author Note --- */
 .preface {
   background-color: #faf9f7;
