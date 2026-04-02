@@ -693,40 +693,28 @@
   <span class="tool-demo-badge">Prototype Concept</span>
   <div class="tool-demo-body">
     <div class="map-mockup">
-      <div class="map-grid">
-        <div class="map-cell"><span class="map-cell-label">Dayton View</span></div>
-        <div class="map-cell"><span class="map-cell-label">Grafton Hill</span></div>
-        <div class="map-cell"><span class="map-cell-label">McPherson</span><span class="map-dot map-dot--violation" style="top:30%;left:60%"></span></div>
-        <div class="map-cell"><span class="map-cell-label">Old North</span></div>
-        <div class="map-cell"><span class="map-cell-label">Wolf Creek</span><span class="map-dot map-dot--transfer" style="top:40%;left:40%"></span></div>
-        <div class="map-cell active"><span class="map-cell-label">Five Oaks</span><span class="map-dot map-dot--transfer" style="top:30%;left:55%"></span><span class="map-dot map-dot--permit" style="top:60%;left:35%"></span><span class="map-dot map-dot--violation" style="top:45%;left:70%"></span></div>
-        <div class="map-cell"><span class="map-cell-label">Hillcrest</span></div>
-        <div class="map-cell"><span class="map-cell-label">St. Anne&rsquo;s Hill</span><span class="map-dot map-dot--permit" style="top:55%;left:50%"></span></div>
-        <div class="map-cell"><span class="map-cell-label">Westwood</span></div>
-        <div class="map-cell"><span class="map-cell-label">Edgemont</span><span class="map-dot map-dot--transfer" style="top:35%;left:45%"></span></div>
-        <div class="map-cell"><span class="map-cell-label">Downtown</span><span class="map-dot map-dot--permit" style="top:40%;left:55%"></span><span class="map-dot map-dot--transfer" style="top:65%;left:30%"></span></div>
-        <div class="map-cell"><span class="map-cell-label">Webster Station</span></div>
-        <div class="map-cell"><span class="map-cell-label">Riverdale</span></div>
-        <div class="map-cell"><span class="map-cell-label">Twin Towers</span><span class="map-dot map-dot--violation" style="top:50%;left:50%"></span></div>
-        <div class="map-cell"><span class="map-cell-label">South Park</span></div>
-        <div class="map-cell"><span class="map-cell-label">Belmont</span></div>
-      </div>
-      <div class="map-sidebar">
-        <h5>Data Layers</h5>
-        <div class="map-legend">
-          <div class="map-legend-item"><span class="map-legend-dot map-dot--transfer"></span> Property Transfers</div>
-          <div class="map-legend-item"><span class="map-legend-dot map-dot--permit"></span> Building Permits</div>
-          <div class="map-legend-item"><span class="map-legend-dot map-dot--violation"></span> Code Violations</div>
-        </div>
-        <h5>Five Oaks</h5>
-        <div class="map-detail">
-          <div class="map-detail-title">1247 Grand Ave &mdash; Property Transfer</div>
+      <div class="map-hood-header">Five Oaks <span>3 records in the last 90 days</span></div>
+      <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3068.5!2d-84.2025!3d39.7725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Satellite view of Five Oaks neighborhood, Dayton, Ohio"></iframe>
+      <div class="map-data-panel">
+        <div class="map-data-item">
+          <div class="map-data-item-type map-data-item-type--transfer">&#9679; Property Transfer</div>
+          <div class="map-data-item-address">1247 Grand Ave</div>
           LLC purchase, $62,000. Buyer: Gem City Holdings LLC. Third acquisition on this block in 14 months.
+        </div>
+        <div class="map-data-item">
+          <div class="map-data-item-type map-data-item-type--permit">&#9679; Building Permit</div>
+          <div class="map-data-item-address">908 Delaware Ave</div>
+          Roof replacement, $8,200. Owner-occupied. Permit issued 3/12/2026.
+        </div>
+        <div class="map-data-item">
+          <div class="map-data-item-type map-data-item-type--violation">&#9679; Code Violation</div>
+          <div class="map-data-item-address">1503 N. Main St</div>
+          Exterior maintenance violation issued 2/14/2026. Unresponsive owner. Property last transferred to KMG Realty LLC in 2023.
         </div>
       </div>
     </div>
   </div>
-  <div class="tool-demo-caption">Concept prototype of the Civic Map. A full implementation would use real geographic boundaries, interactive zoom, and live public records data.</div>
+  <div class="tool-demo-caption">Concept prototype of the Civic Map showing the Five Oaks neighborhood with sample public records data. A full implementation would overlay property transfers, permits, and code violations directly on the map with interactive filtering by data layer, date range, and owner type.</div>
 </div>
 
 <p class="reveal"><em id="tool-policy">3. Policy Evaluator.</em> The public-facing expression of the independent policy analysis function. Published analyses of significant proposals. Ballot language translations, fiscal impact summaries, comparable city research, etc. All published before votes happen, all permanently archived and accessible.</p>
