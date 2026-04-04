@@ -1443,6 +1443,157 @@ li {
   line-height: 1.5;
 }
 
+/* --- Ecosystem Diagram --- */
+.ecosystem-diagram {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #faf9f7;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+}
+
+.ecosystem-title {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #383838;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.ecosystem-subtitle {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+  color: #999;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ecosystem-svg {
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .ecosystem-diagram {
+    margin-left: -3rem;
+    margin-right: -3rem;
+    padding: 1.5rem 3rem;
+  }
+
+  .ecosystem-svg {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.ecosystem-svg a {
+  text-decoration: none;
+}
+
+.ecosystem-svg a rect {
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+
+.ecosystem-svg a:hover rect {
+  opacity: 0.8;
+}
+
+.ecosystem-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.55rem;
+  color: #58595B;
+}
+
+.ecosystem-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.ecosystem-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* Mobile fallback for ecosystem diagram */
+.ecosystem-mobile {
+  display: none;
+}
+
+.ecosystem-mobile-layer {
+  margin-bottom: 1rem;
+}
+
+.ecosystem-mobile-layer-header {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+}
+
+.ecosystem-mobile-nodes {
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  background: #fff;
+}
+
+.ecosystem-mobile-node {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+}
+
+.ecosystem-mobile-node:last-child {
+  border-bottom: none;
+}
+
+.ecosystem-mobile-node-name {
+  font-weight: 700;
+  color: #383838;
+}
+
+.ecosystem-mobile-node-act {
+  font-size: 0.5rem;
+  color: #999;
+  font-style: italic;
+}
+
+.ecosystem-mobile-node-connects {
+  font-size: 0.5rem;
+  color: #00A1A5;
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 768px) {
+  .ecosystem-svg {
+    display: none;
+  }
+
+  .ecosystem-mobile {
+    display: block;
+  }
+
+  .ecosystem-legend {
+    display: none;
+  }
+}
+
 /* --- Layer Overview Map --- */
 .layer-map {
   margin: 2rem 0;

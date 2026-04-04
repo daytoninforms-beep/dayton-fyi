@@ -368,216 +368,248 @@
 <h2 class="chapter-heading reveal" id="what-it-does">III. What An Information District Could Do</h2>
 <hr class="chapter-rule">
 
-<p class="reveal">This section will try to explain the full vision of what the Information District can do as a civic information utility. Not every function launches on day one and not every function may prove necessary. The scope is deliberately broad because these capabilities are interconnected: they share data layers, feed into one another, and become more valuable in combination than in isolation.</p>
+<p class="reveal">This section will try to explain the full vision of what the Information District can do as a civic information utility. Not every function launches on day one and not every function may prove necessary. The scope is deliberately broad because these capabilities are interconnected: they share data, feed into one another, and become more valuable in combination than in isolation.</p>
 
-<p class="reveal">This section is organized in layers &mdash; from the editorial functions that require human judgment, to the infrastructure that makes the work possible, to the archives that accumulate value over time, to the channels that deliver it all to residents. Residents won&rsquo;t see layers, they&rsquo;ll see one coherent civic dashboard organized around their place and their expressed interests or needs.</p>
+<p class="reveal">This section is organized in four layers: the capacity that strengthens the community, the infrastructure that makes the work possible, the editorial functions that produce original journalism and analysis, and the channels that deliver it all to residents. Together they constitute the information commons. Residents won&rsquo;t see layers, they&rsquo;ll see one coherent civic dashboard organized around their place and their expressed interests or needs.</p>
 
-<div class="layer-map reveal">
-  <a href="#layer-foundation" class="layer-map-item">
-    <div class="layer-map-icon layer-map-icon--foundation">&#9998;</div>
-    <div class="layer-map-body">
-      <div class="layer-map-name">The Foundation Layer</div>
-      <div class="layer-map-desc">What the institution produces: accountability journalism, policy analysis, community documentation, the Voice Network</div>
-    </div>
-    <div class="layer-map-arrow">&rarr;</div>
-  </a>
-  <a href="#layer-infrastructure" class="layer-map-item">
-    <div class="layer-map-icon layer-map-icon--infrastructure">&#9881;</div>
-    <div class="layer-map-body">
-      <div class="layer-map-name">The Infrastructure Layer</div>
-      <div class="layer-map-desc">What makes the work possible: public records archive, open API, AI-powered infrastructure, five tools for residents</div>
-    </div>
-    <div class="layer-map-arrow">&rarr;</div>
-  </a>
-  <a href="#layer-commons" class="layer-map-item">
-    <div class="layer-map-icon layer-map-icon--commons">&#127970;</div>
-    <div class="layer-map-body">
-      <div class="layer-map-name">The Commons Layer</div>
-      <div class="layer-map-desc">What belongs to the community: milestones registry, election results archive</div>
-    </div>
-    <div class="layer-map-arrow">&rarr;</div>
-  </a>
-  <a href="#layer-distribution" class="layer-map-item">
-    <div class="layer-map-icon layer-map-icon--distribution">&#128225;</div>
-    <div class="layer-map-body">
-      <div class="layer-map-name">The Distribution Layer</div>
-      <div class="layer-map-desc">How it reaches people: Dayton.FYI, neighborhood digests, SMS alerts, print</div>
-    </div>
-    <div class="layer-map-arrow">&rarr;</div>
-  </a>
-  <a href="#layer-capacity" class="layer-map-item">
-    <div class="layer-map-icon layer-map-icon--capacity">&#127793;</div>
-    <div class="layer-map-body">
-      <div class="layer-map-name">The Capacity Layer</div>
-      <div class="layer-map-desc">How the community gets stronger: journalism training, youth programs, media literacy, civic education</div>
-    </div>
-    <div class="layer-map-arrow">&rarr;</div>
-  </a>
-</div>
+<div class="ecosystem-diagram reveal">
+  <div class="ecosystem-title">Structuring The Information Commons</div>
+  <div class="ecosystem-subtitle">Every proposed function, organized by layer &mdash; and the Act of Journalism each serves</div>
 
-<!-- Foundation Layer -->
-<h3 class="layer-heading reveal" id="layer-foundation"><span class="layer-heading-icon layer-map-icon--foundation">&#9998;</span> The Foundation Layer: What the Institution Produces</h3>
+  <svg class="ecosystem-svg" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+    <!-- LAYER BANDS (start after label area) -->
+    <rect x="110" y="15" width="560" height="52" rx="5" fill="#5c8c3a" opacity="0.07"/>
+    <rect x="110" y="85" width="560" height="200" rx="5" fill="#00A1A5" opacity="0.07"/>
+    <rect x="110" y="303" width="560" height="62" rx="5" fill="#E65025" opacity="0.07"/>
+    <rect x="110" y="403" width="560" height="55" rx="5" fill="#7a5c8c" opacity="0.07"/>
 
-<p class="reveal">These are the functions that require editorial skill and institutional commitment. Everything else either feeds into these or distributes what they produce.</p>
+    <!-- Layer label icons + text (linked) -->
+    <a href="#layer-capacity">
+    <rect x="33" y="24" width="24" height="24" rx="5" fill="#383838"/>
+    <text x="45" y="40" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">&#127793;</text>
+    <text x="45" y="58" font-size="9" fill="#5c8c3a" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">CAPACITY</text>
+    </a>
+    <a href="#layer-infrastructure">
+    <rect x="33" y="140" width="24" height="24" rx="5" fill="#383838"/>
+    <text x="45" y="156" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">&#9881;</text>
+    <text x="45" y="174" font-size="9" fill="#00A1A5" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">INFRASTRUCTURE</text>
+    </a>
+    <a href="#layer-foundation">
+    <rect x="33" y="320" width="24" height="24" rx="5" fill="#383838"/>
+    <text x="45" y="336" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">&#9998;</text>
+    <text x="45" y="354" font-size="9" fill="#E65025" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">EDITORIAL</text>
+    </a>
+    <a href="#layer-distribution">
+    <rect x="33" y="416" width="24" height="24" rx="5" fill="#383838"/>
+    <text x="45" y="432" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">&#128225;</text>
+    <text x="45" y="450" font-size="9" fill="#7a5c8c" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">DISTRIBUTION</text>
+    </a>
 
-<h4 class="layer-item-heading reveal">Accountability Journalism</h4>
+    <!-- CAPACITY (green) — all start at x=120+ -->
+    <a href="#layer-capacity">
+    <rect x="150" y="24" width="128" height="38" rx="5" fill="#5c8c3a"/>
+    <text x="214" y="40" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Journalism Training</text>
+    <text x="214" y="55" font-size="11" fill="#b5d6a0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Enabling</text>
+    </a>
 
-<p class="reveal">This is the core that gives the rest of the system teeth. When the <a href="#tool-tracker">vote tracker</a> reveals a commissioner voting against their stated positions, when the <a href="#tool-pipeline">community pipeline</a> surfaces a systemic problem &mdash; someone has to pick up the phone, knock on doors, file records requests, and write the story. That&rsquo;s journalists.</p>
+    <a href="#layer-capacity">
+    <rect x="286" y="24" width="115" height="38" rx="5" fill="#5c8c3a"/>
+    <text x="343" y="40" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Youth Programs</text>
+    <text x="343" y="55" font-size="11" fill="#b5d6a0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Enabling</text>
+    </a>
 
-<p class="reveal">Tier 1 funds a small professional newsroom (2&ndash;4 journalists) that is editorially independent from both city government and the <a href="#governance">Community Information Board</a>. The newsroom focuses on accountability reporting that follows from the data the rest of the system surfaces.</p>
+    <a href="#layer-capacity">
+    <rect x="409" y="24" width="88" height="38" rx="5" fill="#5c8c3a"/>
+    <text x="453" y="40" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">AI Literacy</text>
+    <text x="453" y="55" font-size="11" fill="#b5d6a0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Enabling</text>
+    </a>
 
-<p class="reveal">Without the newsroom, the Info District is a well-organized library. With it, the Info District is an accountability institution.</p>
+    <a href="#layer-capacity">
+    <rect x="505" y="24" width="125" height="38" rx="5" fill="#5c8c3a"/>
+    <text x="567" y="40" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Civic Education</text>
+    <text x="567" y="55" font-size="11" fill="#b5d6a0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Enabling</text>
+    </a>
 
-<p class="reveal">In Tier 2, accountability coverage is lighter &mdash; driven by the Journalism Lab&rsquo;s existing capacity, community contributors, and the documentation network. In Tier 1, it becomes a dedicated professional function.</p>
+    <!-- INFRASTRUCTURE (teal) — row 1, start at x=120+ -->
+    <a href="#fn-public-records">
+    <rect x="136" y="98" width="170" height="42" rx="5" fill="#00A1A5"/>
+    <text x="221" y="118" font-size="11" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Proactive Records Mandate</text>
+    <text x="221" y="133" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Navigating</text>
+    </a>
 
-<h4 class="layer-item-heading reveal">Independent Policy Analysis</h4>
+    <a href="#fn-open-api">
+    <rect x="314" y="98" width="78" height="42" rx="5" fill="#00A1A5"/>
+    <text x="353" y="118" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Open API</text>
+    <text x="353" y="133" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Enabling</text>
+    </a>
 
-<p class="reveal">When a significant policy proposal comes before the City Commission, the Dayton Public Schools board, or another tracked government body, the Info District publishes an independent, nonpartisan analysis: what the proposal does, what it costs, who benefits, who bears the cost, what assumptions it relies on, and what comparable cities have experienced. This analysis is published before the vote, ensuring that residents and officials have access to an evaluation that was not produced by the proposal&rsquo;s chief advocates or by staff who report to the body voting on it.</p>
+    <a href="#fn-ai-infrastructure">
+    <rect x="400" y="98" width="125" height="42" rx="5" fill="#00A1A5"/>
+    <text x="462" y="118" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Civic AI</text>
+    <text x="462" y="133" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Sensemaking</text>
+    </a>
 
-<p class="reveal">Today, public agendas for the Dayton City Commission are made available on Monday for a Wednesday vote and are frequently hundreds of pages long. No resident, and few commissioners, can meaningfully evaluate that volume of material in 48 hours. Independent analysis published in advance of a vote, in accessible language, changes who can participate in the process.</p>
+    <a href="#tool-calendar">
+    <rect x="533" y="98" width="112" height="42" rx="5" fill="#00A1A5"/>
+    <text x="589" y="118" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Civic Calendar</text>
+    <text x="589" y="133" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Facilitating</text>
+    </a>
 
-<p class="reveal">No equivalent exists at the municipal level in most American cities. The Info District functions as a local Congressional Budget Office, providing the independent analytical capacity that informed democratic decision-making requires.</p>
+    <!-- INFRASTRUCTURE — row 2 -->
+    <a href="#tool-map">
+    <rect x="120" y="172" width="85" height="42" rx="5" fill="#00A1A5"/>
+    <text x="162" y="192" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Civic Map</text>
+    <text x="162" y="207" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Navigating</text>
+    </a>
 
-<p class="reveal">Consider what happened with ShotSpotter. In 2019, the Dayton City Commission <a href="https://www.daytondailynews.com/news/dayton-considers-extension-for-controversial-gunshot-detection-system/AI7P2RO5IJGSDPQVTKC33JLMUQ/" target="_blank" rel="noopener">approved a $205,000 contract</a> for gunshot-detection technology deployed across a three-square-mile area of predominantly Black northwest Dayton. No independent cost-benefit analysis, equity impact assessment, or review of the <a href="https://endpolicesurveillance.com/" target="_blank" rel="noopener">growing national research</a> questioning the technology&rsquo;s effectiveness was made available to the public before either vote. In November 2020, the commission voted 4-1 to extend the contract for $390,000 more, the day before Thanksgiving, over Zoom, without public comment, despite a petition with hundreds of signatures opposing it. The first real data investigation came not from the city but from <a href="https://www.wyso.org/local-and-statewide-news/2021-10-04/shotspotter-generates-thousands-of-alerts-in-dayton-but-officers-find-few-crimes" target="_blank" rel="noopener">WYSO</a>, a full year after the extension vote: fewer than 2% of ShotSpotter alerts in Dayton resulted in an arrest. The city eventually <a href="https://www.daytondailynews.com/local/dayton-not-renewing-contract-with-shotspotter-program/PYYGLLNVRJGUHEAF4OSJJ7K4NA/" target="_blank" rel="noopener">let the contract expire</a> at the end of 2022, after spending roughly $595,000. An independent policy analysis available to the community before either vote, with national data, local effectiveness metrics, and comparable city research, could have changed the outcome.</p>
+    <a href="#tool-policy">
+    <rect x="213" y="172" width="122" height="42" rx="5" fill="#00A1A5"/>
+    <text x="274" y="192" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Policy Evaluator</text>
+    <text x="274" y="207" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Sensemaking</text>
+    </a>
 
-<p class="reveal">In Tier 2, this is lighter &mdash; plain-language explainers sourced from public documents. In Tier 1, a dedicated policy analyst produces full independent fiscal and policy analyses.</p>
+    <a href="#tool-tracker">
+    <rect x="343" y="172" width="155" height="42" rx="5" fill="#00A1A5"/>
+    <text x="420" y="192" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Accountability Tracker</text>
+    <text x="420" y="207" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Documenting</text>
+    </a>
 
-<h4 class="layer-item-heading reveal">Community Documentation Network</h4>
+    <a href="#tool-pipeline">
+    <rect x="506" y="172" width="155" height="42" rx="5" fill="#00A1A5"/>
+    <text x="583" y="192" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Community Pipeline</text>
+    <text x="583" y="207" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Facilitating</text>
+    </a>
 
-<p class="reveal">A Documenters-style program that trains and pays community members to attend and document public meetings. This is the highest-volume civic data collection function and the raw material for much of what the rest of the system produces.</p>
+    <!-- INFRASTRUCTURE — row 3 (former Commons) -->
+    <a href="#fn-milestones">
+    <rect x="229" y="240" width="155" height="42" rx="5" fill="#00A1A5"/>
+    <text x="306" y="260" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Community Milestones</text>
+    <text x="306" y="275" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Preserving</text>
+    </a>
 
-<p class="reveal">The Info District would support and integrate with the national <a href="https://www.documenters.org/" target="_blank" rel="noopener">Documenters Network</a> if it extends to Dayton. If the network does not arrive, the Info District develops an equivalent local program independently. Either path results in consistent, structured, paid community documentation of public governance.</p>
+    <a href="#fn-election-archive">
+    <rect x="392" y="240" width="160" height="42" rx="5" fill="#00A1A5"/>
+    <text x="472" y="260" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Election Results Archive</text>
+    <text x="472" y="275" font-size="11" fill="#b5e8ea" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Preserving</text>
+    </a>
 
-<p class="reveal">Documenters record not just narrative notes but structured data: who was present, what motions were made, how each official voted, what the outcome was. This structured data feeds directly into the <a href="#tool-tracker">Accountability Tracker</a>.</p>
+    <!-- EDITORIAL (orange) -->
+    <a href="#fn-accountability">
+    <rect x="144" y="316" width="90" height="42" rx="5" fill="#E65025"/>
+    <text x="189" y="336" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Newsroom</text>
+    <text x="189" y="351" font-size="11" fill="#fcc" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Inquiring</text>
+    </a>
 
-<aside class="pull-quote reveal">&ldquo;We urge people to get involved in the evolution of their information ecologies &mdash; jump into the primordial soup, stir it around, and make as many waves as possible.&rdquo; &mdash; Nardi &amp; O&rsquo;Day</aside>
+    <a href="#fn-policy-analysis">
+    <rect x="242" y="316" width="120" height="42" rx="5" fill="#E65025"/>
+    <text x="302" y="336" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Policy Analysis</text>
+    <text x="302" y="351" font-size="11" fill="#fcc" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Sensemaking</text>
+    </a>
 
-<h4 class="layer-item-heading reveal">Community Voice Network</h4>
+    <a href="#fn-documenters">
+    <rect x="370" y="316" width="110" height="42" rx="5" fill="#E65025"/>
+    <text x="425" y="336" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Documenters</text>
+    <text x="425" y="351" font-size="11" fill="#fcc" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Documenting</text>
+    </a>
 
-<p class="reveal">The Information District produces data, analysis, and accountability reporting. But democratic life does not run on data alone. Between the public record and public judgment sits a crucial interpretive step some might mistake for noise or uncomfortable arguing &mdash; the space where residents debate what the facts mean, what the community should value, and what kind of city Dayton ought to become. That step is not a supplement to civic infrastructure, it is the reason civic infrastructure matters, and how we handle that step can lead to improved democratic outcomes.</p>
+    <a href="#fn-voice-network">
+    <rect x="488" y="316" width="148" height="42" rx="5" fill="#E65025"/>
+    <text x="562" y="336" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Voice Network</text>
+    <text x="562" y="351" font-size="11" fill="#fcc" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Commenting</text>
+    </a>
 
-<p class="reveal">The Community Voice Network is a hub-and-spoke publishing model that cultivates, connects, and amplifies independent community contributors across the Dayton region. The hub &mdash; Dayton.FYI &mdash; curates and presents the strongest community writing, audio, and visual work from a growing network of independent contributors, each publishing on their own platforms and building their own audiences. The hub selects, contextualizes, and spotlights what the spokes create. These independent contributors &mdash; residents, neighborhood leaders, subject-matter practitioners, retired professionals, students, organizers, artists &mdash; publish on topics they know and care about. Contributors maintain editorial independence over their own work. They are not Info District staff, they are community voices that the Info District&rsquo;s editorial team identifies, develops, and connects to a broader audience.</p>
+    <!-- DISTRIBUTION (purple) -->
+    <a href="#layer-distribution">
+    <rect x="155" y="410" width="105" height="40" rx="5" fill="#7a5c8c"/>
+    <text x="207" y="429" font-size="12" fill="white" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">Dayton.FYI</text>
+    <text x="207" y="444" font-size="11" fill="#d4b5e0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Amplifying</text>
+    </a>
 
-<div class="hub-spoke reveal">
-  <svg class="hub-spoke-svg" viewBox="0 0 740 480" xmlns="http://www.w3.org/2000/svg">
-    <!-- Lines: hub to contributors -->
-    <line x1="370" y1="240" x2="370" y2="100" stroke="#d0d0d0" stroke-width="2"/>
-    <line x1="370" y1="240" x2="370" y2="380" stroke="#d0d0d0" stroke-width="2"/>
-    <line x1="370" y1="240" x2="195" y2="145" stroke="#d0d0d0" stroke-width="2"/>
-    <line x1="370" y1="240" x2="545" y2="145" stroke="#d0d0d0" stroke-width="2"/>
-    <line x1="370" y1="240" x2="195" y2="335" stroke="#d0d0d0" stroke-width="2"/>
-    <line x1="370" y1="240" x2="545" y2="335" stroke="#d0d0d0" stroke-width="2"/>
+    <a href="#layer-distribution">
+    <rect x="268" y="410" width="150" height="40" rx="5" fill="#7a5c8c"/>
+    <text x="343" y="429" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Neighborhood Digests</text>
+    <text x="343" y="444" font-size="11" fill="#d4b5e0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Amplifying</text>
+    </a>
 
-    <!-- Lines: contributors to audiences -->
-    <line x1="370" y1="100" x2="280" y2="35" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="370" y1="100" x2="370" y2="25" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="370" y1="100" x2="460" y2="35" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="545" y1="145" x2="650" y2="85" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="545" y1="145" x2="675" y2="145" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="545" y1="335" x2="650" y2="390" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="545" y1="335" x2="675" y2="335" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="370" y1="380" x2="280" y2="445" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="370" y1="380" x2="370" y2="460" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="370" y1="380" x2="460" y2="445" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="195" y1="335" x2="90" y2="390" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="195" y1="335" x2="65" y2="335" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="195" y1="335" x2="90" y2="285" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="195" y1="145" x2="90" y2="85" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <line x1="195" y1="145" x2="65" y2="145" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <a href="#layer-distribution">
+    <rect x="426" y="410" width="92" height="40" rx="5" fill="#7a5c8c"/>
+    <text x="472" y="429" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">SMS Alerts</text>
+    <text x="472" y="444" font-size="11" fill="#d4b5e0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Amplifying</text>
+    </a>
 
-    <!-- Audience labels -->
-    <text x="270" y="28" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Neighbors</text>
-    <text x="370" y="18" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">City council</text>
-    <text x="470" y="28" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Utilities dept.</text>
-    <text x="660" y="80" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Other parents</text>
-    <text x="685" y="143" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">School board</text>
-    <text x="660" y="397" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Patients</text>
-    <text x="685" y="340" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Families</text>
-    <text x="270" y="455" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Block clubs</text>
-    <text x="370" y="475" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">City agencies</text>
-    <text x="470" y="455" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Residents</text>
-    <text x="80" y="398" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Congregation</text>
-    <text x="55" y="340" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Immigrants</text>
-    <text x="80" y="280" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Neighborhood</text>
-    <text x="80" y="78" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Classmates</text>
-    <text x="55" y="143" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Campus</text>
-
-    <!-- Hub -->
-    <circle cx="370" cy="240" r="58" fill="#E65025"/>
-    <text x="370" y="234" font-size="17" fill="white" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">Dayton.FYI</text>
-    <text x="370" y="254" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">hub</text>
-
-    <!-- Contributor nodes -->
-    <circle cx="370" cy="100" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
-    <text x="370" y="94" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Retired city</text>
-    <text x="370" y="110" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">engineer</text>
-
-    <circle cx="545" cy="145" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
-    <text x="545" y="140" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">DPS</text>
-    <text x="545" y="156" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">parent</text>
-
-    <circle cx="545" cy="335" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
-    <text x="545" y="328" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Home health</text>
-    <text x="545" y="344" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">aide</text>
-
-    <circle cx="370" cy="380" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
-    <text x="370" y="373" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Neighborhood</text>
-    <text x="370" y="389" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">organizer</text>
-
-    <circle cx="195" cy="335" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
-    <text x="195" y="330" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Religious</text>
-    <text x="195" y="346" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">leader</text>
-
-    <circle cx="195" cy="145" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
-    <text x="195" y="140" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Student</text>
-    <text x="195" y="156" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">journalist</text>
+    <a href="#layer-distribution">
+    <rect x="526" y="410" width="100" height="40" rx="5" fill="#7a5c8c"/>
+    <text x="576" y="429" font-size="13" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Print Digest</text>
+    <text x="576" y="444" font-size="11" fill="#d4b5e0" text-anchor="middle" font-style="italic" font-family="system-ui, sans-serif">Amplifying</text>
+    </a>
   </svg>
-  <div class="hub-spoke-label">Solid lines connect contributors to the hub. Dashed lines show each contributor&rsquo;s own audience. The hub amplifies; the spokes reach communities the institution alone cannot.</div>
-  <div class="voice-tracks">
-    <div class="voice-track">
-      <div class="voice-track-number">1</div>
-      <div class="voice-track-title">Discovery &amp; Development</div>
-      <div class="voice-track-text">Find voices not already in the conversation &mdash; not because they lack perspective, but because they lack platforms. Offer publishing support and training through the Journalism Lab.</div>
+
+  <!-- MOBILE FALLBACK -->
+  <div class="ecosystem-mobile">
+    <div class="ecosystem-mobile-layer">
+      <div class="ecosystem-mobile-layer-header" style="background:#5c8c3a;">Capacity Layer: How the Community Gets Stronger</div>
+      <div class="ecosystem-mobile-nodes">
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Journalism Training</span> <span class="ecosystem-mobile-node-act">Enabling</span><div class="ecosystem-mobile-node-connects">Feeds &rarr; Documenters, Voice Network</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Youth Programs</span> <span class="ecosystem-mobile-node-act">Enabling</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Media/AI Literacy</span> <span class="ecosystem-mobile-node-act">Enabling</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Civic Process Education</span> <span class="ecosystem-mobile-node-act">Enabling</span></div>
+      </div>
     </div>
-    <div class="voice-track">
-      <div class="voice-track-number">2</div>
-      <div class="voice-track-title">Curation &amp; Presentation</div>
-      <div class="voice-track-text">Select from across the network, prioritizing rigor, lived expertise, and good faith over ideology. The standard is need and proximity to root causes.</div>
+    <div class="ecosystem-mobile-layer">
+      <div class="ecosystem-mobile-layer-header" style="background:#00A1A5;">Infrastructure Layer: What Makes the Work Possible</div>
+      <div class="ecosystem-mobile-nodes">
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Public Records Archive</span> <span class="ecosystem-mobile-node-act">Navigating</span><div class="ecosystem-mobile-node-connects">Feeds &rarr; AI Infrastructure, Civic Map</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Open API</span> <span class="ecosystem-mobile-node-act">Enabling</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">AI-Powered Infrastructure</span> <span class="ecosystem-mobile-node-act">Navigating, Sensemaking</span><div class="ecosystem-mobile-node-connects">Surfaces leads &rarr; Newsroom</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Civic Calendar</span> <span class="ecosystem-mobile-node-act">Navigating, Facilitating</span><div class="ecosystem-mobile-node-connects">Directs &rarr; Documenters to meetings</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Civic Map</span> <span class="ecosystem-mobile-node-act">Navigating</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Policy Evaluator</span> <span class="ecosystem-mobile-node-act">Sensemaking</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Accountability Tracker</span> <span class="ecosystem-mobile-node-act">Documenting</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Community Pipeline</span> <span class="ecosystem-mobile-node-act">Sensemaking, Facilitating</span><div class="ecosystem-mobile-node-connects">Feeds briefs &rarr; Policy Analysis</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Community Milestones Registry</span> <span class="ecosystem-mobile-node-act">Preserving</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Election Results Archive</span> <span class="ecosystem-mobile-node-act">Preserving</span></div>
+      </div>
     </div>
-    <div class="voice-track">
-      <div class="voice-track-number">3</div>
-      <div class="voice-track-title">Connection &amp; Context</div>
-      <div class="voice-track-text">When the Info District publishes an investigation or analysis, invite network contributors to respond &mdash; community interpretation alongside institutional evidence.</div>
+    <div class="ecosystem-mobile-layer">
+      <div class="ecosystem-mobile-layer-header" style="background:#E65025;">The Editorial Layer: What the Organization Produces</div>
+      <div class="ecosystem-mobile-nodes">
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Newsroom</span> <span class="ecosystem-mobile-node-act">Inquiring</span><div class="ecosystem-mobile-node-connects">Receives leads from &larr; AI Pattern Detection. Publishes to &rarr; Dayton.FYI</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Independent Policy Analysis</span> <span class="ecosystem-mobile-node-act">Sensemaking</span><div class="ecosystem-mobile-node-connects">Receives briefs from &larr; Community Pipeline. Publishes to &rarr; Policy Evaluator</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Community Documentation Network</span> <span class="ecosystem-mobile-node-act">Documenting</span><div class="ecosystem-mobile-node-connects">Feeds data to &rarr; Accountability Tracker, Community Pipeline</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Community Voice Network</span> <span class="ecosystem-mobile-node-act">Commenting</span><div class="ecosystem-mobile-node-connects">Curated content &rarr; Dayton.FYI</div></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Citizen Journalism Training</span> <span class="ecosystem-mobile-node-act">Enabling</span></div>
+      </div>
+    </div>
+    <div class="ecosystem-mobile-layer">
+      <div class="ecosystem-mobile-layer-header" style="background:#7a5c8c;">Distribution Layer: How It Reaches People</div>
+      <div class="ecosystem-mobile-nodes">
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Dayton.FYI</span> <span class="ecosystem-mobile-node-act">Amplifying</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Neighborhood Digests</span> <span class="ecosystem-mobile-node-act">Amplifying</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">SMS Alerts</span> <span class="ecosystem-mobile-node-act">Amplifying</span></div>
+        <div class="ecosystem-mobile-node"><span class="ecosystem-mobile-node-name">Print Digest</span> <span class="ecosystem-mobile-node-act">Amplifying</span></div>
+      </div>
     </div>
   </div>
+
 </div>
 
-<p class="reveal">The hub editorial function operates on three tracks. First, <em>discovery and development</em> &mdash; actively seeking voices that aren&rsquo;t already in the conversation, not because they lack perspective but because they lack platforms: A retired city engineer who understands stormwater infrastructure; a home-health aide who sees the gaps in the elder care system; a DPS parent navigating special education bureaucracy; a religious leader bridging immigrant communities and city services. The Info District finds these voices, offers basic publishing support and training through the Journalism Lab, and helps them reach an audience.</p>
+<!-- Capacity Layer -->
+<h3 class="layer-heading reveal" id="layer-capacity"><span class="layer-heading-icon layer-map-icon--capacity">&#127793;</span> The Capacity Layer: How the Community Gets Stronger</h3>
 
-<p class="reveal">Second, <em>curation and presentation</em>. The hub selects from across the network &mdash; prioritizing rigor, specificity, lived expertise, and good faith over ideology. The editorial standard for inclusion is not agreement, it is need and proximity to root causes. Contributors who engage substantively with evidence, who argue from experience, and who treat their neighbors as worthy of persuasion rather than contempt earn inclusion in the platform.</p>
+<p class="reveal"><strong>Citizen journalism training</strong> &mdash; the Journalism Lab&rsquo;s core function. Training community members to tell their own stories and hold their own institutions accountable.</p>
 
-<p class="reveal">Third, <em>connection and context</em>. When the Info District publishes an accountability investigation or a policy analysis, the hub invites network contributors to respond &mdash; not as a checked-box requirement feigning as community engagement, but as important perspectives presented alongside the institutional work. The network&rsquo;s opinion and the institution&rsquo;s evidence reinforce each other. The argument becomes richer because the facts are accessible. The facts become relevant because people are arguing about them.</p>
+<p class="reveal"><strong>Youth journalism programs</strong> &mdash; partnerships with DPS and area higher education institutions. In June of 2025, The Journalism Lab worked with a Meadowdale sophomore to help her publish her <a href="https://www.teenvogue.com/story/school-buses-ohio-private-charter-schools" target="_blank" rel="noopener">investigation into school busing issues in Teen Vogue</a>, demonstrating the strength of the concept.</p>
 
-<p class="reveal">The Community Voice Network is not the Info District&rsquo;s opinion. The institution&rsquo;s editorial voice &mdash; expressed through its policy analyses, its ballot language translations, and its accountability reporting &mdash; remains nonpartisan, evidence-based, and neutral. The community voices it platforms are free to argue, advocate, and take sides. Contributors are clearly identified as independent community voices, not Info District staff or representatives.</p>
+<p class="reveal"><strong>Media and AI literacy education</strong> &mdash; helping residents understand how information ecosystems work, how AI tools function, and how to evaluate what they encounter. Targeted programming for immigrants, refugees, and underserved communities.</p>
 
-<p class="reveal">Preserving carries particular weight in this network: when a returning citizen writes about navigating reentry; when a family publishes the story of a grandparent whose life was never recorded in the paper of record; when a neighborhood elder documents what was lost to urban renewal. These should not be historical footnotes, but living testimony. This is how the Info District serves communities whose stories have been systematically excluded from Dayton&rsquo;s information ecosystem: not by telling those stories for them, but by building the infrastructure that lets them tell their own, and ensuring those stories endure.</p>
-
-<p class="reveal">In Tier 2, the Community Voice Network is the Journalism Lab&rsquo;s most scalable editorial function. The infrastructure cost is near zero &mdash; contributors publish on Substack or equivalent platforms at no cost to the Info District. The editorial lift is curation, not production. For the period between Tier 2 launch and any potential ballot initiative, the network is likely the primary driver of community visibility, audience growth, and emotional investment in the project.</p>
-
-<p class="reveal">In Tier 1, the network grows alongside the professional newsroom. The hub editorial curation function becomes a defined staff role. Stipends or per-piece payments become possible for contributors whose work meets publication standards, following the Documenters logic &mdash; community members doing civic work deserve to be paid for it.</p>
-
-<h4 class="layer-item-heading reveal">Citizen Journalism Training and Publication</h4>
-
-<p class="reveal">The Journalism Lab&rsquo;s existing core function, expanded: training community members in journalism skills across written, audio, video, and photographic disciplines. A publication platform at Dayton.FYI connecting community contributors. Youth journalism programs through DPS and higher education partnerships. Media literacy education for immigrants, refugees, and underserved communities.</p>
-
-<p class="reveal">The training function feeds directly into both the Documentation Network and the Community Voice Network &mdash; building the community&rsquo;s capacity to document, interpret, and argue on its own terms.</p>
+<p class="reveal"><strong>Community education about civic process</strong> &mdash; demystifying how government works, how to participate in public meetings, how to file public records requests, how to apply for appointed boards. The Documenters program is itself the most powerful version of this: a paid, structured, supported first experience with civic participation.</p>
 
 <!-- Infrastructure Layer -->
 <h3 class="layer-heading reveal" id="layer-infrastructure"><span class="layer-heading-icon layer-map-icon--infrastructure">&#9881;</span> The Infrastructure Layer: What Makes the Work Possible</h3>
 
 <p class="reveal">These are the systems that collect, organize, and make accessible the raw material that journalists, analysts, Documenters, and residents use.</p>
 
-<h4 class="layer-item-heading reveal">Public Records Archive and Proactive Disclosure</h4>
+<h4 class="layer-item-heading reveal" id="fn-public-records">Public Records Archive and Proactive Disclosure</h4>
 
 <p class="reveal">In Tier 2: voluntary aggregation of public records that are already publicly available but not consolidated or navigable &mdash; city contracts, property transfers, building permits, zoning decisions. Obtained through standard records requests, organized geographically, made searchable. A demonstration of what becomes possible when public records are treated as a navigable resource.</p>
 
@@ -585,11 +617,11 @@
 
 <p class="reveal">All proactive disclosure is subject to the data governance principles described in Section V &mdash; institutional transparency and personal privacy are serious commitments.</p>
 
-<h4 class="layer-item-heading reveal">Open API</h4>
+<h4 class="layer-item-heading reveal" id="fn-open-api">Open API</h4>
 
 <p class="reveal">All collected data available through a public API, free of charge. Other news organizations, researchers, app developers, and community organizations can build on the Info District&rsquo;s data without permission or payment. Bulk access to datasets containing personal identifying information is subject to the responsible access provisions described in Section V.</p>
 
-<h4 class="layer-item-heading reveal">AI-Powered Infrastructure</h4>
+<h4 class="layer-item-heading reveal" id="fn-ai-infrastructure">AI-Powered Infrastructure</h4>
 
 <p class="reveal"><em>Conversational Document Assistant.</em> A working interface where any resident can ask questions of dense public documents &mdash; the city budget, the zoning code, a TIF district agreement &mdash; in plain language and receive sourced, cited answers. &ldquo;How much did the city spend on sidewalk repair?&rdquo; answered with the relevant line item and page number. Individual query data is not retained in a manner that links questions to individuals &mdash; the tool serves the resident, it does not surveil them.</p>
 
@@ -681,7 +713,7 @@
 
 <p class="reveal"><em>Automated Translation.</em> Translation of public documents for non-English speakers. While some agencies and organizations already offer some translation services and individuals can use their own translation tools and resources, there are significant gaps in our public document accessibility that exclude sections of our community.</p>
 
-<h4 class="layer-item-heading reveal">Five Tools for Residents</h4>
+<h4 class="layer-item-heading reveal" id="fn-five-tools">Five Tools for Residents</h4>
 
 <p class="reveal">These tools share a common data layer and continuously reference each other. Together they provide the permanent, nonpartisan, structured information layer that makes every resident&rsquo;s civic judgment better informed. The full set is the aspiration; Tier 2 begins with the <a href="#tool-calendar">Civic Calendar</a> and elements of the <a href="#tool-map">Civic Map</a>, expanding as resources allow.</p>
 
@@ -856,12 +888,164 @@
   <div class="tool-demo-caption">Concept prototype of the Community Pipeline. A full implementation would track issues from initial community input through policy action and post-decision follow-up.</div>
 </div>
 
-<!-- Commons Layer -->
-<h3 class="layer-heading reveal" id="layer-commons"><span class="layer-heading-icon layer-map-icon--commons">&#127970;</span> The Commons Layer: What Belongs to the Community</h3>
+<!-- Editorial Layer -->
+<h3 class="layer-heading reveal" id="layer-foundation"><span class="layer-heading-icon layer-map-icon--foundation">&#9998;</span> The Editorial Layer: What the Organization Produces</h3>
 
-<p class="reveal">These records accumulate over time and become more valuable with age. They are the permanent memory of Dayton&rsquo;s civic life.</p>
+<p class="reveal">These are the functions that require editorial skill and institutional commitment. Everything else either feeds into these or distributes what they produce.</p>
 
-<h4 class="layer-item-heading reveal">Community Milestones Registry</h4>
+<h4 class="layer-item-heading reveal" id="fn-accountability">Newsroom</h4>
+
+<p class="reveal">This is the core that gives the rest of the system teeth. When the <a href="#tool-tracker">vote tracker</a> reveals a commissioner voting against their stated positions, when the <a href="#tool-pipeline">community pipeline</a> surfaces a systemic problem &mdash; someone has to pick up the phone, knock on doors, file records requests, and write the story. That&rsquo;s journalists.</p>
+
+<p class="reveal">Tier 1 funds a small professional newsroom (2&ndash;4 journalists) that is editorially independent from both city government and the <a href="#governance">Community Information Board</a>. The newsroom focuses on accountability reporting that follows from the data the rest of the system surfaces.</p>
+
+<p class="reveal">Without the newsroom, the Info District is a well-organized library. With it, the Info District is an accountability institution.</p>
+
+<p class="reveal">In Tier 2, accountability coverage is lighter &mdash; driven by the Journalism Lab&rsquo;s existing capacity, community contributors, and the documentation network. In Tier 1, it becomes a dedicated professional function.</p>
+
+<h4 class="layer-item-heading reveal" id="fn-policy-analysis">Independent Policy Analysis</h4>
+
+<p class="reveal">When a significant policy proposal comes before the City Commission, the Dayton Public Schools board, or another tracked government body, the Info District publishes an independent, nonpartisan analysis: what the proposal does, what it costs, who benefits, who bears the cost, what assumptions it relies on, and what comparable cities have experienced. This analysis is published before the vote, ensuring that residents and officials have access to an evaluation that was not produced by the proposal&rsquo;s chief advocates or by staff who report to the body voting on it.</p>
+
+<p class="reveal">Today, public agendas for the Dayton City Commission are made available on Monday for a Wednesday vote and are frequently hundreds of pages long. No resident, and few commissioners, can meaningfully evaluate that volume of material in 48 hours. Independent analysis published in advance of a vote, in accessible language, changes who can participate in the process.</p>
+
+<p class="reveal">No equivalent exists at the municipal level in most American cities. The Info District functions as a local Congressional Budget Office, providing the independent analytical capacity that informed democratic decision-making requires.</p>
+
+<p class="reveal">Consider what happened with ShotSpotter. In 2019, the Dayton City Commission <a href="https://www.daytondailynews.com/news/dayton-considers-extension-for-controversial-gunshot-detection-system/AI7P2RO5IJGSDPQVTKC33JLMUQ/" target="_blank" rel="noopener">approved a $205,000 contract</a> for gunshot-detection technology deployed across a three-square-mile area of predominantly Black northwest Dayton. No independent cost-benefit analysis, equity impact assessment, or review of the <a href="https://endpolicesurveillance.com/" target="_blank" rel="noopener">growing national research</a> questioning the technology&rsquo;s effectiveness was made available to the public before either vote. In November 2020, the commission voted 4-1 to extend the contract for $390,000 more, the day before Thanksgiving, over Zoom, without public comment, despite a petition with hundreds of signatures opposing it. The first real data investigation came not from the city but from <a href="https://www.wyso.org/local-and-statewide-news/2021-10-04/shotspotter-generates-thousands-of-alerts-in-dayton-but-officers-find-few-crimes" target="_blank" rel="noopener">WYSO</a>, a full year after the extension vote: fewer than 2% of ShotSpotter alerts in Dayton resulted in an arrest. The city eventually <a href="https://www.daytondailynews.com/local/dayton-not-renewing-contract-with-shotspotter-program/PYYGLLNVRJGUHEAF4OSJJ7K4NA/" target="_blank" rel="noopener">let the contract expire</a> at the end of 2022, after spending roughly $595,000. An independent policy analysis available to the community before either vote, with national data, local effectiveness metrics, and comparable city research, could have changed the outcome.</p>
+
+<p class="reveal">In Tier 2, this is lighter &mdash; plain-language explainers sourced from public documents. In Tier 1, a dedicated policy analyst produces full independent fiscal and policy analyses.</p>
+
+<h4 class="layer-item-heading reveal" id="fn-documenters">Community Documentation Network</h4>
+
+<p class="reveal">A Documenters-style program that trains and pays community members to attend and document public meetings. This is the highest-volume civic data collection function and the raw material for much of what the rest of the system produces.</p>
+
+<p class="reveal">The Info District would support and integrate with the national <a href="https://www.documenters.org/" target="_blank" rel="noopener">Documenters Network</a> if it extends to Dayton. If the network does not arrive, the Info District develops an equivalent local program independently. Either path results in consistent, structured, paid community documentation of public governance.</p>
+
+<p class="reveal">Documenters record not just narrative notes but structured data: who was present, what motions were made, how each official voted, what the outcome was. This structured data feeds directly into the <a href="#tool-tracker">Accountability Tracker</a>.</p>
+
+<aside class="pull-quote reveal">&ldquo;We urge people to get involved in the evolution of their information ecologies &mdash; jump into the primordial soup, stir it around, and make as many waves as possible.&rdquo; &mdash; Nardi &amp; O&rsquo;Day</aside>
+
+<h4 class="layer-item-heading reveal" id="fn-voice-network">Community Voice Network</h4>
+
+<p class="reveal">The Information District produces data, analysis, and accountability reporting. But democratic life does not run on data alone. Between the public record and public judgment sits a crucial interpretive step some might mistake for noise or uncomfortable arguing &mdash; the space where residents debate what the facts mean, what the community should value, and what kind of city Dayton ought to become. That step is not a supplement to civic infrastructure, it is the reason civic infrastructure matters, and how we handle that step can lead to improved democratic outcomes.</p>
+
+<p class="reveal">The Community Voice Network is a hub-and-spoke publishing model that cultivates, connects, and amplifies independent community contributors across the Dayton region. The hub &mdash; Dayton.FYI &mdash; curates and presents the strongest community writing, audio, and visual work from a growing network of independent contributors, each publishing on their own platforms and building their own audiences. The hub selects, contextualizes, and spotlights what the spokes create. These independent contributors &mdash; residents, neighborhood leaders, subject-matter practitioners, retired professionals, students, organizers, artists &mdash; publish on topics they know and care about. Contributors maintain editorial independence over their own work. They are not Info District staff, they are community voices that the Info District&rsquo;s editorial team identifies, develops, and connects to a broader audience.</p>
+
+<div class="hub-spoke reveal">
+  <svg class="hub-spoke-svg" viewBox="0 0 740 480" xmlns="http://www.w3.org/2000/svg">
+    <!-- Lines: hub to contributors -->
+    <line x1="370" y1="240" x2="370" y2="100" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="370" y2="380" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="195" y2="145" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="545" y2="145" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="195" y2="335" stroke="#d0d0d0" stroke-width="2"/>
+    <line x1="370" y1="240" x2="545" y2="335" stroke="#d0d0d0" stroke-width="2"/>
+
+    <!-- Lines: contributors to audiences -->
+    <line x1="370" y1="100" x2="280" y2="35" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="100" x2="370" y2="25" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="100" x2="460" y2="35" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="145" x2="650" y2="85" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="145" x2="675" y2="145" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="335" x2="650" y2="390" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="545" y1="335" x2="675" y2="335" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="380" x2="280" y2="445" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="380" x2="370" y2="460" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="370" y1="380" x2="460" y2="445" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="335" x2="90" y2="390" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="335" x2="65" y2="335" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="335" x2="90" y2="285" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="145" x2="90" y2="85" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="195" y1="145" x2="65" y2="145" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+    <!-- Audience labels -->
+    <text x="270" y="28" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Neighbors</text>
+    <text x="370" y="18" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">City council</text>
+    <text x="470" y="28" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Utilities dept.</text>
+    <text x="660" y="80" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Other parents</text>
+    <text x="685" y="143" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">School board</text>
+    <text x="660" y="397" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Patients</text>
+    <text x="685" y="340" font-size="13" fill="#999" text-anchor="start" font-family="system-ui, sans-serif">Families</text>
+    <text x="270" y="455" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Block clubs</text>
+    <text x="370" y="475" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">City agencies</text>
+    <text x="470" y="455" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Residents</text>
+    <text x="80" y="398" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Congregation</text>
+    <text x="55" y="340" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Immigrants</text>
+    <text x="80" y="280" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Neighborhood</text>
+    <text x="80" y="78" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Classmates</text>
+    <text x="55" y="143" font-size="13" fill="#999" text-anchor="middle" font-family="system-ui, sans-serif">Campus</text>
+
+    <!-- Hub -->
+    <circle cx="370" cy="240" r="58" fill="#E65025"/>
+    <text x="370" y="234" font-size="17" fill="white" text-anchor="middle" font-weight="700" font-family="system-ui, sans-serif">Dayton.FYI</text>
+    <text x="370" y="254" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif">hub</text>
+
+    <!-- Contributor nodes -->
+    <circle cx="370" cy="100" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="370" y="94" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Retired city</text>
+    <text x="370" y="110" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">engineer</text>
+
+    <circle cx="545" cy="145" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="545" y="140" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">DPS</text>
+    <text x="545" y="156" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">parent</text>
+
+    <circle cx="545" cy="335" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="545" y="328" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Home health</text>
+    <text x="545" y="344" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">aide</text>
+
+    <circle cx="370" cy="380" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="370" y="373" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Neighborhood</text>
+    <text x="370" y="389" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">organizer</text>
+
+    <circle cx="195" cy="335" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="195" y="330" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Religious</text>
+    <text x="195" y="346" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">leader</text>
+
+    <circle cx="195" cy="145" r="42" fill="#00A1A5" stroke="white" stroke-width="2"/>
+    <text x="195" y="140" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">Student</text>
+    <text x="195" y="156" font-size="12" fill="white" text-anchor="middle" font-weight="600" font-family="system-ui, sans-serif">journalist</text>
+  </svg>
+  <div class="hub-spoke-label">Solid lines connect contributors to the hub. Dashed lines show each contributor&rsquo;s own audience. The hub amplifies; the spokes reach communities the institution alone cannot.</div>
+  <div class="voice-tracks">
+    <div class="voice-track">
+      <div class="voice-track-number">1</div>
+      <div class="voice-track-title">Discovery &amp; Development</div>
+      <div class="voice-track-text">Find voices not already in the conversation &mdash; not because they lack perspective, but because they lack platforms. Offer publishing support and training through the Journalism Lab.</div>
+    </div>
+    <div class="voice-track">
+      <div class="voice-track-number">2</div>
+      <div class="voice-track-title">Curation &amp; Presentation</div>
+      <div class="voice-track-text">Select from across the network, prioritizing rigor, lived expertise, and good faith over ideology. The standard is need and proximity to root causes.</div>
+    </div>
+    <div class="voice-track">
+      <div class="voice-track-number">3</div>
+      <div class="voice-track-title">Connection &amp; Context</div>
+      <div class="voice-track-text">When the Info District publishes an investigation or analysis, invite network contributors to respond &mdash; community interpretation alongside institutional evidence.</div>
+    </div>
+  </div>
+</div>
+
+<p class="reveal">The hub editorial function operates on three tracks. First, <em>discovery and development</em> &mdash; actively seeking voices that aren&rsquo;t already in the conversation, not because they lack perspective but because they lack platforms: A retired city engineer who understands stormwater infrastructure; a home-health aide who sees the gaps in the elder care system; a DPS parent navigating special education bureaucracy; a religious leader bridging immigrant communities and city services. The Info District finds these voices, offers basic publishing support and training through the Journalism Lab, and helps them reach an audience.</p>
+
+<p class="reveal">Second, <em>curation and presentation</em>. The hub selects from across the network &mdash; prioritizing rigor, specificity, lived expertise, and good faith over ideology. The editorial standard for inclusion is not agreement, it is need and proximity to root causes. Contributors who engage substantively with evidence, who argue from experience, and who treat their neighbors as worthy of persuasion rather than contempt earn inclusion in the platform.</p>
+
+<p class="reveal">Third, <em>connection and context</em>. When the Info District publishes an accountability investigation or a policy analysis, the hub invites network contributors to respond &mdash; not as a checked-box requirement feigning as community engagement, but as important perspectives presented alongside the institutional work. The network&rsquo;s opinion and the institution&rsquo;s evidence reinforce each other. The argument becomes richer because the facts are accessible. The facts become relevant because people are arguing about them.</p>
+
+<p class="reveal">The Community Voice Network is not the Info District&rsquo;s opinion. The institution&rsquo;s editorial voice &mdash; expressed through its policy analyses, its ballot language translations, and its accountability reporting &mdash; remains nonpartisan, evidence-based, and neutral. The community voices it platforms are free to argue, advocate, and take sides. Contributors are clearly identified as independent community voices, not Info District staff or representatives.</p>
+
+<p class="reveal">Preserving carries particular weight in this network: when a returning citizen writes about navigating reentry; when a family publishes the story of a grandparent whose life was never recorded in the paper of record; when a neighborhood elder documents what was lost to urban renewal. These should not be historical footnotes, but living testimony. This is how the Info District serves communities whose stories have been systematically excluded from Dayton&rsquo;s information ecosystem: not by telling those stories for them, but by building the infrastructure that lets them tell their own, and ensuring those stories endure.</p>
+
+<p class="reveal">In Tier 2, the Community Voice Network is the Journalism Lab&rsquo;s most scalable editorial function. The infrastructure cost is near zero &mdash; contributors publish on Substack or equivalent platforms at no cost to the Info District. The editorial lift is curation, not production. For the period between Tier 2 launch and any potential ballot initiative, the network is likely the primary driver of community visibility, audience growth, and emotional investment in the project.</p>
+
+<p class="reveal">In Tier 1, the network grows alongside the professional newsroom. The hub editorial curation function becomes a defined staff role. Stipends or per-piece payments become possible for contributors whose work meets publication standards, following the Documenters logic &mdash; community members doing civic work deserve to be paid for it.</p>
+
+<h4 class="layer-item-heading reveal" id="fn-cj-training">Citizen Journalism Training and Publication</h4>
+
+<p class="reveal">The Journalism Lab&rsquo;s existing core function, expanded: training community members in journalism skills across written, audio, video, and photographic disciplines. A publication platform at Dayton.FYI connecting community contributors. Youth journalism programs through DPS and higher education partnerships. Media literacy education for immigrants, refugees, and underserved communities.</p>
+
+<p class="reveal">The training function feeds directly into both the Documentation Network and the Community Voice Network &mdash; building the community&rsquo;s capacity to document, interpret, and argue on its own terms.</p>
+
+<h4 class="layer-item-heading reveal" id="fn-milestones">Community Milestones Registry</h4>
 
 <p class="reveal">A free, permanent, publicly searchable record of community life across its full arc &mdash; births, graduations, marriages, military service, retirements, community achievements, business openings, and deaths. Newspapers once served as the chronicle of a community&rsquo;s key celebrations of life and acknowledgements of death, functions that newspapers have shed or that have splintered off into other, private enterprises. Their loss is one that will be felt acutely by future historians and documentarians. Returning these Daytonians&rsquo; important life milestones to the public record will re-center the idea that these stories should be owned by the community and are not reserved for only those who can afford hundreds of dollars for an obituary in a newspaper or funeral home, where data security and archival processes are questionable at best. Milestones are voluntary and submitter-controlled. Families and individuals choose what to share. Removal requests are honored.</p>
 
@@ -904,7 +1088,7 @@
   <div class="tool-demo-caption">A real example demonstrating the Community Milestones Registry. Top: the current state of this obituary, dependent on a commercial platform. Bottom: how the same record would appear in a community-owned, permanent, free civic archive. Nick Hrkman, as staff of the Dayton Daily News, did not have to pay the estimated $1,200 placement of the obit that was placed when his grandmother died in 2023. He doesn&rsquo;t feel any family should be charged that exorbitant amount to be included in the permanent record of their community, especially if the record is subject to be removed or lost, as seen in the screenshot of the daytondailynews.com website above, taken on April 1, 2026.</div>
 </div>
 
-<h4 class="layer-item-heading reveal">Election Results Archive</h4>
+<h4 class="layer-item-heading reveal" id="fn-election-archive">Election Results Archive</h4>
 
 <p class="reveal">Precinct-level election results, permanently archived, mapped geographically, searchable across election cycles. How did your precinct vote on Issue 9? How has turnout in your neighborhood changed over the last four cycles?</p>
 
@@ -1053,18 +1237,6 @@
 
 <p class="reveal"><strong>Print digest (Tier 1)</strong> &mdash; weekly via USPS Every Door Direct Mail, reaching residents without internet access and to meet the needs of those who might find themselves losing access to a regularly printed local news, should the DDN cease print operations. Costs for printing and distribution are discussed later, and are not insignificant, but a weekly (or bi-weekly) replacement of a Sunday paper that summarizes the most important news and updates of the week, in addition to giving a calendar of upcoming events and civic deadlines, remains one of the most durable and time-tested tools of modern journalism. Like the SMS messages, this is a commitment to equity: the information commons serves the whole community, not just the internet-connected or digitally savvy portion.</p>
 
-<!-- Capacity Layer -->
-<h3 class="layer-heading reveal" id="layer-capacity"><span class="layer-heading-icon layer-map-icon--capacity">&#127793;</span> The Capacity Layer: How the Community Gets Stronger</h3>
-
-<p class="reveal"><strong>Citizen journalism training</strong> &mdash; the Journalism Lab&rsquo;s core function. Training community members to tell their own stories and hold their own institutions accountable.</p>
-
-<p class="reveal"><strong>Youth journalism programs</strong> &mdash; partnerships with DPS and area higher education institutions. In June of 2025, The Journalism Lab worked with a Meadowdale sophomore to help her publish her <a href="https://www.teenvogue.com/story/school-buses-ohio-private-charter-schools" target="_blank" rel="noopener">investigation into school busing issues in Teen Vogue</a>, demonstrating the strength of the concept.</p>
-
-<p class="reveal"><strong>Media and AI literacy education</strong> &mdash; helping residents understand how information ecosystems work, how AI tools function, and how to evaluate what they encounter. Targeted programming for immigrants, refugees, and underserved communities.</p>
-
-<p class="reveal"><strong>Community education about civic process</strong> &mdash; demystifying how government works, how to participate in public meetings, how to file public records requests, how to apply for appointed boards. The Documenters program is itself the most powerful version of this: a paid, structured, supported first experience with civic participation.</p>
-
-<hr class="section-divider">
 
 <!-- ==================== SECTION IV ==================== -->
 <h2 class="chapter-heading reveal" id="ai-policy">IV. AI Policy</h2>
