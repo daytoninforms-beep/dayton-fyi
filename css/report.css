@@ -1833,6 +1833,57 @@ li {
   }
 }
 
+/* --- Records Audit Table --- */
+.records-audit {
+  margin: 1.5rem 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  overflow-x: auto;
+}
+
+.records-audit table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.records-audit th {
+  text-align: left;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #999;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.records-audit td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #383838;
+  vertical-align: top;
+}
+
+.records-audit tr:last-child td {
+  border-bottom: none;
+}
+
+.audit-status {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.audit-status--available { color: #2e7d32; }
+.audit-status--partial { color: #b8860b; }
+.audit-status--not { color: #c62828; }
+
+.records-audit-note {
+  font-size: 0.6rem;
+  color: #999;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
 /* --- Data Governance Commitments --- */
 .commitments {
   margin: 2rem 0;
