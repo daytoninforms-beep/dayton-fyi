@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civic Map — Dayton.FYI</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      color: #383838;
+      background: #faf9f7;
+      font-size: 14px;
+    }
+
+    .map-container { padding: 0.75rem; }
+
+    .map-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .map-select {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 0.6rem;
+      border: 2px solid #383838;
+      border-radius: 4px;
+      background: #fff;
+      color: #383838;
+      cursor: pointer;
+    }
+
+    .map-layers {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .map-layer-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.7rem;
+      color: #58595B;
+      cursor: pointer;
+    }
+
+    .map-layer-toggle input {
+      accent-color: #00A1A5;
+    }
+
+    .map-layer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #map {
+      width: 100%;
+      height: 350px;
+      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .map-data-panel {
+      margin-top: 0.75rem;
+    }
+
+    .map-data-header {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #383838;
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .map-data-header span {
+      font-size: 0.6rem;
+      font-weight: 400;
+      color: #999;
+    }
+
+    .map-data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .map-data-item {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 0.5rem;
+      font-size: 0.65rem;
+      color: #58595B;
+      line-height: 1.45;
+    }
+
+    .map-data-item-type {
+      font-size: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .map-data-item-type--transfer { color: #E65025; }
+    .map-data-item-type--permit { color: #00A1A5; }
+    .map-data-item-type--violation { color: #c4a000; }
+    .map-data-item-type--official { color: #3a6b8c; }
+
+    .map-data-item-address {
+      font-weight: 700;
+      color: #383838;
+      margin-bottom: 0.1rem;
+    }
+
+    /* Leaflet popup styling */
+    .leaflet-popup-content {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      margin: 8px 12px;
+    }
+
+    .leaflet-popup-content strong {
+      color: #383838;
+    }
+
+    .officials-box {
+      margin-top: 0.75rem;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-left: 3px solid #3a6b8c;
+      border-radius: 0 4px 4px 0;
+      padding: 0.6rem 0.75rem;
+      display: none;
+    }
+
+    .officials-box.visible { display: block; }
+
+    .officials-box-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #3a6b8c;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    .officials-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.25rem 1rem;
+    }
+
+    .official-item {
+      font-size: 0.65rem;
+      color: #58595B;
+      line-height: 1.4;
+    }
+
+    .official-item a {
+      color: #3a6b8c;
+      text-decoration: none;
+    }
+
+    .official-item a:hover {
+      color: #E65025;
+      text-decoration: underline;
+    }
+
+    .official-office {
+      font-size: 0.55rem;
+      color: #999;
+    }
+
+    @media (max-width: 500px) {
+      .officials-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .map-data-grid { grid-template-columns: 1fr; }
+      #map { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="map-container">
+
+    <div class="map-controls">
+      <select class="map-select" id="hood-select">
+        <option value="five-oaks">Five Oaks</option>
+        <option value="south-park">South Park</option>
+        <option value="downtown">Downtown</option>
+        <option value="patterson-park">Patterson Park</option>
+      </select>
+      <div class="map-layers">
+        <label class="map-layer-toggle"><input type="checkbox" checked data-layer="transfers"><span class="map-layer-dot" style="background:#E65025;"></span> Transfers</label>
+        <label class="map-layer-toggle"><input type="checkbox" checked data-layer="permits"><span class="map-layer-dot" style="background:#00A1A5;"></span> Permits</label>
+        <label class="map-layer-toggle"><input type="checkbox" checked data-layer="violations"><span class="map-layer-dot" style="background:#c4a000;"></span> Violations</label>
+        <label class="map-layer-toggle"><input type="checkbox" checked data-layer="officials"><span class="map-layer-dot" style="background:#3a6b8c;"></span> Officials</label>
+      </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="map-data-panel">
+      <div class="map-data-header" id="data-header">Five Oaks <span id="data-count"></span></div>
+      <div class="map-data-grid" id="data-grid"></div>
+    </div>
+
+    <div class="officials-box" id="officials-box">
+      <div class="officials-box-title">Elected Representatives</div>
+      <div class="officials-list" id="officials-list"></div>
+      <div style="font-size:0.55rem;color:#999;font-style:italic;margin-top:0.4rem;">State-level district assignments are approximate. <a href="https://findmydistrict.ohiosos.gov/" target="_blank" style="color:#3a6b8c;">Verify your specific address at the Ohio Secretary of State.</a></div>
+    </div>
+
+  </div>
+
+  <script>
+  (function() {
+    // Neighborhood data
+    var neighborhoods = {
+      'five-oaks': {
+        name: 'Five Oaks',
+        center: [39.772, -84.202],
+        zoom: 15,
+        data: {
+          transfers: [
+            { lat: 39.7735, lng: -84.2005, address: '1247 Grand Ave', text: 'LLC purchase, $62,000. Buyer: Gem City Holdings LLC. Third acquisition on this block in 14 months.', source: 'https://www.mcrealestate.org/search/commonsearch.aspx?mode=address', sourceLabel: 'County Auditor' },
+            { lat: 39.7710, lng: -84.1985, address: '942 Delaware Ave', text: 'Sale, $78,500. Individual buyer. Previously bank-owned since 2022.', source: 'https://www.mcrealestate.org/search/commonsearch.aspx?mode=address', sourceLabel: 'County Auditor' }
+          ],
+          permits: [
+            { lat: 39.7720, lng: -84.2030, address: '908 Delaware Ave', text: 'Roof replacement, $8,200. Owner-occupied. Permit issued 3/12/2026.', source: 'https://www.daytonohio.gov/201/Online-Permit-System', sourceLabel: 'City Permit System' }
+          ],
+          violations: [
+            { lat: 39.7745, lng: -84.1990, address: '1503 N. Main St', text: 'Exterior maintenance violation issued 2/14/2026. Unresponsive owner. Property last transferred to KMG Realty LLC in 2023.', source: 'https://www.mcrealestate.org/search/commonsearch.aspx?mode=address', sourceLabel: 'County Auditor' }
+          ]
+        }
+      },
+      'south-park': {
+        name: 'South Park',
+        center: [39.738, -84.179],
+        zoom: 15,
+        data: {
+          transfers: [
+            { lat: 39.7395, lng: -84.1775, address: '20 Greenwood Ave', text: 'Currently operated as a successful Airbnb. Marketed to investors as STR opportunity.', source: 'https://www.airbnb.com/s/South-Park--Dayton--OH/homes', sourceLabel: 'Airbnb listing' },
+            { lat: 39.7370, lng: -84.1800, address: 'Bonner St', text: 'Purchased by Windsor Companies (Columbus-based). Part of cross-neighborhood acquisition pattern.', source: 'https://www.daytondailynews.com/local/fire-blocks-developer-buys-up-residential-real-estate/3OIQAD3WCVBYLJ6ZZRIQWKEITQ/', sourceLabel: 'DDN reporting' }
+          ],
+          permits: [
+            { lat: 39.7385, lng: -84.1760, address: '200 Burns Ave', text: 'The Flats at South Park III \u2014 4.68 acres, prefab housing development. Purchased from city for $234,400.', source: 'https://www.daytondailynews.com/news/developer-plans-urbanist-homes-in-south-park-neighborhood/P3PPKJW4JVHL7OM5G4NPRBMDFY/', sourceLabel: 'DDN reporting' }
+          ],
+          violations: [
+            { lat: 39.7365, lng: -84.1815, address: '14 Garret St', text: 'Site of June 2025 shooting at Airbnb bungalow. Fueled local STR regulation debate.', source: 'https://www.daytondailynews.com/news/shooting-latest-local-episode-in-continuing-debate-over-airbnb-short-term-rental-regulation/TGPVLFZEGZHXDLSC3DUQHB2HYM/', sourceLabel: 'DDN reporting' }
+          ]
+        }
+      },
+      'downtown': {
+        name: 'Downtown',
+        center: [39.759, -84.192],
+        zoom: 16,
+        data: {
+          transfers: [
+            { lat: 39.7605, lng: -84.1935, address: '34 N. Main St', text: 'Commercial sale, $1.2M. Mixed-use conversion from office to residential. TIF district property.', source: 'https://www.mcrealestate.org/search/commonsearch.aspx?mode=address', sourceLabel: 'County Auditor' },
+            { lat: 39.7580, lng: -84.1910, address: 'Fire Blocks District', text: 'Windsor Companies redevelopment. 15-year, 100% CRA abatement on improvements.', source: 'https://www.daytondailynews.com/local/fire-blocks-developer-buys-up-residential-real-estate/3OIQAD3WCVBYLJ6ZZRIQWKEITQ/', sourceLabel: 'DDN reporting' }
+          ],
+          permits: [
+            { lat: 39.7595, lng: -84.1895, address: '130 W. Second St', text: 'Commercial renovation, $450,000. Third Street Partners. Interior buildout for restaurant space.', source: 'https://www.daytonohio.gov/201/Online-Permit-System', sourceLabel: 'City Permit System' }
+          ],
+          violations: []
+        }
+      },
+      'patterson-park': {
+        name: 'Patterson Park',
+        center: [39.735, -84.165],
+        zoom: 15,
+        data: {
+          transfers: [
+            { lat: 39.7360, lng: -84.1640, address: '1842 Patterson Rd', text: 'Sale, $145,000. Individual buyer. Owner-occupied.', source: 'https://www.mcrealestate.org/search/commonsearch.aspx?mode=address', sourceLabel: 'County Auditor' }
+          ],
+          permits: [
+            { lat: 39.7340, lng: -84.1670, address: '2200 Far Hills Ave', text: 'Residential addition, $35,000. Detached garage conversion. Historic district review pending.', source: 'https://www.daytonohio.gov/201/Online-Permit-System', sourceLabel: 'City Permit System' },
+            { lat: 39.7355, lng: -84.1625, address: '1901 Wilmington Ave', text: 'HVAC replacement, $12,400. Owner-occupied.', source: 'https://www.daytonohio.gov/201/Online-Permit-System', sourceLabel: 'City Permit System' }
+          ],
+          violations: [
+            { lat: 39.7345, lng: -84.1660, address: '2015 Wayne Ave', text: 'Vacant property registration lapsed. Owner notified 1/28/2026.', source: 'https://cityofdaytonoh.nextrequest.com/', sourceLabel: 'City records request' }
+          ]
+        }
+      }
+    };
+
+    var colors = {
+      transfers: '#E65025',
+      permits: '#00A1A5',
+      violations: '#c4a000'
+    };
+
+    var typeLabels = {
+      transfers: 'Property Transfer',
+      permits: 'Building Permit',
+      violations: 'Code Violation'
+    };
+
+    var typeClasses = {
+      transfers: 'transfer',
+      permits: 'permit',
+      violations: 'violation'
+    };
+
+    var officialsData = {
+      'five-oaks': [
+        { office: 'Mayor', name: 'Shenise Turner-Sloss', url: 'https://www.daytonohio.gov/169/Mayors-Office' },
+        { office: 'City Commission', name: 'At-large: Joseph, Shaw, Fairchild, Beckham', url: 'https://www.daytonohio.gov/173/City-Commission' },
+        { office: 'County Commission', name: 'Rice, Dodge, Lieberman', url: 'https://www.mcohio.org/685/Board-of-County-Commissioners' },
+        { office: 'DPS Board', name: 'At-large: Goodwine, Bailey, Smith, Walker, Garrison, Rhynard, Lacey', url: 'https://www.dps.k12.oh.us/board-of-education' },
+        { office: 'Ohio House (Dist. 38)', name: 'Desiree Tims (D)', url: 'https://ohiohouse.gov/members/directory' },
+        { office: 'Ohio Senate (Dist. 6)', name: 'Willis Blackshear Jr. (D)', url: 'https://ohiosenate.gov/members/directory' },
+        { office: 'U.S. House (OH-10)', name: 'Mike Turner (R)', url: 'https://turner.house.gov/' }
+      ],
+      'south-park': [
+        { office: 'Mayor', name: 'Shenise Turner-Sloss', url: 'https://www.daytonohio.gov/169/Mayors-Office' },
+        { office: 'City Commission', name: 'At-large: Joseph, Shaw, Fairchild, Beckham', url: 'https://www.daytonohio.gov/173/City-Commission' },
+        { office: 'County Commission', name: 'Rice, Dodge, Lieberman', url: 'https://www.mcohio.org/685/Board-of-County-Commissioners' },
+        { office: 'DPS Board', name: 'At-large: Goodwine, Bailey, Smith, Walker, Garrison, Rhynard, Lacey', url: 'https://www.dps.k12.oh.us/board-of-education' },
+        { office: 'Ohio House (Dist. 36)', name: 'Andrea White (R)', url: 'https://ohiohouse.gov/members/directory' },
+        { office: 'Ohio Senate (Dist. 6)', name: 'Willis Blackshear Jr. (D)', url: 'https://ohiosenate.gov/members/directory' },
+        { office: 'U.S. House (OH-10)', name: 'Mike Turner (R)', url: 'https://turner.house.gov/' }
+      ],
+      'downtown': [
+        { office: 'Mayor', name: 'Shenise Turner-Sloss', url: 'https://www.daytonohio.gov/169/Mayors-Office' },
+        { office: 'City Commission', name: 'At-large: Joseph, Shaw, Fairchild, Beckham', url: 'https://www.daytonohio.gov/173/City-Commission' },
+        { office: 'County Commission', name: 'Rice, Dodge, Lieberman', url: 'https://www.mcohio.org/685/Board-of-County-Commissioners' },
+        { office: 'DPS Board', name: 'At-large: Goodwine, Bailey, Smith, Walker, Garrison, Rhynard, Lacey', url: 'https://www.dps.k12.oh.us/board-of-education' },
+        { office: 'Ohio House (Dist. 36)', name: 'Andrea White (R)', url: 'https://ohiohouse.gov/members/directory' },
+        { office: 'Ohio Senate (Dist. 6)', name: 'Willis Blackshear Jr. (D)', url: 'https://ohiosenate.gov/members/directory' },
+        { office: 'U.S. House (OH-10)', name: 'Mike Turner (R)', url: 'https://turner.house.gov/' }
+      ],
+      'patterson-park': [
+        { office: 'Mayor', name: 'Shenise Turner-Sloss', url: 'https://www.daytonohio.gov/169/Mayors-Office' },
+        { office: 'City Commission', name: 'At-large: Joseph, Shaw, Fairchild, Beckham', url: 'https://www.daytonohio.gov/173/City-Commission' },
+        { office: 'County Commission', name: 'Rice, Dodge, Lieberman', url: 'https://www.mcohio.org/685/Board-of-County-Commissioners' },
+        { office: 'DPS Board', name: 'At-large: Goodwine, Bailey, Smith, Walker, Garrison, Rhynard, Lacey', url: 'https://www.dps.k12.oh.us/board-of-education' },
+        { office: 'Ohio House (Dist. 36)', name: 'Andrea White (R)', url: 'https://ohiohouse.gov/members/directory' },
+        { office: 'Ohio Senate (Dist. 6)', name: 'Willis Blackshear Jr. (D)', url: 'https://ohiosenate.gov/members/directory' },
+        { office: 'U.S. House (OH-10)', name: 'Mike Turner (R)', url: 'https://turner.house.gov/' }
+      ]
+    };
+
+    // Initialize map
+    var map = L.map('map', { scrollWheelZoom: false }).setView([39.772, -84.202], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    var markerLayers = {
+      transfers: L.layerGroup().addTo(map),
+      permits: L.layerGroup().addTo(map),
+      violations: L.layerGroup().addTo(map)
+    };
+
+    function createMarker(item, type) {
+      var color = colors[type];
+      var icon = L.divIcon({
+        className: '',
+        html: '<div style="width:14px;height:14px;border-radius:50%;background:' + color + ';border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7]
+      });
+
+      var marker = L.marker([item.lat, item.lng], { icon: icon });
+      var popupHtml = '<strong>' + item.address + '</strong><br>' + item.text;
+      if (item.source) {
+        popupHtml += '<br><a href="' + item.source + '" target="_blank" style="color:#00A1A5;font-size:0.65rem;">Source: ' + (item.sourceLabel || 'View') + '</a>';
+      }
+      marker.bindPopup(popupHtml);
+      return marker;
+    }
+
+    function loadNeighborhood(id) {
+      var hood = neighborhoods[id];
+      if (!hood) return;
+
+      map.setView(hood.center, hood.zoom);
+
+      // Clear all markers
+      Object.keys(markerLayers).forEach(function(key) {
+        markerLayers[key].clearLayers();
+      });
+
+      // Add markers for each visible layer (excluding officials)
+      var totalCount = 0;
+      ['transfers', 'permits', 'violations'].forEach(function(type) {
+        var checkbox = document.querySelector('[data-layer="' + type + '"]');
+        if (!checkbox || !checkbox.checked) return;
+        if (!hood.data[type]) return;
+
+        hood.data[type].forEach(function(item) {
+          var marker = createMarker(item, type);
+          markerLayers[type].addLayer(marker);
+          totalCount++;
+        });
+      });
+
+      // Update data panel
+      document.getElementById('data-header').innerHTML = hood.name + ' <span>' + totalCount + ' records displayed</span>';
+      renderDataCards(hood);
+
+      // Render officials callout
+      renderOfficials(id);
+    }
+
+    function renderDataCards(hood) {
+      var grid = document.getElementById('data-grid');
+      var html = '';
+
+      ['transfers', 'permits', 'violations'].forEach(function(type) {
+        var checkbox = document.querySelector('[data-layer="' + type + '"]');
+        if (!checkbox || !checkbox.checked) return;
+        if (!hood.data[type]) return;
+
+        hood.data[type].forEach(function(item) {
+          html += '<div class="map-data-item">';
+          html += '<div class="map-data-item-type map-data-item-type--' + typeClasses[type] + '">&#9679; ' + typeLabels[type] + '</div>';
+          html += '<div class="map-data-item-address">' + item.address + '</div>';
+          html += item.text;
+          if (item.source) {
+            html += ' <a href="' + item.source + '" target="_blank" style="color:#00A1A5;font-size:0.6rem;">(' + (item.sourceLabel || 'Source') + ')</a>';
+          }
+          html += '</div>';
+        });
+      });
+
+      if (!html) {
+        html = '<div class="map-data-item" style="grid-column:1/-1;text-align:center;color:#999;">No records match the selected layers.</div>';
+      }
+
+      grid.innerHTML = html;
+    }
+
+    function renderOfficials(id) {
+      var box = document.getElementById('officials-box');
+      var list = document.getElementById('officials-list');
+      var checkbox = document.querySelector('[data-layer="officials"]');
+
+      if (!checkbox || !checkbox.checked || !officialsData[id]) {
+        box.classList.remove('visible');
+        return;
+      }
+
+      var html = '';
+      officialsData[id].forEach(function(o) {
+        html += '<div class="official-item">';
+        html += '<div class="official-office">' + o.office + '</div>';
+        html += '<a href="' + o.url + '" target="_blank">' + o.name + '</a>';
+        html += '</div>';
+      });
+
+      list.innerHTML = html;
+      box.classList.add('visible');
+    }
+
+    // Neighborhood selector
+    document.getElementById('hood-select').addEventListener('change', function() {
+      loadNeighborhood(this.value);
+    });
+
+    // Layer toggles
+    document.querySelectorAll('[data-layer]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var hoodId = document.getElementById('hood-select').value;
+        loadNeighborhood(hoodId);
+      });
+    });
+
+    // Initial load
+    loadNeighborhood('five-oaks');
+  })();
+  </script>
+</body>
+</html>

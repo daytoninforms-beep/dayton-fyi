@@ -755,34 +755,12 @@
   <div class="tool-demo-caption">Working prototype of the Civic Calendar showing meetings, deadlines, public comment periods, surveys, and election dates. Toggle between list and week views. Data sourced from City of Dayton, Montgomery County, and regional agencies.</div>
 </div>
 
-<p class="reveal"><em id="tool-map">2. Civic Map.</em> Connecting relevant data to a visual geography. Toggleable data layers that could overlay a Google Satellite view of a neighborhood could include: property transfer records, building permits, code violations, the elected officials representing that area, polling locations, and <a href="#fn-milestones">Community Milestones</a>. These maps could potentially integrate with asset-mapping initiatives that can clearly identify community assets: organizations, institutions, gathering spaces, and service providers. Map data must be carefully balanced against privacy needs: the <a href="#data-governance">data governance principles in Section V</a> govern what the map displays and how.</p>
+<p class="reveal"><em id="tool-map">2. Civic Map.</em> Connecting relevant data to a visual geography. Toggleable data layers that could overlay an interactive map of a neighborhood could include: property transfer records, building permits, code violations, the elected officials representing that area, polling locations, and <a href="#fn-milestones">Community Milestones</a>. These maps could potentially integrate with asset-mapping initiatives that can clearly identify community assets: organizations, institutions, gathering spaces, and service providers. Map data must be carefully balanced against privacy needs: the <a href="#data-governance">data governance principles in Section V</a> govern what the map displays and how.</p>
 
 <div class="tool-demo reveal">
-  <span class="tool-demo-badge">Concept &middot; <a href="#ai-policy" style="color:#fff;text-decoration:underline;">AI-Assisted (Level 3)</a></span>
-  <div class="tool-demo-body">
-    <div class="map-mockup">
-      <div class="map-hood-header">Five Oaks <span>3 records in the last 90 days</span></div>
-      <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3068.5!2d-84.2025!3d39.7725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Satellite view of Five Oaks neighborhood, Dayton, Ohio"></iframe>
-      <div class="map-data-panel">
-        <div class="map-data-item">
-          <div class="map-data-item-type map-data-item-type--transfer">&#9679; Property Transfer</div>
-          <div class="map-data-item-address">1247 Grand Ave</div>
-          LLC purchase, $62,000. Buyer: Gem City Holdings LLC. Third acquisition on this block in 14 months.
-        </div>
-        <div class="map-data-item">
-          <div class="map-data-item-type map-data-item-type--permit">&#9679; Building Permit</div>
-          <div class="map-data-item-address">908 Delaware Ave</div>
-          Roof replacement, $8,200. Owner-occupied. Permit issued 3/12/2026.
-        </div>
-        <div class="map-data-item">
-          <div class="map-data-item-type map-data-item-type--violation">&#9679; Code Violation</div>
-          <div class="map-data-item-address">1503 N. Main St</div>
-          Exterior maintenance violation issued 2/14/2026. Unresponsive owner. Property last transferred to KMG Realty LLC in 2023.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="tool-demo-caption">Concept prototype of the Civic Map showing the Five Oaks neighborhood with sample public records data. A full implementation would overlay property transfers, permits, and code violations directly on the map with interactive filtering by data layer, date range, and owner type.</div>
+  <span class="tool-demo-badge">Prototype &middot; <a href="#ai-policy" style="color:#fff;text-decoration:underline;">AI-Assisted (Level 3)</a></span>
+  <iframe src="./meetings/map-demo.html" title="Civic Map Prototype" loading="lazy" style="width:100%;height:600px;border:none;"></iframe>
+  <div class="tool-demo-caption">Interactive prototype of the Civic Map built with <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a> and <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>, both open-source. The map data itself is community-maintained, not owned by a corporation such as Google, which aligns with the commons principles of this proposal. Select a neighborhood to see property transfers, building permits, code violations, and elected officials. Click any marker for sourced details. Toggle data layers on and off.</div>
 </div>
 
 <p class="reveal"><em id="tool-policy">3. Policy Evaluator.</em> How residents will be able to interact with the <a href="#fn-policy-analysis">independent policy analysis</a> function, which includes published analyses of significant proposals, fiscal impact summaries, comparable city research, and more. This tool could also surface data not just from local governmental bodies, but state and federal policies that specifically name Dayton or its neighborhoods.</p>
@@ -1359,7 +1337,7 @@
 
 <h2 class="section-heading reveal">The Aggregation Problem</h2>
 
-<p class="reveal">The Sunlight Foundation&rsquo;s Open Data Guidelines identified what privacy researchers call the &ldquo;mosaic effect&rdquo;: datasets that are individually harmless can become identifying or dangerous when combined. A building permit, a property transfer, and a code violation are each innocuous public records. Mapped to a single address and linked to an owner&rsquo;s name, they become a surveillance tool.</p>
+<p class="reveal">The <a href="https://sunlightfoundation.com/opendataguidelines/" target="_blank" rel="noopener">Sunlight Foundation&rsquo;s Open Data Guidelines</a> identified what privacy researchers call the &ldquo;mosaic effect&rdquo;: datasets that are individually harmless can become identifying or dangerous when combined. A building permit, a property transfer, and a code violation are each innocuous public records. Mapped to a single address and linked to an owner&rsquo;s name, they become a surveillance tool.</p>
 
 <p class="reveal">The Info District will publish each of these record types. It must therefore make deliberate decisions about how they are presented &mdash; what is linked, what is searchable by name, and what is displayed only at the aggregate or geographic level. The default should be the minimum level of personal identification necessary to serve the public interest purpose of each dataset.</p>
 
@@ -1390,7 +1368,7 @@
 
 <h2 class="section-heading reveal">What This Section Does Not Do</h2>
 
-<p class="reveal">This section establishes principles and commitments. It is not an exhaustive data governance policy. A complete policy &mdash; including specific data classification standards, retention schedules, breach notification procedures, and a formal review process for new data types &mdash; will be developed during the community engagement process and refined before Tier 1 launch, drawing on the frameworks cited above and on legal counsel. The community engagement process should specifically surface community perspectives on privacy: residents will have views on what information about their neighborhoods, properties, and civic participation they want to be publicly accessible and what they do not.</p>
+<p class="reveal">This section establishes principles and commitments. It is not an exhaustive data governance policy. A complete policy &mdash; including specific data classification standards, retention schedules, breach notification procedures, and a formal review process for new data types &mdash; will be developed during the <a href="#engagement">community engagement process</a> and refined before Tier 1 launch, drawing on the frameworks cited above and on legal counsel. The community engagement process should specifically surface community perspectives on privacy: residents will have views on what information about their neighborhoods, properties, and civic participation they want to be publicly accessible and what they do not.</p>
 
 <p class="reveal">The Conservancy District metaphor applies here, too. The levees do not exist to stop the water from flowing. They exist to ensure it flows where it should and doesn&rsquo;t flow where it would cause harm. Transparency without privacy is a weapon. Privacy without transparency is a shield for the powerful.</p>
 
@@ -1408,17 +1386,17 @@
 
 <p class="reveal">The Info District should also not duplicate efforts of existing agencies or organizations in Dayton. Wherever possible, it should extend this metaphor of &ldquo;connective tissue&rdquo; by bridging services and raising awareness of the excellent work already being done. Below are some potential community partnerships to explore:</p>
 
-<p class="reveal"><strong>Ombudsman Office:</strong> The Dayton-Montgomery County Ombudsman has been <a href="https://www.daytondailynews.com/lifestyles/daytons-ombudsman-marks-55-years-of-standing-up-for-citizens-and-its-workload-is-growing/UTUNPMCF45EP7DVCVRFBWMCBEY/" target="_blank" rel="noopener">operating for 55 years</a> &mdash; it&rsquo;s one of the oldest in the country, predated only by Hawaii and Nebraska. It investigates complaints about government agencies and services for residents. It already does several things the Info District needs: It surfaces systemic patterns from individual complaints (the <a href="#tool-pipeline">Community Action Pipeline</a> function). It publishes a regular column in the DDN translating government process into accessible language (a sensemaking function). It partners with the Dayton Metro Library to host public sessions where residents can bring government-related problems. And when the DDN disappears or further diminishes, the Ombudsman loses a key channel for reaching the public. The Info District becomes a potential new distribution infrastructure in addition to an operational partner.</p>
+<p class="reveal"><strong><a href="http://www.dayton-ombudsman.org/" target="_blank" rel="noopener">Ombudsman Office</a>:</strong> The Dayton-Montgomery County Ombudsman has been <a href="https://www.daytondailynews.com/lifestyles/daytons-ombudsman-marks-55-years-of-standing-up-for-citizens-and-its-workload-is-growing/UTUNPMCF45EP7DVCVRFBWMCBEY/" target="_blank" rel="noopener">operating for 55 years</a> &mdash; it&rsquo;s one of the oldest in the country, predated only by Hawaii and Nebraska. It investigates complaints about government agencies and services for residents. It already does several things the Info District needs: It surfaces systemic patterns from individual complaints (the <a href="#tool-pipeline">Community Action Pipeline</a> function). It publishes a regular column in the DDN translating government process into accessible language (a sensemaking function). It partners with the Dayton Metro Library to host public sessions where residents can bring government-related problems. And when the DDN disappears or further diminishes, the Ombudsman loses a key channel for reaching the public. The Info District becomes a potential new distribution infrastructure in addition to an operational partner.</p>
 
-<p class="reveal"><strong>The Dayton Metro Library:</strong> Libraries are without question the closest existing analogy to what we&rsquo;re proposing &mdash; publicly funded, levy-supported, editorially independent information infrastructure serving the whole community. Since libraries are and have been so critical to information ecosystems &mdash; Nardi &amp; O&rsquo;Day&rsquo;s &ldquo;keystone species&rdquo; is a librarian &mdash; there&rsquo;s an underlying, open question of whether or not this proposal deserves to live within the existing library network. The library system already has the physical distribution network and levy funding, but asking the system to host and maintain something of this magnitude would be a huge, unrealistic ask at this point. A partnership, however, makes a world of sense, given the mission alignment and deep, physical connection to our communities.</p>
+<p class="reveal"><strong><a href="https://www.daytonmetrolibrary.org/" target="_blank" rel="noopener">The Dayton Metro Library</a>:</strong> Libraries are without question the closest existing analogy to what we&rsquo;re proposing &mdash; publicly funded, levy-supported, editorially independent information infrastructure serving the whole community. Since libraries are and have been so critical to information ecosystems &mdash; Nardi &amp; O&rsquo;Day&rsquo;s &ldquo;keystone species&rdquo; is a librarian &mdash; there&rsquo;s an underlying, open question of whether or not this proposal deserves to live within the existing library network. The library system already has the physical distribution network and levy funding, but asking the system to host and maintain something of this magnitude would be a huge, unrealistic ask at this point. A partnership, however, makes a world of sense, given the mission alignment and deep, physical connection to our communities.</p>
 
-<p class="reveal"><strong>Higher Education Institutions:</strong> Sinclair Community College, The University of Dayton, Wright State University (though beyond the geographic scope) are natural partners for several of this proposal&rsquo;s functions and missions. Info Districts could simultaneously tap into and revitalize local journalism and media programs, while AI research wings could help develop a more robust, locally hosted LLM solution that would be less dependent upon frontier models for sustained use.</p>
+<p class="reveal"><strong>Higher Education Institutions:</strong> <a href="https://www.sinclair.edu/" target="_blank" rel="noopener">Sinclair Community College</a>, <a href="https://udayton.edu/" target="_blank" rel="noopener">The University of Dayton</a>, <a href="https://www.wright.edu/" target="_blank" rel="noopener">Wright State University</a> (though beyond the geographic scope) are natural partners for several of this proposal&rsquo;s functions and missions. Info Districts could simultaneously tap into and revitalize local journalism and media programs, while AI research wings could help develop a more robust, locally hosted LLM solution that would be less dependent upon frontier models for sustained use.</p>
 
-<p class="reveal"><strong>The City of Dayton&rsquo;s Community Engagement Division:</strong> Democracy Fellow Mike Squire and his staff already do an admirable job stewarding and coordinating with the City&rsquo;s 65 different neighborhoods. An Info District would be an asset for them to stay better informed and civically empowered and educated.</p>
+<p class="reveal"><strong><a href="https://www.daytonohio.gov/973/Community-Engagement" target="_blank" rel="noopener">The City of Dayton&rsquo;s Community Engagement Division</a>:</strong> Democracy Fellow Mike Squire and his staff already do an admirable job stewarding and coordinating with the City&rsquo;s 65 different neighborhoods. An Info District would be an asset for them to stay better informed and civically empowered and educated.</p>
 
-<p class="reveal"><strong>DATV:</strong> An underappreciated community asset, the station was created by Roxie Cole, who was passionate about providing underserved communities a way to use their voices. This founding mission is essentially the Community Voice Network&rsquo;s mission stated forty years earlier.</p>
+<p class="reveal"><strong><a href="https://www.datv.org/" target="_blank" rel="noopener">DATV</a>:</strong> An underappreciated community asset, the station was created by Roxie Cole, who was passionate about providing underserved communities a way to use their voices. This founding mission is essentially the Community Voice Network&rsquo;s mission stated forty years earlier.</p>
 
-<p class="reveal"><strong>Eichelberger Center For Community Voices:</strong> Created with a similar mission, the Center amplifies local voices and encourages community storytelling in a tradition this proposal embraces and should support.</p>
+<p class="reveal"><strong><a href="https://www.sinclair.edu/academics/eichelberger-center/" target="_blank" rel="noopener">Eichelberger Center For Community Voices</a>:</strong> Created with a similar mission, the Center amplifies local voices and encourages community storytelling in a tradition this proposal embraces and should support.</p>
 
 <!-- SECOND HALF: Sections VII–XIV -->
 
@@ -1428,7 +1406,7 @@
   <h2 class="chapter-heading">VII. Budget</h2>
   <hr class="chapter-rule">
 
-  <p>Section III describes the full range of what the Information District can build. This section describes what it can afford. The two are not the same thing, and this proposal is honest about the gap.</p>
+  <p><a href="#what-it-does">Section III</a> describes the full range of what the Information District can build. This section describes what it can afford. The two are not the same thing, and this proposal is honest about the gap.</p>
 
   <p>At $250,000 &mdash; a realistic Tier 2 budget &mdash; the Info District can build the civic calendar, the Community Voice Network, a public records library, community documentation, and the Dayton.FYI platform. It cannot fund a professional newsroom, a dedicated policy analyst, the full suite of resident-facing tools, a community milestones registry, multi-surface distribution, or the full genealogical archive. Those require Tier 1 resources.</p>
 
