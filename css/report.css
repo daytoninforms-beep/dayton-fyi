@@ -2758,9 +2758,7 @@ li {
 }
 
 .tool-demo-badge {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  display: block;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.5rem;
   font-weight: 600;
@@ -2768,9 +2766,8 @@ li {
   letter-spacing: 0.08em;
   color: #fff;
   background: #00A1A5;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  z-index: 2;
+  padding: 0.3rem 0.75rem;
+  text-align: right;
 }
 
 .tool-demo-body {
