@@ -1833,6 +1833,65 @@ li {
   }
 }
 
+/* --- Metrics Cards --- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.metrics-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0.85rem;
+  border-top: 3px solid #e0e0e0;
+}
+
+.metrics-card--infra { border-top-color: #00A1A5; }
+.metrics-card--community { border-top-color: #E65025; }
+.metrics-card--ecosystem { border-top-color: #5c8c3a; }
+.metrics-card--accountability { border-top-color: #7a5c8c; }
+.metrics-card--democracy { border-top-color: #3a6b8c; }
+
+.metrics-card-title {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #383838;
+  margin-bottom: 0.4rem;
+}
+
+.metrics-card-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.metrics-card-items li {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  color: #58595B;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #f5f5f5;
+  line-height: 1.4;
+}
+
+.metrics-card-items li:last-child {
+  border-bottom: none;
+}
+
+.metrics-card--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Records Audit Table --- */
 .records-audit {
   margin: 1.5rem 0;
