@@ -3821,6 +3821,67 @@ li {
   color: #E65025;
 }
 
+/* --- Email Signup --- */
+.email-signup {
+  margin: 3rem 0 2rem;
+  padding: 1.5rem;
+  background: #383838;
+  border-radius: 6px;
+  text-align: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.email-signup-text {
+  font-size: 0.75rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.email-signup-text strong {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+.email-signup-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.email-signup-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #fff;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  color: #383838;
+}
+.email-signup-input:focus {
+  outline: 2px solid #00A1A5;
+  border-color: #00A1A5;
+}
+.email-signup-btn {
+  padding: 0.5rem 1.25rem;
+  background: #E65025;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.email-signup-btn:hover {
+  background: #c43d18;
+}
+.email-signup-note {
+  font-size: 0.5rem;
+  color: #999;
+  margin-top: 0.5rem;
+}
+
 /* --- Print --- */
 @media print {
   .side-nav,
