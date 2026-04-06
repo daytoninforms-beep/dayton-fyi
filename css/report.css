@@ -901,9 +901,10 @@ li {
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   line-height: 1.2;
   padding: 0.25rem;
+  overflow: hidden;
 }
 
 /* J+D Lab original 8 */
