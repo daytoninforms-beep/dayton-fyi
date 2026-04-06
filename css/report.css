@@ -897,14 +897,13 @@ li {
 
 .act-node-label {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: 1.2;
   padding: 0.25rem;
-  overflow: hidden;
 }
 
 /* J+D Lab original 8 */
