@@ -1210,6 +1210,13 @@ li {
 .budget-table tr:last-child td {
   border-bottom: none;
 }
+.budget-table td[title] {
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(0,0,0,0.25);
+  text-underline-offset: 2px;
+}
 .budget-table a {
   color: inherit;
   text-decoration: underline;
