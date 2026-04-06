@@ -38,26 +38,46 @@
 
     if (!sections.length) return;
 
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (l) { l.classList.remove('active'); });
-          var match = sections.find(function (s) { return s.el === entry.target; });
-          if (match) match.link.classList.add('active');
+    var ticking = false;
 
-          // Also update mobile nav
-          var mobileLinks = document.querySelectorAll('.mobile-nav a[href^="#"]');
-          mobileLinks.forEach(function (l) { l.classList.remove('active'); });
-          var mobileMatch = document.querySelector('.mobile-nav a[href="#' + entry.target.id + '"]');
-          if (mobileMatch) mobileMatch.classList.add('active');
+    function updateActiveNav() {
+      // Find the last section whose top is at or above 25% of the viewport
+      var threshold = window.scrollY + window.innerHeight * 0.25;
+      var active = null;
+
+      for (var i = 0; i < sections.length; i++) {
+        var top = sections[i].el.getBoundingClientRect().top + window.scrollY;
+        if (top <= threshold) {
+          active = sections[i];
+        } else {
+          break;
         }
-      });
-    }, {
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0
-    });
+      }
 
-    sections.forEach(function (s) { observer.observe(s.el); });
+      if (!active) active = sections[0];
+
+      navLinks.forEach(function (l) { l.classList.remove('active'); });
+      active.link.classList.add('active');
+
+      // Also update mobile nav
+      var mobileLinks = document.querySelectorAll('.mobile-nav a[href^="#"]');
+      mobileLinks.forEach(function (l) { l.classList.remove('active'); });
+      var mobileMatch = document.querySelector('.mobile-nav a[href="#' + active.el.id + '"]');
+      if (mobileMatch) mobileMatch.classList.add('active');
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          updateActiveNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial call
+    updateActiveNav();
   }
 
   /* --- Mobile Nav Toggle --- */
