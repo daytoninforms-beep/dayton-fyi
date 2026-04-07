@@ -10,6 +10,7 @@
   <script src="js/gate.js"></script>
 </head>
 <body>
+<a href="#preface" class="skip-link">Skip to main content</a>
 <div class="progress-bar"></div>
 
 <!-- ==================== SIDE NAVIGATION ==================== -->
@@ -378,7 +379,8 @@
   <div class="ecosystem-title">Structuring The Information Commons</div>
   <div class="ecosystem-subtitle">Every proposed function, organized by layer &mdash; and the Act of Journalism each serves</div>
 
-  <svg class="ecosystem-svg" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+  <svg class="ecosystem-svg" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ecosystem diagram showing all Info District functions organized across four layers: Capacity (green), Infrastructure (teal), Editorial (orange), and Distribution (purple). Functions are connected by data flows between layers.">
+    <title>Structuring the Information Commons</title>
     <!-- LAYER BANDS (start after label area) -->
     <rect x="110" y="15" width="560" height="52" rx="5" fill="#5c8c3a" opacity="0.07"/>
     <rect x="110" y="85" width="560" height="200" rx="5" fill="#00A1A5" opacity="0.07"/>
@@ -595,7 +597,7 @@
 </div>
 
 <!-- Capacity Layer -->
-<h3 class="layer-heading reveal" id="layer-capacity"><span class="layer-heading-icon layer-map-icon--capacity">&#127793;</span> The Capacity Layer: How the Community Gets Stronger</h3>
+<h3 class="layer-heading reveal" id="layer-capacity"><span aria-hidden="true" class="layer-heading-icon layer-map-icon--capacity">&#127793;</span> The Capacity Layer: How the Community Gets Stronger</h3>
 
 <p class="reveal">These are the education and training investments in the community&rsquo;s ability to participate in its own information ecosystem. These center the residents as the critical resource for everything else that follows in the system.</p>
 
@@ -613,7 +615,7 @@
 <p class="reveal"><strong>Community education about civic process</strong> &mdash; demystifying how government works, how to participate in public meetings, how to file public records requests, how to apply for appointed boards. The Documenters program is itself the most powerful version of this: a paid, structured, supported first experience with civic participation.</p>
 
 <!-- Infrastructure Layer -->
-<h3 class="layer-heading reveal" id="layer-infrastructure"><span class="layer-heading-icon layer-map-icon--infrastructure">&#9881;</span> The Infrastructure Layer: What Makes the Work Possible</h3>
+<h3 class="layer-heading reveal" id="layer-infrastructure"><span aria-hidden="true" class="layer-heading-icon layer-map-icon--infrastructure">&#9881;</span> The Infrastructure Layer: What Makes the Work Possible</h3>
 
 <p class="reveal">These are the systems that collect, organize, and make accessible the raw material that journalists, analysts, Documenters, and residents use.</p>
 
@@ -628,19 +630,19 @@
 <div class="records-audit reveal">
   <table>
     <thead>
-      <tr><th>Record Type</th><th>Current Status</th><th>Notes</th></tr>
+      <tr><th scope="col">Record Type</th><th scope="col">Current Status</th><th scope="col">Notes</th></tr>
     </thead>
     <tbody>
-      <tr><td>Commission voting records and meeting minutes</td><td class="audit-status audit-status--available">Published</td><td><a href="https://www.daytonohio.gov/AgendaCenter" target="_blank" rel="noopener">AgendaCenter</a> &mdash; full minutes with roll-call votes</td></tr>
-      <tr><td>Budget data (department-level)</td><td class="audit-status audit-status--partial">Partial</td><td><a href="https://daytonoh.opengov.com/transparency" target="_blank" rel="noopener">OpenGov portal</a> &mdash; department-level budgets and expenditures; mid-year amendments embedded in meeting minutes only</td></tr>
-      <tr><td>Use-of-force incident reports</td><td class="audit-status audit-status--partial">Partial</td><td><a href="https://dayton-transparency-portal-1-daytonohio.hub.arcgis.com/" target="_blank" rel="noopener">Police Transparency Portal</a> &mdash; aggregate dashboards; incident-level data not yet available</td></tr>
-      <tr><td>Zoning variance decisions</td><td class="audit-status audit-status--partial">Partial</td><td>Decisions in BZA meeting minutes, but no searchable database by address or parcel</td></tr>
-      <tr><td>Building permit issuances</td><td class="audit-status audit-status--partial">Partial</td><td><a href="https://www.daytonohio.gov/201/Online-Permit-System" target="_blank" rel="noopener">Status lookup tool</a> exists, but no browsable feed or downloadable dataset</td></tr>
-      <tr><td>Competitive bid results</td><td class="audit-status audit-status--partial">Partial</td><td><a href="https://www.daytonohio.gov/bids.aspx" target="_blank" rel="noopener">Bid postings</a> listed; award results and sole-source justifications not published</td></tr>
-      <tr><td>City contracts over $10,000</td><td class="audit-status audit-status--not">Not published</td><td>Requires <a href="https://cityofdaytonoh.nextrequest.com/" target="_blank" rel="noopener">records request</a></td></tr>
-      <tr><td>Property tax abatement agreements</td><td class="audit-status audit-status--not">Not published</td><td>Requires records request</td></tr>
-      <tr><td>TIF district financial reports</td><td class="audit-status audit-status--not">Not published</td><td>Ohio law requires annual reports; not posted online</td></tr>
-      <tr><td>City employee salary and overtime records</td><td class="audit-status audit-status--not">Not published</td><td>Third-party sources (DDN Payroll Project) publish via records requests</td></tr>
+      <tr><td>Commission voting records and meeting minutes</td><td class="audit-status audit-status--available">&#10003; Published</td><td><a href="https://www.daytonohio.gov/AgendaCenter" target="_blank" rel="noopener">AgendaCenter</a> &mdash; full minutes with roll-call votes</td></tr>
+      <tr><td>Budget data (department-level)</td><td class="audit-status audit-status--partial">&#9679; Partial</td><td><a href="https://daytonoh.opengov.com/transparency" target="_blank" rel="noopener">OpenGov portal</a> &mdash; department-level budgets and expenditures; mid-year amendments embedded in meeting minutes only</td></tr>
+      <tr><td>Use-of-force incident reports</td><td class="audit-status audit-status--partial">&#9679; Partial</td><td><a href="https://dayton-transparency-portal-1-daytonohio.hub.arcgis.com/" target="_blank" rel="noopener">Police Transparency Portal</a> &mdash; aggregate dashboards; incident-level data not yet available</td></tr>
+      <tr><td>Zoning variance decisions</td><td class="audit-status audit-status--partial">&#9679; Partial</td><td>Decisions in BZA meeting minutes, but no searchable database by address or parcel</td></tr>
+      <tr><td>Building permit issuances</td><td class="audit-status audit-status--partial">&#9679; Partial</td><td><a href="https://www.daytonohio.gov/201/Online-Permit-System" target="_blank" rel="noopener">Status lookup tool</a> exists, but no browsable feed or downloadable dataset</td></tr>
+      <tr><td>Competitive bid results</td><td class="audit-status audit-status--partial">&#9679; Partial</td><td><a href="https://www.daytonohio.gov/bids.aspx" target="_blank" rel="noopener">Bid postings</a> listed; award results and sole-source justifications not published</td></tr>
+      <tr><td>City contracts over $10,000</td><td class="audit-status audit-status--not">&#10007; Not published</td><td>Requires <a href="https://cityofdaytonoh.nextrequest.com/" target="_blank" rel="noopener">records request</a></td></tr>
+      <tr><td>Property tax abatement agreements</td><td class="audit-status audit-status--not">&#10007; Not published</td><td>Requires records request</td></tr>
+      <tr><td>TIF district financial reports</td><td class="audit-status audit-status--not">&#10007; Not published</td><td>Ohio law requires annual reports; not posted online</td></tr>
+      <tr><td>City employee salary and overtime records</td><td class="audit-status audit-status--not">&#10007; Not published</td><td>Third-party sources (DDN Payroll Project) publish via records requests</td></tr>
     </tbody>
   </table>
   <div class="records-audit-note">Preliminary research conducted April 2026. Findings should be verified with city agencies during the community engagement process.</div>
@@ -842,15 +844,15 @@
       </div>
       <table class="tracker-votes">
         <thead>
-          <tr><th>Date</th><th>Item</th><th>Topic</th><th>Vote</th></tr>
+          <tr><th scope="col">Date</th><th scope="col">Item</th><th scope="col">Topic</th><th scope="col">Vote</th></tr>
         </thead>
         <tbody>
-          <tr><td>Mar 18</td><td>Downtown West TIF District</td><td><span class="tracker-topic">Development</span></td><td class="tracker-vote-yes">Yes</td></tr>
-          <tr><td>Mar 4</td><td>Police oversight board funding</td><td><span class="tracker-topic">Public Safety</span></td><td class="tracker-vote-yes">Yes</td></tr>
-          <tr><td>Feb 18</td><td>Sidewalk repair bond issuance</td><td><span class="tracker-topic">Infrastructure</span></td><td class="tracker-vote-yes">Yes</td></tr>
-          <tr><td>Feb 4</td><td>Third-party waste hauler contract</td><td><span class="tracker-topic">Services</span></td><td class="tracker-vote-no">No</td></tr>
-          <tr><td>Jan 21</td><td>Zoning variance &mdash; 500 block E. Fifth</td><td><span class="tracker-topic">Zoning</span></td><td class="tracker-vote-yes">Yes</td></tr>
-          <tr><td>Jan 7</td><td>Emergency shelter expansion</td><td><span class="tracker-topic">Human Services</span></td><td class="tracker-vote-yes">Yes</td></tr>
+          <tr><td>Mar 18</td><td>Downtown West TIF District</td><td><span class="tracker-topic">Development</span></td><td class="tracker-vote-yes">&#10003; Yes</td></tr>
+          <tr><td>Mar 4</td><td>Police oversight board funding</td><td><span class="tracker-topic">Public Safety</span></td><td class="tracker-vote-yes">&#10003; Yes</td></tr>
+          <tr><td>Feb 18</td><td>Sidewalk repair bond issuance</td><td><span class="tracker-topic">Infrastructure</span></td><td class="tracker-vote-yes">&#10003; Yes</td></tr>
+          <tr><td>Feb 4</td><td>Third-party waste hauler contract</td><td><span class="tracker-topic">Services</span></td><td class="tracker-vote-no">&#10007; No</td></tr>
+          <tr><td>Jan 21</td><td>Zoning variance &mdash; 500 block E. Fifth</td><td><span class="tracker-topic">Zoning</span></td><td class="tracker-vote-yes">&#10003; Yes</td></tr>
+          <tr><td>Jan 7</td><td>Emergency shelter expansion</td><td><span class="tracker-topic">Human Services</span></td><td class="tracker-vote-yes">&#10003; Yes</td></tr>
         </tbody>
       </table>
     </div>
@@ -1018,7 +1020,7 @@
 </div>
 
 <!-- Editorial Layer -->
-<h3 class="layer-heading reveal" id="layer-editorial"><span class="layer-heading-icon layer-map-icon--editorial">&#9998;</span> The Editorial Layer: What the Organization Produces</h3>
+<h3 class="layer-heading reveal" id="layer-editorial"><span aria-hidden="true" class="layer-heading-icon layer-map-icon--editorial">&#9998;</span> The Editorial Layer: What the Organization Produces</h3>
 
 <p class="reveal">These are the functions that require editorial skill and institutional commitment. Everything else either feeds into these or distributes what they produce.</p>
 
@@ -1059,7 +1061,8 @@
 <p class="reveal">The Community Voice Network is a hub-and-spoke publishing model that cultivates, connects, and amplifies independent community contributors across the Dayton region. The hub &mdash; Dayton.FYI &mdash; curates and presents the strongest community writing, audio, and visual work from a growing network of independent contributors, each publishing on their own platforms and building their own audiences. The hub selects, contextualizes, and spotlights what the spokes create. These independent contributors &mdash; residents, neighborhood leaders, subject-matter practitioners, retired professionals, students, organizers, artists &mdash; publish on topics they know and care about. Contributors maintain editorial independence over their own work. They are not Info District staff, they are community voices that the Info District&rsquo;s editorial team identifies, develops, and connects to a broader audience.</p>
 
 <div class="hub-spoke reveal">
-  <svg class="hub-spoke-svg" viewBox="0 0 740 480" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hub-spoke-svg" viewBox="0 0 740 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hub and spoke diagram showing Dayton.FYI at the center, with contributor nodes radiating outward representing community organizations, churches, schools, neighborhoods, and civic groups that feed content into the platform.">
+    <title>Community Voice Network: Hub and Spoke Model</title>
     <!-- Lines: hub to contributors -->
     <line x1="370" y1="240" x2="370" y2="100" stroke="#d0d0d0" stroke-width="2"/>
     <line x1="370" y1="240" x2="370" y2="380" stroke="#d0d0d0" stroke-width="2"/>
@@ -1167,7 +1170,7 @@
 <p class="reveal">In Tier 1, the network grows alongside the professional newsroom. The hub editorial curation function becomes a defined staff role. Stipends or per-piece payments become possible for contributors whose work meets publication standards, following the Documenters logic &mdash; community members doing civic work deserve to be paid for it.</p>
 
 <!-- Distribution Layer -->
-<h3 class="layer-heading reveal" id="layer-distribution"><span class="layer-heading-icon layer-map-icon--distribution">&#128225;</span> The Distribution Layer: How It Reaches People</h3>
+<h3 class="layer-heading reveal" id="layer-distribution"><span aria-hidden="true" class="layer-heading-icon layer-map-icon--distribution">&#128225;</span> The Distribution Layer: How It Reaches People</h3>
 
 <p class="reveal">The information the Info District produces is only valuable if it reaches the people who need it. These distribution channels are designed to meet residents where they are, across digital, print, and in-person formats as part of the Info District&rsquo;s commitment to digital equity.</p>
 
@@ -1528,7 +1531,7 @@
     </div>
 
     <table class="budget-table">
-      <thead><tr><th>Line Item</th><th>Annual Cost</th></tr></thead>
+      <thead><tr><th scope="col">Line Item</th><th scope="col">Annual Cost</th></tr></thead>
       <tbody>
         <tr><td>Personnel: 4 co-founders at $42&ndash;48K</td><td>$168&ndash;192K</td></tr>
         <tr><td title="Source: City Bureau/Documenters.org pays $15/hr + transportation per assignment. At 1.5–3 hrs per meeting, ~$35–55/assignment."><a href="#fn-documenters">Documenter</a> assignments: 75&ndash;100/yr at ~$40 each</td><td>$3&ndash;5K</td></tr>
@@ -1570,7 +1573,7 @@
     </div>
 
     <table class="budget-table">
-      <thead><tr><th>Line Item (beyond Tier 2 base)</th><th>Annual Cost</th></tr></thead>
+      <thead><tr><th scope="col">Line Item (beyond Tier 2 base)</th><th scope="col">Annual Cost</th></tr></thead>
       <tbody>
         <tr><td title="Source: Salary.com/ZipRecruiter Ohio journalist salaries — entry $35–45K, mid $45–55K, experienced $55–70K. Benefits add 20–30%."><a href="#fn-accountability">Newsroom</a>: 2&ndash;4 journalists at $45&ndash;65K + benefits</td><td>$130&ndash;340K</td></tr>
         <tr><td title="Source: ZipRecruiter Ohio policy analyst — junior $50–60K, mid $60–75K. PayScale national avg $67K. Benefits add 20–30%."><a href="#fn-policy-analysis">Policy analyst</a> at $55&ndash;75K + benefits</td><td>$70&ndash;100K</td></tr>
@@ -1897,7 +1900,8 @@
     <strong>Stay informed about this proposal.</strong> Provide your email to receive updates as the project develops, including opportunities to provide feedback during the community engagement process.
   </div>
   <form name="dayton-fyi-updates" method="POST" data-netlify="true" class="email-signup-form">
-    <input type="email" name="email" placeholder="your@email.com" required class="email-signup-input">
+    <label for="signup-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Email address</label>
+    <input type="email" name="email" id="signup-email" placeholder="your@email.com" required class="email-signup-input">
     <button type="submit" class="email-signup-btn">Subscribe</button>
   </form>
   <div class="email-signup-note">Your email will only be used for project updates. No spam, no sharing.</div>

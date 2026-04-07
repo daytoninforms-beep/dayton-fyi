@@ -67,7 +67,7 @@ body {
 .side-nav-brand-text {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.45rem;
-  color: #999;
+  color: #767676;
   line-height: 1.4;
 }
 
@@ -90,7 +90,7 @@ body {
   display: block;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
   text-decoration: none;
   padding: 0.2rem 0 0.2rem 0.75rem;
   border-left: 2px solid transparent;
@@ -272,7 +272,7 @@ body {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
-  color: #999;
+  color: #767676;
   line-height: 1.8;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -285,7 +285,7 @@ body {
 .hero-meta {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.65rem;
-  color: #999;
+  color: #767676;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 2rem;
@@ -298,7 +298,7 @@ body {
   transform: translateX(-50%);
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   animation: pulse-down 2s infinite;
@@ -949,7 +949,7 @@ li {
 .acts-description-source {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.25rem;
 }
 
@@ -1189,7 +1189,7 @@ li {
   font-size: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #999;
+  color: #767676;
   padding: 0.35rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
@@ -1250,12 +1250,12 @@ li {
 }
 .budget-cross::before {
   content: '\2717';
-  color: #999;
+  color: #767676;
   font-weight: 700;
   margin-right: 0.35rem;
 }
 .budget-cross {
-  color: #999;
+  color: #767676;
 }
 .budget-card-note {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -1341,7 +1341,7 @@ li {
 
 .digest-header-date {
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.25rem;
 }
 
@@ -1376,7 +1376,7 @@ li {
 
 .digest-item-meta {
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
 }
 
 .digest-item-highlight {
@@ -1497,7 +1497,7 @@ li {
 }
 .digest-stat-label {
   font-size: 0.45rem;
-  color: #999;
+  color: #767676;
   width: 3.5rem;
   flex-shrink: 0;
   text-align: right;
@@ -1601,7 +1601,7 @@ li {
   text-align: center;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
   margin-bottom: 0.75rem;
 }
 
@@ -1623,7 +1623,7 @@ li {
 
 .sms-bubble-time {
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.2rem;
 }
 
@@ -1702,7 +1702,7 @@ li {
 .gov-chart-board-title small {
   font-weight: 400;
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
 }
 .gov-chart-seats {
   display: flex;
@@ -1725,7 +1725,7 @@ li {
   display: block;
   font-weight: 400;
   font-size: 0.4rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.1rem;
 }
 .gov-chart-seat--innovation {
@@ -1751,7 +1751,7 @@ li {
   display: block;
   font-weight: 400;
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.15rem;
 }
 
@@ -1852,7 +1852,7 @@ li {
 .engagement-phase-time {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   margin-bottom: 0.2rem;
 }
 
@@ -1884,7 +1884,7 @@ li {
 .ecosystem-subtitle {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -1990,7 +1990,7 @@ li {
 
 .ecosystem-mobile-node-act {
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   font-style: italic;
 }
 
@@ -2078,7 +2078,7 @@ li {
 .layer-map-desc {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
 }
 
 .layer-map-arrow {
@@ -2186,7 +2186,7 @@ li {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #999;
+  color: #767676;
   margin-bottom: 0.15rem;
 }
 
@@ -2209,7 +2209,7 @@ li {
 .ai-tier-disclosure {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   font-style: italic;
 }
 
@@ -2330,7 +2330,7 @@ li {
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #767676;
   font-weight: 600;
   padding: 0.5rem;
   border-bottom: 2px solid #e0e0e0;
@@ -2358,7 +2358,7 @@ li {
 
 .records-audit-note {
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
   font-style: italic;
   margin-top: 0.5rem;
 }
@@ -2481,7 +2481,7 @@ li {
   text-align: center;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   margin-bottom: 1.5rem;
 }
 
@@ -2577,7 +2577,7 @@ li {
   display: block;
   font-size: 0.5rem;
   font-weight: 400;
-  color: #999;
+  color: #767676;
   margin-top: 0.1rem;
 }
 
@@ -2595,7 +2595,7 @@ li {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #767676;
   margin-bottom: 0.3rem;
 }
 
@@ -2651,13 +2651,13 @@ li {
 .election-turnout {
   padding: 0.4rem 0.75rem;
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   background: #faf9f7;
 }
 
 .election-source {
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.5rem;
 }
 
@@ -2700,7 +2700,7 @@ li {
 
 .milestone-before .milestone-label {
   background: #e8e8e8;
-  color: #999;
+  color: #767676;
 }
 
 .milestone-after .milestone-label {
@@ -2728,7 +2728,7 @@ li {
 
 .milestone-before-note {
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   line-height: 1.4;
   margin-top: 0.35rem;
 }
@@ -2755,7 +2755,7 @@ li {
 
 .milestone-card-location {
   font-size: 0.6rem;
-  color: #999;
+  color: #767676;
   margin-bottom: 0.75rem;
 }
 
@@ -2863,7 +2863,7 @@ li {
 
 .pattern-alert-meta {
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.25rem;
 }
 
@@ -2903,14 +2903,14 @@ li {
 
 .pattern-summary-label {
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .pattern-source {
   font-size: 0.55rem;
-  color: #999;
+  color: #767676;
   border-top: 1px solid #e0e0e0;
   padding-top: 0.6rem;
   margin-top: 0.6rem;
@@ -3146,7 +3146,7 @@ li {
 .chat-demo-caption {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.65rem;
-  color: #999;
+  color: #767676;
   font-style: italic;
   padding: 0.5rem 1rem 0.75rem;
   border-top: 1px solid #e8e8e8;
@@ -3197,7 +3197,7 @@ li {
 .tool-demo-caption {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.65rem;
-  color: #999;
+  color: #767676;
   font-style: italic;
   padding: 0.5rem 1rem 0.75rem;
   border-top: 1px solid #e8e8e8;
@@ -3325,7 +3325,7 @@ li {
 .map-hood-header span {
   font-size: 0.55rem;
   font-weight: 400;
-  color: #999;
+  color: #767676;
 }
 
 .map-sidebar {
@@ -3428,7 +3428,7 @@ li {
   font-size: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #767676;
   font-weight: 600;
   margin-bottom: 0.3rem;
 }
@@ -3465,7 +3465,7 @@ li {
 
 .policy-fiscal-label {
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -3533,7 +3533,7 @@ li {
   font-size: 0.45rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #767676;
 }
 
 .tracker-votes {
@@ -3547,7 +3547,7 @@ li {
   font-size: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #767676;
   font-weight: 600;
   padding: 0.4rem 0.5rem;
   border-bottom: 2px solid #e0e0e0;
@@ -3809,12 +3809,12 @@ li {
   margin-top: 6rem;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 0.7rem;
-  color: #999;
+  color: #767676;
   line-height: 1.8;
 }
 
 .report-footer a {
-  color: #999;
+  color: #767676;
 }
 
 .report-footer a:hover {
@@ -3878,8 +3878,56 @@ li {
 }
 .email-signup-note {
   font-size: 0.5rem;
-  color: #999;
+  color: #767676;
   margin-top: 0.5rem;
+}
+
+/* --- Accessibility --- */
+
+/* Skip-to-content link: visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #383838;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 10000;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Reduced motion: disable all animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.act-node:focus-visible {
+  outline: 2px solid #00A1A5;
+  outline-offset: 2px;
+}
+.cal-view-btn:focus-visible {
+  outline: 2px solid #00A1A5;
+  outline-offset: -2px;
 }
 
 /* --- Print --- */
