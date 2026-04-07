@@ -3876,6 +3876,28 @@ li {
 .email-signup-btn:hover {
   background: #c43d18;
 }
+.email-signup-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.email-signup-social a {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+.email-signup-social a:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #00A1A5;
+  color: #00A1A5;
+}
 .email-signup-note {
   font-size: 0.5rem;
   color: #767676;
