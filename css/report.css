@@ -1058,20 +1058,25 @@ li {
   white-space: nowrap;
 }
 
-.tier-badge--2 {
+.tier-badge--1 {
   background: #e0f5f5;
   color: #00A1A5;
 }
 
-.tier-badge--1 {
+.tier-badge--2 {
   background: #fef0e8;
   color: #E65025;
+}
+
+.tier-badge--3 {
+  background: #f0eaf7;
+  color: #6B4C9A;
 }
 
 /* Tier intro cards (Tiered Funding section) */
 .tier-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   margin: 2rem 0;
 }
@@ -1082,14 +1087,19 @@ li {
   position: relative;
 }
 
-.tier-intro-card--2 {
+.tier-intro-card--1 {
   background: #e0f5f5;
   border: 2px solid #00A1A5;
 }
 
-.tier-intro-card--1 {
+.tier-intro-card--2 {
   background: #fef0e8;
   border: 2px solid #E65025;
+}
+
+.tier-intro-card--3 {
+  background: #f0eaf7;
+  border: 2px solid #6B4C9A;
 }
 
 .tier-intro-label {
@@ -1101,8 +1111,9 @@ li {
   margin-bottom: 0.15rem;
 }
 
-.tier-intro-card--2 .tier-intro-label { color: #00A1A5; }
-.tier-intro-card--1 .tier-intro-label { color: #E65025; }
+.tier-intro-card--1 .tier-intro-label { color: #00A1A5; }
+.tier-intro-card--2 .tier-intro-label { color: #E65025; }
+.tier-intro-card--3 .tier-intro-label { color: #6B4C9A; }
 
 .tier-intro-name {
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -1140,11 +1151,11 @@ li {
   margin: 1.5rem 0;
   position: relative;
 }
-.budget-card--tier2 {
+.budget-card--tier1 {
   background: #e0f5f5;
   border: 2px solid #00A1A5;
 }
-.budget-card--tier1 {
+.budget-card--tier2 {
   background: #fef0e8;
   border: 2px solid #E65025;
 }
