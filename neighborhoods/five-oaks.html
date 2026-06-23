@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five Oaks — Dayton.FYI</title>
+  <link rel="icon" type="image/png" href="../images/jlab-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #FAF9F6;
+      color: #1a1a1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #00A1A5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 740px; margin: 0 auto; padding: 0 1.25rem 3rem; }
+
+    .site-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0 16px;
+      border-bottom: 1px solid #e8e6e1;
+    }
+    .site-logo { font-size: 22px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; color: #1a1a1a; letter-spacing: -0.02em; }
+    .site-logo span { color: #E65025; }
+    .site-nav { display: flex; gap: 20px; font-size: 14px; }
+    .site-nav a { color: #666; }
+    .site-nav a:hover { color: #1a1a1a; text-decoration: none; }
+
+    /* Hero banner */
+    .hood-hero {
+      position: relative;
+      margin: 0 -1.25rem;
+      background: linear-gradient(135deg, #1a3a4a 0%, #2a5a6a 100%);
+      padding: 2.5rem 2rem 1.75rem;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hood-hero-map {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 45%;
+      opacity: 0.25;
+    }
+    .hood-hero-content { position: relative; z-index: 1; }
+    .hood-name {
+      font-size: 32px; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .hood-subtitle { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; }
+    .hood-subtitle a { color: rgba(255,255,255,0.9); }
+    .hood-stats {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+    }
+    .hood-stat-value { font-size: 22px; font-weight: 700; }
+    .hood-stat-label { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* Digest bar */
+    .digest-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 12px 18px; margin: -22px 0 2rem;
+      position: relative; z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .digest-bar-left { display: flex; align-items: center; gap: 10px; }
+    .digest-badge {
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      background: #E65025; color: #fff;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .digest-date { font-size: 14px; color: #555; }
+    .digest-cta {
+      font-size: 13px; font-weight: 600; color: #E65025;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 2.75rem; }
+    .section-head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+    .section-icon { font-size: 20px; }
+    .section-title { font-size: 17px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; color: #1a1a1a; letter-spacing: -0.01em; }
+    .section-count {
+      font-size: 11px; font-weight: 700; color: #fff;
+      background: #E65025; border-radius: 10px; padding: 1px 8px;
+      margin-left: 4px;
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border: 1px solid #e8e6e1;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 8px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .card:hover { border-color: #ccc; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .card-title { font-size: 15px; font-weight: 600; font-family: 'Poppins', system-ui, sans-serif; color: #1a1a1a; margin-bottom: 4px; }
+    .card-detail { font-size: 14px; color: #555; line-height: 1.65; }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 3px 9px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .tag-meeting { background: #EEEDFE; color: #534AB7; }
+    .tag-deadline { background: #FCEBEB; color: #A32D2D; }
+    .tag-event { background: #EAF3DE; color: #3B6D11; }
+    .tag-property { background: #FAEEDA; color: #854F0B; }
+    .tag-permit { background: #E1F5EE; color: #0F6E56; }
+    .tag-milestone-grad { background: #E6F1FB; color: #185FA5; }
+    .tag-milestone-mem { background: #F1EFE8; color: #5F5E5A; }
+    .tag-zoning { background: #FBEAF0; color: #993556; }
+
+    .more-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 14px; font-weight: 600; margin-top: 8px;
+    }
+
+    /* Milestone cards */
+    .milestone-card { display: flex; gap: 16px; align-items: flex-start; }
+    .milestone-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .milestone-icon-grad { background: #E6F1FB; }
+    .milestone-icon-mem { background: #F1EFE8; }
+
+    /* Voice cards */
+    .voice-card { display: flex; gap: 14px; align-items: flex-start; }
+    .voice-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #00A1A5; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 600; flex-shrink: 0;
+    }
+    .voice-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+    .voice-bio { font-size: 13px; color: #777; }
+    .voice-latest { font-size: 14px; color: #1a1a1a; margin-top: 5px; line-height: 1.5; font-style: italic; }
+
+    /* Resources grid */
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .resource-card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 14px; transition: border-color 0.15s;
+    }
+    .resource-card:hover { border-color: #ccc; }
+    .resource-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
+    .resource-type { font-size: 12px; color: #777; line-height: 1.5; }
+    .resource-dist { font-size: 12px; color: #00A1A5; margin-top: 6px; font-weight: 600; }
+
+    /* Civic contacts */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .contact-card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 14px;
+    }
+    .contact-card-title { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .contact-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+    .contact-role { font-size: 12px; color: #777; }
+    .contact-full {
+      grid-column: 1 / -1;
+    }
+    .contact-list { list-style: none; }
+    .contact-list li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid #f0efe9;
+      font-size: 14px;
+    }
+    .contact-list li:last-child { border-bottom: none; }
+    .contact-list-role { font-size: 12px; color: #777; }
+
+    /* Card feedback */
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 10px; padding-top: 8px;
+      border-top: 1px solid #f0efe9;
+    }
+    .card-feedback {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 12px; color: #999;
+    }
+    .card-feedback-btn {
+      background: none; border: 1px solid #e8e6e1; border-radius: 4px;
+      padding: 2px 8px; font-size: 12px; color: #999; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .card-feedback-btn:hover { border-color: #00A1A5; color: #00A1A5; }
+    .card-feedback-btn.active { background: #E1F5EE; border-color: #00A1A5; color: #0F6E56; }
+    .card-action { font-size: 12px; color: #999; }
+    .card-action a { color: #999; font-size: 12px; }
+    .card-action a:hover { color: #00A1A5; }
+
+    /* Submit prompt cards */
+    .submit-prompt {
+      background: #fff; border: 1px dashed #ccc; border-radius: 8px;
+      padding: 1rem 1.25rem; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.15s;
+      cursor: pointer;
+    }
+    .submit-prompt:hover { border-color: #00A1A5; }
+    .submit-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #E1F5EE; color: #0F6E56;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .submit-text { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+    .submit-detail { font-size: 13px; color: #777; }
+
+    /* Issue report */
+    .issue-box {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 1.25rem; margin-bottom: 8px;
+    }
+    .issue-box textarea {
+      width: 100%; font-family: inherit; font-size: 14px;
+      border: 1px solid #e0e0e0; border-radius: 6px;
+      padding: 10px 12px; resize: vertical; min-height: 70px;
+      outline: none; margin-bottom: 8px;
+    }
+    .issue-box textarea:focus { border-color: #00A1A5; }
+    .issue-box-footer { display: flex; align-items: center; justify-content: space-between; }
+    .issue-box-note { font-size: 12px; color: #999; }
+    .issue-submit-btn {
+      background: #00A1A5; color: #fff; border: none;
+      padding: 8px 16px; border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .issue-submit-btn:hover { background: #008a8e; }
+
+    /* Prompt states */
+    .prompt-state {
+      font-size: 14px; color: #999; font-style: italic;
+      padding: 8px 0;
+    }
+
+    /* Page structure divider */
+    .page-divider {
+      margin: 3rem 0 2.5rem;
+      padding: 1.5rem 0 0;
+      border-top: 3px solid #1a1a1a;
+    }
+    .page-divider-title {
+      font-size: 20px; font-weight: 700; color: #1a1a1a;
+      letter-spacing: -0.02em; margin-bottom: 4px;
+    }
+    .page-divider-desc {
+      font-size: 14px; color: #777;
+    }
+
+    /* Standing data cards */
+    .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    .data-card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 1.1rem;
+    }
+    .data-card-label {
+      font-size: 11px; font-weight: 700; color: #999;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;
+    }
+    .data-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 4px 0; font-size: 14px;
+    }
+    .data-row-value { font-weight: 700; }
+    .data-source {
+      font-size: 11px; color: #bbb; margin-top: 6px;
+    }
+
+    /* Subscribe box */
+    .subscribe-box {
+      background: #fff; border: 2px solid #E65025;
+      border-radius: 10px; padding: 2rem; text-align: center;
+      margin-top: 2.5rem;
+    }
+    .subscribe-title { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+    .subscribe-desc { font-size: 14px; color: #555; margin-bottom: 16px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .subscribe-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto; }
+    .subscribe-form input {
+      flex: 1; font-size: 15px; padding: 11px 14px;
+      border: 1px solid #ccc; border-radius: 6px; outline: none;
+    }
+    .subscribe-form input:focus { border-color: #E65025; }
+    .subscribe-form button {
+      background: #E65025; color: #fff; border: none;
+      padding: 11px 22px; border-radius: 6px;
+      font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap;
+    }
+    .subscribe-form button:hover { background: #cc4520; }
+
+    .page-footer {
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid #e8e6e1;
+      font-size: 13px; color: #999; text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav { display: none; }
+      .hood-name { font-size: 26px; }
+      .hood-stats { gap: 1.25rem; }
+      .resource-grid, .contact-grid { grid-template-columns: 1fr; }
+      .contact-full { grid-column: 1; }
+      .subscribe-form { flex-direction: column; }
+      .hood-hero { padding: 2rem 1.25rem 1.5rem; }
+      .digest-bar { margin-left: 1.25rem; margin-right: 1.25rem; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<script src="gate.js"></script>
+
+<div class="page">
+
+  <header class="site-header">
+    <a href="homepage.html" class="site-logo" style="text-decoration:none;"><span style="color:#545553;">Dayton</span><span style="color:#E65025;">.</span><span style="color:#00A1A5;">FYI</span></a>
+    <nav class="site-nav">
+      <a href="homepage.html">Home</a>
+      <a href="community-voices.html">Voices</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="civic-map.html">Map</a>
+      <a href="commission-voting-record-2026.html">Commission</a>
+      <a href="public-records.html">Records</a>
+      <a href="../index.html">About</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </header>
+</div>
+
+<!-- Full-width hero -->
+<div class="hood-hero">
+  <div id="hero-map" class="hood-hero-map"></div>
+  <div style="max-width:740px;margin:0 auto;padding:0 1.25rem;">
+    <div class="hood-hero-content">
+      <h1 class="hood-name">Five Oaks</h1>
+      <div class="hood-subtitle">
+        North Central &middot;
+        Dayton City Commission (at-large)
+      </div>
+      <div class="hood-stats">
+        <div>
+          <div class="hood-stat-value">3</div>
+          <div class="hood-stat-label">Meetings this week</div>
+        </div>
+        <div>
+          <div class="hood-stat-value">2</div>
+          <div class="hood-stat-label">Milestones</div>
+        </div>
+        <div>
+          <div class="hood-stat-value">3</div>
+          <div class="hood-stat-label">Property changes</div>
+        </div>
+        <div>
+          <div class="hood-stat-value">2</div>
+          <div class="hood-stat-label">Events</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- Digest bar -->
+  <div class="digest-bar">
+    <div class="digest-bar-left">
+      <span class="digest-badge">Digest</span>
+      <span class="digest-date">Week of June 16&ndash;22, 2026</span>
+    </div>
+    <a class="digest-cta" href="#subscribe">Get this weekly &rarr;</a>
+  </div>
+
+  <!-- 1. Meetings & Deadlines -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#128197;</span>
+      <h2 class="section-title">Meetings and deadlines</h2>
+      <span class="section-count">3</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Dayton City Commission &mdash; regular session</div>
+      <div class="card-detail">Wed, June 24 &middot; 6:00 PM &middot; City Hall, Commission Chambers, 101 W Third St<br>Public comment available. <a href="https://www.daytonohio.gov/AgendaCenter/City-Commission-2" target="_blank" rel="noopener">View agenda &rarr;</a></div>
+      <div class="card-tags">
+        <span class="tag tag-meeting">Meeting</span>
+        <span class="tag tag-deadline">Public comment open</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-feedback">Useful? <button class="card-feedback-btn">&#9650; Yes</button></div>
+        <div class="card-action"><a href="calendar.html">Full civic calendar &rarr;</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">DPS Board of Education &mdash; regular session</div>
+      <div class="card-detail">Tue, June 23 &middot; 5:30 PM &middot; 115 S. Ludlow St<br><a href="https://www.dps.k12.oh.us/about-us/board-of-education" target="_blank" rel="noopener">View agenda &rarr;</a></div>
+      <div class="card-tags"><span class="tag tag-meeting">Meeting</span></div>
+      <div class="card-footer">
+        <div class="card-feedback">Useful? <button class="card-feedback-btn">&#9650; Yes</button></div>
+        <div class="card-action"><a href="calendar.html">Full civic calendar &rarr;</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">City Plan Board &mdash; regular session</div>
+      <div class="card-detail">Thu, June 26 &middot; 4:00 PM &middot; City Hall, Planning &amp; Resource Room, Mezzanine<br><a href="https://www.daytonohio.gov/AgendaCenter/City-Plan-Board-5" target="_blank" rel="noopener">View agenda &rarr;</a></div>
+      <div class="card-tags"><span class="tag tag-meeting">Meeting</span></div>
+      <div class="card-footer">
+        <div class="card-feedback">Useful? <button class="card-feedback-btn">&#9650; Yes</button></div>
+        <div class="card-action"><a href="calendar.html">Full civic calendar &rarr;</a></div>
+      </div>
+    </div>
+
+    <a class="more-link" href="calendar.html">View full civic calendar &rarr;</a>
+  </section>
+
+  <!-- 2. Events -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#127881;</span>
+      <h2 class="section-title">Happening in Five Oaks</h2>
+    </div>
+
+    <div class="card" style="border-left: 3px solid #c4a000;">
+      <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example event &mdash; illustrative only</div>
+      <div class="card-title">[Neighborhood event] &mdash; submitted by a resident</div>
+      <div class="card-detail">Community events, block parties, food distributions, and neighborhood gatherings would appear here after submission and verification.</div>
+      <div class="card-tags"><span class="tag tag-event">Community event</span></div>
+    </div>
+
+    <a href="#" class="submit-prompt" onclick="showTab('event');document.querySelector('#submit-tabs').scrollIntoView({behavior:'smooth'});return false;">
+      <div class="submit-icon">+</div>
+      <div>
+        <div class="submit-text">Submit an event</div>
+        <div class="submit-detail">Block parties, church suppers, cleanups, school plays &mdash; add yours to next week&rsquo;s digest.</div>
+      </div>
+    </a>
+  </section>
+
+  <!-- 3. Milestones -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#10024;</span>
+      <h2 class="section-title">Community milestones</h2>
+    </div>
+
+    <div class="card" style="border-left: 3px solid #c4a000;">
+      <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example submission &mdash; illustrative only</div>
+      <div class="milestone-card">
+        <div class="milestone-icon milestone-icon-grad">&#127891;</div>
+        <div>
+          <div class="card-title">[Name] &mdash; Meadowdale High School, class of 2026</div>
+          <div class="card-detail">Graduating with honors. Plans to attend Sinclair Community College in the fall.</div>
+          <div class="card-tags"><span class="tag tag-milestone-grad">Graduation</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 3px solid #c4a000;">
+      <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example submission &mdash; illustrative only</div>
+      <div class="milestone-card">
+        <div class="milestone-icon milestone-icon-mem">&#128367;</div>
+        <div>
+          <div class="card-title">[Name] &mdash; Lifelong Five Oaks resident</div>
+          <div class="card-detail">40-year member of the neighborhood. Survived by three children and nine grandchildren. Community-submitted tributes appear here permanently.</div>
+          <div class="card-tags"><span class="tag tag-milestone-mem">In memoriam</span></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="submit-prompt" onclick="showTab('milestone');document.querySelector('#submit-tabs').scrollIntoView({behavior:'smooth'});return false;">
+      <div class="submit-icon">+</div>
+      <div>
+        <div class="submit-text">Submit a milestone</div>
+        <div class="submit-detail">Births, graduations, marriages, retirements, obituaries &mdash; free and permanent.</div>
+      </div>
+    </a>
+  </section>
+
+  <!-- 4. Community Voices -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#128172;</span>
+      <h2 class="section-title">Community voices</h2>
+    </div>
+
+    <div class="card" style="border-left: 3px solid #c4a000;">
+      <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example contributor &mdash; illustrative only</div>
+      <div class="voice-card">
+        <div class="voice-avatar" style="background:#c4a000;">?</div>
+        <div>
+          <div class="voice-name">[Community Voice contributor]</div>
+          <div class="voice-bio">Long-time resident &middot; Five Oaks</div>
+          <div class="voice-latest">"Residents can share perspectives on neighborhood issues, write about what they see, and contribute to the public record."</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="prompt-state">Know someone in Five Oaks with a perspective to share? <a href="#" onclick="showTab('tip');document.querySelector('#submit-tabs').scrollIntoView({behavior:'smooth'});return false;">Nominate a community voice contributor &rarr;</a></p>
+  </section>
+
+  <!-- 5. News & Policy -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#128240;</span>
+      <h2 class="section-title">News &amp; policy</h2>
+    </div>
+
+    <div class="card" style="padding:0.85rem 1.25rem;">
+      <div style="font-size:12px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Dayton Daily News</div>
+      <div class="card-title" style="margin-bottom:2px;"><a href="https://www.daytondailynews.com/local/ohio-property-tax-reform-options-could-be-more-subtle/4BS6MH6NONHOHIAKMSVIIEQMKA/" target="_blank" rel="noopener" style="color:#1a1a1a;">Ohio property tax reform options could be more subtle</a></div>
+      <div class="card-detail">H.B. 186 limits school district property tax increases to the rate of inflation.</div>
+    </div>
+
+    <div class="card" style="padding:0.85rem 1.25rem;">
+      <div style="font-size:12px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">WYSO</div>
+      <div class="card-title" style="margin-bottom:2px;"><a href="https://www.wyso.org/2025-07-24/ohio-is-losing-local-journalists-and-leaving-residents-in-the-dark" target="_blank" rel="noopener" style="color:#1a1a1a;">Ohio is losing local journalists &mdash; and leaving residents in the dark</a></div>
+      <div class="card-detail">Montgomery County has 4.8 local journalists per 100,000 residents &mdash; below the national average.</div>
+    </div>
+
+    <div class="card" style="padding:0.85rem 1.25rem;">
+      <div style="font-size:12px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Signal Ohio</div>
+      <div class="card-title" style="margin-bottom:2px;"><a href="https://signalohio.org/dewine-signs-bills-overhauling-property-taxes-cutting-taxes-by-billions/" target="_blank" rel="noopener" style="color:#1a1a1a;">DeWine signs bills overhauling property taxes, cutting taxes by billions</a></div>
+      <div class="card-detail">New valuation rules aim to prevent investor and foreclosure sales from inflating neighborhood tax assessments.</div>
+    </div>
+
+    <div style="font-size:13px;margin-top:8px;">
+      <a href="#" style="font-weight:600;">Legislation &amp; policy affecting Five Oaks &rarr;</a>
+      <span style="color:#999;"> &middot; Ohio House 39 &middot; Ohio Senate 5 &middot; U.S. House OH-10</span>
+    </div>
+  </section>
+
+  <!-- 6. What's Changing -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#127968;</span>
+      <h2 class="section-title">What's changing</h2>
+    </div>
+
+    <div style="font-size:14px;color:#777;margin-bottom:12px;">Property transfers, building permits, and zoning changes for Five Oaks would appear here automatically from <a href="https://www.mcrealestate.org/" target="_blank">Montgomery County Auditor</a> and <a href="https://www.daytonohio.gov/201/Online-Permit-System" target="_blank">City of Dayton permit</a> data feeds. <strong>Data integration pending &mdash; see <a href="civic-map.html">Civic Map</a> for prototype.</strong></div>
+
+    <div class="card" style="border-left: 3px solid #c4a000;">
+      <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example record &mdash; illustrative only</div>
+      <div class="card-title">Property transfer &mdash; [Address]</div>
+      <div class="card-detail">Sale price, buyer type, prior ownership duration. Sourced from county auditor records.</div>
+      <div class="card-tags"><span class="tag tag-property">Property transfer</span></div>
+    </div>
+
+    <div class="card" style="border-left: 3px solid #c4a000;">
+      <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example record &mdash; illustrative only</div>
+      <div class="card-title">Building permit &mdash; [Address]</div>
+      <div class="card-detail">Permit type, estimated value, residential vs. commercial. Sourced from city permit system.</div>
+      <div class="card-tags"><span class="tag tag-permit">Permit</span></div>
+    </div>
+  </section>
+
+  <!-- Community submissions hub -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#10133;</span>
+      <h2 class="section-title">Contribute to Five Oaks</h2>
+    </div>
+
+    <div style="font-size:14px;color:#555;margin-bottom:14px;">Dayton.FYI is built by the community. Everything on this page comes from residents, public records, and community partners. Here&rsquo;s how to add your voice.</div>
+
+    <!-- Submission type tabs -->
+    <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;" id="submit-tabs">
+      <button class="area-btn area-btn-active" data-tab="tip" onclick="showTab('tip')">&#128172; Share a tip</button>
+      <button class="area-btn" data-tab="event" onclick="showTab('event')">&#127881; Submit an event</button>
+      <button class="area-btn" data-tab="milestone" onclick="showTab('milestone')">&#10024; Submit a milestone</button>
+      <button class="area-btn" data-tab="issue" onclick="showTab('issue')">&#128276; Report an issue</button>
+    </div>
+
+    <!-- Tip / community correspondent form -->
+    <div id="tab-tip" class="submit-tab-content">
+      <div class="issue-box">
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Share something happening in Five Oaks</div>
+        <div style="font-size:13px;color:#777;margin-bottom:10px;">Saw something on a neighborhood Facebook group or Nextdoor worth sharing more broadly? Heard about a development, a business opening, a community concern? Tell us in your own words and we&rsquo;ll verify and include it in the digest.</div>
+        <textarea placeholder="What's happening? Describe it in your own words. Include the location if relevant."></textarea>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <input type="text" placeholder="Cross street or address (optional)" style="font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;">
+          <select style="font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;color:#555;">
+            <option value="">What kind of tip?</option>
+            <option>New business / closure</option>
+            <option>Development / construction</option>
+            <option>Community concern</option>
+            <option>Good news / recognition</option>
+            <option>Safety concern</option>
+            <option>Government action</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="issue-box-footer">
+          <div class="issue-box-note">Verified by email. We&rsquo;ll credit you by name or publish anonymously &mdash; your choice.</div>
+          <button class="issue-submit-btn">Submit tip</button>
+        </div>
+      </div>
+      <div style="font-size:13px;color:#777;margin-top:8px;padding:10px 14px;background:#fff;border:1px dashed #e0e0e0;border-radius:6px;">
+        <strong style="color:#1a1a1a;">Become a Five Oaks correspondent</strong><br>
+        Are you already active in Five Oaks community groups online? Help bridge the gap between social media and the public record. Correspondents regularly share relevant community updates from Facebook groups, Nextdoor, and other channels &mdash; in their own words. No formal commitment required. <a href="#">Learn more &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Event form -->
+    <div id="tab-event" class="submit-tab-content" style="display:none;">
+      <div class="issue-box">
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Submit a community event</div>
+        <div style="font-size:13px;color:#777;margin-bottom:10px;">Block parties, church suppers, cleanups, yard sales, school plays, food distributions &mdash; anything the neighborhood should know about.</div>
+        <input type="text" placeholder="Event name" style="width:100%;font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;margin-bottom:8px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <input type="text" placeholder="Date (e.g. Saturday, June 28)" style="font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;">
+          <input type="text" placeholder="Time (e.g. 2:00–6:00 PM)" style="font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;">
+        </div>
+        <input type="text" placeholder="Location / address" style="width:100%;font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;margin-bottom:8px;">
+        <textarea placeholder="Description — what should people know? Is it free? Do they need to bring anything?"></textarea>
+        <div class="issue-box-footer">
+          <div class="issue-box-note">Verified by email. Events appear in the Five Oaks digest and calendar.</div>
+          <button class="issue-submit-btn">Submit event</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone form -->
+    <div id="tab-milestone" class="submit-tab-content" style="display:none;">
+      <div class="issue-box">
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Submit a community milestone</div>
+        <div style="font-size:13px;color:#777;margin-bottom:10px;">Births, graduations, marriages, retirements, military service, community achievements, business openings, and obituaries. Free, permanent, and community-owned.</div>
+        <select style="width:100%;font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;margin-bottom:8px;color:#555;">
+          <option value="">What kind of milestone?</option>
+          <option>Birth</option>
+          <option>Graduation</option>
+          <option>Marriage / engagement</option>
+          <option>Military service</option>
+          <option>Retirement</option>
+          <option>Community achievement</option>
+          <option>Business opening</option>
+          <option>In memoriam / obituary</option>
+          <option>Other celebration</option>
+        </select>
+        <input type="text" placeholder="Name(s) being celebrated" style="width:100%;font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;margin-bottom:8px;">
+        <textarea placeholder="Tell us about this milestone. What makes it worth celebrating? Include dates, school names, or other details you'd like in the permanent record."></textarea>
+        <div class="issue-box-footer">
+          <div class="issue-box-note">Verified by email. Submitting on behalf of someone else? That&rsquo;s welcome &mdash; just let us know.</div>
+          <button class="issue-submit-btn">Submit milestone</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Issue report form -->
+    <div id="tab-issue" class="submit-tab-content" style="display:none;">
+      <div class="issue-box">
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Report a neighborhood issue</div>
+        <div style="font-size:13px;color:#777;margin-bottom:10px;">Potholes, streetlights out, illegal dumping, a concern you raised at a meeting that hasn&rsquo;t been addressed. Issues are published on the Five Oaks page and tracked publicly.</div>
+        <textarea placeholder="Describe the issue. What's wrong, where is it, and how long has it been a problem?"></textarea>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <input type="text" placeholder="Cross street or address" style="font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;">
+          <select style="font-size:14px;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;outline:none;color:#555;">
+            <option value="">Issue type</option>
+            <option>Road / pothole</option>
+            <option>Sidewalk</option>
+            <option>Streetlight</option>
+            <option>Illegal dumping / trash</option>
+            <option>Vacant property</option>
+            <option>Water / sewer</option>
+            <option>Noise</option>
+            <option>Safety concern</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="issue-box-footer">
+          <div class="issue-box-note">Verified by email. We also recommend filing with <a href="https://daytondelivers.daytonohio.gov" target="_blank" rel="noopener">Dayton Delivers</a> for city follow-up.</div>
+          <button class="issue-submit-btn">Submit issue</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+  function showTab(tab) {
+    document.querySelectorAll('.submit-tab-content').forEach(function(el) { el.style.display = 'none'; });
+    document.getElementById('tab-' + tab).style.display = 'block';
+    document.querySelectorAll('#submit-tabs .area-btn').forEach(function(btn) {
+      btn.classList.toggle('area-btn-active', btn.dataset.tab === tab);
+    });
+  }
+  </script>
+
+  <!-- ============================================ -->
+  <!-- STANDING NEIGHBORHOOD PROFILE                -->
+  <!-- ============================================ -->
+
+  <div class="page-divider">
+    <div class="page-divider-title">About Five Oaks</div>
+    <div class="page-divider-desc">Standing data for this neighborhood, updated periodically from public sources.</div>
+  </div>
+
+  <!-- Neighborhood snapshot -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#128202;</span>
+      <h2 class="section-title">Neighborhood snapshot</h2>
+    </div>
+
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-label">Demographics</div>
+        <div class="data-row"><span>Population</span> <span class="data-row-value">2,090</span></div>
+        <div class="data-row"><span>Housing units</span> <span class="data-row-value">1,339</span></div>
+        <div class="data-row"><span>Median household income</span> <span class="data-row-value">$31,558</span></div>
+        <div class="data-row"><span>Median home value</span> <span class="data-row-value">$161,200</span></div>
+        <div class="data-row"><span>Poverty rate</span> <span class="data-row-value" style="color:#A32D2D;">28.4%</span></div>
+        <div class="data-source"><a href="https://censusreporter.org/profiles/14000US39113080300/" target="_blank" rel="noopener">U.S. Census ACS 5-Year</a> &middot; Tract 39113080300</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">Housing conditions</div>
+        <div class="data-row" style="color:#999;font-style:italic;" colspan="2"><span>Housing condition survey data requires partnership with City of Dayton Community Engagement Division.</span></div>
+        <div class="data-source">Source: City Housing Condition Survey (data integration pending)</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">Health indicators</div>
+        <div class="data-row" style="color:#999;font-style:italic;"><span>CDC PLACES tract-level health data available &mdash; integration pending verification of tract boundaries for Five Oaks.</span></div>
+        <div class="data-source"><a href="https://www.cdc.gov/places/" target="_blank" rel="noopener">CDC PLACES</a> &middot; Data available at census tract level</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">Public safety</div>
+        <div class="data-row" style="color:#999;font-style:italic;"><span>Calls-for-service data available from the Dayton Police Transparency Portal &mdash; neighborhood-level aggregation pending.</span></div>
+        <div class="data-source"><a href="https://dayton-transparency-portal-1-daytonohio.hub.arcgis.com/" target="_blank" rel="noopener">Dayton Police Transparency Portal</a></div>
+      </div>
+    </div>
+
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-label">Schools serving Five Oaks</div>
+        <div class="data-row"><span>Fairview PK&ndash;6</span> <span class="data-row-value"></span></div>
+        <div class="data-row"><span>E.J. Brown Middle</span> <span class="data-row-value"></span></div>
+        <div class="data-row"><span>Dunbar High 9&ndash;12</span> <span class="data-row-value"></span></div>
+        <div class="data-source"><a href="https://reportcard.education.ohio.gov/" target="_blank" rel="noopener">Ohio School Report Cards</a> &middot; Ratings pending verification</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">Food access</div>
+        <div class="data-row" style="color:#999;font-style:italic;"><span>USDA Food Access Research Atlas data available &mdash; tract-level classification pending verification.</span></div>
+        <div class="data-source"><a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/" target="_blank" rel="noopener">USDA Food Access Research Atlas</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources (standing) -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#128161;</span>
+      <h2 class="section-title">Resources near Five Oaks</h2>
+    </div>
+    <div class="data-grid">
+      <div class="data-card">
+        <div style="font-size:14px;font-weight:600;margin-bottom:2px;"><a href="https://www.daytonmetrolibrary.org/locations/18/" target="_blank" rel="noopener" style="color:#1a1a1a;">Dayton Metro Library &mdash; Northwest Branch</a></div>
+        <div style="font-size:13px;color:#777;">Free WiFi &middot; Public computers &middot; Homework help &middot; Food distribution site</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">2410 Philadelphia Dr &middot; (937) 463-2665</div>
+      </div>
+      <div class="data-card">
+        <div style="font-size:14px;font-weight:600;margin-bottom:2px;"><a href="https://www.fiverivershealthcenters.org/locations" target="_blank" rel="noopener" style="color:#1a1a1a;">Five Rivers Health Centers &mdash; Family Health</a></div>
+        <div style="font-size:13px;color:#777;">Primary care &middot; Pediatrics &middot; Behavioral health &middot; Sliding scale &middot; On-site pharmacy</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">2261 Philadelphia Dr &middot; (937) 281-6800</div>
+      </div>
+      <div class="data-card">
+        <div style="font-size:14px;font-weight:600;margin-bottom:2px;"><a href="https://ourladyofgracedayton.org/pantry.php" target="_blank" rel="noopener" style="color:#1a1a1a;">Assumption Food Pantry</a></div>
+        <div style="font-size:13px;color:#777;">Food pantry &middot; Mon &amp; Tue 9 AM&ndash;12 PM</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">533 Odlin Ave &middot; (937) 274-2107</div>
+      </div>
+      <div class="data-card">
+        <div style="font-size:14px;font-weight:600;margin-bottom:2px;">Northwest Recreation Center</div>
+        <div style="font-size:13px;color:#777;">Pool &middot; Gym &middot; Fitness room &middot; Computer lab &middot; Youth programs</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">1600 Princeton Dr &middot; (937) 333-3322</div>
+      </div>
+      <div class="data-card">
+        <div style="font-size:14px;font-weight:600;margin-bottom:2px;"><a href="https://www.lawolaw.org/contact-locations/" target="_blank" rel="noopener" style="color:#1a1a1a;">Legal Aid of Western Ohio</a></div>
+        <div style="font-size:13px;color:#777;">Free civil legal services &middot; Housing &middot; Benefits &middot; Family law</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">130 W. Second St, Suite 700W &middot; (937) 228-8088</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:#999;margin-top:6px;">Resources verified from official organization websites. <a href="https://www.211.org/" target="_blank" rel="noopener">Dial 2-1-1</a> for additional community services.</div>
+  </section>
+
+  <!-- Civic Contacts (standing) -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">&#127963;</span>
+      <h2 class="section-title">Civic contacts</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card contact-full">
+        <div class="contact-card-title">Dayton City Commission (at-large)</div>
+        <ul class="contact-list">
+          <li>
+            <span><strong>Mayor Shenise Turner-Sloss</strong></span>
+            <span class="contact-list-role">Mayor &middot; 2026&ndash;2030</span>
+          </li>
+          <li>
+            <span><strong>Matt Joseph</strong></span>
+            <span class="contact-list-role">Commissioner &middot; 2024&ndash;2028</span>
+          </li>
+          <li>
+            <span><strong>Christopher L. Shaw</strong></span>
+            <span class="contact-list-role">Commissioner &middot; 2024&ndash;2028</span>
+          </li>
+          <li>
+            <span><strong>Darryl Fairchild</strong></span>
+            <span class="contact-list-role">Commissioner &middot; 2026&ndash;2030</span>
+          </li>
+          <li>
+            <span><strong>Darius Beckham</strong></span>
+            <span class="contact-list-role">Commissioner &middot; 2026&ndash;2030</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-title">Neighborhood association</div>
+        <div class="contact-name"><a href="https://www.facebook.com/p/Five-Oaks-Neighborhood-Improvement-Association-100064422170723/" target="_blank" rel="noopener" style="color:#1a1a1a;">Five Oaks Neighborhood Improvement Association</a></div>
+        <div class="contact-role">501(c)(3) &middot; Contact: Joe Craig</div>
+        <div style="margin-top:8px;"><a href="https://www.daytonohio.gov/1329/North-Central-Priority-Land-Use-Board" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;">North Central Priority Land Use Board &rarr;</a></div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-title">Community engagement</div>
+        <div class="contact-name">Community Engagement Division</div>
+        <div class="contact-role">City of Dayton</div>
+        <div style="margin-top:8px;"><a href="https://www.daytonohio.gov/973/Community-Engagement" style="font-size:13px;font-weight:600;">Contact the division &rarr;</a></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Subscribe -->
+  <div class="subscribe-box" id="subscribe">
+    <div class="subscribe-title">Get the Five Oaks weekly digest</div>
+    <div class="subscribe-desc">Every Monday &mdash; meetings, milestones, property changes, and community events for your neighborhood. Free forever.</div>
+    <div class="subscribe-form">
+      <input type="email" placeholder="your@email.com" aria-label="Email address">
+      <button type="button">Subscribe</button>
+    </div>
+    <div style="margin-top:14px;font-size:13px;color:#777;">
+      SMS alerts coming soon. Subscribe by email to be notified when text alerts launch.
+    </div>
+    <div style="margin-top:10px;font-size:13px;color:#999;">
+      No account required. Unsubscribe anytime. We never share your information.
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p><a href="homepage.html">Dayton.FYI</a> is a project of <a href="https://thejournalismlab.org/" target="_blank" rel="noopener">The Journalism Lab</a>, a Dayton 501(c)(3).</p>
+    <p style="margin-top:4px;">All content licensed <a href="terms.html">CC BY 4.0</a> unless otherwise noted.</p>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('hero-map', {
+    zoomControl: false,
+    attributionControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    touchZoom: false,
+    keyboard: false
+  }).setView([39.774, -84.210], 14);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19
+  }).addTo(map);
+})();
+</script>
+
+</body>
+</html>

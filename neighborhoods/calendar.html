@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civic Calendar — Dayton.FYI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      color: #383838;
+      background: #FAF9F6;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    a { color: #00A1A5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .top-bar { background: #1a1a1a; color: #fff; padding: 10px 0; }
+    .top-bar-inner { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 22px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; color: #fff; letter-spacing: -0.02em; text-decoration: none; }
+    .top-nav { display: flex; gap: 18px; font-size: 14px; }
+    .top-nav a { color: #ccc; text-decoration: none; }
+    .top-nav a:hover { color: #fff; }
+    .page-title { max-width: 900px; margin: 0 auto; padding: 1.5rem 1.25rem 0; }
+    .page-title h1 { font-size: 26px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 4px; }
+    .page-title p { font-size: 14px; color: #777; margin-bottom: 1rem; }
+    .cal-container { max-width: 900px; margin: 0 auto; padding: 0 1.25rem 2rem; }
+    .footer { max-width: 900px; margin: 0 auto; padding: 1.5rem 1.25rem; border-top: 1px solid #e8e6e1; font-size: 13px; color: #999; text-align: center; }
+
+    .cal-views { display: flex; gap: 0; margin-bottom: 1rem; border-bottom: 2px solid #e0e0e0; }
+    .cal-view-btn {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 0.8rem; font-weight: 600; padding: 0.5rem 1rem;
+      border: none; background: none; color: #767676; cursor: pointer;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+    }
+    .cal-view-btn.active { color: #E65025; border-bottom-color: #E65025; }
+    .cal-view-btn:hover { color: #383838; }
+
+    .cal-badge {
+      display: inline-block; font-size: 0.6rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap;
+    }
+    .cal-badge--meeting { background: #e0f5f5; color: #00A1A5; }
+    .cal-badge--deadline { background: #fef0e8; color: #E65025; }
+    .cal-badge--comment { background: #f0e8f5; color: #7a5c8c; }
+    .cal-badge--election { background: #e8eff5; color: #3a6b8c; }
+    .cal-badge--survey { background: #e8f5e8; color: #5c8c3a; }
+    .cal-badge--holiday { background: #fef0e8; color: #E65025; }
+    .cal-badge--event { background: #e8f5e8; color: #5c8c3a; }
+    .cal-badge--application { background: #fef0e8; color: #E65025; }
+
+    .cal-panel { display: block; }
+    .cal-panel.hidden { display: none; }
+
+    .cal-group-header {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #E65025;
+      padding: 0.75rem 0 0.35rem; border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 0.5rem; margin-top: 0.75rem;
+    }
+    .cal-group-header:first-child { margin-top: 0; }
+
+    .cal-item {
+      display: flex; gap: 1rem; padding: 0.6rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .cal-date { width: 40px; flex-shrink: 0; text-align: center; }
+    .cal-date-day { font-size: 1.5rem; font-weight: 700; color: #383838; line-height: 1.1; }
+    .cal-date-dow { font-size: 0.6rem; font-weight: 600; color: #999; text-transform: uppercase; }
+    .cal-item-body { flex: 1; }
+    .cal-item-title { font-size: 0.85rem; font-weight: 600; color: #383838; margin-top: 0.15rem; }
+    .cal-item-time { font-size: 0.75rem; font-weight: 600; color: #E65025; }
+    .cal-item-location { font-size: 0.75rem; color: #767676; }
+    .cal-item-meta { font-size: 0.75rem; color: #767676; }
+    .cal-item-cancelled { text-decoration: line-through; color: #999; }
+
+    /* Week grid */
+    .cal-week { display: none; }
+    .cal-week.visible { display: block; }
+    .cal-week-header { font-size: 0.85rem; font-weight: 700; color: #383838; margin-bottom: 0.5rem; }
+    .cal-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px;
+      background: #e0e0e0; border: 1px solid #e0e0e0; border-radius: 6px;
+      overflow: hidden;
+    }
+    .cal-grid-header {
+      background: #f4f4f4; padding: 0.35rem; text-align: center;
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #767676;
+    }
+    .cal-grid-day {
+      background: #fff; padding: 0.35rem; min-height: 80px; font-size: 0.7rem;
+    }
+    .cal-grid-day.today { background: #fff8f5; border: 2px solid #E65025; }
+    .cal-grid-day-num { font-weight: 700; font-size: 0.8rem; margin-bottom: 0.2rem; }
+    .cal-grid-event {
+      font-size: 0.6rem; padding: 0.15rem 0.3rem; border-radius: 3px;
+      margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .cal-grid-event--meeting { background: #e0f5f5; color: #00A1A5; }
+    .cal-grid-event--deadline { background: #fef0e8; color: #E65025; }
+    .cal-grid-event--election { background: #e8eff5; color: #3a6b8c; }
+    .cal-grid-event--survey { background: #e8f5e8; color: #5c8c3a; }
+    .cal-grid-event--holiday { background: #fef0e8; color: #E65025; }
+
+    .cal-legend {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem;
+      padding-top: 0.5rem; border-top: 1px solid #e8e8e8;
+    }
+    .cal-legend-item { display: flex; align-items: center; gap: 0.25rem; font-size: 0.55rem; color: #767676; }
+    .cal-legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+    .sheets-note {
+      margin-top: 1rem; padding: 12px 16px; background: #f8f7f4;
+      border: 1px solid #e8e6e1; border-radius: 6px; font-size: 12px; color: #999;
+    }
+    .sheets-note a { color: #00A1A5; }
+
+    @media (max-width: 600px) {
+      .top-nav { display: none; }
+      .cal-grid-day { min-height: 60px; }
+    }
+  </style>
+</head>
+<body>
+<script src="gate.js"></script>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="homepage.html" class="logo" style="text-decoration:none;"><span style="color:#989998;">Dayton</span><span style="color:#E65025;">.</span><span style="color:#00A1A5;">FYI</span></a>
+    <nav class="top-nav">
+      <a href="homepage.html">Home</a>
+      <a href="commission-voting-record-2026.html">Commission</a>
+      <a href="public-records.html">Records</a>
+      <a href="../index.html">About</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</div>
+
+<div class="page-title">
+  <h1>Civic Calendar</h1>
+  <p>Public meetings, deadlines, comment periods, and civic opportunities across Dayton and Montgomery County. All meetings are open to the public unless noted.</p>
+</div>
+
+<div class="cal-container">
+
+  <div class="cal-views">
+    <button class="cal-view-btn active" data-view="list">Meetings &amp; Deadlines</button>
+    <button class="cal-view-btn" data-view="surveys">Surveys &amp; Comment</button>
+    <button class="cal-view-btn" data-view="applications">Applications</button>
+    <button class="cal-view-btn" data-view="week">Week View</button>
+  </div>
+
+  <div class="cal-panel" id="list-view"></div>
+  <div class="cal-panel hidden" id="surveys-view"></div>
+  <div class="cal-panel hidden" id="applications-view"></div>
+  <div class="cal-week" id="week-view"></div>
+
+  <div class="cal-legend">
+    <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#e0f5f5;"></div> Meeting</div>
+    <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#fef0e8;"></div> Deadline / Holiday</div>
+    <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#f0e8f5;"></div> Public Comment</div>
+    <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#e8eff5;"></div> Election</div>
+    <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#e8f5e8;"></div> Survey / Event</div>
+  </div>
+
+  <div class="sheets-note" id="sheets-status"></div>
+
+</div>
+
+<div class="footer">
+  <a href="homepage.html">Dayton.FYI</a> · Meeting schedules from <a href="https://www.daytonohio.gov/AgendaCenter" target="_blank">daytonohio.gov</a> and <a href="https://www.mcohio.org/government/board_of_county_commissioners/meeting_schedule.php" target="_blank">mcohio.org</a> · <a href="terms.html">Terms &amp; open data policy</a>
+</div>
+
+<script>
+var DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+// Google Sheets published CSV URL — replace with your own sheet
+// To set up: Create a Google Sheet with columns: date, title, type, time, location, note, url, cancelled
+// Publish it: File > Share > Publish to web > CSV
+var SHEETS_CSV_URL = '';
+
+function getWeekStart(d) {
+  var s = new Date(d);
+  s.setDate(s.getDate() - s.getDay());
+  s.setHours(0,0,0,0);
+  return s;
+}
+
+function formatDateKey(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+function nthWeekday(year, month, dayNum, n) {
+  var first = new Date(year, month, 1);
+  var firstDay = first.getDay();
+  var offset = (dayNum - firstDay + 7) % 7;
+  var date = 1 + offset + (n - 1) * 7;
+  if (date > new Date(year, month + 1, 0).getDate()) return null;
+  return new Date(year, month, date);
+}
+
+function generateMeetings(rules, holidays, startDate, numWeeks) {
+  var events = [];
+  var holidaySet = {};
+  holidays.forEach(function(h) { holidaySet[h.date] = h.title; });
+
+  var endDate = new Date(startDate);
+  endDate.setDate(endDate.getDate() + numWeeks * 7);
+
+  rules.forEach(function(rule) {
+    var freq = rule.frequency;
+    var d = new Date(startDate);
+    while (d < endDate) {
+      var year = d.getFullYear();
+      var month = d.getMonth();
+      var dates = [];
+
+      if (freq === 'weekly') {
+        var cur = new Date(year, month, 1);
+        while (cur.getMonth() === month) {
+          if (cur.getDay() === rule.dayNum) dates.push(new Date(cur));
+          cur.setDate(cur.getDate() + 1);
+        }
+      } else if (freq === 'biweekly-odd') {
+        var w1 = nthWeekday(year, month, rule.dayNum, 1);
+        var w3 = nthWeekday(year, month, rule.dayNum, 3);
+        if (w1) dates.push(w1);
+        if (w3) dates.push(w3);
+      } else if (freq === 'biweekly-even') {
+        var w2 = nthWeekday(year, month, rule.dayNum, 2);
+        var w4 = nthWeekday(year, month, rule.dayNum, 4);
+        if (w2) dates.push(w2);
+        if (w4) dates.push(w4);
+      } else if (freq.startsWith('monthly-')) {
+        var nth = parseInt(freq.split('-')[1]);
+        var md = nthWeekday(year, month, rule.dayNum, nth);
+        if (md) dates.push(md);
+      } else if (freq === 'quarterly') {
+        if (rule.quarterlyMonths && rule.quarterlyMonths.indexOf(month + 1) > -1) {
+          var qd = nthWeekday(year, month, rule.dayNum, 2);
+          if (qd) dates.push(qd);
+        }
+      }
+
+      dates.forEach(function(meetDate) {
+        if (meetDate >= startDate && meetDate < endDate) {
+          var key = formatDateKey(meetDate);
+          var isHoliday = holidaySet[key];
+          events.push({
+            date: meetDate,
+            dateKey: key,
+            title: rule.title,
+            type: isHoliday ? 'cancelled' : rule.type,
+            time: rule.time,
+            location: rule.location,
+            note: isHoliday ? 'Cancelled — ' + isHoliday : rule.note,
+            url: rule.url,
+            body: rule.body,
+            cancelled: !!isHoliday
+          });
+        }
+      });
+
+      d.setMonth(d.getMonth() + 1);
+      d.setDate(1);
+    }
+  });
+
+  // Add holidays as standalone events
+  holidays.forEach(function(h) {
+    var hd = new Date(h.date + 'T12:00:00');
+    if (hd >= startDate && hd < endDate) {
+      events.push({
+        date: hd,
+        dateKey: h.date,
+        title: h.title + ' — City offices closed',
+        type: 'holiday',
+        time: '',
+        location: '',
+        note: 'City, county, state, and federal offices closed. No public meetings.',
+        cancelled: false
+      });
+    }
+  });
+
+  events.sort(function(a, b) { return a.date - b.date; });
+  return events;
+}
+
+function groupByWeek(events, today) {
+  var groups = {};
+  events.forEach(function(e) {
+    var ws = getWeekStart(e.date);
+    var wsToday = getWeekStart(today);
+    var diff = Math.round((ws - wsToday) / (7 * 86400000));
+    var label;
+    if (diff === 0) {
+      var endOfWeek = new Date(ws);
+      endOfWeek.setDate(endOfWeek.getDate() + 6);
+      label = 'This Week — ' + MONTH_NAMES[ws.getMonth()] + ' ' + ws.getDate() + '–' + endOfWeek.getDate();
+    } else if (diff === 1) {
+      var endOfWeek2 = new Date(ws);
+      endOfWeek2.setDate(endOfWeek2.getDate() + 6);
+      label = 'Next Week — ' + MONTH_NAMES[ws.getMonth()] + ' ' + ws.getDate() + ' – ' + MONTH_NAMES[endOfWeek2.getMonth()] + ' ' + endOfWeek2.getDate();
+    } else {
+      var endOfWeek3 = new Date(ws);
+      endOfWeek3.setDate(endOfWeek3.getDate() + 6);
+      label = MONTH_NAMES[ws.getMonth()] + ' ' + ws.getDate() + ' – ' + endOfWeek3.getDate();
+    }
+    if (!groups[label]) groups[label] = [];
+    groups[label].push(e);
+  });
+  return groups;
+}
+
+function renderListView(events, today) {
+  var container = document.getElementById('list-view');
+  var groups = groupByWeek(events, today);
+  var html = '';
+  for (var label in groups) {
+    html += '<div class="cal-group-header">' + label + '</div>';
+    groups[label].forEach(function(e) {
+      var titleClass = e.cancelled ? 'cal-item-title cal-item-cancelled' : 'cal-item-title';
+      html += '<div class="cal-item">';
+      html += '<div class="cal-date"><div class="cal-date-day">' + e.date.getDate() + '</div><div class="cal-date-dow">' + DAYS[e.date.getDay()] + '</div></div>';
+      html += '<div class="cal-item-body">';
+      html += '<span class="cal-badge cal-badge--' + e.type + '">' + e.type + '</span>';
+      html += '<div class="' + titleClass + '">' + e.title + '</div>';
+      if (e.time) html += '<div class="cal-item-time">' + e.time + '</div>';
+      if (e.location) html += '<div class="cal-item-location">' + e.location + (e.note && !e.cancelled ? ' — ' + e.note : '') + '</div>';
+      if (e.cancelled && e.note) html += '<div class="cal-item-meta" style="color:#A32D2D;">' + e.note + '</div>';
+      if (!e.location && e.note && !e.cancelled) html += '<div class="cal-item-meta">' + e.note + '</div>';
+      html += '</div></div>';
+    });
+  }
+  container.innerHTML = html;
+}
+
+function renderWeekView(events, today) {
+  var container = document.getElementById('week-view');
+  var ws = getWeekStart(today);
+  var we = new Date(ws);
+  we.setDate(we.getDate() + 6);
+
+  var html = '<div class="cal-week-header">Week of ' + MONTH_NAMES[ws.getMonth()] + ' ' + ws.getDate() + '–' + we.getDate() + ', ' + ws.getFullYear() + '</div>';
+  html += '<div class="cal-grid">';
+  DAYS.forEach(function(d) { html += '<div class="cal-grid-header">' + d + '</div>'; });
+
+  for (var i = 0; i < 7; i++) {
+    var day = new Date(ws);
+    day.setDate(day.getDate() + i);
+    var isToday = formatDateKey(day) === formatDateKey(today);
+    var dayKey = formatDateKey(day);
+    html += '<div class="cal-grid-day' + (isToday ? ' today' : '') + '">';
+    html += '<div class="cal-grid-day-num">' + day.getDate() + '</div>';
+    events.forEach(function(e) {
+      if (formatDateKey(e.date) === dayKey && !e.cancelled) {
+        var shortTitle = (e.time ? e.time.replace(':00','').replace(' ','') + ' ' : '') + e.title.replace('Dayton ','').replace('Montgomery County ','Co. ').replace('City ','').replace(' Board of Education','');
+        if (shortTitle.length > 25) shortTitle = shortTitle.substring(0, 23) + '…';
+        html += '<div class="cal-grid-event cal-grid-event--' + e.type + '">' + shortTitle + '</div>';
+      }
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function renderSurveys(data) {
+  var container = document.getElementById('surveys-view');
+  var html = '';
+  if (data.surveys && data.surveys.length) {
+    html += '<div class="cal-group-header">Open Surveys</div>';
+    data.surveys.forEach(function(s) {
+      html += '<div class="cal-item"><div class="cal-date"><div class="cal-date-day">—</div></div><div class="cal-item-body">';
+      html += '<span class="cal-badge cal-badge--survey">' + s.type + '</span>';
+      html += '<div class="cal-item-title">' + s.title + '</div>';
+      html += '<div class="cal-item-meta">' + s.description + '</div>';
+      var links = '';
+      if (s.url) links += '<a href="' + s.url + '" target="_blank">Take the survey</a>';
+      if (s.contact) links += (links ? ' · ' : '') + s.contact;
+      if (links) html += '<div class="cal-item-location">' + links + '</div>';
+      html += '</div></div>';
+    });
+  }
+  if (data.commentPeriods && data.commentPeriods.length) {
+    html += '<div class="cal-group-header">Open Comment Periods</div>';
+    data.commentPeriods.forEach(function(c) {
+      html += '<div class="cal-item"><div class="cal-date"><div class="cal-date-day">—</div></div><div class="cal-item-body">';
+      html += '<span class="cal-badge cal-badge--comment">' + c.type + '</span>';
+      html += '<div class="cal-item-title">' + c.title + '</div>';
+      html += '<div class="cal-item-meta">' + c.description + '</div>';
+      var links = '';
+      if (c.contact) links += 'Contact: ' + c.contact;
+      if (c.url) links += (links ? ' · ' : '') + '<a href="' + c.url + '" target="_blank">' + c.url.replace(/https?:\/\/(www\.)?/,'').split('/')[0] + '</a>';
+      if (links) html += '<div class="cal-item-location">' + links + '</div>';
+      html += '</div></div>';
+    });
+  }
+  container.innerHTML = html;
+}
+
+function renderApplications(data) {
+  var container = document.getElementById('applications-view');
+  var html = '<div class="cal-group-header">Open Board &amp; Commission Applications</div>';
+  if (data.applications) {
+    data.applications.forEach(function(a) {
+      html += '<div class="cal-item"><div class="cal-date"><div class="cal-date-day">—</div></div><div class="cal-item-body">';
+      html += '<span class="cal-badge cal-badge--application">Application</span>';
+      html += '<div class="cal-item-title">' + a.title + '</div>';
+      html += '<div class="cal-item-meta">' + a.description + '</div>';
+      if (a.url) html += '<div class="cal-item-location"><a href="' + a.url + '" target="_blank">Apply online</a></div>';
+      html += '</div></div>';
+    });
+  }
+  container.innerHTML = html;
+}
+
+function parseSheetsCsv(csv) {
+  var lines = csv.split('\n');
+  if (lines.length < 2) return [];
+  var headers = lines[0].split(',').map(function(h) { return h.trim().toLowerCase().replace(/"/g,''); });
+  var items = [];
+  for (var i = 1; i < lines.length; i++) {
+    var vals = lines[i].split(',').map(function(v) { return v.trim().replace(/^"|"$/g,''); });
+    if (vals.length < 2 || !vals[0]) continue;
+    var obj = {};
+    headers.forEach(function(h, idx) { obj[h] = vals[idx] || ''; });
+    if (obj.date) {
+      var d = new Date(obj.date + 'T12:00:00');
+      if (!isNaN(d)) {
+        items.push({
+          date: d,
+          dateKey: formatDateKey(d),
+          title: obj.title || '',
+          type: obj.type || 'event',
+          time: obj.time || '',
+          location: obj.location || '',
+          note: obj.note || '',
+          url: obj.url || '',
+          cancelled: obj.cancelled === 'true' || obj.cancelled === 'yes'
+        });
+      }
+    }
+  }
+  return items;
+}
+
+function init() {
+  var today = new Date();
+  today.setHours(0,0,0,0);
+
+  fetch('../data/calendar/recurring-meetings.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var events = generateMeetings(data.meetings, data.holidays, today, 4);
+
+      renderSurveys(data);
+      renderApplications(data);
+
+      // Try loading Google Sheets overrides
+      if (SHEETS_CSV_URL) {
+        fetch(SHEETS_CSV_URL)
+          .then(function(r) { return r.text(); })
+          .then(function(csv) {
+            var extras = parseSheetsCsv(csv);
+            var cancelKeys = {};
+            extras.forEach(function(e) {
+              if (e.cancelled) cancelKeys[e.dateKey + '|' + e.title] = true;
+              else events.push(e);
+            });
+            events = events.filter(function(e) { return !cancelKeys[e.dateKey + '|' + e.title]; });
+            events.sort(function(a, b) { return a.date - b.date; });
+            renderListView(events, today);
+            renderWeekView(events, today);
+            document.getElementById('sheets-status').innerHTML = 'Auto-generated from recurring schedules. Manual additions loaded from <a href="' + SHEETS_CSV_URL.replace('/pub?output=csv','') + '" target="_blank">community calendar sheet</a>.';
+          })
+          .catch(function() {
+            renderListView(events, today);
+            renderWeekView(events, today);
+            document.getElementById('sheets-status').textContent = 'Auto-generated from recurring civic meeting schedules. To add events, surveys, or cancellations, edit the community calendar sheet.';
+          });
+      } else {
+        renderListView(events, today);
+        renderWeekView(events, today);
+        document.getElementById('sheets-status').textContent = 'Auto-generated from recurring civic meeting schedules. Google Sheets integration available for manual additions.';
+      }
+    });
+}
+
+// Tab switching
+document.querySelectorAll('.cal-view-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.cal-view-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var active = btn.getAttribute('data-view');
+    ['list','surveys','applications'].forEach(function(v) {
+      var el = document.getElementById(v + '-view');
+      if (el) el.className = active === v ? 'cal-panel' : 'cal-panel hidden';
+    });
+    var wk = document.getElementById('week-view');
+    if (wk) wk.className = active === 'week' ? 'cal-week visible' : 'cal-week';
+  });
+});
+
+init();
+</script>
+</body>
+</html>

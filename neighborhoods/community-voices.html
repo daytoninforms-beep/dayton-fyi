@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Voice Network — Dayton.FYI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: #1a1a1a; background: #FAF9F6; font-size: 14px; line-height: 1.6; }
+    a { color: #00A1A5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .top-bar { background: #1a1a1a; color: #fff; padding: 10px 0; }
+    .top-bar-inner { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 22px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; letter-spacing: -0.02em; text-decoration: none; }
+    .top-nav { display: flex; gap: 18px; font-size: 14px; }
+    .top-nav a { color: #ccc; text-decoration: none; }
+    .top-nav a:hover { color: #fff; }
+
+    .page { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #00466B 0%, #00A1A5 100%);
+      border-radius: 12px; padding: 2.5rem 2rem; color: #fff; margin-bottom: 2rem;
+    }
+    .hero h1 { font-size: 32px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 8px; }
+    .hero p { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 640px; line-height: 1.7; }
+    .hero-cta {
+      display: inline-block; margin-top: 16px; padding: 10px 24px;
+      background: #E65025; color: #fff; border-radius: 6px; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .hero-cta:hover { background: #c4421e; text-decoration: none; }
+
+    /* Section headers */
+    .section { margin-bottom: 2.5rem; }
+    .section-title {
+      font-size: 20px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif;
+      margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #1a1a1a;
+    }
+    .section-desc { font-size: 14px; color: #555; margin-bottom: 16px; max-width: 640px; }
+
+    /* Three tracks */
+    .tracks { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 2rem; }
+    .track {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px; padding: 1.25rem;
+      border-top: 3px solid #00A1A5;
+    }
+    .track-num { font-size: 28px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; color: #00A1A5; margin-bottom: 4px; }
+    .track-title { font-size: 15px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 6px; }
+    .track-text { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* Topic tags */
+    .topic-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+    .topic-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+      border: 1.5px solid #e8e6e1; background: #fff; cursor: pointer; transition: all 0.15s;
+    }
+    .topic-tag:hover { border-color: #00A1A5; color: #00A1A5; }
+    .topic-tag.active { border-color: #00A1A5; background: #E1F5EE; color: #0F6E56; }
+    .topic-count { font-size: 11px; font-weight: 700; background: #f0efe9; color: #999; padding: 1px 6px; border-radius: 10px; }
+
+    /* Voice cards — the unified format for both syndicated and native */
+    .voice-card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 1.25rem; margin-bottom: 12px; transition: border-color 0.15s;
+    }
+    .voice-card:hover { border-color: #ccc; }
+    .voice-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .voice-avatar {
+      width: 44px; height: 44px; border-radius: 50%; background: #00A1A5; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 700; flex-shrink: 0;
+    }
+    .voice-author { font-size: 15px; font-weight: 600; }
+    .voice-bio { font-size: 12px; color: #777; }
+    .voice-hood { font-size: 11px; color: #00A1A5; font-weight: 600; }
+    .voice-card-title { font-size: 17px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; color: #1a1a1a; margin-bottom: 6px; }
+    .voice-card-title a { color: #1a1a1a; }
+    .voice-card-title a:hover { color: #00A1A5; }
+    .voice-card-excerpt { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 10px; }
+    .voice-card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .voice-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .voice-tag {
+      font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .tag-housing { background: #FAEEDA; color: #854F0B; }
+    .tag-education { background: #E6F1FB; color: #185FA5; }
+    .tag-zoning { background: #FBEAF0; color: #993556; }
+    .tag-safety { background: #FCEBEB; color: #A32D2D; }
+    .tag-budget { background: #EEEDFE; color: #534AB7; }
+    .tag-infrastructure { background: #E1F5EE; color: #0F6E56; }
+    .tag-health { background: #e8f5e8; color: #5c8c3a; }
+    .tag-community { background: #f0e8f5; color: #7a5c8c; }
+    .voice-card-source {
+      font-size: 12px; color: #999; display: flex; align-items: center; gap: 4px;
+    }
+    .source-badge {
+      font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .source-substack { background: #FF6719; color: #fff; }
+    .source-native { background: #00A1A5; color: #fff; }
+    .source-wordpress { background: #21759B; color: #fff; }
+    .voice-card-civic {
+      font-size: 12px; color: #00A1A5; font-weight: 600; margin-top: 8px;
+      padding-top: 8px; border-top: 1px solid #f0efe9;
+    }
+
+    /* Thumbnail for syndicated posts */
+    .voice-card-thumb {
+      width: 120px; height: 80px; border-radius: 6px; object-fit: cover; flex-shrink: 0;
+      border: 1px solid #e8e6e1;
+    }
+    .voice-card-body { display: flex; gap: 14px; }
+    .voice-card-text { flex: 1; }
+
+    /* Interest/engagement buttons */
+    .interest-row { display: flex; gap: 8px; margin-top: 10px; }
+    .interest-btn {
+      font-size: 12px; padding: 4px 12px; border: 1px solid #e8e6e1; border-radius: 4px;
+      background: #fff; cursor: pointer; color: #555; transition: all 0.15s;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .interest-btn:hover { border-color: #00A1A5; color: #00A1A5; text-decoration: none; }
+    .interest-btn-respond { border-color: #E65025; color: #E65025; }
+    .interest-btn-respond:hover { background: #FEF0E8; }
+
+    /* RSS feed section */
+    .feed-status {
+      font-size: 13px; color: #999; padding: 12px 16px; background: #f8f7f4;
+      border: 1px solid #e8e6e1; border-radius: 6px; margin-bottom: 16px;
+    }
+    .feed-status a { color: #00A1A5; }
+
+    /* Contributor signup */
+    .signup-section {
+      background: #fff; border: 2px solid #E65025; border-radius: 12px;
+      padding: 2rem; margin-top: 2rem;
+    }
+    .signup-section h2 {
+      font-size: 22px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif;
+      margin-bottom: 6px;
+    }
+    .signup-section p { font-size: 14px; color: #555; margin-bottom: 16px; }
+    .signup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .signup-field { display: flex; flex-direction: column; gap: 4px; }
+    .signup-field label { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+    .signup-field input, .signup-field select, .signup-field textarea {
+      font-size: 14px; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 6px;
+      font-family: system-ui; outline: none;
+    }
+    .signup-field input:focus, .signup-field select:focus, .signup-field textarea:focus { border-color: #00A1A5; }
+    .signup-field-full { grid-column: 1 / -1; }
+    .signup-submit {
+      grid-column: 1 / -1; padding: 10px 24px; background: #E65025; color: #fff;
+      border: none; border-radius: 6px; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: 'Poppins', system-ui, sans-serif; transition: background 0.15s;
+    }
+    .signup-submit:hover { background: #c4421e; }
+
+    /* Two-track explanation */
+    .track-explain { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.5rem; }
+    .track-box {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px; padding: 1.25rem;
+    }
+    .track-box-title { font-size: 15px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 6px; }
+    .track-box-list { list-style: none; font-size: 13px; color: #555; }
+    .track-box-list li { padding: 4px 0; padding-left: 18px; position: relative; }
+    .track-box-list li::before { content: "✓"; position: absolute; left: 0; color: #00A1A5; font-weight: 700; }
+
+    .footer { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem; border-top: 1px solid #e8e6e1; font-size: 13px; color: #999; text-align: center; }
+
+    @media (max-width: 700px) {
+      .tracks { grid-template-columns: 1fr; }
+      .track-explain { grid-template-columns: 1fr; }
+      .signup-grid { grid-template-columns: 1fr; }
+      .top-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+<script src="gate.js"></script>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="homepage.html" class="logo" style="text-decoration:none;"><span style="color:#989998;">Dayton</span><span style="color:#E65025;">.</span><span style="color:#00A1A5;">FYI</span></a>
+    <nav class="top-nav">
+      <a href="homepage.html">Home</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="civic-map.html">Map</a>
+      <a href="commission-voting-record-2026.html">Commission</a>
+      <a href="public-records.html">Records</a>
+      <a href="../index.html">About</a>
+    </nav>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="hero">
+    <h1>Community Voice Network</h1>
+    <p>The Information District produces data, analysis, and accountability reporting. But democratic life does not run on data alone. The Community Voice Network cultivates, connects, and amplifies independent community contributors across the Dayton region — residents who write about what they know and what they see.</p>
+    <a href="#become-contributor" class="hero-cta">Become a contributor</a>
+  </div>
+
+  <!-- Three tracks -->
+  <section class="section">
+    <div class="section-title">How the network works</div>
+    <div class="tracks">
+      <div class="track">
+        <div class="track-num">1</div>
+        <div class="track-title">Discovery &amp; Development</div>
+        <div class="track-text">Find voices not already in the conversation — not because they lack perspective, but because they lack platforms. Offer publishing support and training through The Journalism Lab.</div>
+      </div>
+      <div class="track">
+        <div class="track-num">2</div>
+        <div class="track-title">Curation &amp; Presentation</div>
+        <div class="track-text">Select from across the network, prioritizing rigor, lived expertise, and good faith over ideology. The standard is need and proximity to root causes.</div>
+      </div>
+      <div class="track">
+        <div class="track-num">3</div>
+        <div class="track-title">Connection &amp; Context</div>
+        <div class="track-text">When the Info District publishes an investigation or analysis, invite network contributors to respond — community interpretation alongside institutional evidence.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two contributor tracks -->
+  <section class="section">
+    <div class="section-title">Two ways to contribute</div>
+    <div class="track-explain">
+      <div class="track-box" style="border-top:3px solid #FF6719;">
+        <div class="track-box-title">Syndicated contributor</div>
+        <p style="font-size:13px;color:#555;margin-bottom:10px;">Write on your own platform. We surface your relevant work on Dayton.FYI with a link back to you.</p>
+        <ul class="track-box-list">
+          <li>Publish on Substack, WordPress, or your own blog</li>
+          <li>Keep your audience, subscribers, and monetization</li>
+          <li>Tag posts for Dayton.FYI — we pull via RSS</li>
+          <li>Your piece appears alongside civic data and context</li>
+          <li>Opt in once; editorial team curates ongoing</li>
+        </ul>
+      </div>
+      <div class="track-box" style="border-top:3px solid #00A1A5;">
+        <div class="track-box-title">Native contributor</div>
+        <p style="font-size:13px;color:#555;margin-bottom:10px;">Write directly for Dayton.FYI. We handle publishing. You keep your byline and rights.</p>
+        <ul class="track-box-list">
+          <li>Submit via form or Google Doc — no platform needed</li>
+          <li>Editorial review before publication</li>
+          <li>Published on Dayton.FYI with full attribution</li>
+          <li>Licensed CC BY 4.0 — you can republish anywhere</li>
+          <li>Reach the Dayton.FYI audience immediately</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topic areas -->
+  <section class="section">
+    <div class="section-title">What we need voices on</div>
+    <div class="section-desc">These topics connect directly to real civic data, policy decisions, and neighborhood conditions tracked by Dayton.FYI. Your perspective adds the interpretive layer that data alone can't provide.</div>
+    <div class="topic-grid">
+      <span class="topic-tag active"><span class="voice-tag tag-housing">Housing</span> Property investment, tenant rights, affordability</span>
+      <span class="topic-tag"><span class="voice-tag tag-education">Education</span> DPS, school funding, student experience</span>
+      <span class="topic-tag"><span class="voice-tag tag-zoning">Zoning</span> Development, land use, neighborhood change</span>
+      <span class="topic-tag"><span class="voice-tag tag-safety">Public Safety</span> Policing, community safety, oversight</span>
+      <span class="topic-tag"><span class="voice-tag tag-budget">Budget</span> City spending, levies, TIF districts</span>
+      <span class="topic-tag"><span class="voice-tag tag-infrastructure">Infrastructure</span> Roads, water, transit, utilities</span>
+      <span class="topic-tag"><span class="voice-tag tag-health">Health</span> Access to care, food security, mental health</span>
+      <span class="topic-tag"><span class="voice-tag tag-community">Community Life</span> Neighborhoods, culture, immigration, faith</span>
+    </div>
+  </section>
+
+  <!-- Live feed section — RSS aggregation demo -->
+  <section class="section">
+    <div class="section-title">Recent from the network</div>
+    <div class="section-desc">Contributor pieces from across the network, surfaced alongside the civic context they're responding to. Syndicated posts link to the contributor's own platform.</div>
+
+    <div class="feed-status" id="feed-status">Loading contributor feeds...</div>
+
+    <div id="voice-feed">
+      <!-- Cards will be populated by JavaScript -->
+    </div>
+
+    <!-- Illustrative examples while feed loads / for demo -->
+    <div id="demo-cards">
+
+      <div class="voice-card" style="border-left: 3px solid #c4a000;">
+        <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Example — illustrative only</div>
+        <div class="voice-card-header">
+          <div class="voice-avatar" style="background:#c4a000;">?</div>
+          <div>
+            <div class="voice-author">[Syndicated contributor]</div>
+            <div class="voice-bio">Writes on their own Substack — Dayton.FYI surfaces relevant posts</div>
+            <div class="voice-hood">Five Oaks</div>
+          </div>
+        </div>
+        <div class="voice-card-title">"What I see from my porch: investor purchases on Grand Ave"</div>
+        <div class="voice-card-excerpt">A long-time Five Oaks resident's observations on the changing ownership pattern on their block — three houses sold to LLCs in the past year, none with visible renovation plans...</div>
+        <div class="voice-card-footer">
+          <div class="voice-card-tags">
+            <span class="voice-tag tag-housing">Housing</span>
+            <span class="voice-tag tag-zoning">Zoning</span>
+          </div>
+          <div class="voice-card-source"><span class="source-badge source-substack">Substack</span> Read on contributor's Substack</div>
+        </div>
+        <div class="voice-card-civic">Related: <a href="civic-map.html">3 LLC property transfers in Five Oaks</a> · <a href="commission-voting-record-2026.html">Commission Ordinance 32190-26 (rezoning)</a></div>
+        <div class="interest-row">
+          <button class="interest-btn">Useful</button>
+          <button class="interest-btn" onclick="if(navigator.share)navigator.share({title:this.closest('.voice-card').querySelector('.voice-card-title').textContent,url:this.closest('.voice-card').querySelector('.voice-card-title a')?.href||location.href})">Share</button>
+          <a class="interest-btn interest-btn-respond" href="five-oaks.html#submit-tabs">Respond on Dayton.FYI</a>
+        </div>
+      </div>
+
+      <div class="voice-card" style="border-left: 3px solid #c4a000;">
+        <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Example — illustrative only</div>
+        <div class="voice-card-header">
+          <div class="voice-avatar" style="background:#c4a000;">?</div>
+          <div>
+            <div class="voice-author">[Native contributor]</div>
+            <div class="voice-bio">DPS parent writing directly for Dayton.FYI</div>
+            <div class="voice-hood">Meadowdale / Five Oaks</div>
+          </div>
+        </div>
+        <div class="voice-card-title">"The bus route change nobody asked about"</div>
+        <div class="voice-card-excerpt">When RTA restructured Route 12, students at Meadowdale lost their most reliable path to after-school programs at Wesley Community Center. I asked RTA for the ridership data behind the decision...</div>
+        <div class="voice-card-footer">
+          <div class="voice-card-tags">
+            <span class="voice-tag tag-education">Education</span>
+            <span class="voice-tag tag-infrastructure">Infrastructure</span>
+          </div>
+          <div class="voice-card-source"><span class="source-badge source-native">Dayton.FYI</span> Published on Dayton.FYI</div>
+        </div>
+        <div class="voice-card-civic">Related: <a href="calendar.html">RTA Board meeting — July 8</a> · <a href="five-oaks.html">Five Oaks resources: Wesley Community Center</a></div>
+        <div class="interest-row">
+          <button class="interest-btn">Useful</button>
+          <button class="interest-btn">This affects me too</button>
+          <button class="interest-btn">Respond</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Become a contributor -->
+  <div class="signup-section" id="become-contributor">
+    <h2>Become a contributor</h2>
+    <p>Whether you have your own Substack or just want to write something that matters — we want to hear from you. The Community Voice Network is looking for residents with lived expertise, not credentials. Tell us what you'd write about.</p>
+    <div class="signup-grid">
+      <div class="signup-field">
+        <label>Your name</label>
+        <input type="text" placeholder="First and last name">
+      </div>
+      <div class="signup-field">
+        <label>Neighborhood</label>
+        <select>
+          <option value="">Select your neighborhood</option>
+          <option>Five Oaks</option>
+          <option>South Park</option>
+          <option>Downtown</option>
+          <option>Old North Dayton</option>
+          <option>Patterson Park</option>
+          <option>University Park</option>
+          <option>Other (specify below)</option>
+        </select>
+      </div>
+      <div class="signup-field">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="signup-field">
+        <label>Do you have an existing platform?</label>
+        <select>
+          <option value="">Select one</option>
+          <option>Yes — Substack</option>
+          <option>Yes — WordPress blog</option>
+          <option>Yes — other blog or newsletter</option>
+          <option>No — I'd write directly for Dayton.FYI</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="signup-field signup-field-full">
+        <label>What would you write about?</label>
+        <textarea rows="3" placeholder="What topics, issues, or neighborhood concerns do you have perspective on? What do you see that others might not?"></textarea>
+      </div>
+      <div class="signup-field signup-field-full">
+        <label>Existing platform URL (if applicable)</label>
+        <input type="url" placeholder="https://yourname.substack.com or blog URL">
+      </div>
+      <button class="signup-submit">Express interest</button>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:12px;">Submitting this form expresses interest only — it is not a commitment. A Dayton.FYI editor will follow up to discuss the network and answer questions. See our <a href="terms.html">editorial standards and terms</a>.</p>
+  </div>
+
+  <!-- Editorial standards summary -->
+  <section class="section" style="margin-top:2rem;">
+    <div class="section-title">Editorial standards</div>
+    <div style="font-size:14px;color:#555;line-height:1.7;max-width:640px;">
+      <p style="margin-bottom:10px;">The Community Voice Network is not the Info District's opinion. The institution's editorial voice — expressed through policy analyses, accountability reporting, and data journalism — remains nonpartisan, evidence-based, and neutral.</p>
+      <p style="margin-bottom:10px;">Community voices are free to argue, advocate, and take sides. Contributors are clearly identified as independent community voices, not Dayton.FYI staff or representatives.</p>
+      <p style="margin-bottom:10px;"><strong>The standard for inclusion is not agreement — it is rigor, lived expertise, and good faith.</strong> Contributors who engage substantively with evidence, who argue from experience, and who treat their neighbors as worthy of persuasion earn inclusion in the platform.</p>
+      <p><a href="terms.html">Full editorial standards and terms of use</a></p>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  <a href="homepage.html">Dayton.FYI</a> · Community Voice Network · <a href="terms.html">Terms &amp; editorial standards</a> · A project of <a href="https://thejournalismlab.org/" target="_blank" rel="noopener">The Journalism Lab</a>
+</div>
+
+<script>
+// RSS Feed Aggregator — pulls from contributor Substack/blog RSS feeds
+// Uses a CORS proxy for cross-origin RSS fetching
+
+var CORS_PROXY = 'https://corsproxy.io/?';
+
+// Contributor feed registry — each contributor opts in and provides their feed URL
+var CONTRIBUTOR_FEEDS = [
+  {
+    name: 'Jared Grandy',
+    bio: 'Politics and culture from my perspective',
+    hood: 'Dayton',
+    platform: 'substack',
+    feedUrl: 'https://gemcityjared.substack.com/feed',
+    profileUrl: 'https://gemcityjared.substack.com',
+    avatar: 'JG',
+    tags: ['safety', 'community']
+  }
+  // Add more contributor feeds here as they join the network:
+  // { name: '...', bio: '...', hood: '...', platform: 'substack', feedUrl: '...', ... }
+];
+
+function parseRSS(xmlText) {
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(xmlText, 'text/xml');
+  var items = doc.querySelectorAll('item');
+  var posts = [];
+  items.forEach(function(item, i) {
+    if (i >= 3) return;
+    var title = item.querySelector('title') ? item.querySelector('title').textContent : '';
+    var link = item.querySelector('link') ? item.querySelector('link').textContent : '';
+    var desc = item.querySelector('description') ? item.querySelector('description').textContent : '';
+    var pubDate = item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : '';
+
+    // Extract image from enclosure or content
+    var image = '';
+    var enclosure = item.querySelector('enclosure');
+    if (enclosure && enclosure.getAttribute('type') && enclosure.getAttribute('type').startsWith('image')) {
+      image = enclosure.getAttribute('url');
+    }
+    if (!image) {
+      var content = item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded');
+      if (content.length) {
+        var imgMatch = content[0].textContent.match(/<img[^>]+src="([^"]+)"/);
+        if (imgMatch) image = imgMatch[1];
+      }
+    }
+    if (!image && desc) {
+      var imgMatch2 = desc.match(/<img[^>]+src="([^"]+)"/);
+      if (imgMatch2) image = imgMatch2[1];
+    }
+
+    var tmp = document.createElement('div');
+    tmp.innerHTML = desc;
+    var excerpt = tmp.textContent || tmp.innerText || '';
+    if (excerpt.length > 250) excerpt = excerpt.substring(0, 247) + '...';
+
+    posts.push({ title: title, link: link, excerpt: excerpt, pubDate: pubDate, image: image });
+  });
+  return posts;
+}
+
+function renderFeedCard(post, contributor) {
+  var platformLabel = contributor.platform === 'substack' ? 'Substack' : contributor.platform === 'wordpress' ? 'WordPress' : 'Blog';
+  var platformClass = 'source-' + contributor.platform;
+
+  var date = '';
+  if (post.pubDate) {
+    var d = new Date(post.pubDate);
+    if (!isNaN(d)) {
+      date = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+  }
+
+  var tagsHtml = '';
+  if (contributor.tags) {
+    contributor.tags.forEach(function(t) {
+      tagsHtml += '<span class="voice-tag tag-' + t + '">' + t + '</span>';
+    });
+  }
+
+  var imageHtml = post.image ? '<img class="voice-card-thumb" src="' + post.image + '" alt="" loading="lazy">' : '';
+
+  return '<div class="voice-card">' +
+    '<div class="voice-card-header">' +
+      '<div class="voice-avatar">' + contributor.avatar + '</div>' +
+      '<div>' +
+        '<div class="voice-author">' + contributor.name + '</div>' +
+        '<div class="voice-bio">' + contributor.bio + '</div>' +
+        '<div class="voice-hood">' + contributor.hood + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="voice-card-body">' +
+      '<div class="voice-card-text">' +
+        '<div class="voice-card-title"><a href="' + post.link + '" target="_blank" rel="noopener">' + post.title + '</a></div>' +
+        '<div class="voice-card-excerpt">' + post.excerpt + '</div>' +
+      '</div>' +
+      imageHtml +
+    '</div>' +
+    '<div class="voice-card-footer">' +
+      '<div class="voice-card-tags">' + tagsHtml + '</div>' +
+      '<div class="voice-card-source"><span class="source-badge ' + platformClass + '">' + platformLabel + '</span> ' + (date ? date + ' · ' : '') + '<a href="' + post.link + '" target="_blank" rel="noopener">Read on ' + contributor.name.split(' ')[0] + '\'s ' + platformLabel + '</a></div>' +
+    '</div>' +
+    '<div class="interest-row">' +
+      '<button class="interest-btn">Useful</button>' +
+      '<button class="interest-btn" onclick="if(navigator.share)navigator.share({title:\'' + post.title.replace(/'/g, "\\'") + '\',url:\'' + post.link + '\'}).catch(function(){});else window.open(\'https://twitter.com/intent/tweet?url=' + encodeURIComponent(post.link) + '&text=' + encodeURIComponent(post.title) + '\')">Share</button>' +
+      '<a class="interest-btn interest-btn-respond" href="five-oaks.html#submit-tabs">Respond on Dayton.FYI</a>' +
+    '</div>' +
+  '</div>';
+}
+
+function loadFeeds() {
+  if (CONTRIBUTOR_FEEDS.length === 0) {
+    document.getElementById('feed-status').innerHTML = 'No contributor feeds configured yet. <a href="#become-contributor">Become the first contributor</a>.';
+    return;
+  }
+
+  var feedContainer = document.getElementById('voice-feed');
+  var loaded = 0;
+  var totalPosts = 0;
+
+  CONTRIBUTOR_FEEDS.forEach(function(contributor) {
+    fetch(CORS_PROXY + encodeURIComponent(contributor.feedUrl))
+      .then(function(r) { return r.text(); })
+      .then(function(xml) {
+        var posts = parseRSS(xml);
+        totalPosts += posts.length;
+        posts.forEach(function(post) {
+          feedContainer.innerHTML += renderFeedCard(post, contributor);
+        });
+        loaded++;
+        if (loaded === CONTRIBUTOR_FEEDS.length) {
+          document.getElementById('feed-status').innerHTML =
+            totalPosts + ' post' + (totalPosts !== 1 ? 's' : '') + ' loaded from ' + loaded + ' contributor feed' + (loaded !== 1 ? 's' : '') + '. ' +
+            'All syndicated content links to the contributor\'s own platform. Dayton.FYI displays headlines and excerpts with permission.';
+          if (totalPosts > 0) {
+            document.getElementById('demo-cards').style.display = 'none';
+          }
+        }
+      })
+      .catch(function(err) {
+        loaded++;
+        if (loaded === CONTRIBUTOR_FEEDS.length && totalPosts === 0) {
+          document.getElementById('feed-status').innerHTML = 'Unable to load contributor feeds. Showing illustrative examples below.';
+        }
+      });
+  });
+}
+
+loadFeeds();
+</script>
+</body>
+</html>

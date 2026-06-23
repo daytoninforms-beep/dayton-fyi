@@ -2,3 +2,8 @@
 node_modules/
 .DS_Store
 Thumbs.db
+*.docx
+
+# Build tools and raw data (not deployed)
+tools/
+data/commission-minutes-2026/

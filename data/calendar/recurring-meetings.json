@@ -1,0 +1,206 @@
+{
+  "generated": "2026-06-22",
+  "note": "Recurring civic meeting schedules for Dayton and Montgomery County. Frequency patterns: 'weekly' (every week), 'biweekly-odd' (1st, 3rd of month), 'biweekly-even' (2nd, 4th), 'monthly-1st', 'monthly-2nd', 'monthly-3rd', 'monthly-4th', 'quarterly'.",
+  "meetings": [
+    {
+      "id": "city-commission",
+      "title": "Dayton City Commission",
+      "type": "meeting",
+      "day": "Wed",
+      "dayNum": 3,
+      "frequency": "biweekly-odd",
+      "time": "6:00 PM",
+      "location": "City Hall, Commission Chambers, 101 W Third St",
+      "note": "Public comment available",
+      "url": "https://www.daytonohio.gov/AgendaCenter/City-Commission-2",
+      "body": "City of Dayton"
+    },
+    {
+      "id": "county-commission",
+      "title": "Montgomery County Commission",
+      "type": "meeting",
+      "day": "Tue",
+      "dayNum": 2,
+      "frequency": "weekly",
+      "time": "10:00 AM",
+      "location": "County Admin Building, 451 W Third St, 10th Floor",
+      "note": "Public comment form required",
+      "url": "https://www.mcohio.org/government/board_of_county_commissioners/meeting_schedule.php",
+      "body": "Montgomery County"
+    },
+    {
+      "id": "dps-board",
+      "title": "Dayton Public Schools Board of Education",
+      "type": "meeting",
+      "day": "Tue",
+      "dayNum": 2,
+      "frequency": "biweekly-even",
+      "time": "5:30 PM",
+      "location": "DPS Administration Building, 115 S Ludlow St",
+      "note": "Regular session",
+      "url": "https://www.dps.k12.oh.us/about-us/board-of-education",
+      "body": "Dayton Public Schools"
+    },
+    {
+      "id": "plan-board",
+      "title": "Dayton City Plan Board",
+      "type": "meeting",
+      "day": "Thu",
+      "dayNum": 4,
+      "frequency": "monthly-4th",
+      "time": "4:00 PM",
+      "location": "City Hall, Planning & Resource Room, Mezzanine",
+      "note": "Regular session",
+      "url": "https://www.daytonohio.gov/AgendaCenter/City-Plan-Board-5",
+      "body": "City of Dayton"
+    },
+    {
+      "id": "zoning-appeals",
+      "title": "Board of Zoning Appeals",
+      "type": "meeting",
+      "day": "Wed",
+      "dayNum": 3,
+      "frequency": "biweekly-even",
+      "time": "4:30 PM",
+      "location": "City Hall, Commission Chambers",
+      "note": "Variance hearings",
+      "url": "https://www.daytonohio.gov/AgendaCenter/Board-of-Zoning-Appeals-4",
+      "body": "City of Dayton"
+    },
+    {
+      "id": "metroparks-board",
+      "title": "Five Rivers MetroParks Board",
+      "type": "meeting",
+      "day": "Thu",
+      "dayNum": 4,
+      "frequency": "monthly-2nd",
+      "time": "1:00 PM",
+      "location": "409 E Monument Ave, 3rd Floor",
+      "note": "",
+      "url": "https://www.metroparks.org/about-us/board-of-park-commissioners/",
+      "body": "Five Rivers MetroParks"
+    },
+    {
+      "id": "miami-conservancy",
+      "title": "Miami Conservancy District Board",
+      "type": "meeting",
+      "day": "Tue",
+      "dayNum": 2,
+      "frequency": "quarterly",
+      "quarterlyMonths": [3, 6, 9, 12],
+      "time": "10:00 AM",
+      "location": "38 E Monument Ave",
+      "note": "Quarterly meeting",
+      "url": "https://www.miamiconservancy.org/",
+      "body": "Miami Conservancy District"
+    },
+    {
+      "id": "mvrpc",
+      "title": "Miami Valley Regional Planning Commission",
+      "type": "meeting",
+      "day": "Thu",
+      "dayNum": 4,
+      "frequency": "monthly-1st",
+      "time": "1:30 PM",
+      "location": "1 S Main St, Suite 260",
+      "note": "",
+      "url": "https://www.mvrpc.org/",
+      "body": "MVRPC"
+    },
+    {
+      "id": "landmark-commission",
+      "title": "Dayton Landmark Commission",
+      "type": "meeting",
+      "day": "Thu",
+      "dayNum": 4,
+      "frequency": "monthly-3rd",
+      "time": "4:00 PM",
+      "location": "City Hall, Planning & Resource Room, Mezzanine",
+      "note": "",
+      "url": "https://www.daytonohio.gov/164/Boards-Commissions-Committees",
+      "body": "City of Dayton"
+    },
+    {
+      "id": "human-relations",
+      "title": "Dayton Human Relations Council",
+      "type": "meeting",
+      "day": "Thu",
+      "dayNum": 4,
+      "frequency": "monthly-3rd",
+      "time": "5:30 PM",
+      "location": "371 W Second St, Suite 100",
+      "note": "",
+      "url": "https://www.daytonohio.gov/168/Human-Relations-Council",
+      "body": "City of Dayton"
+    }
+  ],
+  "holidays": [
+    { "date": "2026-01-01", "title": "New Year's Day" },
+    { "date": "2026-01-19", "title": "Martin Luther King Jr. Day" },
+    { "date": "2026-02-16", "title": "Presidents' Day" },
+    { "date": "2026-05-25", "title": "Memorial Day" },
+    { "date": "2026-06-19", "title": "Juneteenth" },
+    { "date": "2026-07-04", "title": "Independence Day" },
+    { "date": "2026-09-07", "title": "Labor Day" },
+    { "date": "2026-10-12", "title": "Columbus Day" },
+    { "date": "2026-11-11", "title": "Veterans Day" },
+    { "date": "2026-11-26", "title": "Thanksgiving" },
+    { "date": "2026-12-25", "title": "Christmas Day" }
+  ],
+  "surveys": [
+    {
+      "title": "AdaptDayton — Zoning Code Modernization Survey",
+      "type": "survey",
+      "description": "Help shape updates to Dayton's zoning code, zoning map, and community engagement processes.",
+      "url": "https://adaptdayton-daytonohio.hub.arcgis.com/pages/take-the-survey",
+      "contact": "adaptdayton@daytonohio.gov",
+      "endDate": null
+    },
+    {
+      "title": "HUD Consolidated Plan 2026–2030 — Community Input",
+      "type": "survey",
+      "description": "5-minute anonymous survey guiding CDBG, HOME, ESG, and HOPWA grant investments through 2030.",
+      "url": "https://www.daytonohio.gov/1280/2026-2030-Consolidated-Plan",
+      "endDate": null
+    },
+    {
+      "title": "Know Your Pipes — Service Line Material Survey",
+      "type": "survey",
+      "description": "Property owners: identify your water service line material to help the city meet federal compliance requirements.",
+      "url": "https://www.daytonohio.gov/ServiceLineCompliance",
+      "endDate": null
+    }
+  ],
+  "commentPeriods": [
+    {
+      "title": "MVRPC Public Participation Policy",
+      "type": "comment",
+      "description": "Miami Valley Regional Planning Commission seeks input on updated participation policy.",
+      "contact": "Ldent@mvrpc.org",
+      "url": "https://www.mvrpc.org/about/policies/mvrpc-public-participation-policy",
+      "endDate": null
+    }
+  ],
+  "applications": [
+    {
+      "title": "City Plan Board",
+      "description": "Unpaid position. Contact: Jennifer Hanauer, 937-333-2005",
+      "url": "https://www.daytonohio.gov/FormCenter/City-Commission-Office-8/Commission-Boards-Application-48"
+    },
+    {
+      "title": "Board of Zoning Appeals",
+      "description": "Unpaid position. Contact: Jeff Green, 937-333-3302",
+      "url": "https://www.daytonohio.gov/FormCenter/City-Commission-Office-8/Commission-Boards-Application-48"
+    },
+    {
+      "title": "Landmark Commission",
+      "description": "Unpaid position. Applications accepted year-round.",
+      "url": "https://www.daytonohio.gov/164/Boards-Commissions-Committees"
+    },
+    {
+      "title": "Other Boards & Commissions",
+      "description": "The City of Dayton maintains dozens of boards and commissions with open seats. See full list for all opportunities.",
+      "url": "https://www.daytonohio.gov/164/Boards-Commissions-Committees"
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Voice Thread — Dayton.FYI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: #1a1a1a; background: #FAF9F6; font-size: 14px; line-height: 1.6; }
+    a { color: #00A1A5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .top-bar { background: #1a1a1a; color: #fff; padding: 10px 0; }
+    .top-bar-inner { max-width: 740px; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 22px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; letter-spacing: -0.02em; text-decoration: none; }
+    .top-nav { display: flex; gap: 18px; font-size: 14px; }
+    .top-nav a { color: #ccc; text-decoration: none; }
+    .top-nav a:hover { color: #fff; }
+
+    .page { max-width: 740px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    .breadcrumb { font-size: 13px; color: #999; margin-bottom: 1rem; }
+    .breadcrumb a { color: #00A1A5; }
+
+    /* Original piece */
+    .original {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 12px;
+      padding: 1.5rem; margin-bottom: 2rem;
+    }
+    .original-source { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; margin-bottom: 10px; }
+    .badge { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 6px; }
+    .badge-sub { background: #FF6719; color: #fff; }
+    .badge-native { background: #00A1A5; color: #fff; }
+    .original-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 16px; flex-shrink: 0; }
+    .av-jg { background: #E1F5EE; color: #0F6E56; }
+    .author-name { font-size: 16px; font-weight: 600; }
+    .author-meta { font-size: 13px; color: #777; }
+    .author-hood { font-size: 12px; color: #00A1A5; font-weight: 600; }
+    .original-title { font-size: 22px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 10px; line-height: 1.3; }
+    .original-excerpt { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 14px; }
+    .original-read { font-size: 14px; font-weight: 600; }
+    .tag-row { display: flex; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+    .tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 6px; }
+    .tag-safety { background: #FCEBEB; color: #A32D2D; }
+    .tag-community { background: #EEEDFE; color: #534AB7; }
+    .civic-row {
+      font-size: 13px; color: #00A1A5; padding-top: 12px; margin-top: 12px;
+      border-top: 1px solid #f0efe9;
+    }
+    .civic-row a { font-weight: 500; }
+    .stats-row { display: flex; gap: 20px; margin-top: 12px; font-size: 13px; color: #999; }
+    .action-row { display: flex; gap: 8px; margin-top: 12px; }
+    .action-btn {
+      font-size: 13px; padding: 6px 16px; border: 1px solid #e8e6e1; border-radius: 6px;
+      background: #fff; cursor: pointer; color: #555; transition: all 0.15s;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .action-btn:hover { border-color: #00A1A5; color: #00A1A5; text-decoration: none; }
+    .action-btn-respond { border-color: #E65025; color: #E65025; font-weight: 600; }
+    .action-btn-respond:hover { background: #FEF0E8; }
+
+    /* Responses section */
+    .responses-header {
+      font-size: 16px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif;
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 2px solid #1a1a1a;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .response-count { font-size: 13px; font-weight: 400; color: #999; }
+
+    .response {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 10px;
+      padding: 1.25rem; margin-bottom: 12px;
+      margin-left: 28px; border-left: 3px solid #00A1A5;
+    }
+    .response-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .response .avatar { width: 40px; height: 40px; font-size: 14px; }
+    .response-text { font-size: 14px; color: #1a1a1a; line-height: 1.8; }
+    .response-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; font-size: 12px; color: #999; }
+    .response-useful { font-size: 12px; color: #999; }
+
+    /* Illustrative label */
+    .illustrative-label {
+      font-size: 11px; font-weight: 700; color: #c4a000; text-transform: uppercase;
+      letter-spacing: 0.04em; margin-bottom: 8px;
+    }
+
+    /* Respond form */
+    .respond-section {
+      background: #fff; border: 2px solid #E65025; border-radius: 12px;
+      padding: 1.5rem; margin-top: 2rem;
+    }
+    .respond-title { font-size: 18px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 4px; }
+    .respond-ref { font-size: 13px; color: #00A1A5; font-weight: 500; margin-bottom: 12px; }
+    .respond-standards { font-size: 13px; color: #777; margin-bottom: 12px; line-height: 1.6; }
+    .respond-form textarea {
+      width: 100%; font-size: 14px; padding: 12px; border: 1px solid #e0e0e0;
+      border-radius: 8px; font-family: system-ui; outline: none; min-height: 120px; resize: vertical;
+    }
+    .respond-form textarea:focus { border-color: #00A1A5; }
+    .respond-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 10px 0; }
+    .respond-fields input, .respond-fields select {
+      font-size: 14px; padding: 8px 12px; border: 1px solid #e0e0e0;
+      border-radius: 6px; font-family: system-ui; outline: none;
+    }
+    .respond-fields input:focus, .respond-fields select:focus { border-color: #00A1A5; }
+    .respond-submit {
+      width: 100%; padding: 12px; background: #E65025; color: #fff; border: none;
+      border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer;
+      font-family: 'Poppins', system-ui, sans-serif; transition: background 0.15s;
+    }
+    .respond-submit:hover { background: #c4421e; }
+    .respond-note { font-size: 12px; color: #999; margin-top: 8px; line-height: 1.5; }
+
+    /* Moderation panel */
+    .mod-panel {
+      background: #f8f7f4; border: 1px solid #e8e6e1; border-radius: 12px;
+      padding: 1.25rem; margin-top: 2rem;
+    }
+    .mod-title { font-size: 15px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .mod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mod-card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px; padding: 12px;
+    }
+    .mod-card-label { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+    .mod-card-desc { font-size: 12px; color: #999; line-height: 1.5; }
+
+    .footer { max-width: 740px; margin: 0 auto; padding: 1.5rem 1.25rem; border-top: 1px solid #e8e6e1; font-size: 13px; color: #999; text-align: center; }
+
+    @media (max-width: 600px) {
+      .respond-fields { grid-template-columns: 1fr; }
+      .mod-grid { grid-template-columns: 1fr; }
+      .response { margin-left: 0; }
+      .top-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+<script src="gate.js"></script>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="homepage.html" class="logo" style="text-decoration:none;"><span style="color:#989998;">Dayton</span><span style="color:#E65025;">.</span><span style="color:#00A1A5;">FYI</span></a>
+    <nav class="top-nav">
+      <a href="homepage.html">Home</a>
+      <a href="community-voices.html">Voices</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="civic-map.html">Map</a>
+      <a href="commission-voting-record-2026.html">Commission</a>
+      <a href="public-records.html">Records</a>
+    </nav>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="breadcrumb">
+    <a href="community-voices.html">Community Voice Network</a> &rsaquo; Thread
+  </div>
+
+  <!-- Original piece -->
+  <div class="original">
+    <div class="original-source"><span class="badge badge-sub">Substack</span> Syndicated from The Jared Grandy Report</div>
+    <div class="original-header">
+      <div class="avatar av-jg">JG</div>
+      <div>
+        <div class="author-name">Jared Grandy</div>
+        <div class="author-meta">Politics and culture from my perspective</div>
+        <div class="author-hood">Dayton</div>
+      </div>
+    </div>
+    <div class="original-title">Can we have a real conversation about gun violence? Like, a real one. For real. Please.</div>
+    <div class="original-excerpt">To have that conversation, I have to start by talking about myself honestly. I grew up around guns. I've owned guns. And I've also watched gun violence destroy communities I care about. The conversation we keep having — the one where both sides retreat to their corners and shout past each other — isn't working. It's not even a conversation. It's performance...</div>
+    <div class="original-read"><a href="https://gemcityjared.substack.com/" target="_blank" rel="noopener">Read full piece on Jared's Substack &rarr;</a></div>
+    <div class="tag-row">
+      <span class="tag tag-safety">Public safety</span>
+      <span class="tag tag-community">Community life</span>
+    </div>
+    <div class="civic-row">
+      Related: <a href="commission-voting-record-2026.html">Commission vote on ALPR cameras (Jan 2026)</a> &middot; <a href="https://dayton-transparency-portal-1-daytonohio.hub.arcgis.com/" target="_blank" rel="noopener">Dayton Police Transparency Portal</a>
+    </div>
+    <div class="stats-row">
+      <span>12 marked useful</span>
+      <span>2 responses</span>
+      <span>Jun 11, 2026</span>
+    </div>
+    <div class="action-row">
+      <button class="action-btn">Useful</button>
+      <button class="action-btn" onclick="if(navigator.share)navigator.share({title:'Can we have a real conversation about gun violence?',url:'https://gemcityjared.substack.com/'}).catch(function(){})">Share</button>
+      <a class="action-btn action-btn-respond" href="#respond">Respond on Dayton.FYI</a>
+    </div>
+  </div>
+
+  <!-- Responses -->
+  <div class="responses-header">
+    Community responses <span class="response-count">2 responses</span>
+  </div>
+
+  <div class="response" style="border-left-color: #c4a000;">
+    <div class="illustrative-label">Example response &mdash; illustrative only</div>
+    <div class="response-header">
+      <div class="avatar" style="background:#E6F1FB;color:#185FA5;">DW</div>
+      <div>
+        <div class="author-name">[Contributor name]</div>
+        <div class="author-meta">Five Oaks &middot; Native contributor</div>
+      </div>
+    </div>
+    <div class="response-text">
+      <p>Jared is right that we need honesty. But I'd push back on one thing &mdash; the conversation can't just be about guns. In Five Oaks, the violence is inseparable from vacant properties, no jobs for young people, and a rec center that closes at 5pm. We need the commission to see these as one problem, not three budget lines.</p>
+      <p style="margin-top:10px;">The ALPR camera vote in January was a perfect example &mdash; four commissioners voted yes on surveillance technology without ever discussing whether the $180K could have gone to the Northwest Rec Center staying open until 9pm. That's not a conversation about gun violence. That's a conversation about what kind of safety we're actually building.</p>
+    </div>
+    <div class="response-footer">
+      <span><span class="badge badge-native">Dayton.FYI</span> &middot; Published Jun 13, 2026</span>
+      <span class="response-useful">8 marked useful</span>
+    </div>
+  </div>
+
+  <div class="response" style="border-left-color: #c4a000;">
+    <div class="illustrative-label">Example response &mdash; illustrative only</div>
+    <div class="response-header">
+      <div class="avatar" style="background:#FAEEDA;color:#854F0B;">ML</div>
+      <div>
+        <div class="author-name">[Contributor name]</div>
+        <div class="author-meta">Old North Dayton &middot; Documenter</div>
+      </div>
+    </div>
+    <div class="response-text">
+      <p>As a Documenter who covered the ALPR camera vote in January, I can add context: Commissioner Joseph was the only vote against, citing privacy concerns for immigrant communities in northeast Dayton. That vote is directly relevant to the surveillance vs. safety tradeoff Jared describes.</p>
+      <p style="margin-top:10px;">The meeting minutes don't capture the full picture &mdash; during citizen comment, three Old North Dayton residents spoke about feeling watched rather than protected. The Documenter notes from that meeting are in the <a href="commission-voting-record-2026.html">Commission Voting Record</a>.</p>
+    </div>
+    <div class="response-footer">
+      <span><span class="badge badge-native">Dayton.FYI</span> &middot; Published Jun 14, 2026</span>
+      <span class="response-useful">5 marked useful</span>
+    </div>
+  </div>
+
+  <!-- Respond form -->
+  <div class="respond-section" id="respond">
+    <div class="respond-title">Respond to this thread</div>
+    <div class="respond-ref">Responding to: &ldquo;Can we have a real conversation about gun violence?&rdquo; by Jared Grandy</div>
+    <div class="respond-standards">Responses are published contributions with your byline &mdash; not throwaway comments. They should be substantive, grounded in experience, and engage in good faith with the original piece and other respondents. <a href="terms.html">Full editorial standards</a>.</div>
+    <div class="respond-form">
+      <textarea placeholder="Share your perspective. What does this issue look like from where you stand? What context or experience can you add?"></textarea>
+      <div class="respond-fields">
+        <input type="text" placeholder="Your name">
+        <select>
+          <option value="">Your neighborhood</option>
+          <option>Five Oaks</option>
+          <option>South Park</option>
+          <option>Downtown</option>
+          <option>Old North Dayton</option>
+          <option>Patterson Park</option>
+          <option>University Park</option>
+          <option>Other</option>
+        </select>
+        <input type="email" placeholder="Email (not published)">
+      </div>
+      <button class="respond-submit">Submit for editorial review</button>
+      <div class="respond-note">Responses are reviewed by a Dayton.FYI editor before publishing. Your name and neighborhood are displayed; your email is never published. Responses are licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> &mdash; you can republish your own response anywhere.</div>
+    </div>
+  </div>
+
+  <!-- Moderation panel (editor view) -->
+  <div class="mod-panel">
+    <div class="mod-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      Moderation tools (editor view)
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card">
+        <div class="mod-card-label">Pre-publication review</div>
+        <div class="mod-card-desc">All responses held for editorial review. Editor approves, requests edits, or declines with reason.</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-label">Community flagging</div>
+        <div class="mod-card-desc">Published responses can be flagged by readers. Three flags triggers automatic hold and re-review.</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-label">Contributor trust levels</div>
+        <div class="mod-card-desc">New: all posts reviewed. Established (5+ approved): expedited. Verified correspondents: publish with post-review.</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-label">Editorial standards</div>
+        <div class="mod-card-desc">Substantive, good faith, grounded in experience. No personal attacks, no unverified claims as fact, no commercial promotion.</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-label">Removal and appeals</div>
+        <div class="mod-card-desc">Declined submissions receive a reason. Contributors can revise and resubmit. Published content removal requires editor explanation.</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-label">Transparency log</div>
+        <div class="mod-card-desc">Monthly count of submissions, approvals, declines by category, and removals published in editorial transparency report.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <a href="homepage.html">Dayton.FYI</a> &middot; <a href="community-voices.html">Community Voice Network</a> &middot; <a href="terms.html">Terms &amp; editorial standards</a> &middot; A project of <a href="https://thejournalismlab.org/" target="_blank" rel="noopener">The Journalism Lab</a>
+</div>
+
+</body>
+</html>

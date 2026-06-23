@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dayton.FYI — Civic information for every Dayton neighborhood</title>
+  <link rel="icon" type="image/png" href="../images/jlab-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #FAF9F6;
+      color: #1a1a1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #00A1A5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top bar */
+    .top-bar {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 10px 0;
+    }
+    .top-bar-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-size: 22px; font-weight: 800; font-family: 'Poppins', system-ui, sans-serif; color: #fff; letter-spacing: -0.02em; }
+    .logo span { color: #E65025; }
+    .top-bar-right { display: flex; align-items: center; gap: 16px; }
+    .hood-search {
+      font-size: 14px; padding: 6px 12px; border: 1px solid #555;
+      border-radius: 6px; background: #2a2a2a; color: #fff; width: 220px; outline: none;
+    }
+    .hood-search::placeholder { color: #888; }
+    .hood-search:focus { border-color: #00A1A5; }
+    .top-nav { display: flex; gap: 18px; font-size: 14px; }
+    .top-nav a { color: #ccc; }
+    .top-nav a:hover { color: #fff; text-decoration: none; }
+    .your-hood { font-size: 13px; color: #00A1A5; font-weight: 600; }
+
+    /* Breaking news bar */
+    .breaking-bar {
+      background: #A32D2D; color: #fff; padding: 10px 0;
+      display: none;
+    }
+    .breaking-bar.active { display: block; }
+    .breaking-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 1.25rem;
+      display: flex; align-items: center; gap: 12px; font-size: 14px;
+    }
+    .breaking-badge {
+      font-size: 11px; font-weight: 700; background: #fff; color: #A32D2D;
+      padding: 3px 10px; border-radius: 4px; text-transform: uppercase;
+      letter-spacing: 0.05em; flex-shrink: 0;
+    }
+    .breaking-text { font-weight: 500; }
+    .breaking-text a { color: #fff; text-decoration: underline; }
+
+    /* Main content */
+    .page { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+
+    /* Date line */
+    .date-line {
+      font-size: 13px; color: #999; text-transform: uppercase;
+      letter-spacing: 0.06em; font-weight: 600; margin-bottom: 1rem;
+      padding-bottom: 8px; border-bottom: 1px solid #e8e6e1;
+    }
+
+    /* Two column layout */
+    .main-grid {
+      display: grid; grid-template-columns: 1fr 340px; gap: 2rem;
+    }
+    .main-col { }
+    .side-col { }
+
+    /* Section headers */
+    .section { margin-bottom: 2rem; }
+    .section-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px; padding-bottom: 8px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+    .section-title { font-size: 17px; font-weight: 700; font-family: 'Poppins', system-ui, sans-serif; }
+    .section-more { font-size: 13px; font-weight: 600; }
+
+    /* Cards */
+    .card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 1rem 1.25rem; margin-bottom: 8px;
+      transition: border-color 0.15s;
+    }
+    .card:hover { border-color: #ccc; }
+    .card-source {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; color: #999; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;
+    }
+    .source-logo {
+      display: inline-block; font-size: 11px; font-weight: 800;
+      padding: 3px 8px; border-radius: 3px; letter-spacing: 0.02em;
+      text-transform: none; line-height: 1;
+    }
+    .logo-ddn { background: #1a1a1a; color: #fff; }
+    .logo-wyso { background: #00529B; color: #fff; }
+    .logo-signal { background: #E65025; color: #fff; }
+    .logo-commission { background: #EEEDFE; color: #534AB7; }
+    .logo-daytonfyi { background: #00A1A5; color: #fff; }
+    .card-title { font-size: 15px; font-weight: 600; font-family: 'Poppins', system-ui, sans-serif; color: #1a1a1a; margin-bottom: 4px; }
+    .card-title a { color: #1a1a1a; }
+    .card-detail { font-size: 14px; color: #555; line-height: 1.6; }
+    .card-meta { font-size: 12px; color: #bbb; margin-top: 6px; }
+    .tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 3px 9px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.04em; margin-right: 4px; margin-top: 6px;
+    }
+    .tag-commission { background: #EEEDFE; color: #534AB7; }
+    .tag-zoning { background: #FBEAF0; color: #993556; }
+    .tag-voice { background: #E1F5EE; color: #0F6E56; }
+    .tag-data { background: #E6F1FB; color: #185FA5; }
+    .tag-meeting { background: #EEEDFE; color: #534AB7; }
+    .tag-deadline { background: #FCEBEB; color: #A32D2D; }
+    .tag-milestone { background: #FAEEDA; color: #854F0B; }
+
+    /* Lead card */
+    .card-lead { padding: 1.25rem 1.5rem; }
+    .card-lead .card-title { font-size: 18px; }
+    .card-lead .card-detail { font-size: 15px; }
+
+    /* Commission vote inline */
+    .vote-inline {
+      display: flex; gap: 3px; margin-top: 6px; flex-wrap: wrap;
+    }
+    .vote-chip {
+      font-size: 11px; padding: 2px 6px; border-radius: 3px;
+    }
+    .vc-yes { background: #E1F5EE; color: #0F6E56; }
+    .vc-abstain { background: #FAEEDA; color: #854F0B; }
+
+    /* Sidebar cards */
+    .side-card {
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 8px;
+      padding: 1rem; margin-bottom: 8px;
+    }
+    .side-card-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .side-card-detail { font-size: 13px; color: #555; }
+    .side-card-time { font-size: 12px; color: #00A1A5; font-weight: 600; margin-top: 4px; }
+
+    /* Stat row */
+    .stat-row {
+      display: flex; gap: 8px; margin-bottom: 10px;
+    }
+    .stat-box {
+      flex: 1; background: #fff; border: 1px solid #e8e6e1; border-radius: 6px;
+      padding: 10px; text-align: center;
+    }
+    .stat-value { font-size: 20px; font-weight: 700; }
+    .stat-label { font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Neighborhood grid */
+    .hood-grid-section { margin-top: 2rem; }
+    .area-label {
+      font-size: 12px; font-weight: 700; color: #999;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin: 1.25rem 0 8px;
+    }
+    .area-label:first-child { margin-top: 0; }
+    .hood-chips {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .hood-chip {
+      font-size: 13px; padding: 5px 12px;
+      background: #fff; border: 1px solid #e8e6e1; border-radius: 6px;
+      color: #1a1a1a; cursor: pointer; transition: all 0.15s;
+    }
+    .hood-chip:hover { border-color: #00A1A5; color: #00A1A5; text-decoration: none; }
+    .hood-chip-active { border-color: #00A1A5; background: #E1F5EE; color: #0F6E56; }
+
+    /* Voice cards */
+    .voice-row { display: flex; gap: 12px; align-items: flex-start; }
+    .voice-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #00A1A5; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 600; flex-shrink: 0;
+    }
+    .voice-name { font-size: 14px; font-weight: 600; }
+    .voice-bio { font-size: 12px; color: #777; }
+    .voice-quote { font-size: 14px; color: #1a1a1a; font-style: italic; margin-top: 3px; }
+
+    /* Subscribe box */
+    .subscribe-box {
+      background: #fff; border: 2px solid #E65025; border-radius: 10px;
+      padding: 1.25rem; text-align: center; margin-top: 1rem;
+    }
+    .subscribe-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .subscribe-desc { font-size: 13px; color: #555; margin-bottom: 12px; }
+    .subscribe-form { display: flex; gap: 6px; }
+    .subscribe-form input {
+      flex: 1; font-size: 14px; padding: 8px 12px;
+      border: 1px solid #ccc; border-radius: 6px; outline: none;
+    }
+    .subscribe-form input:focus { border-color: #E65025; }
+    .subscribe-form button {
+      background: #E65025; color: #fff; border: none; padding: 8px 16px;
+      border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+      white-space: nowrap;
+    }
+    .subscribe-form button:hover { background: #cc4520; }
+
+    /* Footer */
+    .page-footer {
+      max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem;
+      border-top: 1px solid #e8e6e1;
+      font-size: 13px; color: #999; text-align: center;
+    }
+
+    /* Cross-neighborhood pattern card */
+    .pattern-card {
+      background: #fff; border: 1px solid #e8e6e1; border-left: 3px solid #00A1A5;
+      border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin-bottom: 8px;
+    }
+
+    /* Area buttons */
+    .area-btn {
+      font-size: 13px; font-weight: 600; padding: 6px 14px;
+      border: 1px solid #e8e6e1; border-radius: 6px;
+      background: #fff; color: #555; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .area-btn:hover { border-color: #00A1A5; color: #00A1A5; }
+    .area-btn-active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+    .area-btn-active:hover { background: #333; color: #fff; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .top-bar-right { flex-direction: column; gap: 8px; }
+      .hood-search { width: 100%; }
+      .top-nav { display: none; }
+      .stat-row { flex-wrap: wrap; }
+      .stat-box { min-width: 45%; }
+    }
+  </style>
+</head>
+<body>
+<script src="gate.js"></script>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="homepage.html" class="logo" style="text-decoration:none;"><span style="color:#989998;">Dayton</span><span style="color:#E65025;">.</span><span style="color:#00A1A5;">FYI</span></a>
+      <nav class="top-nav">
+        <a href="community-voices.html">Voices</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="civic-map.html">Map</a>
+        <a href="commission-voting-record-2026.html">Commission</a>
+        <a href="public-records.html">Records</a>
+        <a href="../index.html">About</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+    <div class="top-bar-right">
+      <input type="text" class="hood-search" placeholder="Find your neighborhood...">
+      <a class="your-hood" href="five-oaks.html">Your neighborhood: Five Oaks</a>
+    </div>
+  </div>
+</div>
+
+<!-- Breaking news bar (hidden by default) -->
+<div class="breaking-bar" id="breaking">
+  <div class="breaking-inner">
+    <span class="breaking-badge">Verified</span>
+    <span class="breaking-text">This is reserved for rare, critical civic information events. <a href="#">Read the verified facts &rarr;</a></span>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="date-line">Week of June 16&ndash;22, 2026</div>
+
+  <div class="main-grid">
+
+    <!-- MAIN COLUMN -->
+    <div class="main-col">
+
+      <!-- This week -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-news" style="font-size:20px;vertical-align:-3px;margin-right:4px;color:#E65025;"></i> This week in Dayton</div>
+        </div>
+
+        <!-- Lead story -->
+        <div class="card card-lead">
+          <div class="card-source"><span class="source-logo logo-commission"><i class="ti ti-gavel" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i> City Commission</span> June 17</div>
+          <div class="card-title"><a href="commission-digest-may20.html">Commission approves $78.75M state grant for airport infrastructure; Joseph abstains on all three airport items</a></div>
+          <div class="card-detail">The largest single funding action of 2026. The grant and loan agreement with the Ohio Department of Development covers infrastructure improvements at James M. Cox Dayton International Airport. Commissioner Joseph abstained on this and two related airport easement votes.</div>
+          <div class="vote-inline">
+            <span class="vote-chip vc-yes">Beckham: Y</span>
+            <span class="vote-chip vc-yes">Fairchild: Y</span>
+            <span class="vote-chip vc-abstain">Joseph: A</span>
+            <span class="vote-chip vc-yes">Shaw: Y</span>
+            <span class="vote-chip vc-yes">Turner-Sloss: Y</span>
+          </div>
+          <div class="card-meta" style="margin-top:8px;"><i class="ti ti-chart-bar" style="font-size:14px;vertical-align:-2px;margin-right:3px;"></i><a href="commission-voting-record-2026.html">View all 2026 commissioner voting records &rarr;</a></div>
+        </div>
+
+        <div class="card">
+          <div class="card-source"><span class="source-logo logo-ddn">Dayton Daily News</span></div>
+          <div class="card-title"><a href="https://www.daytondailynews.com/local/ohio-property-tax-reform-options-could-be-more-subtle/4BS6MH6NONHOHIAKMSVIIEQMKA/" target="_blank" rel="noopener">Ohio property tax reform options could be more subtle</a></div>
+          <div class="card-detail">H.B. 186 limits school district property tax increases to the rate of inflation. Montgomery County homeowners may see changes in upcoming assessments.</div>
+          <div><span class="tag tag-data"><i class="ti ti-home-dollar" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i>Property tax</span></div>
+        </div>
+
+        <!-- Zoning story with map thumbnail -->
+        <div class="card" style="display:grid;grid-template-columns:1fr 140px;gap:14px;">
+          <div>
+            <div class="card-source"><span class="source-logo logo-commission"><i class="ti ti-gavel" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i> City Commission</span> June 17</div>
+            <div class="card-title"><a href="#">3.74 acres at 40 S. Edwin C. Moses Blvd rezoned from single-family to multifamily</a></div>
+            <div class="card-detail">Ordinance 32190-26 passed unanimously. The site near the University of Dayton campus was rezoned from MR5 to MMF to allow apartment development.</div>
+            <div><span class="tag tag-zoning"><i class="ti ti-map-2" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i>Zoning</span></div>
+            <div class="card-meta"><i class="ti ti-map-pin" style="font-size:13px;vertical-align:-1px;margin-right:2px;"></i>University Park</div>
+          </div>
+          <div id="zoning-map-thumb" style="border-radius:6px;overflow:hidden;min-height:120px;"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-source"><span class="source-logo logo-commission"><i class="ti ti-gavel" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i> City Commission</span> June 17</div>
+          <div class="card-title"><a href="#">$3.5M HUD Continuum of Care grant accepted for homelessness services</a></div>
+          <div class="card-detail">Resolution 6929-26 passed 5-0. The annual federal grant supports Dayton&rsquo;s coordinated homelessness response system.</div>
+          <div><span class="tag tag-commission"><i class="ti ti-users" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i>Homelessness services</span></div>
+        </div>
+
+        <div class="card">
+          <div class="card-source"><span class="source-logo logo-wyso">WYSO</span></div>
+          <div class="card-title"><a href="https://www.wyso.org/2025-07-24/ohio-is-losing-local-journalists-and-leaving-residents-in-the-dark" target="_blank" rel="noopener">Ohio is losing local journalists &mdash; and leaving residents in the dark</a></div>
+          <div class="card-detail">Montgomery County has 4.8 local journalists per 100,000 residents &mdash; below the national average.</div>
+          <div><span class="tag tag-data"><i class="ti ti-news" style="font-size:12px;vertical-align:-1px;margin-right:2px;"></i>Media</span></div>
+        </div>
+      </section>
+
+      <!-- Cross-neighborhood patterns -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-chart-dots" style="font-size:20px;vertical-align:-3px;margin-right:4px;color:#00A1A5;"></i> Across Dayton</div>
+          <a class="section-more" href="#">View all patterns &rarr;</a>
+        </div>
+
+        <div class="pattern-card">
+          <div class="card-title">Property investor purchases concentrated in three west-side neighborhoods</div>
+          <div class="card-detail">The Cleveland Federal Reserve has documented rising investor share of single-family purchases in Dayton-area neighborhoods, with cash transactions and concentration in lower-income communities. The specific county-level breakdown is a data integration target for Dayton.FYI.</div>
+          <div class="card-meta">Source: <a href="https://www.clevelandfed.org/publications/cd-reports" target="_blank" rel="noopener">Cleveland Federal Reserve Community Development Reports</a> &middot; Neighborhoods: MacFarlane, Residence Park, Miami Chapel</div>
+        </div>
+
+        <div class="pattern-card">
+          <div class="card-title">Housing conditions vary significantly across Dayton&rsquo;s neighborhoods</div>
+          <div class="card-detail">The City of Dayton conducts periodic housing condition surveys with neighborhood-level data. Integrating this data by neighborhood is a Dayton.FYI partnership ask to the Community Engagement Division.</div>
+          <div class="card-meta">Source: City of Dayton Housing Condition Survey (data integration pending)</div>
+        </div>
+      </section>
+
+      <!-- Community voices -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-microphone" style="font-size:20px;vertical-align:-3px;margin-right:4px;color:#00A1A5;"></i> Community voices</div>
+          <a class="section-more" href="#">All contributors &rarr;</a>
+        </div>
+
+        <div class="card" style="border-left: 3px solid #c4a000;">
+          <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Example &mdash; illustrative only</div>
+          <div class="voice-row">
+            <div class="voice-avatar" style="background:#c4a000;">?</div>
+            <div>
+              <div class="voice-name">[Community Voice contributor]</div>
+              <div class="voice-bio">Residents share perspectives on neighborhood issues in their own words</div>
+              <div class="voice-quote">"Community Voice contributors write about what they see in their neighborhood &mdash; bridging social media conversations into the public record."</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size:13px;color:#999;font-style:italic;padding:8px 0;">
+          Know someone with a perspective to share? <a href="five-oaks.html">Nominate a community voice contributor &rarr;</a>
+        </div>
+      </section>
+
+      <!-- Recent milestones -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-heart" style="font-size:20px;vertical-align:-3px;margin-right:4px;color:#E65025;"></i> Community milestones</div>
+          <a class="section-more" href="#">Submit a milestone &rarr;</a>
+        </div>
+
+        <div class="card" style="padding:0.85rem 1.25rem;border-left: 3px solid #c4a000;">
+          <div style="font-size:11px;font-weight:700;color:#c4a000;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Example submission &mdash; illustrative only</div>
+          <div class="card-title">[Name] &mdash; Meadowdale High School, class of 2026</div>
+          <div class="card-detail">Graduations, marriages, retirements, and tributes &mdash; submitted by residents, published permanently.</div>
+          <div><span class="tag tag-milestone">Graduation</span> <span class="tag" style="background:#F1EFE8;color:#5F5E5A;">In memoriam</span></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="side-col">
+
+      <!-- Upcoming meetings -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-calendar" style="font-size:18px;vertical-align:-2px;margin-right:4px;"></i> Upcoming meetings</div>
+        </div>
+
+        <div class="side-card">
+          <div class="side-card-title">City Commission</div>
+          <div class="side-card-detail">Regular session</div>
+          <div class="side-card-time">Wed, June 24 &middot; 6:00 PM</div>
+        </div>
+
+        <div class="side-card">
+          <div class="side-card-title">DPS Board of Education</div>
+          <div class="side-card-detail">Regular session</div>
+          <div class="side-card-time">Tue, June 23 &middot; 5:30 PM</div>
+        </div>
+
+        <div class="side-card">
+          <div class="side-card-title">Board of Zoning Appeals</div>
+          <div class="side-card-detail">Variance hearings</div>
+          <div class="side-card-time">Wed, June 24 &middot; 4:30 PM</div>
+        </div>
+
+        <div class="side-card">
+          <div class="side-card-title">City Plan Board</div>
+          <div class="side-card-detail">Regular session</div>
+          <div class="side-card-time">Thu, June 26 &middot; 4:00 PM</div>
+        </div>
+
+        <a class="section-more" href="#" style="font-size:13px;display:block;margin-top:4px;">Full civic calendar &rarr;</a>
+      </div>
+
+      <!-- Subscribe -->
+      <div class="subscribe-box">
+        <div class="subscribe-title">Get the weekly digest</div>
+        <div class="subscribe-desc">Choose your neighborhood and get meetings, milestones, property changes, and news every Monday.</div>
+        <select style="width:100%;font-size:14px;padding:8px;border:1px solid #ccc;border-radius:6px;margin-bottom:8px;outline:none;">
+          <option value="">Choose your neighborhood...</option>
+          <optgroup label="Downtown">
+            <option>Downtown</option><option>Oregon District</option><option>South Park</option><option>University Park</option><option>Webster Station</option>
+          </optgroup>
+          <optgroup label="North Central">
+            <option>College Hill</option><option>Dayton View</option><option>Fairview</option><option selected>Five Oaks</option><option>Grafton Hill</option><option>McPherson</option><option>Northern Hills</option><option>Riverdale</option>
+          </optgroup>
+          <optgroup label="Northeast">
+            <option>Burkhardt</option><option>Eastern Hills</option><option>Kittyhawk</option><option>Old North Dayton</option><option>Springfield</option><option>St. Anne's Hill</option>
+          </optgroup>
+          <optgroup label="Southeast">
+            <option>Belmont</option><option>Linden Heights</option><option>Patterson Park</option><option>Shroyer Park</option><option>Walnut Hills</option>
+          </optgroup>
+          <optgroup label="West">
+            <option>Carillon</option><option>Edgemont</option><option>MacFarlane</option><option>Miami Chapel</option><option>Residence Park</option><option>Roosevelt</option><option>Westwood</option><option>Wolf Creek</option><option>Wright Dunbar</option>
+          </optgroup>
+        </select>
+        <div class="subscribe-form">
+          <input type="email" placeholder="your@email.com">
+          <button>Subscribe</button>
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:#999;">Free forever. No account required.</div>
+      </div>
+
+      <!-- Commission tracker -->
+      <div class="section" style="margin-top:1.5rem;">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-gavel" style="font-size:18px;vertical-align:-2px;margin-right:4px;"></i> Commission tracker</div>
+        </div>
+        <div class="side-card">
+          <div style="font-size:13px;color:#555;margin-bottom:8px;">2026 session: 69 items, 35 votes, 4 split</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;">
+            <div>Turner-Sloss <strong>21Y</strong></div>
+            <div>Joseph <strong>22Y 3A</strong></div>
+            <div>Shaw <strong>24Y</strong></div>
+            <div>Fairchild <strong>22Y 1A</strong></div>
+            <div>Beckham <strong>22Y</strong></div>
+          </div>
+          <a href="commission-voting-record-2026.html" style="font-size:13px;font-weight:600;display:block;margin-top:8px;">Full voting record &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Neighborhoods section -->
+  <div class="hood-grid-section">
+    <div class="section-head">
+      <div class="section-title"><i class="ti ti-map-search" style="font-size:20px;vertical-align:-3px;margin-right:4px;color:#00A1A5;"></i> Find your neighborhood</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:0.5rem;">
+
+      <!-- Map -->
+      <div>
+        <div id="hood-map" style="height:380px;border-radius:8px 8px 0 0;border:1px solid #e8e6e1;border-bottom:none;"></div>
+        <div id="hood-selected" style="display:none;background:#fff;border:1px solid #e8e6e1;border-top:2px solid #E65025;border-radius:0 0 8px 8px;padding:12px 16px;"></div>
+        <div id="hood-prompt" style="background:#fff;border:1px solid #e8e6e1;border-radius:0 0 8px 8px;padding:10px 16px;font-size:13px;color:#999;text-align:center;">
+          <i class="ti ti-click" style="font-size:15px;vertical-align:-2px;margin-right:4px;"></i>Click a pin on the map to select a neighborhood
+        </div>
+      </div>
+
+      <!-- Area selector + chips -->
+      <div>
+        <div style="font-size:14px;color:#555;margin-bottom:12px;">Select an area to explore its neighborhoods:</div>
+
+        <div id="area-buttons" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+          <button class="area-btn area-btn-active" data-area="all">All Dayton</button>
+          <button class="area-btn" data-area="downtown">Downtown</button>
+          <button class="area-btn" data-area="north-central">North Central</button>
+          <button class="area-btn" data-area="northeast">Northeast</button>
+          <button class="area-btn" data-area="southeast">Southeast</button>
+          <button class="area-btn" data-area="west">West</button>
+        </div>
+
+        <div id="hood-list" style="max-height:320px;overflow-y:auto;">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="page-footer">
+  <p>Dayton.FYI is a project of <a href="https://thejournalismlab.org/" target="_blank" rel="noopener">The Journalism Lab</a>, a Dayton 501(c)(3).</p>
+  <p style="margin-top:4px;">All content licensed <a href="terms.html">CC BY 4.0</a> unless otherwise noted.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var AREAS = {
+    "all": { center: [39.760, -84.195], zoom: 12, label: "All Dayton" },
+    "downtown": { center: [39.759, -84.190], zoom: 14, label: "Downtown" },
+    "north-central": { center: [39.785, -84.210], zoom: 13, label: "North Central" },
+    "northeast": { center: [39.790, -84.160], zoom: 13, label: "Northeast" },
+    "southeast": { center: [39.740, -84.160], zoom: 13, label: "Southeast" },
+    "west": { center: [39.755, -84.230], zoom: 13, label: "West" }
+  };
+
+  var NEIGHBORHOODS = [
+    { name: "Downtown", area: "downtown", lat: 39.759, lng: -84.191 },
+    { name: "Oregon District", area: "downtown", lat: 39.758, lng: -84.183 },
+    { name: "Rubicon Mill", area: "downtown", lat: 39.762, lng: -84.197 },
+    { name: "South Park", area: "downtown", lat: 39.749, lng: -84.188 },
+    { name: "University Park", area: "downtown", lat: 39.741, lng: -84.182 },
+    { name: "Webster Station", area: "downtown", lat: 39.754, lng: -84.196 },
+
+    { name: "College Hill", area: "north-central", lat: 39.793, lng: -84.213 },
+    { name: "Cornell Heights", area: "north-central", lat: 39.790, lng: -84.205 },
+    { name: "Dayton View", area: "north-central", lat: 39.782, lng: -84.215 },
+    { name: "Fairview", area: "north-central", lat: 39.776, lng: -84.208 },
+    { name: "Five Oaks", area: "north-central", lat: 39.774, lng: -84.210, active: true, link: "five-oaks.html" },
+    { name: "Grafton Hill", area: "north-central", lat: 39.770, lng: -84.200 },
+    { name: "Greenwich Village", area: "north-central", lat: 39.788, lng: -84.200 },
+    { name: "Hillcrest", area: "north-central", lat: 39.798, lng: -84.208 },
+    { name: "McPherson", area: "north-central", lat: 39.780, lng: -84.198 },
+    { name: "Mt. Vernon", area: "north-central", lat: 39.786, lng: -84.195 },
+    { name: "Northern Hills", area: "north-central", lat: 39.802, lng: -84.215 },
+    { name: "Riverdale", area: "north-central", lat: 39.795, lng: -84.220 },
+    { name: "Santa Clara", area: "north-central", lat: 39.792, lng: -84.218 },
+
+    { name: "Burkhardt", area: "northeast", lat: 39.780, lng: -84.148 },
+    { name: "Deweese", area: "northeast", lat: 39.792, lng: -84.170 },
+    { name: "Eastern Hills", area: "northeast", lat: 39.788, lng: -84.155 },
+    { name: "Gateway", area: "northeast", lat: 39.795, lng: -84.158 },
+    { name: "Kittyhawk", area: "northeast", lat: 39.800, lng: -84.152 },
+    { name: "McCook Field", area: "northeast", lat: 39.778, lng: -84.175 },
+    { name: "Old North Dayton", area: "northeast", lat: 39.784, lng: -84.178 },
+    { name: "Pheasant Hill", area: "northeast", lat: 39.798, lng: -84.145 },
+    { name: "Springfield", area: "northeast", lat: 39.790, lng: -84.163 },
+    { name: "St. Anne's Hill", area: "northeast", lat: 39.776, lng: -84.170 },
+
+    { name: "Belmont", area: "southeast", lat: 39.738, lng: -84.152 },
+    { name: "Eastmont", area: "southeast", lat: 39.745, lng: -84.148 },
+    { name: "Hearthstone", area: "southeast", lat: 39.735, lng: -84.158 },
+    { name: "Linden Heights", area: "southeast", lat: 39.742, lng: -84.162 },
+    { name: "Patterson Park", area: "southeast", lat: 39.748, lng: -84.168 },
+    { name: "Shroyer Park", area: "southeast", lat: 39.730, lng: -84.155 },
+    { name: "Twin Towers", area: "southeast", lat: 39.737, lng: -84.165 },
+    { name: "Walnut Hills", area: "southeast", lat: 39.744, lng: -84.156 },
+
+    { name: "Arlington Heights", area: "west", lat: 39.748, lng: -84.225 },
+    { name: "Carillon", area: "west", lat: 39.748, lng: -84.208 },
+    { name: "Edgemont", area: "west", lat: 39.755, lng: -84.220 },
+    { name: "Highview Hills", area: "west", lat: 39.740, lng: -84.235 },
+    { name: "Little Richmond", area: "west", lat: 39.738, lng: -84.240 },
+    { name: "MacFarlane", area: "west", lat: 39.765, lng: -84.225 },
+    { name: "Madden Hills", area: "west", lat: 39.760, lng: -84.235 },
+    { name: "Miami Chapel", area: "west", lat: 39.762, lng: -84.218 },
+    { name: "Residence Park", area: "west", lat: 39.758, lng: -84.228 },
+    { name: "Roosevelt", area: "west", lat: 39.752, lng: -84.215 },
+    { name: "Westwood", area: "west", lat: 39.745, lng: -84.220 },
+    { name: "Wolf Creek", area: "west", lat: 39.768, lng: -84.230 },
+    { name: "Wright Dunbar", area: "west", lat: 39.762, lng: -84.205 }
+  ];
+
+  var map = L.map('hood-map', { zoomControl: true, scrollWheelZoom: false }).setView([39.760, -84.195], 12);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+    attribution: '&copy; OpenStreetMap &copy; CARTO'
+  }).addTo(map);
+
+  var markers = [];
+  var activeArea = 'all';
+
+  var defaultIcon = L.circleMarker([0,0], { radius: 6, color: '#00A1A5', fillColor: '#00A1A5', fillOpacity: 0.7, weight: 1 });
+  var activeIcon = L.circleMarker([0,0], { radius: 8, color: '#E65025', fillColor: '#E65025', fillOpacity: 0.9, weight: 2 });
+
+  NEIGHBORHOODS.forEach(function(hood) {
+    var isActive = hood.active || false;
+    var m = L.circleMarker([hood.lat, hood.lng], {
+      radius: isActive ? 8 : 6,
+      color: isActive ? '#E65025' : '#00A1A5',
+      fillColor: isActive ? '#E65025' : '#00A1A5',
+      fillOpacity: isActive ? 0.9 : 0.6,
+      weight: isActive ? 2 : 1
+    }).addTo(map);
+
+    m.bindTooltip(hood.name, { direction: 'top', offset: [0, -8] });
+
+    m.on('click', function() {
+      markers.forEach(function(other) {
+        var d = other._hoodData;
+        other.setStyle({
+          color: d.active ? '#E65025' : '#00A1A5',
+          fillColor: d.active ? '#E65025' : '#00A1A5',
+          fillOpacity: d.active ? 0.9 : 0.6
+        });
+        other.setRadius(d.active ? 8 : 6);
+      });
+
+      m.setStyle({ color: '#E65025', fillColor: '#E65025', fillOpacity: 0.9 });
+      m.setRadius(10);
+
+      var link = hood.link || '#';
+      var panel = document.getElementById('hood-selected');
+      panel.innerHTML = '<div style="font-size:18px;font-weight:700;margin-bottom:4px;">' + hood.name + '</div>' +
+        '<div style="font-size:13px;color:#555;margin-bottom:8px;">' + AREAS[hood.area].label + '</div>' +
+        '<a href="' + link + '" style="font-size:14px;font-weight:600;">' +
+        (link !== '#' ? 'View ' + hood.name + ' neighborhood page →' : 'Neighborhood page coming soon') + '</a>';
+      panel.style.display = 'block';
+      var prompt = document.getElementById('hood-prompt');
+      if (prompt) prompt.style.display = 'none';
+    });
+
+    m._hoodData = hood;
+    markers.push(m);
+  });
+
+  function filterArea(area) {
+    activeArea = area;
+
+    document.querySelectorAll('.area-btn').forEach(function(btn) {
+      btn.classList.toggle('area-btn-active', btn.dataset.area === area);
+    });
+
+    var areaData = AREAS[area];
+    map.flyTo(areaData.center, areaData.zoom, { duration: 0.6 });
+
+    markers.forEach(function(m) {
+      if (area === 'all' || m._hoodData.area === area) {
+        m.setStyle({ opacity: 1, fillOpacity: m._hoodData.active ? 0.9 : 0.6 });
+        m.setRadius(m._hoodData.active ? 8 : 6);
+      } else {
+        m.setStyle({ opacity: 0.15, fillOpacity: 0.1 });
+        m.setRadius(4);
+      }
+    });
+
+    renderChips(area);
+  }
+
+  function renderChips(area) {
+    var container = document.getElementById('hood-list');
+    var filtered = area === 'all' ? NEIGHBORHOODS : NEIGHBORHOODS.filter(function(h) { return h.area === area; });
+
+    if (area === 'all') {
+      var byArea = {};
+      filtered.forEach(function(h) {
+        if (!byArea[h.area]) byArea[h.area] = [];
+        byArea[h.area].push(h);
+      });
+
+      var html = '';
+      var areaOrder = ['downtown', 'north-central', 'northeast', 'southeast', 'west'];
+      areaOrder.forEach(function(a) {
+        if (!byArea[a]) return;
+        html += '<div class="area-label">' + AREAS[a].label + '</div><div class="hood-chips">';
+        byArea[a].forEach(function(h) {
+          var cls = h.active ? 'hood-chip hood-chip-active' : 'hood-chip';
+          var href = h.link || '#';
+          html += '<a class="' + cls + '" href="' + href + '">' + h.name + '</a>';
+        });
+        html += '</div>';
+      });
+      container.innerHTML = html;
+    } else {
+      var html = '<div class="area-label">' + AREAS[area].label + ' &middot; ' + filtered.length + ' neighborhoods</div>';
+      html += '<div class="hood-chips">';
+      filtered.forEach(function(h) {
+        var cls = h.active ? 'hood-chip hood-chip-active' : 'hood-chip';
+        var href = h.link || '#';
+        html += '<a class="' + cls + '" href="' + href + '">' + h.name + '</a>';
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+  }
+
+  document.querySelectorAll('.area-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterArea(this.dataset.area);
+    });
+  });
+
+  renderChips('all');
+
+  // Zoning story map thumbnail
+  var thumbEl = document.getElementById('zoning-map-thumb');
+  if (thumbEl) {
+    var thumbMap = L.map(thumbEl, {
+      zoomControl: false, attributionControl: false,
+      dragging: false, scrollWheelZoom: false,
+      doubleClickZoom: false, touchZoom: false, keyboard: false
+    }).setView([39.741, -84.183], 16);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18
+    }).addTo(thumbMap);
+
+    L.circleMarker([39.741, -84.183], {
+      radius: 8, color: '#E65025', fillColor: '#E65025', fillOpacity: 0.8, weight: 2
+    }).addTo(thumbMap);
+  }
+})();
+</script>
+</body>
+</html>
